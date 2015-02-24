@@ -49,6 +49,8 @@ GEM
     arel (6.0.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    brice (0.4.0)
+      nuggets
     bson (2.3.0)
     bson_ext (1.5.1)
     builder (3.2.2)
@@ -80,6 +82,7 @@ GEM
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
     hike (1.2.3)
+    hirb (0.7.3)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
       haml (~> 4.0.0)
@@ -108,6 +111,7 @@ GEM
     multi_json (1.10.1)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    nuggets (1.1.0)
     optionable (0.2.0)
     origin (2.1.1)
     rack (1.6.0)
@@ -183,10 +187,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  brice
   bson_ext
   byebug
   coffee-rails (~> 4.1.0)
   haml-rails (~> 0.8)
+  hirb
   jbuilder (~> 2.0)
   jquery-rails
   mongoid (~> 4)!
