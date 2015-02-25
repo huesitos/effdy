@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Question:
+  = @card.question
+%p
+  %b Answer:
+  = @card.answer
+%p
+  %b Box:
+  = @card.box
+
+= link_to 'Edit', edit_card_path(@card)
+\|
+= link_to 'Back', cards_path
