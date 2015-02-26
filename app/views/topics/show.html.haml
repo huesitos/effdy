@@ -1,9 +1,20 @@
 %p#notice= notice
 
-%p
-  %b Title:
-  = @topic.title
+.title
+  %h1= @topic.title
+  %span= link_to 'Edit topic', edit_topic_path(@topic)
+  %span= link_to 'New Card', topic_new_card_path(@topic)
+  %span= link_to 'Back', topics_path
 
-= link_to 'Edit', edit_topic_path(@topic)
-\|
-= link_to 'Back', topics_path
+%h3 Review boxes
+
+%ul
+  %li Box 1
+  %li Box 2
+  %li Box 3
+
+%h3 List of cards
+
+%table
+  %tbody
+    = render @cards

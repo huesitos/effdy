@@ -1,0 +1,13 @@
+%tr{class: cycle('list_line_odd', 'list_line_even')}
+  %td
+    %b Question
+  %td.content=card.question
+  %td
+    Box
+    =card.box
+  %td.small-cell=link_to 'Edit', edit_card_path(card)
+  %td.small-cell=link_to 'Delete', card, :method => :delete, :data => { :confirm => 'Are you sure?' }
+%tr
+  %td
+    %b Answer
+  %td{class: 'content', colspan: 4}=card.answer

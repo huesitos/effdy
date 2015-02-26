@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topic, only: [:show, :edit, :update, :destroy, :new_card]
 
   # GET /topics
   # GET /topics.json
@@ -10,6 +10,7 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @cards = @topic.cards
   end
 
   # GET /topics/new
@@ -61,10 +62,19 @@ class TopicsController < ApplicationController
     end
   end
 
+  # create a new card
+  def new_card
+    @card = Card.new
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_topic
-      @topic = Topic.find(params[:id])
+      if params[:id]
+        @topic = Topic.find(params[:id])
+      else
+        @topic = Topic.find(params[:topic_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

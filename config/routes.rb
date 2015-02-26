@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :cards
 
-  resources :topics
+  resources :topics do
+    get "new_card" => 'topics#new_card', as: :new_card
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

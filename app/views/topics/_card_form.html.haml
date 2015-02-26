@@ -5,9 +5,7 @@
       %ul
         - @card.errors.full_messages.each do |msg|
           %li= msg
-
-  - f.text_area :box, value: 1
-  
+          
   .field
     = f.label :question
     = f.text_area :question

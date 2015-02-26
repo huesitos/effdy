@@ -1,3 +1,28 @@
 // Place all the styles related to the Topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.topics {
+	.title {
+	    h1, span {
+			display: inline-block;
+		}
+	}
+	
+	table {
+		width: 70%;
+		border-collapse: collapse;
+		
+		tr.list_line_odd, tr.list_line_odd + tr {
+		  background-color: #e0f8f8;
+		}
+
+		td.content {
+		  padding: 4px 4px;
+		}
+
+		td.small-cell {
+		  width: 40px;
+		}
+	}
+}

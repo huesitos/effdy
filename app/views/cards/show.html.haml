@@ -10,6 +10,14 @@
   %b Box:
   = @card.box
 
+%p
+  %b Topic:
+  = @card.topic
+
+%p
+  %b Topic id:
+  = @card.topic_id
+
 = link_to 'Edit', edit_card_path(@card)
 \|
 = link_to 'Back', cards_path
