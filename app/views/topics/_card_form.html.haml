@@ -5,7 +5,9 @@
       %ul
         - @card.errors.full_messages.each do |msg|
           %li= msg
-          
+  
+  .field
+    = f.text_field :topic_id, type: 'hidden', value: @topic._id
   .field
     = f.label :question
     = f.text_area :question
@@ -13,4 +15,6 @@
     = f.label :answer
     = f.text_area :answer
   .actions
-    = f.submit 'Save'
+    = f.submit 'Done'
+  .actions
+    = f.submit 'Continue'

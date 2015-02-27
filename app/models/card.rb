@@ -6,5 +6,5 @@ class Card
   belongs_to :topic
 
   validates :question, presence: true, length: { minimum: 2 }
-  validates :answer, presence: true
+  validates :answer, :topic, presence: true
 end

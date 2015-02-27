@@ -5,6 +5,7 @@
   %span= link_to 'Edit topic', edit_topic_path(@topic)
   %span= link_to 'New Card', topic_new_card_path(@topic)
   %span= link_to 'Back', topics_path
+  %span= link_to 'Destroy', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %h3 Review boxes
 

@@ -29,8 +29,12 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       if @card.save
-        format.html { redirect_to @card, notice: 'Card was successfully created.' }
-        format.json { render :show, status: :created, location: @card }
+        if card_params[:commit] == "Done"
+          format.html { redirect_to @card.topic }
+          # format.json { render :show, status: :created, location: @card }
+        else
+          format.html { redirect_to topic_new_card_path(@card.topic) }
+        end
       else
         format.html { render :new }
         format.json { render json: @card.errors, status: :unprocessable_entity }
@@ -70,6 +74,6 @@ class CardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.require(:card).permit(:question, :answer, :box)
+      params.require(:card).permit(:question, :answer, :topic_id)
     end
 end
