@@ -36,8 +36,8 @@ class CardsController < ApplicationController
           format.html { redirect_to topic_new_card_path(@card.topic) }
         end
       else
-        format.html { render :new }
-        format.json { render json: @card.errors, status: :unprocessable_entity }
+        format.html { redirect_to topic_new_card_path(@card.topic), notice: @card.errors }
+        # format.json { render json: @card.errors, status: :unprocessable_entity }
       end
     end
   end

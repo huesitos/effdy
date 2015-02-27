@@ -62,7 +62,7 @@ class TopicsController < ApplicationController
     end
   end
 
-  # GET /topics/:id/new_card
+  # GET /topics/:topic_id/new_card
   def new_card
     @card = Card.new
   end
