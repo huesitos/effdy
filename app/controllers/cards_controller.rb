@@ -29,7 +29,7 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       if @card.save
-        if card_params[:commit] == "Done"
+        if params[:commit] == "Done"
           format.html { redirect_to @card.topic }
           # format.json { render :show, status: :created, location: @card }
         else
@@ -59,9 +59,10 @@ class CardsController < ApplicationController
   # DELETE /cards/1
   # DELETE /cards/1.json
   def destroy
+    topic = @card.topic
     @card.destroy
     respond_to do |format|
-      format.html { redirect_to cards_url, notice: 'Card was successfully destroyed.' }
+      format.html { redirect_to topic, notice: 'Card was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
