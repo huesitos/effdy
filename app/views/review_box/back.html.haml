@@ -1,2 +1,17 @@
-%h1 ReviewBox#back
-%p Find me in app/views/review_box/back.html.haml
+%h1 
+  Box
+  =@box
+
+= form_tag(topic_card_answer_path, method: 'post') do
+  %p
+    %b Question
+  %p= @card.question
+  %p
+    %b Your answer:
+  %p= @u_answer
+  %p
+    %b Right answer:
+  %p= @card.answer
+  = submit_tag("Correct")
+  = submit_tag("Incorrect")
+
