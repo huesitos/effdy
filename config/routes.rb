@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   resources :topics do
     get 'review_box/:n' => 'review_box#review_box', as: :review_box
-    get 'front/:card_id' => 'review_box#front', as: :front
-    get 'back/:card_id' => 'review_box#back', as: :back
-    post 'answer/:card_id' => 'review_box#answer', as: :answer
+    get 'review_box/:n/card/:card_id/front/' => 'review_box#front', as: :card_front
+    get 'review_box/:n/card/:card_id/back/' => 'review_box#back', as: :card_back
+    post 'review_box/:n/card/:card_id/answer' => 'review_box#answer', as: :card_answer
     get "new_card" => 'topics#new_card', as: :new_card
   end
 
