@@ -10,7 +10,6 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
-    @cards = @topic.cards
   end
 
   # GET /topics/new

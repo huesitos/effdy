@@ -1,6 +1,6 @@
 %h1 
   Box
-  =@box
+  =@card.box
 
 = form_tag(topic_card_answer_path, method: 'post') do
   %p
@@ -8,7 +8,7 @@
   %p= @card.question
   %p
     %b Your answer:
-  %p= @u_answer
+  %p= u_answer
   %p
     %b Right answer:
   %p= @card.answer
