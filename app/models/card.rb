@@ -3,7 +3,7 @@ class Card
   field :question, type: String
   field :answer, type: String
   field :box, type: Integer
-  field :reviewed, type: Date
+  field :reviewed, type: Boolean
   belongs_to :topic
 
   validates :question, presence: true, length: { minimum: 2 }
