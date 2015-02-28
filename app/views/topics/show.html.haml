@@ -10,9 +10,18 @@
 %h3 Review boxes
 
 %ul
-  %li= link_to 'Box 1', topic_review_box_path(@topic._id, n: 1, reset: 'y')
-  %li= link_to 'Box 2', topic_review_box_path(@topic._id, n: 2, reset: 'y')
-  %li= link_to 'Box 3', topic_review_box_path(@topic._id, n: 3, reset: 'y')
+  - if @box_has_cards[0]
+    %li= link_to 'Box 1', topic_review_box_path(@topic._id, n: 1, reset: 'y')
+  - else
+    %li Box 1
+  - if @box_has_cards[1]
+    %li= link_to 'Box 2', topic_review_box_path(@topic._id, n: 2, reset: 'y')
+  - else
+    %li Box 2
+  - if @box_has_cards[2]
+    %li= link_to 'Box 3', topic_review_box_path(@topic._id, n: 3, reset: 'y')
+  - else
+    %li Box 3
 
 %h3 List of cards
 

@@ -10,6 +10,10 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @box_has_cards = []
+    @box_has_cards[0] = @topic.cards.where(box: 1).count() > 0 ? true : false
+    @box_has_cards[1] = @topic.cards.where(box: 2).count() > 0 ? true : false
+    @box_has_cards[2] = @topic.cards.where(box: 3).count() > 0 ? true : false
   end
 
   # GET /topics/new
