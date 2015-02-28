@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
-  get 'review_box/review_box'
-
-  get 'review_box/front'
-
-  get 'review_box/back'
-
-  get 'review_box/answer'
 
   resources :cards
 
   resources :topics do
+    get 'review_box/:n' => 'review_box#review_box', as: :review_box
+    get 'front/:card_id' => 'review_box#front', as: :front
+    get 'back/:card_id' => 'review_box#back', as: :back
+    post 'answer/:card_id' => 'review_box#answer', as: :answer
     get "new_card" => 'topics#new_card', as: :new_card
   end
 
