@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'review_box/review_box'
+
+  get 'review_box/front'
+
+  get 'review_box/back'
+
+  get 'review_box/answer'
+
   resources :cards
 
   resources :topics do
