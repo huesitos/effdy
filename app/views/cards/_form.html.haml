@@ -1,9 +1,9 @@
-= form_for @card do |f|
-  - if @card.errors.any?
+= form_for @card, url: @url do |f|
+  - if @errors
     #error_explanation
-      %h2= "#{pluralize(@card.errors.count, "error")} prohibited this card from being saved:"
+      %h2= "#{pluralize(@errors, "error")} prohibited this card from being saved:"
       %ul
-        - @card.errors.full_messages.each do |msg|
+        - @errors.each do |msg|
           %li= msg
           
   .field
@@ -13,4 +13,7 @@
     = f.label :answer
     = f.text_area :answer
   .actions
-    = f.submit 'Save'
+    - if @url[/cards\/[0-9]/]
+      = f.submit 'Save'
+    - else
+      = f.submit 'Continue'

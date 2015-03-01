@@ -5,8 +5,8 @@
   %td
     Box
     =card.box
-  %td.small-cell=link_to 'Edit', edit_card_path(card)
-  %td.small-cell=link_to 'Delete', card, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %td.small-cell=link_to 'Edit', edit_topic_card_path(card.topic_id, card._id)
+  %td.small-cell=link_to 'Delete', topic_card_path(card.topic_id, card._id), :method => :delete, :data => { :confirm => 'Are you sure?' }
 %tr
   %td
     %b Answer

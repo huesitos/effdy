@@ -25,7 +25,7 @@ class ReviewBoxController < ApplicationController
 
   # GET topics/:topic_id/review_box/:n/card/:card_id/back/
   def back
-  	u_answer = params[:u_answer]
+  	@u_answer = params[:u_answer]
   end
 
   # POST topics/:topic_id/review_box/:n/card/:card_id/answer

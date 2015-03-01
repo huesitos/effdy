@@ -16,10 +16,10 @@
         %td= card.question
         %td= card.answer
         %td= card.box
-        %td= link_to 'Show', card
-        %td= link_to 'Edit', edit_card_path(card)
-        %td= link_to 'Destroy', card, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Show', topic_card_path(card.topic_id, card._id)
+        %td= link_to 'Edit', edit_topic_card_path(card.topic_id, card._id)
+        %td= link_to 'Destroy', topic_card_path(card.topic_id, card._id), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Card', new_card_path
+= link_to 'New Card', new_topic_card_path(@cards[0].topic_id)

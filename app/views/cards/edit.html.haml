@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', @card
+= link_to 'Show', topic_card_path(@card.topic_id, @card._id)
 \|
 = link_to 'Back', @card.topic

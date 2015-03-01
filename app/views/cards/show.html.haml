@@ -10,6 +10,6 @@
   %b Box:
   = @card.box
 
-= link_to 'Edit', edit_card_path(@card)
+= link_to 'Edit', edit_topic_card_path(@card.topic_id, @card)
 \|
 = link_to 'Back', @card.topic

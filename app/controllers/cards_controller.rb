@@ -1,10 +1,11 @@
 class CardsController < ApplicationController
+  before_action :set_topic, only: [:new, :edit]
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   # GET /cards
   # GET /cards.json
   def index
-    @cards = Card.all
+    @cards = Topic.find(params[:topic_id]).cards
   end
 
   # GET /cards/1
@@ -15,10 +16,18 @@ class CardsController < ApplicationController
   # GET /cards/new
   def new
     @card = Card.new
+    @url = topic_cards_path(@topic._id)
+    if params[:errors]
+      @errors = params[:errors]
+    end
   end
 
   # GET /cards/1/edit
   def edit
+    @url = topic_card_path(@topic._id, @card._id)
+    if params[:errors]
+      @errors = params[:errors]
+    end
   end
 
   # POST /cards
@@ -26,18 +35,14 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     @card.box = 1
+    @card.topic = Topic.find(params[:topic_id])
 
     respond_to do |format|
       if @card.save
-        if params[:commit] == "Done"
-          format.html { redirect_to @card.topic }
-          # format.json { render :show, status: :created, location: @card }
-        else
-          format.html { redirect_to topic_new_card_path(@card.topic) }
-        end
+        format.html { redirect_to new_topic_card_path(@card.topic) }
       else
-        format.html { redirect_to topic_new_card_path(@card.topic), notice: @card.errors }
-        # format.json { render json: @card.errors, status: :unprocessable_entity }
+        format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
+        format.json { render json: @card.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,10 +52,10 @@ class CardsController < ApplicationController
   def update
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to @card, notice: 'Card was successfully updated.' }
-        format.json { render :show, status: :ok, location: @card }
+        format.html { redirect_to @card.topic, notice: 'Card was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @card }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_topic_card_path(@card.topic_id, @card._id, errors: @card.errors.full_messages.each.to_a) }
         format.json { render json: @card.errors, status: :unprocessable_entity }
       end
     end
@@ -70,11 +75,19 @@ class CardsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_card
-      @card = Card.find(params[:id])
+      if params[:id]
+        @card = Card.find(params[:id])
+      else
+        @card = Card.find(params[:card_id])
+      end
+    end
+
+    def set_topic
+      @topic = Topic.find(params[:topic_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.require(:card).permit(:question, :answer, :topic_id)
+      params.require(:card).permit(:question, :answer)
     end
 end
