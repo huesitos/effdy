@@ -62,11 +62,6 @@ class TopicsController < ApplicationController
     end
   end
 
-  # GET /topics/:topic_id/new_card
-  def new_card
-    @card = Card.new
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_topic
