@@ -23,8 +23,4 @@
   - else
     %li Box 3
 
-%h3 List of cards
-
-%table.card_list
-  %tbody
-    = render @topic.cards
+%p= link_to 'List cards', topic_cards_path(@topic)

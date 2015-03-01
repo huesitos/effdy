@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_topic, only: [:new, :edit]
+  before_action :set_topic, only: [:new, :edit, :index]
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   # GET /cards
