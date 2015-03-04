@@ -8,4 +8,5 @@ class Card
 
   validates :question, presence: true, length: { minimum: 2 }
   validates :answer, :topic, presence: true
+  validates :box, inclusion: 1..3
 end
