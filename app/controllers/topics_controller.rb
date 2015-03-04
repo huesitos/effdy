@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :edit, :update, :destroy, :new_card]
+  before_action :set_topic, only: [:show, :edit, :update, :destroy, :set_review]
 
   # GET /topics
   # GET /topics.json
@@ -59,6 +59,23 @@ class TopicsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def set_review
+    respond_to do |format|
+      reviews = BoxReview.where(topic_id: @topic._id)
+      if reviews.count() == 0
+        BoxReview.create!(box: 1, topic_id: @topic._id, topic_title: @topic.title, review_date: Date.today.to_s)
+        date = Date.today + 3
+        BoxReview.create!(box: 2, topic_id: @topic._id, topic_title: @topic.title, review_date: date.to_s)
+        date = Date.today + 7
+        BoxReview.create!(box: 3, topic_id: @topic._id, topic_title: @topic.title, review_date: date.to_s)
+        format.html { redirect_to @topic, notice: 'Topic set for review.' }
+      else
+        reviews.destroy
+        format.html { redirect_to @topic, notice: 'Topic unset for review.' }
+      end
     end
   end
 

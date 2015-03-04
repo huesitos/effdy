@@ -1,0 +1,17 @@
+%h1 Boxes to study
+
+%table
+  %thead
+    %tr
+      %th Topic
+      %th Box
+      %th
+      
+  %tbody
+    - @box_reviews.each do |box_review|
+      %tr
+        %td= box_review.topic_title
+        %td= box_review.box
+        %td= link_to 'Review', topic_review_box_path(b: box_review.box, topic_id: box_review.topic_id, reset: 'y')
+
+= link_to 'Back', topics_path

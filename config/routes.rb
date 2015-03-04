@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'today_study' => 'review_box#today_study'
+
   resources :topics do
     resources :cards
-    get 'review_box/:n' => 'review_box#review_box', as: :review_box
-    get 'review_box/:n/card/:card_id/front/' => 'review_box#front', as: :card_front
-    get 'review_box/:n/card/:card_id/back/' => 'review_box#back', as: :card_back
-    post 'review_box/:n/card/:card_id/answer' => 'review_box#answer', as: :card_answer
+    get 'review_box/:b' => 'review_box#review_box', as: :review_box
+    get 'review_box/:b/card/:card_id/front/' => 'review_box#front', as: :card_front
+    get 'review_box/:b/card/:card_id/back/' => 'review_box#back', as: :card_back
+    post 'review_box/:b/card/:card_id/answer' => 'review_box#answer', as: :card_answer
+    post 'set_review' => 'topics#set_review', as: :set_review
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
