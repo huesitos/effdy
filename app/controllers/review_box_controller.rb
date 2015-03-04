@@ -11,16 +11,17 @@ class ReviewBoxController < ApplicationController
   	respond_to do |format|
       # if params[:review]
       # if there is a box_review assigned for that box, change date
+      # it always moves to 2015-03-10 ...
       review = BoxReview.where(topic_id: @topic._id, box: params[:b])[0]
       if review
-        if params[:b] == 1
-          date = Date.today + 1
+        if params[:b].to_i == 1
+          date = Date.today + 1.day
           review.review_date = date.to_s
-        elsif params[:b] == 2
-          date = Date.today + 3
+        elsif params[:b].to_i == 2
+          date = Date.today + 3.days
           review.review_date = date.to_s
         else
-          date = Date.today + 7
+          date = Date.today + 7.days
           review.review_date = date.to_s
         end
         review.save
