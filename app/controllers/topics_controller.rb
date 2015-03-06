@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :edit, :update, :destroy, :set_review]
+  before_action :set_topic, except: [:new, :index]
 
   # GET /topics
   # GET /topics.json
@@ -76,6 +76,17 @@ class TopicsController < ApplicationController
         reviews.destroy
         format.html { redirect_to @topic, notice: 'Topic unset for review.' }
       end
+    end
+  end
+
+  def reset_cards
+    @topic.cards.each do |card|
+      card.box = 1
+      card.save
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @topic }
     end
   end
 
