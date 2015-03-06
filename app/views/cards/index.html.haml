@@ -9,6 +9,11 @@
 
 %h2 Listing cards
 
+%a= link_to 'All', topic_cards_path(@topic)
+%a= link_to 'Box 1', topic_cards_path(@topic, box: 1)
+%a= link_to 'Box 2', topic_cards_path(@topic, box: 2)
+%a= link_to 'Box 3', topic_cards_path(@topic, box: 3)
+
 %table.card_list
   %tbody
-    = render @topic.cards
+    = render @cards

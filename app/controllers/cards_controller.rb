@@ -5,7 +5,11 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
-    @cards = Topic.find(params[:topic_id]).cards
+    if params[:box]
+      @cards = Card.where(topic_id: params[:topic_id], box: params[:box].to_i)
+    else
+      @cards = Card.where(topic_id: params[:topic_id])
+    end
   end
 
   # GET /cards/1
