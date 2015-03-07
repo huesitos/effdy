@@ -1,7 +1,7 @@
 class Subject
   include Mongoid::Document
   field :code, type: String
-  field :title, type: String
+  field :name, type: String
   field :color, type: String
   field :archived, type: Boolean
   has_many :topics

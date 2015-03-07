@@ -1,7 +1,26 @@
-%h1 Subjects#index
-%p Find me in app/views/subjects/index.html.haml
+%p#notice= notice
+%h1 Listing subjects
 
-- @subjects.each do |subject|
-  %p= subject.code
-  %p= subject.title
-  
+%table
+  %thead
+    %tr
+      %th Code
+      %th Name
+      %th Archived
+      %th
+      %th
+      %th
+      %th
+
+  %tbody
+    - @subjects.each do |subject|
+      %tr
+        %td= subject.code
+        %td= subject.name
+        %th= subject.archived
+        %th= link_to 'Edit', edit_subject_path(subject)
+        %th= link_to 'Archive', subject_archive_path(subject), :method => :patch
+        %th= link_to 'Destroy', subject, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th= link_to 'Destroy all', subject_path(id: subject._id, destroy_all: true), :method => :delete, :data => { :confirm => 'You will destroy the subject and all its topics, are you sure?' }
+
+= link_to 'New Subject', new_subject_path

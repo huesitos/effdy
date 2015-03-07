@@ -1,2 +1,7 @@
-%h1 Subjects#edit
-%p Find me in app/views/subjects/edit.html.haml
+%h1 Editing subject
+
+= render 'form'
+
+= link_to 'Show', @subject
+\|
+= link_to 'Back', subjects_path

@@ -1,14 +1,14 @@
 class CardsController < ApplicationController
-  before_action :set_topic, only: [:new, :edit, :index]
+  before_action :set_topic, except: [:show, :update, :destroy]
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   # GET /cards
   # GET /cards.json
   def index
     if params[:box]
-      @cards = Card.where(topic_id: params[:topic_id], box: params[:box].to_i)
+      @cards = Card.where(topic_id: @topic._id, box: params[:box].to_i)
     else
-      @cards = Card.where(topic_id: params[:topic_id])
+      @cards = Card.where(topic_id: @topic._id)
     end
   end
 
@@ -38,8 +38,8 @@ class CardsController < ApplicationController
   # POST /cards.json
   def create
     @card = Card.new(card_params)
-    @card.box = 3
-    @card.topic = Topic.find(params[:topic_id])
+    @card.box = 1
+    @card.topic = @topic
 
     respond_to do |format|
       if @card.save

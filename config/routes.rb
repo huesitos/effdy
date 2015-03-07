@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
-  get 'subjects/index'
-
-  get 'subjects/edit'
-
-  get 'subjects/new'
-
-  resources :subjects
-
   get 'today_study' => 'review_box#today_study'
+
+  resources :subjects do
+    patch 'archive' => 'subjects#archive', as: :archive
+  end
 
   resources :topics do
     resources :cards

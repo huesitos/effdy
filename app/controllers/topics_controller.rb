@@ -1,5 +1,7 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, except: [:new, :index]
+  before_action :set_topic, except: [:new, :index, :create]
+  before_action :set_subjects, only: [:new, :edit]
+  before_action :set_subject, only: [:create, :update]
 
   # GET /topics
   # GET /topics.json
@@ -38,6 +40,10 @@ class TopicsController < ApplicationController
   # POST /topics.json
   def create
     @topic = Topic.new(topic_params)
+    @topic.subject = @subject
+    BoxReview.create!(box:1, topic_id: @topic._id, topic_title: @topic.title, review_date: '')
+    BoxReview.create!(box:2, topic_id: @topic._id, topic_title: @topic.title, review_date: '')
+    BoxReview.create!(box:3, topic_id: @topic._id, topic_title: @topic.title, review_date: '')
 
     respond_to do |format|
       if @topic.save
@@ -54,6 +60,8 @@ class TopicsController < ApplicationController
   # PATCH/PUT /topics/1.json
   def update
     respond_to do |format|
+      @topic.subject = @subject
+
       if @topic.update(topic_params)
         format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
         format.json { render :show, status: :ok, location: @topic }
@@ -125,8 +133,31 @@ class TopicsController < ApplicationController
       end
     end
 
+    # Set the subject specified by the param[:subject]
+    def set_subject
+      if params[:subject] != 'none'
+        @subject = Subject.find(params[:subject_id])
+      else
+        @subject = nil
+      end
+    end
+
+    # Search for all the subjects and the particular topic's subject, if exists
+    def set_subjects
+      if params[:id]
+        @subject = Topic.find(params[:id]).subject
+      else
+        @subject = nil
+      end
+      if @subject
+        @subjects = Subject.where(:_id.ne => @subject._id, :archived => false)
+      else
+        @subjects = Subject.where(:archived => false)
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def topic_params
-      params.require(:topic).permit(:title)
+      params.require(:topic).permit(:title, :subject)
     end
 end
