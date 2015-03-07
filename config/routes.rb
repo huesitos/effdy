@@ -1,18 +1,5 @@
 Rails.application.routes.draw do
-
-  get 'subjects_controller/index'
-
-  get 'subjects_controller/new'
-
-  get 'subjects_controller/create'
-
-  get 'subjects_controller/edit'
-
-  get 'subjects_controller/delete'
-
-  get 'subjects_controller/archive'
-
-  get 'subjects_controller/update'
+  resources :subjects
 
   get 'today_study' => 'review_box#today_study'
 
