@@ -19,7 +19,7 @@
       %tr
         %td
           - if topic.subject
-            %span= topic.subject.code
+            %span{style: topic.subject.nil? || "color:##{topic.subject.color}" }= topic.subject.code
           = link_to topic.title, topic
 %br
 
