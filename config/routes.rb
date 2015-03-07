@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'today_study' => 'review_box#today_study'
+  get 'week_study' => 'review_box#week_study'
 
   resources :subjects do
     patch 'archive' => 'subjects#archive', as: :archive
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
     get 'review_box/:b/card/:card_id/back/' => 'review_box#back', as: :card_back
     post 'review_box/:b/card/:card_id/answer' => 'review_box#answer', as: :card_answer
     patch 'reset_cards' => 'topics#reset_cards', as: :reset_cards
-    patch 'set_review' => 'topics#set_review', as: :set_review
+    patch 'set_reviewing' => 'topics#set_reviewing', as: :set_review
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

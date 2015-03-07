@@ -1,4 +1,4 @@
-%h1 Boxes to study
+%h1 Today study
 
 %table
   %thead
@@ -10,7 +10,10 @@
   %tbody
     - @box_reviews.each do |box_review|
       %tr
-        %td= box_review.topic_title
+        %td{style: box_review.review_date < Date.today.to_s && "color:red"}
+          -if box_review.topic.subject
+            %span=box_review.topic.subject.code
+          =box_review.topic.title
         %td= box_review.box
         %td= link_to 'Review', topic_prepare_review_path(b: box_review.box, topic_id: box_review.topic_id)
 

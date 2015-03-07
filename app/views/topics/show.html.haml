@@ -7,11 +7,11 @@
   %span= link_to 'Back', topics_path
   %span= link_to 'Destroy', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-= form_tag("/topics/#{@topic._id}/set_review", method: "patch") do
-  - if @topic.set_review
-    = submit_tag('Unset review')
+= form_tag("/topics/#{@topic._id}/set_reviewing", method: "patch") do
+  - if @topic.reviewing
+    = submit_tag('Unset reviewing')
   - else
-    = submit_tag('Set review')
+    = submit_tag('Set reviewing')
 
 = form_tag("/topics/#{@topic._id}/reset_cards", method: "patch") do
   = submit_tag('Reset')

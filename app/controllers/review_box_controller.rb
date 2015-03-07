@@ -3,7 +3,13 @@ class ReviewBoxController < ApplicationController
   before_action :set_card, only: [:front, :back, :answer]
 
   def today_study
-    @box_reviews = BoxReview.where(review_date: Date.today.to_s)
+    topics = Topic.where(reviewing: true)
+    @box_reviews = []
+    topics.each do |topic|
+      topic.box_reviews.each do |box_review|
+        @box_reviews << box_review if box_review.review_date <= Date.today.to_s
+      end
+    end
   end
 
   def set_review
@@ -16,6 +22,16 @@ class ReviewBoxController < ApplicationController
       box_review.cards.push(card._id)
     end
     box_review.cards.shuffle!
+
+    if box_review.review_date <= Date.today.to_s
+      if box_review.box == 1
+        box_review.review_date = (Date.today + 1.day).to_s
+      elsif box_review.box == 2
+        box_review.review_date = (Date.today + 2.days).to_s
+      else
+        box_review.review_date = (Date.today + 6.days).to_s 
+      end
+    end
     box_review.save
 
     respond_to do |format|
@@ -28,19 +44,6 @@ class ReviewBoxController < ApplicationController
   	respond_to do |format|
       # if today is the assigned review date, change date
       box_review = BoxReview.where(topic_id: @topic._id, box: params[:b])[0]
-      if box_review.review_date == Date.today.to_s
-        if params[:b].to_i == 1
-          date = Date.today + 1.day
-          box_review.review_date = date.to_s
-        elsif params[:b].to_i == 2
-          date = Date.today + 3.days
-          box_review.review_date = date.to_s
-        else
-          date = Date.today + 7.days
-          box_review.review_date = date.to_s
-        end
-        box_review.save
-      end
 
       # Get a card from the box_review
   	  card_id = box_review.cards.pop()
