@@ -1,15 +1,26 @@
 %p#notice= notice
 %h1 Listing topics
 
+= form_tag("/topics/", method: "get") do
+  %select{name: 'subject'}
+    %option{value: 'all'} All
+    - @subjects.each do |subject|
+      %option{value: "#{subject.code}"}= subject.code
+    %option{value: 'none'} None
+  = submit_tag('Search')
+
 %table
   %thead
     %tr
       %th Title
-      
+
   %tbody
     - @topics.each do |topic|
       %tr
-        %td= link_to topic.title, topic
+        %td
+          - if topic.subject
+            %span= topic.subject.code
+          = link_to topic.title, topic
 %br
 
 = link_to 'New Topic', new_topic_path

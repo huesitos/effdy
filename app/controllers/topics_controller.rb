@@ -4,7 +4,19 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    @subjects = Subject.only(:code).all
+    if params[:commit] == "Search"
+      if params[:subject] == "all"
+        @topics = Topic.all
+      elsif params[:subject] == "none"
+        @topics = Topic.where(subject_id: nil)
+      else
+        subject = Subject.find_by(code: params[:subject])
+        @topics = Topic.where(subject_id: subject._id)
+      end 
+    else
+      @topics = Topic.all
+    end
   end
 
   # GET /topics/1
