@@ -8,7 +8,10 @@
   %span= link_to 'Destroy', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 = form_tag("/topics/#{@topic._id}/set_review", method: "post") do
-  = submit_tag('Set review')
+  - if @topic.set_review
+    = submit_tag('Unset review')
+  - else
+    = submit_tag('Set review')
 
 = form_tag("/topics/#{@topic._id}/reset_cards", method: "post") do
   = submit_tag('Reset')
@@ -17,15 +20,15 @@
 
 %ul
   - if @box_has_cards[0]
-    %li= link_to 'Box 1', topic_review_box_path(@topic._id, b: 1, reset: 'y')
+    %li= link_to 'Box 1', topic_prepare_review_path(@topic._id, b: 1)
   - else
     %li Box 1
   - if @box_has_cards[1]
-    %li= link_to 'Box 2', topic_review_box_path(@topic._id, b: 2, reset: 'y')
+    %li= link_to 'Box 2', topic_prepare_review_path(@topic._id, b: 2)
   - else
     %li Box 2
   - if @box_has_cards[2]
-    %li= link_to 'Box 3', topic_review_box_path(@topic._id, b: 3, reset: 'y')
+    %li= link_to 'Box 3', topic_prepare_review_path(@topic._id, b: 3)
   - else
     %li Box 3
 

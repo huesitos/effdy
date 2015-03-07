@@ -12,6 +12,6 @@
       %tr
         %td= box_review.topic_title
         %td= box_review.box
-        %td= link_to 'Review', topic_review_box_path(b: box_review.box, topic_id: box_review.topic_id, reset: 'y')
+        %td= link_to 'Review', topic_prepare_review_path(b: box_review.box, topic_id: box_review.topic_id)
 
 = link_to 'Back', topics_path

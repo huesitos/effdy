@@ -63,17 +63,30 @@ class TopicsController < ApplicationController
   end
 
   def set_review
+    reviews = BoxReview.where(topic_id: @topic._id)
+
     respond_to do |format|
-      reviews = BoxReview.where(topic_id: @topic._id)
-      if reviews.count() == 0
-        BoxReview.create!(box: 1, topic_id: @topic._id, topic_title: @topic.title, review_date: Date.today.to_s)
-        date = Date.today + 3
-        BoxReview.create!(box: 2, topic_id: @topic._id, topic_title: @topic.title, review_date: date.to_s)
-        date = Date.today + 7
-        BoxReview.create!(box: 3, topic_id: @topic._id, topic_title: @topic.title, review_date: date.to_s)
+      if params[:commit] == "Set review"
+        @topic.set_review = true
+        @topic.save
+
+        reviews.each do |review|
+          if review.box == 1
+            review.review_date = Date.today.to_s
+          elsif review.box == 2
+            date = Date.today + 3.days
+            review.review_date = date.to_s
+          else
+            date = Date.today + 7.days
+            review.review_date = date.to_s
+          end
+          review.save
+        end
         format.html { redirect_to @topic, notice: 'Topic set for review.' }
       else
-        reviews.destroy
+        @topic.set_review = false
+        @topic.save
+
         format.html { redirect_to @topic, notice: 'Topic unset for review.' }
       end
     end

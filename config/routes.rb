@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :topics do
     resources :cards
+    get 'set_review' => 'review_box#set_review', as: :prepare_review
     get 'review_box/:b' => 'review_box#review_box', as: :review_box
     get 'review_box/:b/card/:card_id/front/' => 'review_box#front', as: :card_front
     get 'review_box/:b/card/:card_id/back/' => 'review_box#back', as: :card_back

@@ -6,34 +6,48 @@ class ReviewBoxController < ApplicationController
     @box_reviews = BoxReview.where(review_date: Date.today.to_s)
   end
 
+  def set_review
+    # reset the cards to review them again
+    box_review = BoxReview.where(topic_id: @topic._id, box: params[:b])[0]
+    box_review.cards = []
+
+    cards = @topic.cards.where(box: params[:b])
+    cards.each do |card|
+      box_review.cards.push(card._id)
+    end
+    box_review.cards.shuffle!
+    box_review.save
+
+    respond_to do |format|
+      format.html {redirect_to topic_review_box_path(@topic, params[:b])}
+    end
+  end
+
   # GET	topics/:topic_id/review_box/:b
   def review_box
   	respond_to do |format|
-      # if params[:review]
-      # if there is a box_review assigned for that box, change date
-      # it always moves to 2015-03-10 ...
-      review = BoxReview.where(topic_id: @topic._id, box: params[:b])[0]
-      if review
+      # if today is the assigned review date, change date
+      box_review = BoxReview.where(topic_id: @topic._id, box: params[:b])[0]
+      if box_review.review_date == Date.today.to_s
         if params[:b].to_i == 1
           date = Date.today + 1.day
-          review.review_date = date.to_s
+          box_review.review_date = date.to_s
         elsif params[:b].to_i == 2
           date = Date.today + 3.days
-          review.review_date = date.to_s
+          box_review.review_date = date.to_s
         else
           date = Date.today + 7.days
-          review.review_date = date.to_s
+          box_review.review_date = date.to_s
         end
-        review.save
+        box_review.save
       end
 
-  		# reset the cards to review them again
-  		if params[:reset]
-		  	@topic.cards.where(:box => params[:b], :reviewed => true).update_all(:reviewed => false)
-  		end
+      # Get a card from the box_review
+  	  card_id = box_review.cards.pop()
+      box_review.save
 
-  	  @card = @topic.cards.where(:box => params[:b], :reviewed.ne => true)[0]
-  	  if @card
+      if card_id
+        @card = Card.find(card_id)
 	  	  format.html { redirect_to topic_card_front_path(card_id: @card._id) }
   	  else
   	  	format.html { redirect_to @topic, notice: "Finished reviewing box #{@box}" }
@@ -58,7 +72,6 @@ class ReviewBoxController < ApplicationController
   		else
   			@card.box = 1
   		end
-  		@card.reviewed = true
   		@card.save
   		format.html {redirect_to topic_review_box_path(@topic, params[:b])}
   	end
