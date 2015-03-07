@@ -1,0 +1,7 @@
+%h1 Subjects#index
+%p Find me in app/views/subjects/index.html.haml
+
+- @subjects.each do |subject|
+  %p= subject.code
+  %p= subject.title
+  
