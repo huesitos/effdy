@@ -14,7 +14,7 @@ class ReviewBoxController < ApplicationController
 
   def set_review
     # reset the cards to review them again
-    box_review = BoxReview.where(topic_id: @topic._id, box: params[:b])[0]
+    box_review = @topic.box_reviews.find_by(box: params[:b])
     box_review.cards = []
 
     cards = @topic.cards.where(box: params[:b])
@@ -44,7 +44,7 @@ class ReviewBoxController < ApplicationController
   def review_box
   	respond_to do |format|
       # if today is the assigned review date, change date
-      box_review = BoxReview.where(topic_id: @topic._id, box: params[:b])[0]
+      box_review = @topic.box_reviews.find_by(box: params[:b])
 
       # Get a card from the box_review
   	  card_id = box_review.cards.pop()

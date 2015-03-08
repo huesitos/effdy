@@ -6,5 +6,4 @@ class BoxReview
   belongs_to :topic
 
   validates :box, presence: true, inclusion: 1..3
-  validates :topic_id, presence: true
 end

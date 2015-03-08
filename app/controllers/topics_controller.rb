@@ -70,9 +70,9 @@ class TopicsController < ApplicationController
         @topic.review_configuration = params[:review_configuration]
         config = DefaultConfiguration.find_by(name: @topic.review_configuration)
 
-        @topic.box_reviews.where(box:1)[0].update(review_date: (Date.today +  config.box1_frequency.days).to_s)
-        @topic.box_reviews.where(box:2)[0].update(review_date: (Date.today + config.box2_frequency.days).to_s)
-        @topic.box_reviews.where(box:3)[0].update(review_date: (Date.today + config.box3_frequency.days).to_s)
+        @topic.box_reviews.find_by(box:1).update(review_date: (Date.today +  config.box1_frequency.days).to_s)
+        @topic.box_reviews.find_by(box:2).update(review_date: (Date.today + config.box2_frequency.days).to_s)
+        @topic.box_reviews.find_by(box:3).update(review_date: (Date.today + config.box3_frequency.days).to_s)
       end
 
       if @topic.update(topic_params)
@@ -96,17 +96,13 @@ class TopicsController < ApplicationController
   end
 
   def set_reviewing
-    reviews = BoxReview.where(topic_id: @topic._id)
-
     respond_to do |format|
       if params[:commit] == "Set reviewing"
-        @topic.reviewing = true
-        @topic.save
+        @topic.update(reviewing: true)
 
         format.html { redirect_to @topic, notice: 'Topic set for review.' }
       else
-        @topic.reviewing = false
-        @topic.save
+        @topic.update(reviewing: false)
 
         format.html { redirect_to @topic, notice: 'Topic unset for review.' }
       end
@@ -115,8 +111,7 @@ class TopicsController < ApplicationController
 
   def reset_cards
     @topic.cards.each do |card|
-      card.box = 1
-      card.save
+      card.update(box: 1)
     end
 
     respond_to do |format|
