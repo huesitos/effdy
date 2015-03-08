@@ -22,14 +22,15 @@ class ReviewBoxController < ApplicationController
       box_review.cards.push(card._id)
     end
     box_review.cards.shuffle!
+    config = DefaultConfiguration.find_by(name: @topic.review_configuration)
 
     if box_review.review_date <= Date.today.to_s
       if box_review.box == 1
-        box_review.review_date = (Date.today + 1.day).to_s
+        box_review.review_date = (Date.today + config.box1_frequency.day).to_s
       elsif box_review.box == 2
-        box_review.review_date = (Date.today + 2.days).to_s
+        box_review.review_date = (Date.today + config.box2_frequency.days).to_s
       else
-        box_review.review_date = (Date.today + 6.days).to_s 
+        box_review.review_date = (Date.today + config.box3_frequency.days).to_s 
       end
     end
     box_review.save

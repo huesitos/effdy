@@ -12,6 +12,7 @@ class SubjectsController < ApplicationController
   end
 
   def create
+    subject_params[:code].upcase!
   	@subject = Subject.new(subject_params)
   	@subject.archived = false
 

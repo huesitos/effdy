@@ -29,11 +29,13 @@ class TopicsController < ApplicationController
 
   # GET /topics/new
   def new
+    @configs = DefaultConfiguration.all
     @topic = Topic.new
   end
 
   # GET /topics/1/edit
   def edit
+    @configs = DefaultConfiguration.where(:name.ne => @topic.review_configuration)
   end
 
   # POST /topics
@@ -41,9 +43,12 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     @topic.subject = @subject
+    @topic.review_configuration = params[:review_configuration]
+    config = DefaultConfiguration.find_by(name: @topic.review_configuration)
+
     @topic.box_reviews.create(box:1, review_date: Date.today)
-    @topic.box_reviews.create(box:2, review_date: (Date.today + 2.days).to_s)
-    @topic.box_reviews.create(box:3, review_date: (Date.today + 6.days).to_s)
+    @topic.box_reviews.create(box:2, review_date: (Date.today + config.box2_frequency.days).to_s)
+    @topic.box_reviews.create(box:3, review_date: (Date.today + config.box3_frequency.days).to_s)
 
     respond_to do |format|
       if @topic.save
@@ -61,6 +66,14 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       @topic.subject = @subject
+      if @topic.review_configuration != params[:review_configuration]
+        @topic.review_configuration = params[:review_configuration]
+        config = DefaultConfiguration.find_by(name: @topic.review_configuration)
+
+        @topic.box_reviews.where(box:1)[0].update(review_date: (Date.today +  config.box1_frequency.days).to_s)
+        @topic.box_reviews.where(box:2)[0].update(review_date: (Date.today + config.box2_frequency.days).to_s)
+        @topic.box_reviews.where(box:3)[0].update(review_date: (Date.today + config.box3_frequency.days).to_s)
+      end
 
       if @topic.update(topic_params)
         format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
@@ -146,6 +159,6 @@ class TopicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def topic_params
-      params.require(:topic).permit(:title, :subject)
+      params.require(:topic).permit(:title, :review_configuration, :subject)
     end
 end
