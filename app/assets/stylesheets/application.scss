@@ -13,9 +13,227 @@
  *= require_tree .
  *= require_self
  */
+html, body {
+	width: 100%;
+	height: 100%;
+}
+body {
+	margin: 0 0;
+	padding: 0 0;
+	display: flex;
+
+	a {
+		text-decoration: none;
+	}
+	a:hover {
+		background-color: inherit;
+		color: #000;
+	}
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0 0;
+}
+h1, h2, h3, h4, h5, h6, p, span, label, input, textarea {
+	font-size: 10px;
+}
+h1 {
+	font-size: 12px;
+}
+form {
+	width: 50%;
+	label {
+		display: inline-block;
+		width: 100%;
+	}
+	label:after {
+		content: ":";
+	}
+	input[type=text] {
+		width: 100%;
+		height: 20px;
+		padding: 0 2px;
+	}
+	input[type=submit] {
+		background: transparent;
+		border: 1px solid #dd8;
+		border-radius: 2px;
+		background: #dd8;
+	}
+	input[type=submit]:hover {
+		background: #E5E5A0;
+		border: 1px solid #E5E5A0;
+	}
+}
+
+select {
+	font-size: 11px;
+	width: 100%;
+}
 
 .title {
     h1, span {
 		display: inline-block;
 	}
+}
+
+#left {
+	width: 25%;
+	flex-direction: column;
+	border-right: 1px solid #fff;
+	background: url(swirl.png);
+	background-size: 80px;
+}
+
+#right {
+	width: 75%;
+	flex-direction: column;
+	background-color: #ffe;
+}
+
+#home {
+	text-align: center;
+	a:hover {
+		color: #fff;
+	}
+}
+
+#main-options {
+	a {
+		display: inline-block;
+		margin-right: 5px;
+		font-size: 11px;
+	}
+	a:hover {
+		text-decoration: underline;
+		color: #fff;
+	}
+}
+
+#home, #main-options {
+	padding: 5px 0 0;
+}
+
+#main-options, #content {
+	padding-left: 5px; 
+}
+
+#content {
+	width: 95%;
+	margin: 25px 0;
+}
+
+#topics-menu {
+	margin: 25px 0;
+}
+
+.top {
+	background-color: #E49135;
+	height: 20px;
+	a {
+		color: #fff;
+	}
+}
+
+#topics-menu, .top {
+	position: fixed;
+	width: inherit;
+}
+
+.styled-select {
+	overflow: hidden;
+	background: url(down-arrow.svg) no-repeat right #fff;
+	border-right: 1px solid #dd8;
+	background-size: 15px;
+	select {
+		background: transparent;
+		width: 110%;
+		border: 0;
+		height: 100%;
+		-webkit-appearance: none;
+	}
+}
+
+#subject-filter {
+	display: flex;
+	border-bottom: 1px solid #dd8;
+	height: 20px;
+
+	form {
+		width: 100%;
+		height: inherit;
+	}
+	.submit, .styled-select {
+		flex-direction: column;
+		display: inline-block;
+	}
+	.styled-select {
+		float: left;
+		width: 84%;
+		height: inherit;
+	}
+	#search-submit {
+		float:left;
+		width: 15%;
+		height: inherit;
+
+		button {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			background: url(search-icon.svg) no-repeat #fff;
+			background-size: 100% 100%;
+			border: none;
+			vertical-align: top;
+		}
+
+		button:hover {
+			background-color: #fee;
+		}
+	}
+}
+
+#topics-list {
+	font-size: 9px;
+	line-height: 1.5;
+
+	p {
+		margin: 0;
+		display: inline-block;
+		width: 94%;
+		font-size: 9px;
+		padding: 0 5px;
+		border-bottom: 1px dashed #dd8;
+	}
+
+	.topic {
+		border-bottom: 1px solid #dd8;
+		padding: 2px 5px;
+		background: #fff;
+	}
+
+	.topic span{
+		display: inline-block;
+		width: 25%;
+		float: left;
+		font-size: 8px;
+		text-align: center;
+		margin-right: 2px;
+		border-radius: 2px;
+		color: #000;
+		font-weight: bold;
+	}
+
+	.topic a {
+		width: 73%;
+		display: inline-block;
+	}
+}
+
+#title-bar {
+	margin-bottom: 5px;
+	padding: 5px 0;
+}
+#yield {
+	margin: 0 10px;
 }

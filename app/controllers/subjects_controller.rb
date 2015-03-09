@@ -1,14 +1,17 @@
 class SubjectsController < ApplicationController
 	before_action :set_subject, except: [:index, :new, :create]
   def index
-  	@subjects = Subject.all
+    @view_title = "Listing subjects"
+    @subjects = Subject.all
   end
 
   def edit
+    @view_title = "Editing subject"
   end
 
   def new
-  	@subject = Subject.new
+    @view_title = "New subject"
+    @subject = Subject.new
   end
 
   def create
@@ -43,8 +46,14 @@ class SubjectsController < ApplicationController
   	respond_to do |format|
   		if @subject.archived
   			@subject.update(archived: false)
-  		else
-  			@subject.update(archived: true)
+        @subject.topics.each do |topic|
+          topic.update(archived: false)
+        end
+      else
+        @subject.update(archived: true)
+        @subject.topics.each do |topic|
+          topic.update(archived: true)
+        end
   		end
   		format.html { redirect_to subjects_url }
 		end

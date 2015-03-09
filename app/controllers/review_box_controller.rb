@@ -3,11 +3,14 @@ class ReviewBoxController < ApplicationController
   before_action :set_card, only: [:front, :back, :answer]
 
   def today_study
+    @view_title = "Today study"
     topics = Topic.where(reviewing: true)
     @box_reviews = []
     topics.each do |topic|
-      topic.box_reviews.each do |box_review|
-        @box_reviews << box_review if box_review.review_date <= Date.today.to_s
+      if topic.cards.count > 0
+        topic.box_reviews.each do |box_review|
+          @box_reviews << box_review if box_review.review_date <= Date.today.to_s
+        end
       end
     end
   end
@@ -61,10 +64,12 @@ class ReviewBoxController < ApplicationController
 
   # GET topics/:topic_id/review_box/:b/card/:card_id/front/
   def front
+    @view_title = "#{@topic.title} Box #{params[:b]}"
   end
 
   # GET topics/:topic_id/review_box/:b/card/:card_id/back/
   def back
+    @view_title = "#{@topic.title} Box #{params[:b]}"
   	@u_answer = params[:u_answer]
   end
 

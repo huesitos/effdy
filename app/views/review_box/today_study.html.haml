@@ -1,5 +1,3 @@
-%h1 Today study
-
 %table
   %thead
     %tr
@@ -16,5 +14,3 @@
           =box_review.topic.title
         %td= box_review.box
         %td= link_to 'Review', topic_prepare_review_path(b: box_review.box, topic_id: box_review.topic_id)
-
-= link_to 'Back', topics_path

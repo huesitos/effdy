@@ -1,12 +1,5 @@
 %p#notice= notice
 
-.title
-  %h1= @topic.title
-  %span= link_to 'Edit topic', edit_topic_path(@topic)
-  %span= link_to 'New Card', new_topic_card_path(@topic)
-  %span= link_to 'Back', @topic
-  %span= link_to 'Destroy', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
 %h2 Listing cards
 
 %a= link_to 'All', topic_cards_path(@topic)

@@ -1,0 +1,41 @@
+!!!
+%html
+  %head
+    %title Aplus
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body{:class => controller.controller_name}
+    #left
+      %section#home.top
+        %a{:href => "/"} A+
+      #topics-menu
+        #subject-filter
+          = form_tag("/filter_subject", method: "get") do
+            .styled-select
+              %select{name: 'subject' }
+                %option{value: 'all'} All
+                - @app_subjects.each do |subject|
+                  %option{value: "#{subject.code}"}= subject.code
+                %option{value: 'none'} None
+            #search-submit
+              %button{type: 'submit'}
+
+        #topics-list
+          %p Topics
+          - menu_topics = flash[:subjects] ? flash[:subjects] : @menu_topics
+          - menu_topics.each do |topic|
+            .topic
+              - if topic.subject
+                %span{style: "background-color:##{topic.subject.color}; color: #fee" }= topic.subject.code
+              = link_to topic.title, topic
+    #right
+      %nav#main-options.right.top
+        = link_to 'New Topic', new_topic_path
+        = link_to 'Today study', today_study_path
+        = link_to 'Subjects', subjects_path
+      #content
+        #title-bar
+          %h1= @view_title
+        #yield
+          = yield

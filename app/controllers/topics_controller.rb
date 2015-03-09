@@ -24,17 +24,20 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @view_title = @topic.title
     @box_has_cards = [@topic.cards.where(box: 1).count() > 0 ? true : false, @topic.cards.where(box: 2).count() > 0 ? true : false, @topic.cards.where(box: 3).count() > 0 ? true : false]
   end
 
   # GET /topics/new
   def new
+    @view_title = "New topic"
     @configs = DefaultConfiguration.all
     @topic = Topic.new
   end
 
   # GET /topics/1/edit
   def edit
+    @view_title = "Editing topic"
     @configs = DefaultConfiguration.where(:name.ne => @topic.review_configuration)
   end
 
@@ -46,12 +49,12 @@ class TopicsController < ApplicationController
     @topic.review_configuration = params[:review_configuration]
     config = DefaultConfiguration.find_by(name: @topic.review_configuration)
 
-    @topic.box_reviews.create(box:1, review_date: Date.today)
-    @topic.box_reviews.create(box:2, review_date: (Date.today + config.box2_frequency.days).to_s)
-    @topic.box_reviews.create(box:3, review_date: (Date.today + config.box3_frequency.days).to_s)
 
     respond_to do |format|
       if @topic.save
+        @topic.box_reviews.create(box:1, review_date: Date.today)
+        @topic.box_reviews.create(box:2, review_date: (Date.today + config.box2_frequency.days).to_s)
+        @topic.box_reviews.create(box:3, review_date: (Date.today + config.box3_frequency.days).to_s)
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
         format.json { render :show, status: :created, location: @topic }
       else

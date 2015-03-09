@@ -5,6 +5,7 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
+    @view_title = @topic.title
     if params[:box]
       @cards = Card.where(topic_id: @topic._id, box: params[:box].to_i)
     else
@@ -15,10 +16,12 @@ class CardsController < ApplicationController
   # GET /cards/1
   # GET /cards/1.json
   def show
+    @view_title = "Showing card"
   end
 
   # GET /cards/new
   def new
+    @view_title = @topic.title
     @card = Card.new
     @url = topic_cards_path(@topic._id)
     if params[:errors]
@@ -28,6 +31,7 @@ class CardsController < ApplicationController
 
   # GET /cards/1/edit
   def edit
+    @view_title = "Editing card"
     @url = topic_card_path(@topic._id, @card._id)
     if params[:errors]
       @errors = params[:errors]
@@ -43,10 +47,15 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       if @card.save
-        format.html { redirect_to new_topic_card_path(@card.topic) }
+        if params[:commit] == 'Continue'
+          format.html { redirect_to new_topic_card_path(@card.topic) }
+        else
+          format.html { redirect_to @card.topic }
+        end
       else
         format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
         format.json { render json: @card.errors, status: :unprocessable_entity }
+        format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
       end
     end
   end

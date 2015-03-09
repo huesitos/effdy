@@ -6,14 +6,15 @@
         - @errors.each do |msg|
           %li= msg
           
-  .field
+  .field.side
     = f.label :question
     = f.text_area :question
-  .field
+  .field.side
     = f.label :answer
     = f.text_area :answer
   .actions
     - if @url[/cards\/[0-9]/]
       = f.submit 'Save'
     - else
+      = f.submit 'Done'
       = f.submit 'Continue'

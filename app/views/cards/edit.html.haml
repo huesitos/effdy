@@ -1,7 +1,3 @@
-%h1 Editing card
-
 = render 'form'
 
-= link_to 'Show', topic_card_path(@card.topic_id, @card._id)
-\|
-= link_to 'Back', @card.topic
+= link_to 'Back', topic_cards_path(@card.topic)

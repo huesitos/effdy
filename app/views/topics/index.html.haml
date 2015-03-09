@@ -1,4 +1,5 @@
 %p#notice= notice
+
 %h1 Listing topics
 
 = form_tag("/topics/", method: "get") do
@@ -22,9 +23,3 @@
             %span{style: topic.subject.nil? || "color:##{topic.subject.color}" }= topic.subject.code
           = link_to topic.title, topic
 %br
-
-= link_to 'New Topic', new_topic_path
-
-= link_to 'Today study', today_study_path
-
-= link_to 'Subjects', subjects_path
