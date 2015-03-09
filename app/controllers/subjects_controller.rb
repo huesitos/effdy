@@ -50,6 +50,9 @@ class SubjectsController < ApplicationController
           topic.update(archived: false)
         end
       else
+        if Rails.cache.read('subject') and Rails.cache.read('subject') == @subject.code
+          Rails.cache.write('subject', 'all')
+        end
         @subject.update(archived: true)
         @subject.topics.each do |topic|
           topic.update(archived: true)
@@ -60,6 +63,9 @@ class SubjectsController < ApplicationController
   end
 
   def destroy
+    if Rails.cache.read('subject') and Rails.cache.read('subject') == @subject.code
+      Rails.cache.write('subject', 'all')
+    end
   	if params[:destroy_all]
   		@topics = Topic.where(subject_id: @subject._id)
   		@topics.each do |topic|

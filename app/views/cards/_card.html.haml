@@ -1,13 +1,9 @@
-%tr{class: cycle('list_line_odd', 'list_line_even')}
-  %td
-    %b Question
-  %td.content=card.question
-  %td
-    Box
-    =card.box
-  %td.small-cell=link_to 'Edit', edit_topic_card_path(card.topic_id, card._id)
-  %td.small-cell=link_to 'Delete', topic_card_path(card.topic_id, card._id), :method => :delete, :data => { :confirm => 'Are you sure?' }
-%tr
-  %td
-    %b Answer
-  %td{class: 'content', colspan: 4}=card.answer
+.card-container
+  .values
+    .question
+      =card.question[0, 20]+"..."
+    .answer
+      =card.answer[0, 60]+"..."
+  .options
+    =link_to '', edit_topic_card_path(card.topic_id, card._id), :class => 'btn edit'
+    =link_to '', topic_card_path(card.topic_id, card._id), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'

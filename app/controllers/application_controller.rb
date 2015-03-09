@@ -5,27 +5,30 @@ class ApplicationController < ActionController::Base
   before_action :set_context
 
   def filter_subject
+    cache = Rails.cache
+    cache.write('subject', params[:subject])
   	respond_to do |format|
-  		format.html { redirect_to request.referrer, flash: { subject: params[:subject] } }
+  		format.html { redirect_to request.referrer  }
   	end
   end
 
   private
     def set_context
   		@app_subjects = Subject.not_archived
+      cache = Rails.cache
 
-      if flash[:subject]
-        if flash[:subject] == "all"
+      if cache.read('subject')
+        @selected_subject = cache.read('subject')
+        if @selected_subject == "all"
           @menu_topics = Topic.not_archived
-        elsif flash[:subject] == "none"
+        elsif @selected_subject == "none"
           @menu_topics = Topic.not_archived.where(subject_id: nil)
         else
-          subject = Subject.find_by(code: flash[:subject])
+          subject = Subject.find_by(code: @selected_subject)
           @menu_topics = Topic.where(subject_id: subject._id)
         end
       else
         @menu_topics = Topic.not_archived
       end
-
   	end
 end

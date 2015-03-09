@@ -21,12 +21,20 @@ body {
 	margin: 0 0;
 	padding: 0 0;
 	display: flex;
+	background: url(swirl.png);
+	background-size: 80px;
 }
 
 h1, h2, h3, h4, h5, h6, p, span, label, input, textarea, td, th, a {
 	margin: 0 0;
 	padding: 0 0;
 	font-size: 10px;
+}
+textarea {
+	background: #fff;
+	padding: 3px;
+	border: 1px solid #eee;
+	resize: none;
 }
 h1 {
 	font-size: 12px;
@@ -47,14 +55,6 @@ a.btn {
 	display: block;
 	width: 15px;
 	height: 15px;
-}
-.destroy{
-	background: url(destroy.svg) no-repeat center;
-	background-size: 15px;
-}
-.edit{
-	background: url(edit.svg) no-repeat center;
-	background-size: 15px;
 }
 form {
 	width: 50%;
@@ -111,13 +111,12 @@ table {
 	width: 25%;
 	flex-direction: column;
 	border-right: 1px solid #fff;
-	background: url(swirl.png);
-	background-size: 80px;
 }
 
 #right {
 	width: 75%;
 	flex-direction: column;
+	position: relative;
 	background-color: #ffe;
 }
 
@@ -144,13 +143,13 @@ table {
 	padding: 5px 0 0;
 }
 
-#main-options, #content {
+#main-options {
 	padding-left: 5px; 
 }
 
 #content {
-	margin-top: 10px;
-	width: 95%;
+	padding: 10px 0 0 5px;
+	background-color: #ffe;
 }
 
 #topics-menu {
@@ -291,7 +290,16 @@ table {
 	margin: 0 10px;
 }
 
-.topics, .cards {
+.destroy{
+	background: url(destroy.svg) no-repeat center;
+	background-size: 15px;
+}
+.edit{
+	background: url(edit.svg) no-repeat center;
+	background-size: 15px;
+}
+
+.topics, .cards, .review_box {
 	#new-card{
 		background: url(new-card.svg) no-repeat center;
 		background-size: 15px;

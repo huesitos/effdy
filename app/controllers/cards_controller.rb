@@ -8,6 +8,7 @@ class CardsController < ApplicationController
     @view_title = @topic.title
     if params[:box]
       @cards = Card.where(topic_id: @topic._id, box: params[:box].to_i)
+      @box = params[:box].to_i
     else
       @cards = Card.where(topic_id: @topic._id)
     end

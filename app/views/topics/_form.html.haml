@@ -25,4 +25,5 @@
       - @subjects.each do |subject|
         %option{value: "#{subject._id}"}= subject.code
   .actions
+    = link_to 'Back', @topic
     = f.submit 'Save'

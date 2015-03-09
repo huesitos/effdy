@@ -2,11 +2,11 @@
 
 %h2 Listing cards
 
-%a= link_to 'All', topic_cards_path(@topic)
-%a= link_to 'Box 1', topic_cards_path(@topic, box: 1)
-%a= link_to 'Box 2', topic_cards_path(@topic, box: 2)
-%a= link_to 'Box 3', topic_cards_path(@topic, box: 3)
+.filter
+  = link_to 'All', topic_cards_path(@topic), :class => @box.nil? ? 'active' : ''
+  = link_to 'Box 1', topic_cards_path(@topic, box: 1), :class => (@box == 1 && 'active')
+  = link_to 'Box 2', topic_cards_path(@topic, box: 2), :class => (@box == 2 && 'active')
+  = link_to 'Box 3', topic_cards_path(@topic, box: 3), :class => (@box == 3 && 'active')
 
-%table.card_list
-  %tbody
-    = render @cards
+.cards
+  = render @cards

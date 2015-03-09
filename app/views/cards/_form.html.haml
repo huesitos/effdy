@@ -13,6 +13,7 @@
     = f.label :answer
     = f.text_area :answer
   .actions
+    %a{href: "#{topic_cards_path(@topic)}"} Cancel
     - if @url[/cards\/[0-9]/]
       = f.submit 'Save'
     - else

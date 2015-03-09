@@ -3,5 +3,32 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .review_box {
-	
+	#card {
+		width: 60%;
+		margin: 0 auto;
+		padding: 5px;
+		background-color: #F5FAFA;
+		border: 1px solid #F5FAFA;
+		border-radius: 5px;
+
+		form {
+			width: 100%; 
+
+			textarea {
+				width: 97%;
+				height: 50px;
+				margin-bottom: 5px;
+			}
+		}
+		.bold {
+			font-weight: bold;
+		}
+		.question {
+			text-align: center;
+		}
+		.answer {
+			margin-bottom: 5px;
+		}
+
+	}
 }

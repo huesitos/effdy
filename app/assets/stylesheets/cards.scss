@@ -3,22 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .cards {
-	.card_list {
-		border-collapse: collapse;
-		
-		tr.list_line_odd, tr.list_line_odd + tr {
-		  background-color: #e0f8f8;
-		}
-
-		td.content {
-		  padding: 4px 4px;
-		}
-
-		td.small-cell {
-		  width: 40px;
-		}
-	}
-
 	form {
 		width: 100%;
 		.side {
@@ -32,5 +16,60 @@
 				padding: 3px;
 			}
 		}
+	}
+
+	.filter {
+		border-bottom: 1px solid #aaa;
+		a {
+			border: 1px solid #aaa;
+			border-bottom: 0;
+			border-right: 0;
+			text-align: center;
+			display: inline-block;
+			width: 30px;
+			margin-right: -5px;
+		}
+		a:last-child {
+			border-right: 1px solid #aaa;
+		}
+		.active {
+			background-color: #aaa;
+		}
+	}
+
+	.cards {
+		clear: both;
+	}
+
+	.card-container {
+		width: 30%;
+		display: inline-block;
+		font-size: 8px;
+		vertical-align: top;
+		text-align: center;
+		margin: 5px;
+
+		.values {
+			border: 1px solid #888;
+			background-color: #F5FAFA;
+			width: 84%;
+			display: inline-block;
+
+			.question {
+				font-weight: bold;
+				border-bottom: 1px dashed #888;
+				padding: 0 2px;
+			}
+			.answer {
+				padding: 0 2px;
+				color: #666;
+			}
+		}
+		.options {
+			vertical-align: top;
+			width: 12%;
+			display: inline-block;
+		}
+
 	}
 }

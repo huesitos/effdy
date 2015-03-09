@@ -1,10 +1,7 @@
-
-= form_tag(topic_card_back_path, method: 'get') do
-  %p
-    %b Question
-  %p= @card.question
-  = label_tag(:u_answer, "Your answer")
-  = text_area_tag(:u_answer)
-  = submit_tag('Flip')
-
-= link_to 'Back', @card.topic
+#card
+  %p.question.bold= @card.question
+  = form_tag(topic_card_back_path, method: 'get') do
+    = label_tag(:u_answer, "Your answer", class: "bold")
+    = text_area_tag(:u_answer)
+    %div
+      = submit_tag('Flip')
