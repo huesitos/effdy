@@ -31,11 +31,19 @@
               = link_to topic.title, topic
     #right
       %nav#main-options.right.top
-        = link_to 'New Topic', new_topic_path
         = link_to 'Today study', today_study_path
+        = link_to 'New Topic', new_topic_path
         = link_to 'Subjects', subjects_path
+      #title-bar
+        %h1= @view_title
+        - if controller.controller_name == "subjects"
+          = link_to 'New Subject', new_subject_path
+        - elsif (controller.controller_name == "topics" and controller.action_name != 'new') || (controller.controller_name == "cards")
+          = link_to '', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'
+          = link_to '', edit_topic_path(@topic), :class => 'btn edit'
+          = link_to '', topic_cards_path(@topic), :class => 'btn', :id => 'cards'
+          = link_to '', new_topic_card_path(@topic), :class => 'btn', :id => 'new-card'
+          = link_to '', @topic, :class => 'btn', :id => 'boxes'
       #content
-        #title-bar
-          %h1= @view_title
         #yield
           = yield

@@ -1,23 +1,25 @@
 %p#notice= notice
 
-%table
-  %thead
-    %tr
-      %th Code
-      %th Name
-      %th
-      %th
-      %th
-      %th
+- if @subjects.count() > 0
+  %table
+    %thead
+      %tr
+        %th Code
+        %th Name
+        %th
+        %th
+        %th
+        %th
 
-  %tbody
-    - @subjects.each do |subject|
-      %tr{class: subject.archived && "archived"}
-        %td= subject.code
-        %td= subject.name
-        %th= link_to 'Edit', edit_subject_path(subject)
-        %th= link_to 'Archive', subject_archive_path(subject), :method => :patch
-        %th= link_to 'Destroy', subject, :method => :delete, :data => { :confirm => 'Are you sure?' }
-        %th= link_to 'Destroy all', subject_path(id: subject._id, destroy_all: true), :method => :delete, :data => { :confirm => 'You will destroy the subject and all its topics, are you sure?' }
-
-= link_to 'New Subject', new_subject_path
+    %tbody
+      - @subjects.each do |subject|
+        %tr{class: subject.archived && "archived"}
+          %td{style: "color:##{subject.color}"}= subject.code
+          %td= subject.name
+          %th.action= link_to '', edit_subject_path(subject), :class => "btn edit"
+          %th.action= link_to '', subject_archive_path(subject), :method => :patch, :id => 'archive', :class => "btn"
+          %th.action= link_to '', subject, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn destroy"
+          %th.action= link_to '', subject_path(id: subject._id, destroy_all: true), :method => :delete, :data => { :confirm => 'You will destroy the subject and all its topics, are you sure?' }, :id => 'destroy-all', :class => "btn"
+- else
+  .placeholder
+    %p There are no subjects! Add subjects for a smarter topic filter.

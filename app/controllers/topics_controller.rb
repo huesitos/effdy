@@ -55,7 +55,7 @@ class TopicsController < ApplicationController
         @topic.box_reviews.create(box:1, review_date: Date.today)
         @topic.box_reviews.create(box:2, review_date: (Date.today + config.box2_frequency.days).to_s)
         @topic.box_reviews.create(box:3, review_date: (Date.today + config.box3_frequency.days).to_s)
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+        format.html { redirect_to @topic }
         format.json { render :show, status: :created, location: @topic }
       else
         format.html { render :new }
@@ -79,7 +79,7 @@ class TopicsController < ApplicationController
       end
 
       if @topic.update(topic_params)
-        format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
+        format.html { redirect_to @topic }
         format.json { render :show, status: :ok, location: @topic }
       else
         format.html { render :edit }
@@ -93,21 +93,21 @@ class TopicsController < ApplicationController
   def destroy
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
+      format.html { redirect_to topics_url }
       format.json { head :no_content }
     end
   end
 
   def set_reviewing
     respond_to do |format|
-      if params[:commit] == "Set reviewing"
-        @topic.update(reviewing: true)
-
-        format.html { redirect_to @topic, notice: 'Topic set for review.' }
-      else
+      if @topic.reviewing
         @topic.update(reviewing: false)
 
-        format.html { redirect_to @topic, notice: 'Topic unset for review.' }
+        format.html { redirect_to @topic }
+      else
+        @topic.update(reviewing: true)
+
+        format.html { redirect_to @topic }
       end
     end
   end

@@ -1,33 +1,34 @@
 %p#notice= notice
 
-.title
-  %span= link_to 'Edit topic', edit_topic_path(@topic)
-  %span= link_to 'New Card', new_topic_card_path(@topic)
-  %span= link_to 'Destroy', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-= form_tag("/topics/#{@topic._id}/set_reviewing", method: "patch") do
-  - if @topic.reviewing
-    = submit_tag('Unset reviewing')
-  - else
-    = submit_tag('Set reviewing')
-
-= form_tag("/topics/#{@topic._id}/reset_cards", method: "patch") do
-  = submit_tag('Reset')
-
 %h3 Review boxes
 
-%ul
-  - if @box_has_cards[0]
-    %li= link_to 'Box 1', topic_prepare_review_path(@topic._id, b: 1)
+.boxes
+  -if @box_has_cards[0]
+    .box-cards
+      = link_to '', topic_prepare_review_path(@topic._id, b: 1), :class => 'btn'
   - else
-    %li Box 1
-  - if @box_has_cards[1]
-    %li= link_to 'Box 2', topic_prepare_review_path(@topic._id, b: 2)
+    .box
+  -if @box_has_cards[1]
+    .box-cards
+      = link_to '', topic_prepare_review_path(@topic._id, b: 2), :class => 'btn'
   - else
-    %li Box 2
-  - if @box_has_cards[2]
-    %li= link_to 'Box 3', topic_prepare_review_path(@topic._id, b: 3)
+    .box
+  -if @box_has_cards[2]
+    .box-cards
+      = link_to '', topic_prepare_review_path(@topic._id, b: 3), :class => 'btn'
   - else
-    %li Box 3
+    .box
+.boxes-numbers
+  %span 1
+  %span 2
+  %span 3
 
-%p= link_to 'List cards', topic_cards_path(@topic)
+.settings
+  = form_tag("/topics/#{@topic._id}/reset_cards", method: "patch") do
+    = submit_tag('', id: 'reset')
+    %span#reset-number 1
+  = form_tag("/topics/#{@topic._id}/set_reviewing", method: "patch") do
+    - if @topic.reviewing
+      = submit_tag('', id: 'reviewing')
+    - else
+      = submit_tag('', id: 'not-reviewing')

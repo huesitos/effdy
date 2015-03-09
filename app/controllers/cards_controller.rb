@@ -46,16 +46,16 @@ class CardsController < ApplicationController
     @card.topic = @topic
 
     respond_to do |format|
-      if @card.save
-        if params[:commit] == 'Continue'
+      if params[:commit] == 'Continue'
+        if @card.save
           format.html { redirect_to new_topic_card_path(@card.topic) }
         else
-          format.html { redirect_to @card.topic }
+          format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
+          format.json { render json: @card.errors, status: :unprocessable_entity }
+          format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
         end
       else
-        format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
-        format.json { render json: @card.errors, status: :unprocessable_entity }
-        format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
+        format.html { redirect_to @card.topic }
       end
     end
   end
@@ -65,7 +65,7 @@ class CardsController < ApplicationController
   def update
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to topic_cards_path(@card.topic), notice: 'Card was successfully updated.' }
+        format.html { redirect_to topic_cards_path(@card.topic)}
         # format.json { render :show, status: :ok, location: @card }
       else
         format.html { redirect_to edit_topic_card_path(@card.topic_id, @card._id, errors: @card.errors.full_messages.each.to_a) }
@@ -80,7 +80,7 @@ class CardsController < ApplicationController
     topic = @card.topic
     @card.destroy
     respond_to do |format|
-      format.html { redirect_to topic_cards_path(topic), notice: 'Card was successfully destroyed.' }
+      format.html { redirect_to topic_cards_path(topic) }
       format.json { head :no_content }
     end
   end

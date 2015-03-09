@@ -1,3 +1,85 @@
 // Place all the styles related to the Topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.topics {
+	.btn {
+		margin-right: 4px;
+	}
+	.settings {
+		width: 60px;
+		top: -210px;
+		z-index: 0;
+		position: relative;
+		left: 385px;
+		form {
+			display: inline;
+			input[type=submit] {
+				background: transparent;
+				border: 0;
+				width: 20px;
+				height: 20px;
+			}
+			span#reset-number {
+				position: relative;
+				left: -14px;
+				top: -7px;
+				font-size: 4px;
+				font-weight: bold;
+			}
+			#reset {
+				background: url(box.svg) no-repeat center;
+				background-size: 20px;
+			}
+			#reset:hover {
+				background: url(box-cards.svg) no-repeat center;
+				background-size: 20px;
+			}
+			#reviewing {
+				background: url(review-on.png) no-repeat center;
+				background-size: 20px;
+			}
+			#not-reviewing {
+				background: url(review-off.png) no-repeat center;
+				background-size: 20px;
+			}
+		}
+	}
+	.boxes-numbers {
+		position: relative;
+		top: -78px;
+		left: 2px;
+		span {
+			display: inline-block;
+			margin: 0 15px;
+			width: 100px;
+			height: 100px;
+			text-align: center;
+		}
+	}
+	.boxes, .boxes-numbers {
+		padding: 0 15px;;
+	}
+	.box, .box-cards {
+		display: inline-block;
+		width: 100px;
+		height: 80px;
+		margin: 0 15px;
+		text-align: center;
+	}
+	.box {
+		background: url(box.svg) no-repeat center;
+		background-size: 100px;
+	}
+	.box-cards {
+		background: url(box-cards.svg) no-repeat center;
+		background-size: 100px;
+
+		.btn {
+			width: inherit;
+			height: inherit;
+			position: relative;
+			z-index: 1;
+		}
+	}
+}

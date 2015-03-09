@@ -1,16 +1,21 @@
-%table
-  %thead
-    %tr
-      %th Topic
-      %th Box
-      %th
-      
-  %tbody
-    - @box_reviews.each do |box_review|
+- if @box_reviews.count() > 0
+  %table
+    %thead
       %tr
-        %td{style: box_review.review_date < Date.today.to_s && "color:red"}
-          -if box_review.topic.subject
-            %span=box_review.topic.subject.code
-          =box_review.topic.title
-        %td= box_review.box
-        %td= link_to 'Review', topic_prepare_review_path(b: box_review.box, topic_id: box_review.topic_id)
+        %th Subject
+        %th Topic
+        %th Box
+        %th
+        
+    %tbody
+      - @box_reviews.each do |box_review|
+        %tr
+          %td{style: box_review.review_date < Date.today.to_s && "color:red"}
+            -if box_review.topic.subject
+              %span=box_review.topic.subject.code
+          %td=box_review.topic.title
+          %td= box_review.box
+          %td.action= link_to 'Review', topic_prepare_review_path(b: box_review.box, topic_id: box_review.topic_id)
+- else
+  .placeholder
+    %p There are no boxes to study today! If you don't have any topics set for reviewing, set some.

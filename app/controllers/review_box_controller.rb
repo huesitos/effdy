@@ -57,7 +57,7 @@ class ReviewBoxController < ApplicationController
         @card = Card.find(card_id)
 	  	  format.html { redirect_to topic_card_front_path(card_id: @card._id) }
   	  else
-  	  	format.html { redirect_to @topic, notice: "Finished reviewing box #{@box}" }
+  	  	format.html { redirect_to @topic }
   	  end
   	end
   end
