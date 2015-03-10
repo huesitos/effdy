@@ -26,7 +26,7 @@
 			border-right: 0;
 			text-align: center;
 			display: inline-block;
-			width: 30px;
+			width: 35px;
 			margin-right: -5px;
 		}
 		a:last-child {
@@ -50,10 +50,11 @@
 		margin: 5px;
 
 		.values {
-			border: 1px solid #888;
-			background-color: #F5FAFA;
 			width: 84%;
 			display: inline-block;
+			background-color: #fff;
+			border: 1px solid #e8d9f6;
+			box-shadow: 0 3px 3px 0 #ccc;
 
 			.question {
 				font-weight: bold;

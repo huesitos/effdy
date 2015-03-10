@@ -47,16 +47,16 @@ class CardsController < ApplicationController
     @card.topic = @topic
 
     respond_to do |format|
-      if params[:commit] == 'Continue'
-        if @card.save
-          format.html { redirect_to new_topic_card_path(@card.topic) }
+      if @card.save
+        if params[:commit] == 'Done'
+          format.html { redirect_to @card.topic }
         else
-          format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
-          format.json { render json: @card.errors, status: :unprocessable_entity }
-          format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
+          format.html { redirect_to new_topic_card_path(@card.topic) }
         end
       else
-        format.html { redirect_to @card.topic }
+        format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
+        format.json { render json: @card.errors, status: :unprocessable_entity }
+        format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
       end
     end
   end
