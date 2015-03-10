@@ -19,9 +19,9 @@
   - else
     .box
 .boxes-numbers
-  %span 1
-  %span 2
-  %span 3
+  %span{class: @box_has_cards[0] && "has-cards"} 1
+  %span{class: @box_has_cards[1] && "has-cards"} 2
+  %span{class: @box_has_cards[2] && "has-cards"} 3
 
 .settings
   = form_tag("/topics/#{@topic._id}/reset_cards", method: "patch") do

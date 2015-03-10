@@ -22,13 +22,14 @@ body {
 	padding: 0 0;
 	display: flex;
 	background: url(swirl.png);
-	background-size: 80px;
+	background-size: 100px;
 }
 
 h1, h2, h3, h4, h5, h6, p, span, label, input, textarea, td, th, a {
 	margin: 0 0;
 	padding: 0 0;
 	font-size: 10px;
+	font-family: Garamond !important;
 }
 textarea {
 	background: #fff;
@@ -78,13 +79,14 @@ form {
 	}
 	input[type=submit] {
 		background: transparent;
-		border: 1px solid #dd8;
+		border: 1px solid #86942A;
 		border-radius: 2px;
-		background: #dd8;
+		background: #86942A;
+		color: white;
 	}
 	input[type=submit]:hover {
-		background: #E5E5A0;
-		border: 1px solid #E5E5A0;
+		background: #B0BD4E;
+		border: 1px solid #B0BD4E;
 	}
 }
 
@@ -117,7 +119,8 @@ table {
 	width: 75%;
 	flex-direction: column;
 	position: relative;
-	background-color: #ffe;
+	background: url("crossword.png");
+	background-size: 80px;
 }
 
 #home {
@@ -130,7 +133,7 @@ table {
 #main-options {
 	a {
 		display: inline-block;
-		margin-right: 5px;
+		margin-right: 10px;
 		font-size: 11px;
 	}
 	a:hover {
@@ -144,12 +147,12 @@ table {
 }
 
 #main-options {
-	padding-left: 5px; 
+	padding-left: 10px; 
 }
 
 #content {
 	padding: 10px 0 0 5px;
-	background-color: #ffe;
+	background: inherit;
 }
 
 #topics-menu {
@@ -157,7 +160,7 @@ table {
 }
 
 .top {
-	background-color: #E49135;
+	background-color: #507642;
 	height: 20px;
 	a {
 		color: #fff;
@@ -243,7 +246,7 @@ table {
 		background: #fff;
 		
 		a {
-			width: 73%;
+			width: 70%;
 			font-size: inherit;
 			display: inline-block;
 		}
@@ -254,14 +257,13 @@ table {
 
 		span{
 			display: inline-block;
-			width: 25%;
+			width: 28%;
 			float: left;
 			font-size: 8px;
 			text-align: center;
 			margin-right: 2px;
 			border-radius: 2px;
 			color: #000;
-			font-weight: bold;
 		}
 	}
 }
@@ -276,7 +278,6 @@ table {
 	z-index: 1;
 	margin-top: 25px;
 	padding: 5px 5px;
-	background-color: #E7DF9C;
 	h1 {
 		display: inline-block;
 	}

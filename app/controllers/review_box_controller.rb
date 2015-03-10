@@ -25,7 +25,7 @@ class ReviewBoxController < ApplicationController
       box_review.cards.push(card._id)
     end
     box_review.cards.shuffle!
-    config = DefaultConfiguration.find_by(name: @topic.review_configuration)
+    config = ReviewConfiguration.find_by(name: @topic.review_configuration)
 
     if box_review.review_date <= Date.today.to_s
       if box_review.box == 1

@@ -27,7 +27,7 @@
           - menu_topics.each do |topic|
             .topic
               - if topic.subject
-                %span{style: "background-color:##{topic.subject.color}; color: #fee" }= topic.subject.code
+                %span{style: "background-color:##{topic.subject.color}; color: #fff" }= topic.subject.code
               = link_to topic.title, topic
     #right
       %nav#main-options.right.top

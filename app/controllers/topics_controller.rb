@@ -31,14 +31,14 @@ class TopicsController < ApplicationController
   # GET /topics/new
   def new
     @view_title = "New topic"
-    @configs = DefaultConfiguration.all
+    @configs = ReviewConfiguration.all
     @topic = Topic.new
   end
 
   # GET /topics/1/edit
   def edit
     @view_title = "Editing topic"
-    @configs = DefaultConfiguration.where(:name.ne => @topic.review_configuration)
+    @configs = ReviewConfiguration.where(:name.ne => @topic.review_configuration)
   end
 
   # POST /topics
@@ -47,7 +47,7 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
     @topic.subject = @subject
     @topic.review_configuration = params[:review_configuration]
-    config = DefaultConfiguration.find_by(name: @topic.review_configuration)
+    config = ReviewConfiguration.find_by(name: @topic.review_configuration)
 
 
     respond_to do |format|
@@ -71,7 +71,7 @@ class TopicsController < ApplicationController
       @topic.subject = @subject
       if @topic.review_configuration != params[:review_configuration]
         @topic.review_configuration = params[:review_configuration]
-        config = DefaultConfiguration.find_by(name: @topic.review_configuration)
+        config = ReviewConfiguration.find_by(name: @topic.review_configuration)
 
         @topic.box_reviews.find_by(box:1).update(review_date: (Date.today +  config.box1_frequency.days).to_s)
         @topic.box_reviews.find_by(box:2).update(review_date: (Date.today + config.box2_frequency.days).to_s)
@@ -151,7 +151,7 @@ class TopicsController < ApplicationController
       if @subject
         @subjects = Subject.where(:_id.ne => @subject._id, :archived => false)
       else
-        @subjects = Subject.where(:archived => false)
+        @subjects = Subject.not_archived
       end
     end
 

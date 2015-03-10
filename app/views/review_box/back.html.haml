@@ -1,10 +1,9 @@
 #card
   %p.question.bold= @card.question
   = form_tag(topic_card_answer_path, method: 'post') do
+    .answer
+      %p= @card.answer
     %p.bold Your answer:
     = text_area_tag(:u_answer, (@u_answer != "") ? @u_answer : "No answer", disabled: true)
-    .answer
-      %p.bold Right answer
-      %p= @card.answer
     = submit_tag("Correct")
     = submit_tag("Incorrect")
