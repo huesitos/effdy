@@ -120,7 +120,7 @@ table {
 	flex-direction: column;
 	position: relative;
 	background: url("crossword.png");
-	background-size: 80px;
+	background-size: 250px;
 }
 
 #home {
@@ -246,7 +246,7 @@ table {
 		background: #fff;
 		
 		a {
-			width: 70%;
+			width: 78%;
 			font-size: inherit;
 			display: inline-block;
 		}
@@ -257,9 +257,9 @@ table {
 
 		span{
 			display: inline-block;
-			width: 28%;
+			width: 20%;
 			float: left;
-			font-size: 8px;
+			font-size: 6px;
 			text-align: center;
 			margin-right: 2px;
 			border-radius: 2px;
