@@ -4,7 +4,7 @@ class ReviewBoxController < ApplicationController
 
   def today_study
     @view_title = "Today study"
-    topics = Topic.where(reviewing: true)
+    topics = Topic.where(reviewing: true, archived: false)
     @box_reviews = []
     topics.each do |topic|
       if topic.cards.count > 0
