@@ -1,14 +1,17 @@
 class CardsController < ApplicationController
   before_action :set_topic, except: [:show, :update, :destroy]
+  before_action :set_error, only: [:new, :edit]
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   # GET /cards
   # GET /cards.json
   def index
     @view_title = @topic.title
+
+    # If a specific box is picked, send back only the cards in that box
     if params[:box]
       @cards = Card.where(topic_id: @topic._id, box: params[:box].to_i)
-      @box = params[:box].to_i
+      @box = params[:box].to_i # the number of the box that will have the active class
     else
       @cards = Card.where(topic_id: @topic._id)
     end
@@ -16,6 +19,7 @@ class CardsController < ApplicationController
 
   # GET /cards/1
   # GET /cards/1.json
+  # Not being used. Should test on test users to see if it's necessary
   def show
     @view_title = "Showing card"
   end
@@ -24,19 +28,13 @@ class CardsController < ApplicationController
   def new
     @view_title = @topic.title
     @card = Card.new
-    @url = topic_cards_path(@topic._id)
-    if params[:errors]
-      @errors = params[:errors]
-    end
+    @url = topic_cards_path(@topic._id) # url the form will use to send the values of the form
   end
 
   # GET /cards/1/edit
   def edit
     @view_title = "Editing card"
-    @url = topic_card_path(@topic._id, @card._id)
-    if params[:errors]
-      @errors = params[:errors]
-    end
+    @url = topic_card_path(@topic._id, @card._id) # url the form will use to send the values of the form
   end
 
   # POST /cards
@@ -49,14 +47,14 @@ class CardsController < ApplicationController
     respond_to do |format|
       if @card.save
         if params[:commit] == 'Done'
-          format.html { redirect_to @card.topic }
+          format.html { redirect_to topic_cards_path(@card.topic) }
         else
           format.html { redirect_to new_topic_card_path(@card.topic) }
         end
       else
         format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
         format.json { render json: @card.errors, status: :unprocessable_entity }
-        format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
+        format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a) }
       end
     end
   end
@@ -66,8 +64,7 @@ class CardsController < ApplicationController
   def update
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to topic_cards_path(@card.topic)}
-        # format.json { render :show, status: :ok, location: @card }
+        format.html { redirect_to topic_cards_path(@card.topic) }
       else
         format.html { redirect_to edit_topic_card_path(@card.topic_id, @card._id, errors: @card.errors.full_messages.each.to_a) }
         format.json { render json: @card.errors, status: :unprocessable_entity }
@@ -96,8 +93,16 @@ class CardsController < ApplicationController
       end
     end
 
+    # Get the current topic
     def set_topic
       @topic = Topic.find(params[:topic_id])
+    end
+
+    # Pack errors in a variable to be shown in the form
+    def set_error
+      if params[:errors]
+        @errors = params[:errors]
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
