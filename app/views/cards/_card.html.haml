@@ -1,9 +1,9 @@
 .card-container
   .values
     .question
-      =card.question[0, 20]+"..."
+      =card.question.length > 100 ? card.question[0, 100]+"..." : card.question
     .answer
-      =card.answer[0, 60]+"..."
+      = card.answer.length > 100 ? card.answer[0, 100]+"..." : card.answer
   .options
     =link_to '', edit_topic_card_path(card.topic_id, card._id), :class => 'btn edit'
     =link_to '', topic_card_path(card.topic_id, card._id), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'
