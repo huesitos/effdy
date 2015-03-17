@@ -1,4 +1,4 @@
-- if @box_reviews.count() > 0
+- if @review_boxes.count() > 0
   %table
     %thead
       %tr
@@ -8,7 +8,7 @@
         %th
         
     %tbody
-      - @box_reviews.each do |box_review|
+      - @review_boxes.each do |box_review|
         %tr
           %td{style: box_review.review_date < Date.today.to_s && "color:red"}
             -if box_review.topic.subject

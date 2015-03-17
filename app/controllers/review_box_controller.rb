@@ -5,11 +5,11 @@ class ReviewBoxController < ApplicationController
   def today_study
     @view_title = "Today study"
     topics = Topic.where(reviewing: true, archived: false)
-    @box_reviews = []
+    @review_boxes = []
     topics.each do |topic|
       if topic.cards.count > 0
-        topic.box_reviews.each do |box_review|
-          @box_reviews << box_review if box_review.review_date <= Date.today.to_s
+        topic.review_boxes.each do |review_box|
+          @review_boxes << review_box if review_box.review_date <= Date.today.to_s
         end
       end
     end
@@ -17,26 +17,26 @@ class ReviewBoxController < ApplicationController
 
   def set_review
     # reset the cards to review them again
-    box_review = @topic.box_reviews.find_by(box: params[:b])
-    box_review.cards = []
+    review_box = @topic.review_boxes.find_by(box: params[:b])
+    review_box.cards = []
 
     cards = @topic.cards.where(box: params[:b])
     cards.each do |card|
-      box_review.cards.push(card._id)
+      review_box.cards.push(card._id)
     end
-    box_review.cards.shuffle!
+    review_box.cards.shuffle!
     config = ReviewConfiguration.find_by(name: @topic.review_configuration)
 
-    if box_review.review_date <= Date.today.to_s
-      if box_review.box == 1
-        box_review.review_date = (Date.today + config.box1_frequency.day).to_s
-      elsif box_review.box == 2
-        box_review.review_date = (Date.today + config.box2_frequency.days).to_s
+    if review_box.review_date <= Date.today.to_s
+      if review_box.box == 1
+        review_box.review_date = (Date.today + config.box1_frequency.day).to_s
+      elsif review_box.box == 2
+        review_box.review_date = (Date.today + config.box2_frequency.days).to_s
       else
-        box_review.review_date = (Date.today + config.box3_frequency.days).to_s 
+        review_box.review_date = (Date.today + config.box3_frequency.days).to_s 
       end
     end
-    box_review.save
+    review_box.save
 
     respond_to do |format|
       format.html {redirect_to topic_review_box_path(@topic, params[:b])}
@@ -47,11 +47,11 @@ class ReviewBoxController < ApplicationController
   def review_box
   	respond_to do |format|
       # if today is the assigned review date, change date
-      box_review = @topic.box_reviews.find_by(box: params[:b])
+      review_box = @topic.review_boxes.find_by(box: params[:b])
 
-      # Get a card from the box_review
-  	  card_id = box_review.cards.pop()
-      box_review.save
+      # Get a card from the review_box
+  	  card_id = review_box.cards.pop()
+      review_box.save
 
       if card_id
         @card = Card.find(card_id)

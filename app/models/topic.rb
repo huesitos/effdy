@@ -5,7 +5,7 @@ class Topic
   field :review_configuration, type: String
   field :archived, type: Boolean, default: false
   has_many :cards, dependent: :destroy
-  has_many :box_reviews, dependent: :destroy
+  has_many :review_boxes, dependent: :destroy
   belongs_to :subject
 
   validates :title, presence: true, length: { minimum: 2 }

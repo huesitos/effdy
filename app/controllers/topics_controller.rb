@@ -52,9 +52,9 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        @topic.box_reviews.create(box:1, review_date: Date.today)
-        @topic.box_reviews.create(box:2, review_date: (Date.today + config.box2_frequency.days).to_s)
-        @topic.box_reviews.create(box:3, review_date: (Date.today + config.box3_frequency.days).to_s)
+        @topic.review_boxes.create(box:1, review_date: Date.today)
+        @topic.review_boxes.create(box:2, review_date: (Date.today + config.box2_frequency.days).to_s)
+        @topic.review_boxes.create(box:3, review_date: (Date.today + config.box3_frequency.days).to_s)
         format.html { redirect_to @topic }
         format.json { render :show, status: :created, location: @topic }
       else
@@ -73,9 +73,9 @@ class TopicsController < ApplicationController
         @topic.review_configuration = params[:review_configuration]
         config = ReviewConfiguration.find_by(name: @topic.review_configuration)
 
-        @topic.box_reviews.find_by(box:1).update(review_date: (Date.today +  config.box1_frequency.days).to_s)
-        @topic.box_reviews.find_by(box:2).update(review_date: (Date.today + config.box2_frequency.days).to_s)
-        @topic.box_reviews.find_by(box:3).update(review_date: (Date.today + config.box3_frequency.days).to_s)
+        @topic.review_boxes.find_by(box:1).update(review_date: (Date.today +  config.box1_frequency.days).to_s)
+        @topic.review_boxes.find_by(box:2).update(review_date: (Date.today + config.box2_frequency.days).to_s)
+        @topic.review_boxes.find_by(box:3).update(review_date: (Date.today + config.box3_frequency.days).to_s)
       end
 
       if @topic.update(topic_params)

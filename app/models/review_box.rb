@@ -1,4 +1,4 @@
-class BoxReview
+class ReviewBox
   include Mongoid::Document
   field :box, type: Integer
   field :review_date, type: String
