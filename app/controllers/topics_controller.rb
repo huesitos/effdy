@@ -1,12 +1,14 @@
 class TopicsController < ApplicationController
   before_action :set_topic, except: [:new, :index, :create]
   before_action :set_subjects, only: [:new, :edit]
+  before_action :set_errors, only: [:new, :edit]
   before_action :set_subject, only: [:create, :update]
 
   # GET /topics
   # GET /topics.json
   def index
     @subjects = Subject.only(:code).all
+
     if params[:commit] == "Search"
       if params[:subject] == "all"
         @topics = Topic.all
@@ -42,47 +44,35 @@ class TopicsController < ApplicationController
   end
 
   # POST /topics
-  # POST /topics.json
   def create
     @topic = Topic.new(topic_params)
     @topic.subject = @subject
     @topic.review_configuration = params[:review_configuration]
-    config = ReviewConfiguration.find_by(name: @topic.review_configuration)
-
-
+    
     respond_to do |format|
       if @topic.save
-        @topic.review_boxes.create(box:1, review_date: Date.today)
-        @topic.review_boxes.create(box:2, review_date: (Date.today + config.box2_frequency.days).to_s)
-        @topic.review_boxes.create(box:3, review_date: (Date.today + config.box3_frequency.days).to_s)
+        Topic.set_review_boxes @topic
         format.html { redirect_to @topic }
-        format.json { render :show, status: :created, location: @topic }
       else
-        format.html { redirect_to :new_topic }
+        format.html { redirect_to new_topic_path(errors: @topic.errors.full_messages.each.to_a) }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /topics/1
-  # PATCH/PUT /topics/1.json
   def update
     respond_to do |format|
-      @topic.subject = @subject
-      if @topic.review_configuration != params[:review_configuration]
-        @topic.review_configuration = params[:review_configuration]
-        config = ReviewConfiguration.find_by(name: @topic.review_configuration)
-
-        @topic.review_boxes.find_by(box:1).update(review_date: (Date.today +  config.box1_frequency.days).to_s)
-        @topic.review_boxes.find_by(box:2).update(review_date: (Date.today + config.box2_frequency.days).to_s)
-        @topic.review_boxes.find_by(box:3).update(review_date: (Date.today + config.box3_frequency.days).to_s)
-      end
-
       if @topic.update(topic_params)
+        @topic.subject = @subject
+        if @topic.review_configuration != params[:review_configuration]
+          @topic.update(review_configuration: params[:review_configuration])
+          Topic.set_review_boxes_dates @topic
+        end
+
         format.html { redirect_to @topic }
-        format.json { render :show, status: :ok, location: @topic }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_topic_path(errors: @topic.errors.full_messages.each.to_a) }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
       end
     end
@@ -109,9 +99,7 @@ class TopicsController < ApplicationController
 
   # PATCH /topics/:id/reset_cards
   def reset_cards
-    @topic.cards.each do |card|
-      card.update(box: 1)
-    end
+    Topic.reset_cards @topic
 
     respond_to do |format|
       format.html { redirect_to @topic }
@@ -134,6 +122,11 @@ class TopicsController < ApplicationController
       params[:id] ? @subject = Topic.find(params[:id]).subject : @subject = nil
 
       @subject ? @subjects = Subject.where(:_id.ne => @subject._id, :archived => false) : @subjects = Subject.not_archived
+    end
+
+    # Pack errors in a variable to be shown in the form
+    def set_errors
+      @errors = params[:errors] if params[:errors]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

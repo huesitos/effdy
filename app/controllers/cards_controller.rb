@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :set_topic, except: [:show, :update, :destroy]
-  before_action :set_error, only: [:new, :edit]
+  before_action :set_errors, only: [:new, :edit]
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   # GET /cards
@@ -85,11 +85,7 @@ class CardsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_card
-      if params[:id]
-        @card = Card.find(params[:id])
-      else
-        @card = Card.find(params[:card_id])
-      end
+      params[:id] ? @card = Card.find(params[:id]) : @card = Card.find(params[:card_id])
     end
 
     # Get the current topic
@@ -98,10 +94,8 @@ class CardsController < ApplicationController
     end
 
     # Pack errors in a variable to be shown in the form
-    def set_error
-      if params[:errors]
-        @errors = params[:errors]
-      end
+    def set_errors
+      @errors = params[:errors] if params[:errors]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,9 +1,9 @@
 = form_for @topic do |f|
-  - if @topic.errors.any?
+  - if @errors
     #error_explanation
-      %h2= "#{pluralize(@topic.errors.count, "error")} prohibited this topic from being saved:"
+      %h2= "#{pluralize(@errors.count, "error")} prohibited this topic from being saved:"
       %ul
-        - @topic.errors.full_messages.each do |msg|
+        - @errors.each do |msg|
           %li= msg
 
   .field
