@@ -8,7 +8,8 @@ class Topic
   has_many :review_boxes, dependent: :destroy
   belongs_to :subject
 
-  validates :title, presence: true, length: { minimum: 2 }
+  validates :title, length: { minimum: 2 }
+  validates :title, :review_configuration, presence: true
   validates_associated :cards
 
   scope :not_archived, ->{where(archived: false)}
