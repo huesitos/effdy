@@ -6,7 +6,7 @@ class Subject
   field :archived, type: Boolean, default: false
   has_many :topics
 
-  validates :code, uniqueness: true, length: { maximum: 6 }
+  validates :code, uniqueness: true, length: { maximum: 7 }
   validates :name, :code, presence: true
   validates :color, presence: true
   validates_associated :topics
