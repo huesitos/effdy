@@ -12,4 +12,18 @@ class Subject
   validates_associated :topics
 
   scope :not_archived, -> { where(archived: false) }
+
+  def self.archive(subject)
+    subject.update(archived: true)
+    subject.topics.each do |topic|
+      topic.update(archived: true)
+    end
+  end
+
+  def self.unarchive(subject)
+    subject.update(archived: false)
+    subject.topics.each do |topic|
+      topic.update(archived: false)
+    end
+  end
 end

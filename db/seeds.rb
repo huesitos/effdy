@@ -8,7 +8,7 @@
 
 Topic.all.destroy
 Subject.all.destroy
-# ReviewBox.all.destroy
+ReviewBox.all.destroy
 ReviewConfiguration.all.destroy
 Card.all.destroy
 
