@@ -58,7 +58,7 @@ class TopicsController < ApplicationController
         format.html { redirect_to @topic }
         format.json { render :show, status: :created, location: @topic }
       else
-        format.html { render :new }
+        format.html { redirect_to :new_topic }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
       end
     end
@@ -98,20 +98,16 @@ class TopicsController < ApplicationController
     end
   end
 
+  # PATCH /topics/:id/set_reviewing
   def set_reviewing
     respond_to do |format|
-      if @topic.reviewing
-        @topic.update(reviewing: false)
+      @topic.reviewing ? @topic.update(reviewing: false) : @topic.update(reviewing: true)
 
-        format.html { redirect_to @topic }
-      else
-        @topic.update(reviewing: true)
-
-        format.html { redirect_to @topic }
-      end
+      format.html { redirect_to @topic }
     end
   end
 
+  # PATCH /topics/:id/reset_cards
   def reset_cards
     @topic.cards.each do |card|
       card.update(box: 1)
@@ -125,34 +121,19 @@ class TopicsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_topic
-      if params[:id]
-        @topic = Topic.find(params[:id])
-      else
-        @topic = Topic.find(params[:topic_id])
-      end
+      params[:id] ? @topic = Topic.find(params[:id]) : @topic = Topic.find(params[:topic_id])
     end
 
-    # Set the subject specified by the param[:subject]
+    # Set the subject specified by the param[:subject].
     def set_subject
-      if params[:subject] != 'none'
-        @subject = Subject.find(params[:subject_id])
-      else
-        @subject = nil
-      end
+      params[:subject_id].downcase != 'none' ? @subject = Subject.find(params[:subject_id]) : @subject = nil
     end
 
     # Search for all the subjects and the particular topic's subject, if exists
     def set_subjects
-      if params[:id]
-        @subject = Topic.find(params[:id]).subject
-      else
-        @subject = nil
-      end
-      if @subject
-        @subjects = Subject.where(:_id.ne => @subject._id, :archived => false)
-      else
-        @subjects = Subject.not_archived
-      end
+      params[:id] ? @subject = Topic.find(params[:id]).subject : @subject = nil
+
+      @subject ? @subjects = Subject.where(:_id.ne => @subject._id, :archived => false) : @subjects = Subject.not_archived
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
