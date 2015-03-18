@@ -21,14 +21,12 @@ class Topic
   end
 
   def self.set_review_boxes(topic)
-    config = ReviewConfiguration.find_by(name: topic.review_configuration)
-
-    topic.review_boxes.create(box:1, review_date: Date.today)
-    topic.review_boxes.create(box:2, review_date: (Date.today + config.box2_frequency.days).to_s)
-    topic.review_boxes.create(box:3, review_date: (Date.today + config.box3_frequency.days).to_s)
+    topic.review_boxes.create(box:1)
+    topic.review_boxes.create(box:2)
+    topic.review_boxes.create(box:3)
   end
 
-  def self.set_review_boxes_dates(topic)
+  def self.set_review_dates(topic)
     config = ReviewConfiguration.find_by(name: topic.review_configuration)
 
     topic.review_boxes.find_by(box:1).update(review_date: (Date.today +  config.box1_frequency.days).to_s)

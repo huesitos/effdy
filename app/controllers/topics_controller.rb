@@ -52,6 +52,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         Topic.set_review_boxes @topic
+        Topic.set_review_dates @topic
         format.html { redirect_to @topic }
       else
         format.html { redirect_to new_topic_path(errors: @topic.errors.full_messages.each.to_a) }
@@ -67,7 +68,7 @@ class TopicsController < ApplicationController
         @topic.subject = @subject
         if @topic.review_configuration != params[:review_configuration]
           @topic.update(review_configuration: params[:review_configuration])
-          Topic.set_review_boxes_dates @topic
+          Topic.set_review_dates @topic
         end
 
         format.html { redirect_to @topic }
