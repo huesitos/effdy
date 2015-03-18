@@ -4,39 +4,17 @@ class ReviewBoxController < ApplicationController
 
   def today_study
     @view_title = "Today study"
-    topics = Topic.where(reviewing: true, archived: false)
-    @review_boxes = []
-    topics.each do |topic|
-      if topic.cards.count > 0
-        topic.review_boxes.each do |review_box|
-          @review_boxes << review_box if review_box.review_date <= Date.today.to_s
-        end
-      end
-    end
+    
+    @review_boxes = ReviewBox.today_study
   end
 
   def set_review
     # reset the cards to review them again
     review_box = @topic.review_boxes.find_by(box: params[:b])
-    review_box.cards = []
+    ReviewBox.set_cards review_box, params[:b]
 
-    cards = @topic.cards.where(box: params[:b])
-    cards.each do |card|
-      review_box.cards.push(card._id)
-    end
-    review_box.cards.shuffle!
-    config = ReviewConfiguration.find_by(name: @topic.review_configuration)
-
-    if review_box.review_date <= Date.today.to_s
-      if review_box.box == 1
-        review_box.review_date = (Date.today + config.box1_frequency.day).to_s
-      elsif review_box.box == 2
-        review_box.review_date = (Date.today + config.box2_frequency.days).to_s
-      else
-        review_box.review_date = (Date.today + config.box3_frequency.days).to_s 
-      end
-    end
-    review_box.save
+    # update the review date of the box to be reviewed
+    ReviewBox.update_date review_box
 
     respond_to do |format|
       format.html {redirect_to topic_review_box_path(@topic, params[:b])}
@@ -46,8 +24,9 @@ class ReviewBoxController < ApplicationController
   # GET	topics/:topic_id/review_box/:b
   def review_box
   	respond_to do |format|
-      # if today is the assigned review date, change date
       review_box = @topic.review_boxes.find_by(box: params[:b])
+
+      ReviewBox.set_cards review_box, params[:b]
 
       # Get a card from the review_box
   	  card_id = review_box.cards.pop()
@@ -76,12 +55,8 @@ class ReviewBoxController < ApplicationController
   # POST topics/:topic_id/review_box/:b/card/:card_id/answer
   def answer
   	respond_to do |format|
-  		if params[:commit] == "Correct"
-  			@card.box = @card.box + 1 <= 3 ? @card.box + 1 : @card.box
-  		else
-  			@card.box = 1
-  		end
-  		@card.save
+      if params[:commit] == "Correct" then Card.correct @card else Card.reset @card end
+
   		format.html {redirect_to topic_review_box_path(@topic, params[:b])}
   	end
   end
