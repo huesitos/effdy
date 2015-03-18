@@ -16,7 +16,7 @@ class Topic
 
   def self.reset_cards(topic)
     topic.cards.each do |card|
-      card.update(box: 1)
+      Card.reset card
     end
   end
 
