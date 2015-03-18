@@ -54,7 +54,6 @@ class CardsController < ApplicationController
       else
         format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
         format.json { render json: @card.errors, status: :unprocessable_entity }
-        format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a) }
       end
     end
   end
