@@ -18,8 +18,7 @@
           %td= subject.name
           %th.action= link_to '', edit_subject_path(subject), :class => "btn edit"
           %th.action= link_to '', subject_archive_path(subject), :method => :patch, :id => 'archive', :class => "btn"
-          %th.action= link_to '', subject, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn destroy"
-          %th.action= link_to '', subject_path(id: subject._id, destroy_all: true), :method => :delete, :data => { :confirm => 'You will destroy the subject and all its topics, are you sure?' }, :id => 'destroy-all', :class => "btn"
+          %th.action= link_to '', subject, :method => :delete, :data => { :confirm => 'This will destroy the subject and its topics. Are you sure?' }, :class => "btn destroy"
 - else
   .placeholder
     %p There are no subjects! Add subjects for a smarter topic filter.

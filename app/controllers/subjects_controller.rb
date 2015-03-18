@@ -43,27 +43,21 @@ class SubjectsController < ApplicationController
   end
 
   def archive
-  	respond_to do |format|
-  		if @subject.archived
+    respond_to do |format|
+      reset_cache @subject
+      
+      if @subject.archived
         Subject.unarchive @subject
       else
         Subject.archive @subject
-  		end
-      reset_cache @subject
+      end
       format.html { redirect_to subjects_url }
     end
   end
 
   def destroy
-    if params[:destroy_all]
-      @topics = Topic.where(subject_id: @subject._id)
-      @topics.each do |topic|
-        topic.destroy
-      end
-    end
-    @subject.destroy
-
     reset_cache @subject
+    Subject.destroy @subject
 
     respond_to do |format|
       format.html { redirect_to subjects_url }

@@ -26,4 +26,12 @@ class Subject
       topic.update(archived: false)
     end
   end
+
+
+  def self.destroy(subject)
+    subject.topics.each do |topic|
+      topic.destroy
+    end
+    subject.destroy
+  end
 end
