@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>class ReviewBoxController - Rails Application Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-answer">#answer</a>
+    
+    <li ><a href="#method-i-back">#back</a>
+    
+    <li ><a href="#method-i-front">#front</a>
+    
+    <li ><a href="#method-i-review_box">#review_box</a>
+    
+    <li ><a href="#method-i-set_review">#set_review</a>
+    
+    <li ><a href="#method-i-today_study">#today_study</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-ReviewBoxController">
+  <h1 id="class-ReviewBoxController" class="class">
+    class ReviewBoxController
+  </h1>
+
+  <section class="description">
+    
+<p><a href="ReviewBoxController.html">ReviewBoxController</a></p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-answer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">answer</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>POST topics/:topic_id/review_box/:b/card/:card_id/answer Moves the card to
+the next box if answered correctly or resets  it to box 1.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="answer-source">
+            <pre><span class="ruby-comment"># File app/controllers/review_box_controller.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">answer</span>
+      <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:commit</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;Correct&quot;</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Card</span>.<span class="ruby-identifier">correct</span> <span class="ruby-ivar">@card</span> <span class="ruby-keyword">else</span> <span class="ruby-constant">Card</span>.<span class="ruby-identifier">reset</span> <span class="ruby-ivar">@card</span> <span class="ruby-keyword">end</span>
+
+              <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> {<span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">topic_review_box_path</span>(<span class="ruby-ivar">@topic</span>, <span class="ruby-identifier">params</span>[<span class="ruby-value">:b</span>])}
+      <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-back" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">back</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>GET topics/:topic_id/review_box/:b/card/:card_id/back/ Shows the back side
+of the card.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="back-source">
+            <pre><span class="ruby-comment"># File app/controllers/review_box_controller.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">back</span>
+  <span class="ruby-ivar">@view_title</span> = <span class="ruby-node">&quot;#{@topic.title} Box #{params[:b]}&quot;</span>
+  <span class="ruby-ivar">@u_answer</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:u_answer</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-front" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">front</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>GET topics/:topic_id/review_box/:b/card/:card_id/front/ Shows the front
+side of the card.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="front-source">
+            <pre><span class="ruby-comment"># File app/controllers/review_box_controller.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">front</span>
+  <span class="ruby-ivar">@view_title</span> = <span class="ruby-node">&quot;#{@topic.title} Box #{params[:b]}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-review_box" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">review_box</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>GET topics/:topic_id/review_box/:b Picks a card and redirects to the front
+side.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="review_box-source">
+            <pre><span class="ruby-comment"># File app/controllers/review_box_controller.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">review_box</span>
+      <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">review_box</span> = <span class="ruby-ivar">@topic</span>.<span class="ruby-identifier">review_boxes</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-identifier">box</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:b</span>])
+
+    <span class="ruby-comment"># Get a card from the review_box</span>
+        <span class="ruby-identifier">card_id</span> = <span class="ruby-identifier">review_box</span>.<span class="ruby-identifier">cards</span>.<span class="ruby-identifier">pop</span>()
+    <span class="ruby-identifier">review_box</span>.<span class="ruby-identifier">save</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">card_id</span>
+      <span class="ruby-ivar">@card</span> = <span class="ruby-constant">Card</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">card_id</span>)
+               <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">topic_card_front_path</span>(<span class="ruby-identifier">card_id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@card</span>.<span class="ruby-identifier">_id</span>) }
+        <span class="ruby-keyword">else</span>
+           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@topic</span> }
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-set_review" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_review</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>GET /topics/:topic_id/set_review Before starting the box review, sets the
+cards of the review box and updates the review date.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="set_review-source">
+            <pre><span class="ruby-comment"># File app/controllers/review_box_controller.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_review</span>
+  <span class="ruby-comment"># reset the cards to review them again</span>
+  <span class="ruby-identifier">review_box</span> = <span class="ruby-ivar">@topic</span>.<span class="ruby-identifier">review_boxes</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-identifier">box</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:b</span>])
+  <span class="ruby-constant">ReviewBox</span>.<span class="ruby-identifier">set_cards</span> <span class="ruby-identifier">review_box</span>, <span class="ruby-identifier">params</span>[<span class="ruby-value">:b</span>]
+
+  <span class="ruby-comment"># update the review date of the box to be reviewed</span>
+  <span class="ruby-constant">ReviewBox</span>.<span class="ruby-identifier">update_date</span> <span class="ruby-identifier">review_box</span>
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> {<span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">topic_review_box_path</span>(<span class="ruby-ivar">@topic</span>, <span class="ruby-identifier">params</span>[<span class="ruby-value">:b</span>])}
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-today_study" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">today_study</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>GET /today_study</p>
+          
+          
+
+          
+          <div class="method-source-code" id="today_study-source">
+            <pre><span class="ruby-comment"># File app/controllers/review_box_controller.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">today_study</span>
+  <span class="ruby-ivar">@view_title</span> = <span class="ruby-string">&quot;Today study&quot;</span>
+  <span class="ruby-ivar">@review_boxes</span> = <span class="ruby-constant">ReviewBox</span>.<span class="ruby-identifier">today_study</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
