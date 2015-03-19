@@ -57,7 +57,7 @@ class SubjectsController < ApplicationController
 
   def destroy
     reset_cache @subject
-    Subject.destroy @subject
+    @subject.destroy
 
     respond_to do |format|
       format.html { redirect_to subjects_url }

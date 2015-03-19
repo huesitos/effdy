@@ -1,10 +1,14 @@
+# A subject is used to classify topics and organize them. 
+# It has a unique code, a name, a hex color. All these attributes must be present.
+# A subject can be set as archived. An archived subject's topics won't
+# be listed for showing or reviewing.
 class Subject
   include Mongoid::Document
   field :code, type: String
   field :name, type: String
   field :color, type: String
   field :archived, type: Boolean, default: false
-  has_many :topics
+  has_many :topics, dependent: :destroy
 
   validates :code, uniqueness: true, length: { maximum: 7 }
   validates :name, :code, :color, presence: true
@@ -13,6 +17,7 @@ class Subject
 
   scope :not_archived, -> { where(archived: false) }
 
+  # Archives a subject and all its topics.
   def self.archive(subject)
     subject.update(archived: true)
     subject.topics.each do |topic|
@@ -20,17 +25,11 @@ class Subject
     end
   end
 
+  # Unarchives a subject and all its topics.
   def self.unarchive(subject)
     subject.update(archived: false)
     subject.topics.each do |topic|
       topic.update(archived: false)
     end
-  end
-
-  def self.destroy(subject)
-    subject.topics.each do |topic|
-      topic.destroy
-    end
-    subject.destroy
   end
 end
