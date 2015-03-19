@@ -1,25 +1,31 @@
+# SubjectsController
 class SubjectsController < ApplicationController
 	before_action :set_subject, except: [:index, :new, :create]
+
+  # GET /subjects
   def index
     @view_title = "Listing subjects"
     @subjects = Subject.all
   end
 
+  # GET /subjects/edit
   def edit
     @view_title = "Editing subject"
   end
 
+  # GET /subjects/new
   def new
     @view_title = "New subject"
     @subject = Subject.new
   end
 
+  # POST /subjects
   def create
     subject_params[:code].upcase!
-  	@subject = Subject.new(subject_params)
-  	@subject.archived = false
+    @subject = Subject.new(subject_params)
+    @subject.archived = false
 
-  	respond_to do |format|
+    respond_to do |format|
       if @subject.save
         format.html { redirect_to subjects_url }
         format.json { render :show, status: :created, location: @subject }
@@ -30,8 +36,9 @@ class SubjectsController < ApplicationController
     end
   end
 
+  # PATCH/PUT /subjects/1
   def update
-  	respond_to do |format|
+    respond_to do |format|
       if @subject.update(subject_params)
         format.html { redirect_to subjects_url }
         format.json { render :show, status: :ok, location: @subject }
@@ -42,6 +49,8 @@ class SubjectsController < ApplicationController
     end
   end
 
+  # PATCH /subjects/archive
+  # Archives subject with all its topics.
   def archive
     respond_to do |format|
       reset_cache @subject
@@ -55,6 +64,7 @@ class SubjectsController < ApplicationController
     end
   end
 
+  # DELETE /subjects/1
   def destroy
     reset_cache @subject
     @subject.destroy
@@ -75,6 +85,8 @@ class SubjectsController < ApplicationController
       end
   	end
 
+    # If the subject code in cache is the same as the subject to be archived or
+    # destroyed, reset subject code to 'all'
     def reset_cache(subject)
       if Rails.cache.read('subject') and Rails.cache.read('subject') == subject.code
         Rails.cache.write('subject', 'all')

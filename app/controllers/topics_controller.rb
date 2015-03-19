@@ -1,3 +1,4 @@
+# TopicsController
 class TopicsController < ApplicationController
   before_action :set_topic, except: [:new, :index, :create]
   before_action :set_subjects, only: [:new, :edit]
@@ -6,25 +7,27 @@ class TopicsController < ApplicationController
 
   # GET /topics
   # GET /topics.json
-  def index
-    @subjects = Subject.only(:code).all
+  # Not being used, but not sure if cut it.
+  # def index
+  #   @subjects = Subject.only(:code).all
 
-    if params[:commit] == "Search"
-      if params[:subject] == "all"
-        @topics = Topic.all
-      elsif params[:subject] == "none"
-        @topics = Topic.where(subject_id: nil)
-      else
-        subject = Subject.find_by(code: params[:subject])
-        @topics = Topic.where(subject_id: subject._id)
-      end 
-    else
-      @topics = Topic.all
-    end
-  end
+  #   if params[:commit] == "Search"
+  #     if params[:subject] == "all"
+  #       @topics = Topic.all
+  #     elsif params[:subject] == "none"
+  #       @topics = Topic.where(subject_id: nil)
+  #     else
+  #       subject = Subject.find_by(code: params[:subject])
+  #       @topics = Topic.where(subject_id: subject._id)
+  #     end 
+  #   else
+  #     @topics = Topic.all
+  #   end
+  # end
 
   # GET /topics/1
   # GET /topics/1.json
+  # Shows the topic's boxes. Empty boxes have a different icon.
   def show
     @view_title = @topic.title
     @box_has_cards = [@topic.cards.where(box: 1).count() > 0 ? true : false, @topic.cards.where(box: 2).count() > 0 ? true : false, @topic.cards.where(box: 3).count() > 0 ? true : false]
@@ -90,6 +93,7 @@ class TopicsController < ApplicationController
   end
 
   # PATCH /topics/:id/set_reviewing
+  # Sets the topic for reviewing.
   def set_reviewing
     respond_to do |format|
       @topic.reviewing ? @topic.update(reviewing: false) : @topic.update(reviewing: true)
@@ -99,6 +103,7 @@ class TopicsController < ApplicationController
   end
 
   # PATCH /topics/:id/reset_cards
+  # Resets all the cards to box 1.
   def reset_cards
     Topic.reset_cards @topic
 

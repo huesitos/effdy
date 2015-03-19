@@ -1,13 +1,17 @@
+# ReviewBoxController
 class ReviewBoxController < ApplicationController
   before_action :set_topic, except: [:today_study]
   before_action :set_card, only: [:front, :back, :answer]
 
+  # GET /today_study
   def today_study
     @view_title = "Today study"
-    
     @review_boxes = ReviewBox.today_study
   end
 
+  # GET	/topics/:topic_id/set_review
+  # Before starting the box review, sets the cards of the review box
+  # and updates the review date.
   def set_review
     # reset the cards to review them again
     review_box = @topic.review_boxes.find_by(box: params[:b])
@@ -21,12 +25,11 @@ class ReviewBoxController < ApplicationController
     end
   end
 
-  # GET	topics/:topic_id/review_box/:b
+  # GET topics/:topic_id/review_box/:b
+  # Picks a card and redirects to the front side.
   def review_box
   	respond_to do |format|
       review_box = @topic.review_boxes.find_by(box: params[:b])
-
-      ReviewBox.set_cards review_box, params[:b]
 
       # Get a card from the review_box
   	  card_id = review_box.cards.pop()
@@ -42,17 +45,21 @@ class ReviewBoxController < ApplicationController
   end
 
   # GET topics/:topic_id/review_box/:b/card/:card_id/front/
+  # Shows the front side of the card.
   def front
     @view_title = "#{@topic.title} Box #{params[:b]}"
   end
 
   # GET topics/:topic_id/review_box/:b/card/:card_id/back/
+  # Shows the back side of the card.
   def back
     @view_title = "#{@topic.title} Box #{params[:b]}"
-  	@u_answer = params[:u_answer]
+    @u_answer = params[:u_answer]
   end
 
   # POST topics/:topic_id/review_box/:b/card/:card_id/answer
+  # Moves the card to the next box if answered correctly or resets 
+  # it to box 1.
   def answer
   	respond_to do |format|
       if params[:commit] == "Correct" then Card.correct @card else Card.reset @card end
@@ -62,10 +69,12 @@ class ReviewBoxController < ApplicationController
   end
 
   private
+    # Sets topic from param
     def set_topic
-    	@topic = Topic.find(params[:topic_id])
+      @topic = Topic.find(params[:topic_id])
     end
 
+    # Sets card from param
     def set_card
 	  	@card = @topic.cards.find(params[:card_id])
     end

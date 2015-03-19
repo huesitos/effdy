@@ -1,3 +1,4 @@
+# CardsController
 class CardsController < ApplicationController
   before_action :set_topic, except: [:show, :update, :destroy]
   before_action :set_errors, only: [:new, :edit]
@@ -5,10 +6,10 @@ class CardsController < ApplicationController
 
   # GET /cards
   # GET /cards.json
+  # If a specific box is picked, sends back only the cards in that box.
   def index
     @view_title = @topic.title
 
-    # If a specific box is picked, send back only the cards in that box
     if params[:box]
       @cards = Card.where(topic_id: @topic._id, box: params[:box].to_i)
       @box = params[:box].to_i # the number of the box that will have the active class
@@ -39,6 +40,9 @@ class CardsController < ApplicationController
 
   # POST /cards
   # POST /cards.json
+  # Creates a new card with the topic in the params, and in box 1. If
+  # the commit is 'Done' it redirects to the topics cards path. If not
+  # it returns to a new topic card path.
   def create
     @card = Card.new(card_params)
     @card.box = 1

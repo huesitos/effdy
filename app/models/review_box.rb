@@ -1,3 +1,8 @@
+# A review box is used to keep track of the review dates of each box of a topic.
+# Each topic will have three review boxes.
+# It has the number of the box it represents, and the review date.
+# Also, every time before reviewing it saves the card_id of each card in the box
+# inside a cards array to keep track of the ones already studied during the review.
 class ReviewBox
   include Mongoid::Document
   field :box, type: Integer
@@ -7,11 +12,13 @@ class ReviewBox
 
   validates :box, presence: true, inclusion: 1..3
 
+  # Returns the review boxes from all unarchived topics set for review that must 
+  # be studied today.
   def self.today_study
-  	topics = Topic.not_archived.where(reviewing: true)
-  	review_boxes = []
+    topics = Topic.not_archived.where(reviewing: true)
+    review_boxes = []
 
-  	topics.each do |topic|
+    topics.each do |topic|
       if topic.cards.any?
         review_boxes += topic.review_boxes.where(review_date: Date.today.to_s)
       end
@@ -20,6 +27,8 @@ class ReviewBox
     review_boxes
   end
 
+  # Grabs all the card_ids of the cards inside the box, shuffles them, and pushes 
+  # them in the cards array.
   def self.set_cards(review_box, box)
   	review_box.cards = []
 
@@ -30,6 +39,8 @@ class ReviewBox
     review_box.cards.shuffle!
   end
 
+  # Changes the date of the box being reviewed if the review_date had passed or 
+  # is today using the topic's review configuration.
   def self.update_date(review_box)
   	config = ReviewConfiguration.find_by(name: Topic.find(review_box.topic_id).review_configuration)
 
