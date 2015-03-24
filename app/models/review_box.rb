@@ -20,7 +20,7 @@ class ReviewBox
 
     topics.each do |topic|
       if topic.cards.any?
-        review_boxes += topic.review_boxes.where(review_date: Date.today.to_s)
+        review_boxes += topic.review_boxes.where(:review_date.lte => Date.today.to_s)
       end
     end
 
