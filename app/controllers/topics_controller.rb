@@ -96,7 +96,12 @@ class TopicsController < ApplicationController
   # Sets the topic for reviewing.
   def set_reviewing
     respond_to do |format|
-      @topic.reviewing ? @topic.update(reviewing: false) : @topic.update(reviewing: true)
+      if @topic.reviewing
+        @topic.update(reviewing: false)
+      else 
+        @topic.update(reviewing: true)
+        Topic.set_review_dates @topic
+      end
 
       format.html { redirect_to @topic }
     end
