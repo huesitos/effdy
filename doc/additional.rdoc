@@ -8,37 +8,82 @@
 
 [Subjects]
 	* Create a subject
-	The student selects the subject tab and then clicks on 'New subject'. The server renders the new subject form. The student fills the form and clicks 'Create'.
-	
+	The student selects the subject tab and then clicks on 'New subject'. The server renders the new subject form. The student fills the form and clicks 'Create'. The server saves the new subject, and returns to the subject index page, now listing the new subject.
+	* Edit a subject
+	The student clicks on the edit icon for a specific subject. The server renders the edit subject form with the fields filled with the actual data. The student makes the changes, and saves. If the changes follow the requirements, the server saves the changes, and returns to the subject index page.
+	* Delete a subject
+	The student clicks on the delete subject icon and selects 'ok' on the prompt. The server deletes all the topics in the subject and the subject, and renders the subject index page.
+	* Archive a subject
+	The student clicks on the archive subject icon and selects 'ok' on the prompt. The server archives all the topics inside that subject and the subject. Then, it renders the subject index page, showing the archived subject with a grey background.
 	Requirements::
 	* All fields must be filled.
 	* The code has a 7 characters limit.
 	* The color must be provided in a HEX format without the #.
-	* Edit a subject
-	* Delete a subject
-	* Archive a subject
+	* Subjects are unarchived by default.
+	* Archived subjects' topics won't appear in the topics menu.
+	* Deleting a subject deletes all its topics.
+	* Subects' code must be rendered using the subject's color.
+	* A subject can have zero to many topics.
 
 [Topics]
 	* Create a topic
-	* Delete a topic
+	The student selects the topics tab and then clicks on 'New topic'. The server renders the new topic form. The student fills the form and clicks 'Create'. The server creates a new topic, along with its review boxes, and renders the topic's show page.
 	* Edit a topic
+	The student clicks the edit topic icon. The server renders the edit topic form with the fields filled with the specific topic data. The student makes the changes and saves. If the changes follow the requirements, the server saves the changes, and returns to the topic's show page.
+	* Delete a topic
+	The student clicks on the delete topic icon, and selects 'ok' on the prompt. The server deletes the topic and renders the Today's study page.
+	* Set for review
+	The student clicks on the review icon. The server sets the topic for reviewing, and sets the review dates. Then, it renders the topic's show page.
+	* Reset cards
+	The student clicks on the reset cards icon, and selects 'ok' on the prompt. The server resets all the cards to box 1, and renders the topic's show page.
+	Requirements::
+	* Topics must have a name, with a minimum of 2 in length.
+	* The default configuration is normal.
+	* Topics can have many cards.
+	* Topics have a review box per box.
+	* Deleting a topic deletes all its cards and review boxes.
+	* Topics can have zero to one subject.
+	* An archived topic won't appear on the topics menu.
 
 [Cards]
 	* Create a card
-	A user 
-	* Delete a card
+	The student clicks on the new card icon in a topic's show page. The server renders the new card form. The student either creates new cards using continue or just one card. The server creates the new cards as long as they follow the requirements. When the student is done, the server redirects to the topic's cards listing page.
 	* Edit a card
+	The student clicks the edit card icon in the topic's listing cards page. The server renders the edit card form with the fields filled with the cards data. The student edits the card and saves. If the changes follow the requirements, the server saves the changes, and returns to the topic's listing cards page.
+	* Delete a card
+	The student clicks on the delete card icon in the topic's listing cards page, and selects 'ok' in the prompt. The server deletes the selected card and redirects to the topic's listing cards page.
+	Requirements::
+	* All fields must be filled.
+	* All new cards belong to box 1.
+	* When a card is answered correctly it moves to the next box, and the number of correct answers and reviewed is increased.
+	* When a card is answered incorreclty it moves back to the first box, and the number of incorrect answers and reviewed is increased.
 
 [Review boxes]
 	* Review a box
+	The student clicks on a box in the topic's show page or a box to review in today's study page. The server redirects to the review box page, rendering the first card to review. The student flips the card to see the answer. The server redirects to a page with the right answer and the answer provided by the student. The student marks the card as answered correctly or incorrectly, and the server moves to the corresponding box.
 	* View today's study
+	The student goes to the today's study page. The server renders a list with all the boxes 
 	* View week's study
+	The student clicks on the week study link in the 
+	Requirements::
+	* Review boxes are created only when the topic is created.
+	* When a box is reviewed, its corresponding review box changes the review date based on the topic's review configuration and its box number.
+	* Boxes that must be studied today or any day before today appear in the today's study page.
+	* Boxes that weren't studied in their corresponding date are marked with red to signal that the date has passed.
+	* Boxes can't be reviewed if there are no cards in it.
 
 [Quiz]
 	* Take quiz
+	The student selects the quiz option in the topic's show page, and picks the number of cards she wants to answer in the quiz. The server picks the cards that have the highest ratio of incorrect answers, or all the cards. Then, it redirects to the quiz page. After the student reviews all the cards, the server redirect to the results page.
 	* View quiz results
+	The student goes to the last quiz result page from the topic's show page, or is sent after finishing a quiz. The server renders a page with the score, and the list of cards reviewed marked as correctly or incorrectly answered.
+	Requirements::
+	* The number of cards the student can pick to review will be a quater, two quarters, three quaters, or all of the cards.
+	* The score will be the ratio of cards answered correctly based on the number of cards in the quiz.
+	* In case the number of cards is not all, the cards will be picked based on the ratio of incorrect answers. This ratio comes from the number of times the cards was answered incorrectly by the number of times it has been reviewed. It doesn't matter which box it belongs to.
 
 [Share]
+	Comming soon.
 	* Share topic
 	* Share subject
 	* Unshare topic
