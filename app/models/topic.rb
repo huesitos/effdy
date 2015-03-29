@@ -7,8 +7,8 @@
 class Topic
   include Mongoid::Document
   field :title, type: String
-  field :reviewing, type: Boolean
-  field :review_configuration, type: String
+  field :reviewing, type: Boolean, default: false
+  field :review_configuration, type: String, default: 'normal'
   field :archived, type: Boolean, default: false
   has_many :cards, dependent: :destroy
   has_many :review_boxes, dependent: :destroy
