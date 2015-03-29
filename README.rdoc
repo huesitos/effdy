@@ -1,5 +1,24 @@
 == A+
 
-A+ is a flashcards app that uses Leitner system to make studying faster and more effective. In the app, the student can create topics, and inside the topics as many cards as she wants. The cards in each topic are classified in three boxes: the first box has the troublesome cards, those that the student doesn't know; the second box has the cards the student more or less knows, and the third box has the cards the student knows well. Each time a card is reviewed and answered correctly it's moved to the next box. If its answered incorrectly, it moves back to the first box. This way, the student can program her reviews so that the first box is visited more frequently than the second and third.
+A+ is a flashcards app that uses Leitner system to make
+studying faster and more effective. In the app, the student
+can create topics, and inside the topics as many cards as
+she wants. The cards in each topic are classified in three
+boxes: the first box has the troublesome cards, those that
+the student doesn't know; the second box has the cards the
+student more or less knows, and the third box has the cards
+the student knows well. Each time a card is reviewed and
+answered correctly it's moved to the next box. If its
+answered incorrectly, it moves back to the first box. This
+way, the student can program her reviews so that the first
+box is visited more frequently than the second and third.
 
-scope, login, quiz function
+[New features]
+  * week calendar/choose what you have to study in a week
+  * log in/gmail
+  * share the topic or subject on social network
+  * quiz function (optional) :
+     *choose questions based on the incorrect ratio,
+     *show the score,
+     *add incorrect ones to the first box
+
