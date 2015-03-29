@@ -1,0 +1,45 @@
+== A+ use cases
+
+[Authentication]
+	* Login to app
+	The student, while in the login screen, logs in using her Google or Twitter account, and logs in to the app.
+	* Logout to app
+	The student clicks on the user icon and selects the logout option, and the server sends her to the login screen.
+
+[Subjects]
+	* Create a subject
+	The student selects the subject tab and then clicks on 'New subject'. The server renders the new subject form. The student fills the form and clicks 'Create'.
+	
+	Requirements::
+	* All fields must be filled.
+	* The code has a 7 characters limit.
+	* The color must be provided in a HEX format without the #.
+	* Edit a subject
+	* Delete a subject
+	* Archive a subject
+
+[Topics]
+	* Create a topic
+	* Delete a topic
+	* Edit a topic
+
+[Cards]
+	* Create a card
+	A user 
+	* Delete a card
+	* Edit a card
+
+[Review boxes]
+	* Review a box
+	* View today's study
+	* View week's study
+
+[Quiz]
+	* Take quiz
+	* View quiz results
+
+[Share]
+	* Share topic
+	* Share subject
+	* Unshare topic
+	* Unshare subject
