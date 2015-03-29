@@ -37,6 +37,7 @@ class ReviewBox
       review_box.cards.push(card._id)
     end
     review_box.cards.shuffle!
+    review_box.save
   end
 
   # Changes the date of the box being reviewed if the review_date had passed or 
