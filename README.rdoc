@@ -14,26 +14,27 @@ way, the student can program her reviews so that the first
 box is visited more frequently than the second and third.
 
 [New features]
-  * week calendar/choose what you have to study in a week
-  * log in/gmail
-  * share the topic or subject on social network
-  * quiz function (optional) :
-     *choose questions based on the incorrect ratio,
-     *show the score,
-     *add incorrect ones to the first box
-Improvements:
-    [Review box]
-    * Add a results page at the end.
-    * Use symbols for flip, correct, and incorrect.
-    * Track from where the user went to review box and redirect there after finishing the review.
-    * Change review box view so that the 'Your answer' box is moved to a separate card.
-    [Topic]
-    * Change box icons.
-    * Move the topic's option menus to the right.
-    [Application layout]
-    * Add a scroll bar to the topics menu that blends in the design.
-    * Add a subject tab in the menu instead of a subject link in the top bar.
-    * Move the new topic and new subject options inside the menus as the first option.
-    [Application controller]
-    * Sort the subjects in the menu so unarchived ones appear first.
-    * Sort the topics in the menu so the ones being reviewed appear first.
+* week calendar/choose what you have to study in a week
+* log in/gmail
+* share the topic or subject on social network
+* quiz function (optional) :
+  * choose questions based on the incorrect ratio,
+  * show the score,
+  * add incorrect ones to the first box
+
+[Improvements]
+  [ReviewBox]
+  * Add a results page at the end.
+  * Use symbols for flip, correct, and incorrect.
+  * Track from where the user went to review box and redirect there after finishing the review.
+  * Change review box view so that the 'Your answer' box is moved to a separate card.
+  [Topic]
+  * Change box icons.
+  * Move the topic's option menus to the right.
+  [Application layout]
+  * Add a scroll bar to the topics menu that blends in the design.
+  * Add a subject tab in the menu instead of a subject link in the top bar.
+  * Move the new topic and new subject options inside the menus as the first option.
+  [ApplicationController]
+  * Sort the subjects in the menu so unarchived ones appear first.
+  * Sort the topics in the menu so the ones being reviewed appear first.

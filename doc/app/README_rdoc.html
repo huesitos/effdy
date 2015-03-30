@@ -68,34 +68,75 @@
 
 <main role="main" aria-label="Page README.rdoc">
 
-<h2 id="label-README"><a href="README_rdoc.html">README</a><span><a href="#label-README">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<h2 id="label-A-2B">A+<span><a href="#label-A-2B">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
-<p>This <a href="README_rdoc.html">README</a> would normally document whatever
-steps are necessary to get the application up and running.</p>
-
-<p>Things you may want to cover:</p>
+<p>A+ is a flashcards app that uses Leitner system to make studying faster and
+more effective. In the app, the student can create topics, and inside the
+topics as many cards as she wants. The cards in each topic are classified
+in three boxes: the first box has the troublesome cards, those that the
+student doesn&#39;t know; the second box has the cards the student more or
+less knows, and the third box has the cards the student knows well. Each
+time a card is reviewed and answered correctly it&#39;s moved to the next
+box. If its answered incorrectly, it moves back to the first box. This way,
+the student can program her reviews so that the first box is visited more
+frequently than the second and third.</p>
+<dl class="rdoc-list label-list"><dt>New features
+<dd></dd></dl>
 <ul><li>
-<p>Ruby version</p>
+<p>week calendar/choose what you have to study in a week</p>
 </li><li>
-<p>System dependencies</p>
+<p>log in/gmail</p>
 </li><li>
-<p>Configuration</p>
+<p>share the topic or subject on social network</p>
 </li><li>
-<p>Database creation</p>
+<p>quiz function (optional) :</p>
+<ul><li>
+<p>choose questions based on the incorrect ratio,</p>
 </li><li>
-<p>Database initialization</p>
+<p>show the score,</p>
 </li><li>
-<p>How to run the test suite</p>
-</li><li>
-<p>Services (job queues, cache servers, search engines, etc.)</p>
-</li><li>
-<p>Deployment instructions</p>
-</li><li>
-<p>…</p>
+<p>add incorrect ones to the first box</p>
 </li></ul>
-
-<p>Please feel free to use a different markup language if you do not plan to
-run <code>rake doc:app</code>.</p>
+</li></ul>
+<dl class="rdoc-list label-list"><dt>Improvements
+<dd><dl class="rdoc-list label-list"><dt><a href="ReviewBox.html">ReviewBox</a>
+<dd></dd></dl>
+<ul><li>
+<p>Add a results page at the end.</p>
+</li><li>
+<p>Use symbols for flip, correct, and incorrect.</p>
+</li><li>
+<p>Track from where the user went to review box and redirect there after
+finishing the review.</p>
+</li><li>
+<p>Change review box view so that the &#39;Your answer&#39; box is moved to a
+separate card.</p>
+</li></ul>
+<dl class="rdoc-list label-list"><dt><a href="Topic.html">Topic</a>
+<dd></dd></dl>
+<ul><li>
+<p>Change box icons.</p>
+</li><li>
+<p>Move the topic&#39;s option menus to the right.</p>
+</li></ul>
+<dl class="rdoc-list label-list"><dt>Application layout
+<dd></dd></dl>
+<ul><li>
+<p>Add a scroll bar to the topics menu that blends in the design.</p>
+</li><li>
+<p>Add a subject tab in the menu instead of a subject link in the top bar.</p>
+</li><li>
+<p>Move the new topic and new subject options inside the menus as the first
+option.</p>
+</li></ul>
+<dl class="rdoc-list label-list"><dt><a href="ApplicationController.html">ApplicationController</a>
+<dd></dd></dl>
+<ul><li>
+<p>Sort the subjects in the menu so unarchived ones appear first.</p>
+</li><li>
+<p>Sort the topics in the menu so the ones being reviewed appear first.</p>
+</li></ul>
+</dd></dl>
 </main>
 
 

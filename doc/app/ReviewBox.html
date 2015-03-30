@@ -156,6 +156,7 @@ pushes  them in the cards array.</p>
     <span class="ruby-identifier">review_box</span>.<span class="ruby-identifier">cards</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">card</span>.<span class="ruby-identifier">_id</span>)
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">review_box</span>.<span class="ruby-identifier">cards</span>.<span class="ruby-identifier">shuffle!</span>
+  <span class="ruby-identifier">review_box</span>.<span class="ruby-identifier">save</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -194,7 +195,7 @@ must  be studied today.</p>
 
   <span class="ruby-identifier">topics</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">topic</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">topic</span>.<span class="ruby-identifier">cards</span>.<span class="ruby-identifier">any?</span>
-      <span class="ruby-identifier">review_boxes</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">topic</span>.<span class="ruby-identifier">review_boxes</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">review_date</span><span class="ruby-operator">:</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>.<span class="ruby-identifier">to_s</span>)
+      <span class="ruby-identifier">review_boxes</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">topic</span>.<span class="ruby-identifier">review_boxes</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:review_date</span>.<span class="ruby-identifier">lte</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>.<span class="ruby-identifier">to_s</span>)
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 
@@ -230,7 +231,7 @@ is today using the topic&#39;s review configuration.</p>
 
           
           <div class="method-source-code" id="update_date-source">
-            <pre><span class="ruby-comment"># File app/models/review_box.rb, line 44</span>
+            <pre><span class="ruby-comment"># File app/models/review_box.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">update_date</span>(<span class="ruby-identifier">review_box</span>)
       <span class="ruby-identifier">config</span> = <span class="ruby-constant">ReviewConfiguration</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-constant">Topic</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">review_box</span>.<span class="ruby-identifier">topic_id</span>).<span class="ruby-identifier">review_configuration</span>)
 
