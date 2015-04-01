@@ -38,7 +38,7 @@ class Topic
   def self.set_review_dates(topic)
     config = ReviewConfiguration.find_by(name: topic.review_configuration)
 
-    topic.review_boxes.find_by(box:1).update(review_date: Date.today)
+    topic.review_boxes.find_by(box:1).update(review_date: (Date.today +  config.box1_frequency.days).to_s)
     topic.review_boxes.find_by(box:2).update(review_date: (Date.today + config.box2_frequency.days).to_s)
     topic.review_boxes.find_by(box:3).update(review_date: (Date.today + config.box3_frequency.days).to_s)
   end
