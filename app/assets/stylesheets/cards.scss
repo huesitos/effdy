@@ -11,9 +11,10 @@
 			margin-right: 5px;
 
 			textarea {
-				width: 100%;
+				width: 95%;
 				height: 100px;
-				padding: 3px;
+				box-shadow: 0 3px 3px 0 #ccc;
+				border: 1px solid #eee;
 			}
 		}
 	}
