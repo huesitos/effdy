@@ -19,8 +19,8 @@ class ReviewBox
     review_boxes = []
 
     topics.each do |topic|
-      if topic.cards.any?
-        review_boxes += topic.review_boxes.where(:review_date.lte => Date.today.to_s)
+      topic.review_boxes.where(:review_date.lte => Date.today.to_s).each do |review_box|
+        review_boxes.push(review_box) if topic.cards.where(box: review_box.box).count() > 0 # only add if there are cards in the box
       end
     end
 
