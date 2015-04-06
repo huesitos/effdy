@@ -7,23 +7,23 @@ class TopicsController < ApplicationController
 
   # GET /topics
   # GET /topics.json
-  # Not being used, but not sure if cut it.
-  # def index
-  #   @subjects = Subject.only(:code).all
+  # Shows the complete list of topics
+  def index
+    @subjects = Subject.only(:code).all
 
-  #   if params[:commit] == "Search"
-  #     if params[:subject] == "all"
-  #       @topics = Topic.all
-  #     elsif params[:subject] == "none"
-  #       @topics = Topic.where(subject_id: nil)
-  #     else
-  #       subject = Subject.find_by(code: params[:subject])
-  #       @topics = Topic.where(subject_id: subject._id)
-  #     end 
-  #   else
-  #     @topics = Topic.all
-  #   end
-  # end
+    if params[:commit] == "Search"
+      if params[:subject] == "all"
+        @topics = Topic.all
+      elsif params[:subject] == "none"
+        @topics = Topic.where(subject_id: nil)
+      else
+        subject = Subject.find_by(code: params[:subject])
+        @topics = Topic.where(subject_id: subject._id)
+      end 
+    else
+      @topics = Topic.all
+    end
+  end
 
   # GET /topics/1
   # GET /topics/1.json
