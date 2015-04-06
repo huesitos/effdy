@@ -24,6 +24,7 @@
         #topics-list
           %p Topics
           - menu_topics = flash[:subjects] ? flash[:subjects] : @menu_topics
+          #new-topic.topic= link_to 'New Topic', new_topic_path
           - menu_topics.each do |topic|
             .topic
               - if topic.subject
@@ -32,7 +33,6 @@
     #right
       %nav#main-options.right.top
         = link_to 'Today\'s study', today_study_path
-        = link_to 'New Topic', new_topic_path
         = link_to 'Subjects', subjects_path
       #title-bar
         %h1= @view_title
