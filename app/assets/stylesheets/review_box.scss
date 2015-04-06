@@ -4,7 +4,10 @@
 
 .review_box {
 	#card {
-		width: 60%;
+		width: 45%;
+		display: inline-block;
+		vertical-align: top;
+		height: 9em;
 		margin: 0 auto;
 		padding: 5px;
 		background-color: #fff;
@@ -12,23 +15,21 @@
 		box-shadow: 0 3px 3px 0 #ccc;
 
 		form {
-			width: 100%; 
-
-			textarea {
-				width: 97%;
-				height: 50px;
+			width: 100%;
+			#u_answer {
+			  width: 97%;
+				height: 60px;
 				margin-bottom: 5px;
 			}
 		}
-		.bold {
-			font-weight: bold;
+		p#front {
+			line-height: 115px;
 		}
-		.question {
+		p.question, p.answer {
 			text-align: center;
 		}
-		.answer {
-			margin-bottom: 5px;
-		}
-
+	}
+	#card:first-child {
+		margin-right: 10px;
 	}
 }
