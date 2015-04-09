@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'session/create'
+  get 'session/destroy'
   get 'welcome/index'
 
   get 'filter_subject' => 'application#filter_subject'
