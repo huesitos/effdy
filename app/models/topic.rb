@@ -1,7 +1,7 @@
 # A topic is used to organize cards. It has a title, a review configuration,
 # and three review boxes. Both the title and review configuration must be present.
-# It may belong to a subject. It can be set for reviewing, which enables the 
-# review boxes to be shown in today study view. If a topic is destroyed, its 
+# It may belong to a subject. It can be set for reviewing, which enables the
+# review boxes to be shown in today study view. If a topic is destroyed, its
 # cards and review boxes are also destroyed. It may belong to a subject. If
 # that subject is archived, then the topic is also archived.
 class Topic
@@ -13,6 +13,7 @@ class Topic
   has_many :cards, dependent: :destroy
   has_many :review_boxes, dependent: :destroy
   belongs_to :subject
+  belongs_to :user
 
   validates :title, length: { minimum: 2 }
   validates :title, :review_configuration, presence: true
