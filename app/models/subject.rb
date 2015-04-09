@@ -1,4 +1,4 @@
-# A subject is used to classify topics and organize them. 
+# A subject is used to classify topics and organize them.
 # It has a unique code, a name, a hex color. All these attributes must be present.
 # A subject can be set as archived. An archived subject's topics won't
 # be listed for showing or reviewing.
@@ -9,6 +9,7 @@ class Subject
   field :color, type: String
   field :archived, type: Boolean, default: false
   has_many :topics, dependent: :destroy
+  belongs_to :user
 
   validates :code, uniqueness: true, length: { maximum: 7 }
   validates :name, :code, :color, presence: true
