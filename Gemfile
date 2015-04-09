@@ -35,6 +35,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use OmniAuth for user authentication
+gem 'omniauth'
+# Use the Twitter strategy so that users log in with Twitter accounts
+gem 'omniauth-twitter'
+
 group :development do
   gem 'brice'
   gem 'hirb'
@@ -45,7 +50,7 @@ group :development, :test do
 	gem 'capybara'
 	
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+ gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   # gem 'web-console', '~> 2.0'
