@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'session/create'
+
+  get 'session/destroy'
+
   get 'filter_subject' => 'application#filter_subject'
   get 'today_study' => 'review_box#today_study'
   get 'week_study' => 'review_box#week_study'
