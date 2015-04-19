@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-
+  
     # Method to determine or set the current user
     def current_user
       @current_user ||= User.find_by_id(session[:user_id])
@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
     # and topics are picked. The topics are filtered based on the subject
     # code in cache.
     def set_context
-  		@app_subjects = Subject.not_archived
+      @app_subjects = Subject.not_archived
       cache = Rails.cache
 
       if cache.read('subject')
@@ -59,10 +59,10 @@ class ApplicationController < ActionController::Base
         @menu_topics = Topic.not_archived
       end
   	end
-
+    
     def authenticate_user!
       if session[:user_id].nil?
-        redirect_to root_url, alert: 'Please log in first'
+        redirect_to root_url
       end
     end
 end
