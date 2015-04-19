@@ -41,3 +41,23 @@
 
 
 			}
+
+@media only screen and (min-width: 35em) and (max-width: 60em) {
+    #head {
+        h1{
+        color: red;
+        font-size: 4em;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 35em) {
+    #head {
+        h1{
+        font-size: 3em;
+        color: yellow;
+        line-height: 0.75em;
+        }
+    }
+}

@@ -68,13 +68,37 @@
 		margin: 0 15px;
 		text-align: center;
 	}
+
+	.b1_e{
+	 background: url(box1_empty.png) no-repeat center;
+	}
+
+	.b2_e{
+	 background: url(box2_empty.png) no-repeat center;
+	}
+
+	.b3_e{
+	 background: url(box3_empty.png) no-repeat center;
+	}
+
 	.box {
-		background: url(box.png) no-repeat center;
 		background-size: 100px;
 		padding: 3%;
 	}
+
+  .b1{
+	 background: url(box1_half.png) no-repeat center;
+	}
+
+	.b2{
+	 background: url(box2_half.png) no-repeat center;
+	}
+
+	.b3{
+	 background: url(box3_half.png) no-repeat center;
+	}
+
 	.box-cards {
-		background: url(box-cards.png) no-repeat center;
 		background-size: 100px;
 		padding: 3%;
 
