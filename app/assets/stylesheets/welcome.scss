@@ -17,12 +17,15 @@
 
 
 		#twitter {
-		    margin-top:10%;
-		    width: 100%;
+		    width: 158px;
+		    height: 28px;
 				background: image-url("sign-in-with-twitter.png") no-repeat center;
-        text-align: center;
-        padding-top: 3%;
-        padding-bottom: 3%;
+        margin: 8% auto;
+         a{
+        display: inline-block;
+        width: 158px;
+		    height: 28px;
+          }
 			}
 
 
