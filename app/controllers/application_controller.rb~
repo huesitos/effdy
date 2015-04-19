@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
 	
 	end
 	
-	@menu_topics = @menu_topics.sort(reviewing:-1)
+	@menu_topics.sort(reviewing:-1)!
 
 	
       
