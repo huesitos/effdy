@@ -20,6 +20,7 @@ class Topic
   validates_associated :cards
 
   scope :not_archived, ->{where(archived: false)}
+  scope :from_user, ->(user_id){where(uid: user_id)}
 
   # Moves all the cards back to box 1.
   def self.reset_cards(topic)
