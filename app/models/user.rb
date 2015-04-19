@@ -12,12 +12,10 @@ class User
   validates :username, :provider, :uid, presence: true
 
   def self.find_or_create_from_auth_hash(hash)
-    if @user = find_by_provider_and_uid(hash['provider'], hash['uid'])
+    if @user = find_by(provider: hash['provider'], uid: hash['uid'])
       @user
     else
-      @user = create(username: hash['info']['nickname'], name: hash['info']['name'],image: hash['info']['image'], provider: hash['provider'], uid: hash['uid'])
+      @user = User.create(username: hash['info']['nickname'], name: hash['info']['name'],image: hash['info']['image'], provider: hash['provider'], uid: hash['uid'])
     end
   end
-
-
 end

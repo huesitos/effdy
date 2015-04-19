@@ -16,7 +16,28 @@ class ApplicationController < ActionController::Base
   	end
   end
 
+  protected
+
+    # Method to determine or set the current user
+    def current_user
+      @current_user ||= User.find_by_id(session[:user_id])
+    end
+
+    # Method to determine whether a user is signed in or not
+    def user_signed_in?
+      !!current_user
+    end
+
+    helper_method :current_user, :user_signed_in?
+    
+    def current_user=(user)
+      @current_user = user
+      session[:user_id] = user.id
+      session[:user_name] = user.name
+    end
+
   private
+
     # Sets the context for the topics menu. Only the unarchived subjects,
     # and topics are picked. The topics are filtered based on the subject
     # code in cache.
@@ -38,4 +59,10 @@ class ApplicationController < ActionController::Base
         @menu_topics = Topic.not_archived
       end
   	end
+
+    def authenticate_user!
+      if session[:user_id].nil?
+        redirect_to root_url, alert: 'Please log in first'
+      end
+    end
 end

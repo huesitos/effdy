@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
+
   get 'session/create'
   get 'session/destroy'
   get 'welcome/index'
@@ -23,15 +25,11 @@ Rails.application.routes.draw do
   end
 
   get '/auth/:provider', to: lambda{|env| [404, {}, ["Not Found"]]}, as: 'login'
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider/callback', to: 'session#create'
   get '/logout', to: 'sessions#destroy', as: 'logout'
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
