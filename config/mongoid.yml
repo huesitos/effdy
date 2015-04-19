@@ -114,12 +114,6 @@ production:
      uri: 'mongodb://heroku_app36037844:pv1d0sk5dgcc5jdodaqthuls3r@ds061701.mongolab.com:61701/heroku_app36037844'
 
      options:
-       # The default consistency is :eventual, which reads from
-       #secondaries when possible.
-       # Strong forces reads to primary.
-       # We recommend using strong consistency.
-       consistency: :strong
-
        # max_retries specifies the number of times to attempt
        # an operation before giving up.
        max_retries: 30
