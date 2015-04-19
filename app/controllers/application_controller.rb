@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   
     # Method to determine or set the current user
     def current_user
-      @current_user ||= User.find_by_id(session[:user_id])
+      @current_user ||= User.find_by(uid: session[:user_id])
     end
 
     # Method to determine whether a user is signed in or not
@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     
     def current_user=(user)
       @current_user = user
-      session[:user_id] = user.id
+      session[:user_uid] = user.uid
       session[:user_name] = user.name
     end
 
@@ -57,14 +57,10 @@ class ApplicationController < ActionController::Base
         end
       else
         @menu_topics = Topic.not_archived
-	
-	end
-	
-	@menu_topics = @menu_topics.sort(reviewing:-1)
+      end
 
-	
-      
-  	end
+      @menu_topics = @menu_topics.from_user(session[:user_uid]).sort(reviewing:-1)
+    end
     
     def authenticate_user!
       if session[:user_id].nil?

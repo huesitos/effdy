@@ -23,6 +23,7 @@ class TopicsController < ApplicationController
     else
       @topics = Topic.all
     end
+    @topics = @topics.from_user(session[:user_id])
   end
 
   # GET /topics/1
@@ -51,6 +52,7 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
     @topic.subject = @subject
     @topic.review_configuration = params[:review_configuration]
+    @topic.user = User.find_by(uid: session[:user_uid])
     
     respond_to do |format|
       if @topic.save
@@ -68,7 +70,7 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
-        @topic.subject = @subject
+        @topic.update(subject_id: @subject._id)
         if @topic.review_configuration != params[:review_configuration]
           @topic.update(review_configuration: params[:review_configuration])
           Topic.set_review_dates @topic
@@ -125,7 +127,7 @@ class TopicsController < ApplicationController
 
     # Set the subject specified by the param[:subject].
     def set_subject
-      params[:subject_id].downcase != 'none' ? @subject = Subject.find(params[:subject_id]) : @subject = nil
+      params[:subject_id] != 'none' ? @subject = Subject.find(params[:subject_id]) : @subject = nil
     end
 
     # Search for all the subjects and the particular topic's subject, if exists

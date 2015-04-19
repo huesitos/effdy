@@ -26,6 +26,7 @@ class SubjectsController < ApplicationController
     subject_params[:code].upcase!
     @subject = Subject.new(subject_params)
     @subject.archived = false
+    @subject.user = User.find_by(uid: session[:user_uid])
 
     respond_to do |format|
       if @subject.save
