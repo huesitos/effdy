@@ -28,8 +28,9 @@
 				font-weight: bold;
 			}
 			#reset {
-				background: url(box-cards.svg) no-repeat center;
+				background: url(box-cards.png) no-repeat center;
 				background-size: 20px;
+				padding: 3%;
 			}
 			#reviewing {
 				background: url(review-on.png) no-repeat center;
@@ -68,12 +69,14 @@
 		text-align: center;
 	}
 	.box {
-		background: url(box.svg) no-repeat center;
+		background: url(box.png) no-repeat center;
 		background-size: 100px;
+		padding: 3%;
 	}
 	.box-cards {
-		background: url(box-cards.svg) no-repeat center;
+		background: url(box-cards.png) no-repeat center;
 		background-size: 100px;
+		padding: 3%;
 
 		.btn {
 			width: inherit;
