@@ -109,9 +109,7 @@ production:
    default:
      # The standard MongoDB connection URI allows for easy
      # replica set connection setup.
-     # Use environment variables or a config file to keep your
-     # credentials safe.
-     uri: 'mongodb://heroku_app36037844:pv1d0sk5dgcc5jdodaqthuls3r@ds061701.mongolab.com:61701/heroku_app36037844'
+     # uri to the MongoDB is in heroku config.
 
      options:
        # max_retries specifies the number of times to attempt
