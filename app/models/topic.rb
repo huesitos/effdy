@@ -24,7 +24,7 @@ class Topic
   # Finds all the topics that belong to a user based on the username
   def self.from_user(username)
     user = User.find_by(username: username)
-    Topic.where(user_id: user._id)
+    user ? Topic.where(user_id: user._id) : nil
   end
 
   # Moves all the cards back to box 1.

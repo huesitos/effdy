@@ -41,7 +41,9 @@ class ApplicationController < ActionController::Base
     # and topics are picked. The topics are filtered based on the subject
     # code in cache.
     def set_context
-      @app_subjects = Subject.from_user(session[:user_uname]).not_archived
+      @app_subjects = Subject.not_archived
+      @app_subjects = @app_subjects.from_user(session[:user_uname])
+
       cache = Rails.cache
 
       if cache.read('subject')
@@ -58,7 +60,8 @@ class ApplicationController < ActionController::Base
         @menu_topics = Topic.not_archived
       end
 
-      @menu_topics = @menu_topics.from_user(session[:user_uname]).sort(reviewing:-1)
+      @menu_topics = @menu_topics.sort(reviewing:-1)
+      @menu_topics = @menu_topics.from_user(session[:user_uname])
     end
     
     def authenticate_user!
