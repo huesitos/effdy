@@ -41,27 +41,30 @@ class ApplicationController < ActionController::Base
     # and topics are picked. The topics are filtered based on the subject
     # code in cache.
     def set_context
-      @app_subjects = Subject.not_archived
-      @app_subjects = @app_subjects.from_user(session[:user_uname])
+      @app_subjects = Subject.from_user(session[:user_uname])
+      @app_subjects = @app_subjects.not_archived if @app_subjects
 
       cache = Rails.cache
 
-      if cache.read('subject')
-        @selected_subject = cache.read('subject')
-        if @selected_subject == "all"
-          @menu_topics = Topic.not_archived
-        elsif @selected_subject == "none"
-          @menu_topics = Topic.not_archived.where(subject_id: nil)
-        else
-          subject = Subject.find_by(code: @selected_subject)
-          @menu_topics = Topic.where(subject_id: subject._id)
-        end
-      else
-        @menu_topics = Topic.not_archived
-      end
+      @menu_topics = Topic.from_user(session[:user_uname])
 
-      @menu_topics = @menu_topics.sort(reviewing:-1)
-      @menu_topics = @menu_topics.from_user(session[:user_uname])
+      if @menu_topics
+        if cache.read('subject')
+          @selected_subject = cache.read('subject')
+          if @selected_subject == "all"
+            @menu_topics = @menu_topics.not_archived
+          elsif @selected_subject == "none"
+            @menu_topics = @menu_topics.not_archived.where(subject_id: nil)
+          else
+            subject = @app_subjects.find_by(code: @selected_subject)
+            @menu_topics = @menu_topics.where(subject_id: subject._id)
+          end
+        else
+          @menu_topics = @menu_topics.not_archived
+        end
+
+        @menu_topics = @menu_topics.sort(reviewing:-1)
+      end
     end
     
     def authenticate_user!
