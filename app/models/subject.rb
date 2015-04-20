@@ -21,7 +21,7 @@ class Subject
   # Finds all the topics that belong to a user based on the username
   def self.from_user(username)
     user = User.find_by(username: username)
-    Subject.where(user_id: user._id)
+    user ? Subject.where(user_id: user._id) : nil
   end
   
   # Archives a subject and all its topics.
