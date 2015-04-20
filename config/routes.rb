@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'welcome#welcome'
 
   get 'session/create'
   get 'session/destroy'
