@@ -20,7 +20,12 @@ class Topic
   validates_associated :cards
 
   scope :not_archived, ->{where(archived: false)}
-  scope :from_user, ->(user_uid){where(uid: user_uid)}
+
+  # Finds all the topics that belong to a user based on the username
+  def self.from_user(username)
+    user = User.find_by(username: username)
+    Topic.where(user_id: user._id)
+  end
 
   # Moves all the cards back to box 1.
   def self.reset_cards(topic)

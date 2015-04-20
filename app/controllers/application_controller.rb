@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_action :set_context, except: [:filter_subject]
+  before_action :set_context, except: [:filter_subject, :welcome]
 
   # GET /filter_subject
   # Saves the subject code in the parameter to filter the
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   
     # Method to determine or set the current user
     def current_user
-      @current_user ||= User.find_by(uid: session[:user_id])
+      @current_user ||= User.find_by(username: session[:user_uname])
     end
 
     # Method to determine whether a user is signed in or not
@@ -31,8 +31,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_user, :user_signed_in?
     
     def current_user=(user)
-      @current_user = user
-      session[:user_uid] = user.uid
+      session[:user_uname] = user.username
       session[:user_name] = user.name
     end
 
@@ -42,7 +41,7 @@ class ApplicationController < ActionController::Base
     # and topics are picked. The topics are filtered based on the subject
     # code in cache.
     def set_context
-      @app_subjects = Subject.not_archived
+      @app_subjects = Subject.from_user(session[:user_uname]).not_archived
       cache = Rails.cache
 
       if cache.read('subject')
@@ -59,11 +58,11 @@ class ApplicationController < ActionController::Base
         @menu_topics = Topic.not_archived
       end
 
-      @menu_topics = @menu_topics.from_user(session[:user_uid]).sort(reviewing:-1)
+      @menu_topics = @menu_topics.from_user(session[:user_uname]).sort(reviewing:-1)
     end
     
     def authenticate_user!
-      if session[:user_id].nil?
+      if session[:user_uname].nil?
         redirect_to root_url
       end
     end
