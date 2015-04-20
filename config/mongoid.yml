@@ -110,6 +110,7 @@ production:
      # The standard MongoDB connection URI allows for easy
      # replica set connection setup.
      # uri to the MongoDB is in heroku config.
+     uri: <%= ENV['MONGOLAB_URI'] %>
 
      options:
        # max_retries specifies the number of times to attempt

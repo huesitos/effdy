@@ -18,6 +18,12 @@ class Subject
 
   scope :not_archived, -> { where(archived: false) }
 
+  # Finds all the topics that belong to a user based on the username
+  def self.from_user(username)
+    user = User.find_by(username: username)
+    Subject.where(user_id: user._id)
+  end
+  
   # Archives a subject and all its topics.
   def self.archive(subject)
     subject.update(archived: true)
