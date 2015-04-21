@@ -70,7 +70,7 @@
 	}
 
 	.b1_e{
-	 background: url(box1_empty.png) no-repeat center;
+	 background: asset-url("box1_empty.png", image) no-repeat center;
 	}
 
 	.b2_e{
