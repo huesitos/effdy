@@ -1,6 +1,7 @@
 # SubjectsController
 class SubjectsController < ApplicationController
 	before_action :set_subject, except: [:index, :new, :create]
+  before_action :authenticate_user!
 
   # GET /subjects
   def index

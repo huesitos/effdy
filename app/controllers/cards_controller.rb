@@ -3,6 +3,7 @@ class CardsController < ApplicationController
   before_action :set_topic, except: [:show, :update, :destroy]
   before_action :set_errors, only: [:new, :edit]
   before_action :set_card, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /cards
   # GET /cards.json

@@ -17,19 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-  
-    # Method to determine or set the current user
-    def current_user
-      @current_user ||= User.find_by(username: session[:user_uname])
-    end
 
-    # Method to determine whether a user is signed in or not
-    def user_signed_in?
-      !!current_user
-    end
-
-    helper_method :current_user, :user_signed_in?
-    
     def current_user=(user)
       session[:user_uname] = user.username
       session[:user_name] = user.name
@@ -68,7 +56,7 @@ class ApplicationController < ActionController::Base
     end
     
     def authenticate_user!
-      if session[:user_uname].nil?
+      if not session[:user_uname]
         redirect_to root_url
       end
     end
