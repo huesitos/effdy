@@ -70,15 +70,15 @@
 	}
 
 	.b1_e{
-	 background: image-url("box1_empty.png") no-repeat center;
+	 background: asset-data-url("box1_empty.png") no-repeat center;
 	}
 
 	.b2_e{
-	 background: image-url(box2_empty.png) no-repeat center;
+	 background: asset-data-url(box2_empty.png) no-repeat center;
 	}
 
 	.b3_e{
-	 background: image-url(box3_empty.png) no-repeat center;
+	 background: asset-data-url(box3_empty.png) no-repeat center;
 	}
 
 	.box {
@@ -87,7 +87,7 @@
 	}
 
   .b1{
-	 background: image-url(box1_half.png) no-repeat center;
+	 background: asset-data-url(box1_half.png) no-repeat center;
 	}
 
 	.b2{
