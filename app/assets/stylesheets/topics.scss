@@ -37,7 +37,7 @@
 				background-size: 25px;
 			}
 			#not-reviewing {
-				background: url(review-off.png) no-repeat center;
+				background: asset-url("review-off.png", image) no-repeat center;
 				background-size: 25px;
 			}
 		}
