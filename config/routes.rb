@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root 'welcome#welcome'
 
+  get 'share_request/new'
+  get 'share_request/create'
+  get 'share_request/share'
+  get 'share_request/notify'
+  get 'share_request/destroy'
+
   get 'filter_subject' => 'application#filter_subject'
   get 'today_study' => 'review_box#today_study'
   get 'week_study' => 'review_box#week_study'
