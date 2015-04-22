@@ -39,6 +39,7 @@ class TopicsController < ApplicationController
 
   # GET /topics/new
   def new
+    @url = new_topic_path
     @view_title = "New topic"
     @configs = ReviewConfiguration.all
     @topic = Topic.new

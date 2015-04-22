@@ -17,6 +17,7 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/new
   def new
+    @url = new_subject_path
     @view_title = "New subject"
     @subject = Subject.new
   end

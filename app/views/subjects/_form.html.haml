@@ -17,4 +17,7 @@
     = f.text_field :color, placeholder: "e.g. 000000, ddd"
   .actions
     %a{href: "#{subjects_path}"} Cancel
-    = f.submit 'Save'
+    - if @url == new_subject_path
+      = f.submit 'Create'
+    - else
+      = f.submit 'Save'
