@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .topics {
-		.boxes{
+	.boxes{
 		padding: 0 15px;;
 	}
 	.box {
@@ -12,34 +12,36 @@
 		height: 80px;
 		margin: 0 15px;
 		text-align: center;
-	}
-
-	.b1_e{
-	 background: url(asset-path("box1_empty.png")) no-repeat center;
-	}
-
-	.b2_e{
-	 background: url(asset-path("box2_empty.png")) no-repeat center;
-	}
-
-	.b3_e{
-	 background: url(asset-path("box3_empty.png")) no-repeat center;
-	}
-
-	.box {
-		background-size: 100px;
 		padding: 3%;
 	}
 
+	.b1_e{
+	  background: url(asset-path("box1_empty.png")) no-repeat center;
+	  background-size: 100px;
+	}
+
+	.b2_e{
+	  background: url(asset-path("box2_empty.png")) no-repeat center;
+	  background-size: 100px;
+	}
+
+	.b3_e{
+	  background: url(asset-path("box3_empty.png")) no-repeat center;
+	  background-size: 100px;
+	}
+
   .b1{
-	 background: url(asset-path("box1_half.png")) no-repeat center;
+	  background: url(asset-path("box1_half.png")) no-repeat center;
+	  background-size: 100px;
 	}
 
 	.b2{
-	 background: url(asset-path("box2_half.png")) no-repeat center;
+	  background: url(asset-path("box2_half.png")) no-repeat center;
+	  background-size: 100px;
 	}
 
 	.b3{
-	 background: url(asset-path("box3_half.png")) no-repeat center;
+	  background: url(asset-path("box3_half.png")) no-repeat center;
+	  background-size: 100px;
 	}
 }
