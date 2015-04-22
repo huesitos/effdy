@@ -24,7 +24,7 @@ class TopicsController < ApplicationController
     else
       @topics = Topic.all
     end
-    @topics = @topics.from_user(self.current_user.username)
+    @topics = @topics.from_user(session[:user_uname])
   end
 
   # GET /topics/1
