@@ -4,6 +4,7 @@ class TopicsController < ApplicationController
   before_action :set_subjects, only: [:new, :edit]
   before_action :set_errors, only: [:new, :edit]
   before_action :set_subject, only: [:create, :update]
+  before_action :authenticate_user!
 
   # GET /topics
   # GET /topics.json

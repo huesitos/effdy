@@ -2,6 +2,7 @@
 class ReviewBoxController < ApplicationController
   before_action :set_topic, except: [:today_study]
   before_action :set_card, only: [:front, :back, :answer]
+  before_action :authenticate_user!
 
   # GET /today_study
   def today_study
