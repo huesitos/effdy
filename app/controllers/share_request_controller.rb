@@ -1,5 +1,7 @@
 class ShareRequestController < ApplicationController
   def new
+    @share_request = ShareRequest.new
+    @view_title = "Share with"
   end
 
   def create
