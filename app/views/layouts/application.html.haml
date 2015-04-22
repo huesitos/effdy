@@ -11,6 +11,8 @@
       %section#home.top
         %a{:href => today_study_url} A+
       #topics-menu
+        #search-topic
+          %h5 Search Topics
         #subject-filter
           = form_tag("/filter_subject", method: "get") do
             .styled-select
@@ -22,10 +24,12 @@
             #search-submit
               %button{type: 'submit'}
 
+
         #topics-list
-          %p Topics
           - menu_topics = flash[:subjects] ? flash[:subjects] : @menu_topics
           #new-topic.topic= link_to 'New Topic', new_topic_path
+          #old-topic
+            %h5 Existing Topic(s)
           - menu_topics.each do |topic|
             .topic
               - if topic.subject

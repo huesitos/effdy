@@ -165,6 +165,7 @@ table {
 	height: 20px;
 	a {
 		color: #fff;
+		font-size: 20px;
 	}
 }
 
@@ -228,6 +229,22 @@ table {
 	}
 }
 
+#search-topic{
+       h5{
+      font-size: 2em;
+      }
+			text-align: center;
+			border-radius: 2px;
+			background-color: #6D929B;
+			color: #fff;
+			width: 90%;
+			margin:1em auto;
+			border-bottom: 1px solid #dd8;
+	   	padding: 2px 5px;
+		  line-height: 25px;
+}
+
+
 #topics-list {
 	line-height: 2em;
 	font-size: 12px;
@@ -242,13 +259,29 @@ table {
 	}
 
 	  #new-topic {
-			font-size: 11px;
+
 			text-align: center;
 			border-radius: 2px;
 			background-color: #6D929B;
 			color: #fff;
-			width: 40%;
+			width: 90%;
+			margin: 1em auto;
      }
+
+    #old-topic {
+      h5{
+      font-size: 2em;
+      }
+			text-align: center;
+			border-radius: 2px;
+			background-color: #6D929B;
+			color: #fff;
+			width: 90%;
+			margin: 1em auto;
+			border-bottom: 1px solid #dd8;
+		padding: 2px 5px;
+		line-height: 25px;
+    }
 
 
 	.topic {
