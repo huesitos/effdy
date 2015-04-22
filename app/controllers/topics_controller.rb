@@ -24,7 +24,7 @@ class TopicsController < ApplicationController
     else
       @topics = Topic.all
     end
-    @topics = @topics.from_user(self.current_user.username)
+    @topics = @topics.from_user(session[:user_uname])
   end
 
   # GET /topics/1
@@ -53,7 +53,7 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
     @topic.subject = @subject
     @topic.review_configuration = params[:review_configuration]
-    @topic.user = User.find_by(username: self.current_user.username)
+    @topic.user = User.find_by(username: session[:user_uname])
     
     respond_to do |format|
       if @topic.save
