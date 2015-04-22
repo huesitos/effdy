@@ -136,6 +136,9 @@ table {
 		display: inline-block;
 		margin-right: 10px;
 		font-size: 1.5em;
+		background-color: #bdc3c7;
+		border-radius: 0.5em;
+		padding: 0.2em;
 	}
 	a:hover {
 		text-decoration: underline;
@@ -144,7 +147,7 @@ table {
 }
 
 #home, #main-options {
-	padding: 0.5em 0 0.5em 0;
+	padding: 0.75em 0 0.8em 0;
 }
 
 #main-options {
@@ -192,8 +195,8 @@ table {
 
 #subject-filter {
 	display: flex;
-	border-bottom: 1px solid #dd8;
-	height: 20px;
+	border-bottom: 0.2em solid #dd8;
+	height: 30px;
 
 	form {
 		width: 100%;
@@ -204,7 +207,7 @@ table {
 		display: inline-block;
 	}
 	.styled-select {
-		float: left;
+		float: center;
 		width: 84%;
 		height: inherit;
 	}
@@ -232,10 +235,10 @@ table {
 
 #search-topic{
        h5{
-      font-size: 2em;
+      font-size: 1.75em;
       }
 			text-align: center;
-			border-radius: 2px;
+			border-radius: 0.5em;
 			background-color: #6D929B;
 			color: #fff;
 			width: 90%;
@@ -262,7 +265,7 @@ table {
 	  #new-topic {
 
 			text-align: center;
-			border-radius: 2px;
+			border-radius: 0.5em;
 			background-color: #6D929B;
 			color: #fff;
 			width: 90%;
@@ -276,10 +279,10 @@ table {
 
     #old-topic {
       h5{
-      font-size: 2em;
+      font-size: 1.75em;
       }
 			text-align: center;
-			border-radius: 2px;
+			border-radius: 0.5em;
 			background-color: #6D929B;
 			color: #fff;
 			width: 90%;
@@ -299,7 +302,6 @@ table {
 
 
 		a {
-			width: 78%;
 			font-size: 2em;
 			display: inline-block;
 		}
@@ -310,11 +312,12 @@ table {
 
 		span{
 			display: inline-block;
-			width: 20%;
+			width: 5em;
 			float: left;
 			font-size: 11px;
 			text-align: center;
-			margin-right: 2px;
+			margin-right: 0.5em;
+			margin-top: 0.2em;
 			border-radius: 2px;
 			color: #000;
 		}
