@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6, p, span, label, input, textarea, td, th, a {
 	margin: 0 0;
 	padding: 0 0;
 	font-size: 10px;
-	font-family: Garamond !important;
+	font-family: 'Lato', sans-serif;
 }
 textarea {
 	background: #fff;
@@ -241,11 +241,23 @@ table {
 		border-bottom: 1px dashed #dd8;
 	}
 
+	  #new-topic {
+			font-size: 11px;
+			text-align: center;
+			border-radius: 2px;
+			background-color: #6D929B;
+			color: #fff;
+			width: 40%;
+     }
+
+
 	.topic {
 		border-bottom: 1px solid #dd8;
 		padding: 2px 5px;
 		background: #fff;
 		line-height: 25px;
+
+
 
 		a {
 			width: 78%;
@@ -261,7 +273,7 @@ table {
 			display: inline-block;
 			width: 20%;
 			float: left;
-			font-size: 6px;
+			font-size: 11px;
 			text-align: center;
 			margin-right: 2px;
 			border-radius: 2px;
