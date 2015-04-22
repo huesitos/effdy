@@ -33,11 +33,11 @@
 				padding: 3%;
 			}
 			#reviewing {
-				background: url(review-on.png) no-repeat center;
+				background: url("image/review-on.png") no-repeat center;
 				background-size: 25px;
 			}
 			#not-reviewing {
-				background: asset-url("review-off.png", image) no-repeat center;
+				background: url("review-off.png", image) no-repeat center;
 				background-size: 25px;
 			}
 		}
@@ -70,7 +70,7 @@
 	}
 
 	.b1_e{
-	 background: asset-data-url("box1_empty.png") no-repeat center;
+	 background: url("box1_empty.png") no-repeat center;
 	}
 
 	.b2_e{
@@ -78,7 +78,7 @@
 	}
 
 	.b3_e{
-	 background: asset-data-url(box3_empty.png) no-repeat center;
+	 background: url(box3_empty.png) no-repeat center;
 	}
 
 	.box {
@@ -87,15 +87,15 @@
 	}
 
   .b1{
-	 background: asset-data-url(box1_half.png) no-repeat center;
+	 background: url(box1_half.png) no-repeat center;
 	}
 
 	.b2{
-	 background: image-url(box2_half.png) no-repeat center;
+	 background: url(box2_half.png) no-repeat center;
 	}
 
 	.b3{
-	 background: image-url(box3_half.png) no-repeat center;
+	 background: url(box3_half.png) no-repeat center;
 	}
 
 	.box-cards {
