@@ -52,10 +52,10 @@ a:visited {
 	color: #333;
 }
 a.btn {
-	margin: 0 auto;
 	display: block;
-	width: 15px;
-	height: 15px;
+	width: 25px;
+	height: 25px;
+	background-size: 25px;
 }
 form {
 	width: 50%;
@@ -293,25 +293,61 @@ table {
 
 .destroy{
 	background: url(asset-path("destroy.svg")) no-repeat center;
-	background-size: 15px;
 }
+
 .edit{
-	background: url(asset-path("edit.svg")) no-repeat center;
-	background-size: 15px;
+	background: url(asset-path("edit.png")) no-repeat center;
 }
 
 .topics, .cards, .review_box {
 	#new-card{
-		background: url(asset-path("new-card.svg")) no-repeat center;
-		background-size: 15px;
+		background: url(asset-path("new_card.png")) no-repeat center;
+		background-size: 25px;
 	}
 	#cards{
-		background: url(asset-path("cards.svg")) no-repeat center;
-		background-size: 15px;
+		background: url(asset-path("cards.png")) no-repeat center;
+		background-size: 25px;
 	}
 	#boxes {
-		background: url(asset-path("box-cards.svg")) no-repeat center;
-		background-size: 15px;
+		background: url(asset-path("all_boxes.png")) no-repeat center;
+		background-size: 25px;
+	}
+}
+
+.topics, .cards {
+	#options-bar {
+		width: 50px;
+		z-index: 0;
+		position: fixed;
+		right: -0.5em;
+		top: 7em;
+		form {
+			display: block;
+			input[type=submit] {
+				background: transparent;
+				border: 0;
+				width: 25px;
+				height: 25px;
+				padding: 0;
+			}
+			input[type=submit]:hover {
+				cursor: pointer;
+				cursor: hand;
+			}
+			#reset {
+				background: url(asset-path("box-cards.png")) no-repeat center;
+				background-size: 25px;
+				padding: 3%;
+			}
+			#reviewing {
+				background: url(asset-path("review-on.png")) no-repeat center;
+				background-size: 25px;
+			}
+			#not-reviewing {
+				background: url(asset-path("review-off.png")) no-repeat center;
+				background-size: 25px;
+			}
+		}
 	}
 }
 

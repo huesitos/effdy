@@ -4,28 +4,17 @@
 
 .boxes
   -if @box_has_cards[0]
-    .box-cards.b1
+    .box.b1
       = link_to '', topic_prepare_review_path(@topic._id, b: 1), :class => 'btn'
   - else
     .box.b1_e
   -if @box_has_cards[1]
-    .box-cards.b2
+    .box.b2
       = link_to '', topic_prepare_review_path(@topic._id, b: 2), :class => 'btn'
   - else
     .box.b2_e
   -if @box_has_cards[2]
-    .box-cards.b3
+    .box.b3
       = link_to '', topic_prepare_review_path(@topic._id, b: 3), :class => 'btn'
   - else
     .box.b3_e
-
-
-.settings
-  = form_tag("/topics/#{@topic._id}/reset_cards", method: "patch") do
-    = submit_tag('', id: 'reset')
-    %span#reset-number 1
-  = form_tag("/topics/#{@topic._id}/set_reviewing", method: "patch") do
-    - if @topic.reviewing
-      = submit_tag('', id: 'reviewing')
-    - else
-      = submit_tag('', id: 'not-reviewing')
