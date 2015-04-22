@@ -113,6 +113,7 @@ table {
 	width: 25%;
 	flex-direction: column;
 	border-right: 1px solid #fff;
+	line-height: 18px;
 }
 
 #right {
@@ -228,8 +229,8 @@ table {
 }
 
 #topics-list {
-	line-height: 1.5;
-	font-size: 9px;
+	line-height: 2em;
+	font-size: 12px;
 
 	p {
 		margin: 0;
@@ -244,10 +245,11 @@ table {
 		border-bottom: 1px solid #dd8;
 		padding: 2px 5px;
 		background: #fff;
+		line-height: 25px;
 
 		a {
 			width: 78%;
-			font-size: inherit;
+			font-size: 2em;
 			display: inline-block;
 		}
 
