@@ -25,6 +25,8 @@ class TopicsController < ApplicationController
       @topics = Topic.all
     end
     @topics = @topics.from_user(session[:user_uname])
+
+    @view_title = "Topics"
   end
 
   # GET /topics/1
