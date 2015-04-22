@@ -28,7 +28,7 @@
 				font-weight: bold;
 			}
 			#reset {
-				background: asset-url("box-cards.png", image) no-repeat center;
+				background: url(asset-path("box-cards.png")) no-repeat center;
 				background-size: 20px;
 				padding: 3%;
 			}
