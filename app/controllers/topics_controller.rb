@@ -53,7 +53,7 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
     @topic.subject = @subject
     @topic.review_configuration = params[:review_configuration]
-    @topic.user = User.find_by(username: self.current_user.username)
+    @topic.user = User.find_by(username: session[:user_uname])
     
     respond_to do |format|
       if @topic.save
