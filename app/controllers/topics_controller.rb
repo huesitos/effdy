@@ -128,7 +128,7 @@ class TopicsController < ApplicationController
 
     # Set the subject specified by the param[:subject].
     def set_subject
-      params[:subject_id] != 'none' ? @subject = Subject.find(params[:subject_id]) : @subject = nil
+      params[:subject_id].lowercase != 'none' ? @subject = Subject.find(params[:subject_id]) : @subject = nil
     end
 
     # Search for all the subjects and the particular topic's subject, if exists
