@@ -135,7 +135,7 @@ table {
 	a {
 		display: inline-block;
 		margin-right: 10px;
-		font-size: 15px;
+		font-size: 1.5em;
 	}
 	a:hover {
 		text-decoration: underline;
@@ -144,11 +144,12 @@ table {
 }
 
 #home, #main-options {
-	padding: 5px 0 0;
+	padding: 0.5em 0 0.5em 0;
 }
 
 #main-options {
 	padding-left: 10px;
+
 }
 
 #content {
@@ -165,7 +166,7 @@ table {
 	height: 20px;
 	a {
 		color: #fff;
-		font-size: 20px;
+		font-size: 2em;
 	}
 }
 
@@ -238,9 +239,9 @@ table {
 			background-color: #6D929B;
 			color: #fff;
 			width: 90%;
-			margin:1em auto;
+			margin:1.5em auto;
 			border-bottom: 1px solid #dd8;
-	   	padding: 2px 5px;
+	   	padding: 1em 5px;
 		  line-height: 25px;
 }
 
@@ -266,6 +267,11 @@ table {
 			color: #fff;
 			width: 90%;
 			margin: 1em auto;
+			padding: 1em 5px;
+
+			a:visited {
+			color: #fff;
+		}
      }
 
     #old-topic {
@@ -279,8 +285,8 @@ table {
 			width: 90%;
 			margin: 1em auto;
 			border-bottom: 1px solid #dd8;
-		padding: 2px 5px;
-		line-height: 25px;
+		  padding: 1em 5px;
+		  line-height: 25px;
     }
 
 
@@ -323,7 +329,7 @@ table {
 #title-bar {
 	position: relative;
 	z-index: 1;
-	margin-top: 25px;
+	margin-top: 3em;
 	padding: 5px 5px;
 	h1 {
 		display: inline-block;
