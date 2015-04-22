@@ -8,13 +8,13 @@
 
   .field
     = f.label :code
-    = f.text_field :code
+    = f.text_field :code, placeholder: "e.g. COM381, PS200"
   .field
     = f.label :name
     = f.text_field :name
   .field
     = f.label :color
-    = f.text_field :color
+    = f.text_field :color, placeholder: "e.g. 000000, ddd"
   .actions
     %a{href: "#{subjects_path}"} Cancel
     = f.submit 'Save'
