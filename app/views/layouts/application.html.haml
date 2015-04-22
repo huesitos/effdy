@@ -35,18 +35,24 @@
         = link_to 'Today\'s study', today_study_path
         = link_to 'Subjects', subjects_path
         = link_to 'Topics', topics_path
-        = link_to 'Profile'
         = link_to 'Logout', logout_path
       #title-bar
         %h1= @view_title
         - if controller.controller_name == "subjects"
           = link_to 'New Subject', new_subject_path
-        - elsif ( ["topics", "cards", "review_box"].include? controller.controller_name and not ['today_study'].include? controller.action_name and not ["topics#index", "topics#new"].include? "#{controller.controller_name}##{controller.action_name}")
-          = link_to '', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'
-          = link_to '', edit_topic_path(@topic), :class => 'btn edit'
-          = link_to '', topic_cards_path(@topic), :class => 'btn', :id => 'cards'
-          = link_to '', new_topic_card_path(@topic), :class => 'btn', :id => 'new-card'
-          = link_to '', @topic, :class => 'btn', :id => 'boxes'
+        - if "#{controller.controller_name}##{controller.action_name}" == "topics#index"
+          = link_to 'New Topic', new_topic_path
       #content
         #yield
           = yield
+          - if ( ["topics", "cards", "review_box"].include? controller.controller_name and not ["topics#index", "topics#new", 'review_box#today_study'].include? "#{controller.controller_name}##{controller.action_name}")
+            #options-bar
+              = form_tag("/topics/#{@topic._id}/reset_cards", method: "patch") do
+                = submit_tag('', id: 'reset')
+              = form_tag("/topics/#{@topic._id}/set_reviewing", method: "patch") do
+                = @topic.reviewing ? submit_tag('', id: 'reviewing') : submit_tag('', id: 'not-reviewing')
+              = link_to '', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'
+              = link_to '', edit_topic_path(@topic), :class => 'btn edit'
+              = link_to '', topic_cards_path(@topic), :class => 'btn', :id => 'cards'
+              = link_to '', new_topic_card_path(@topic), :class => 'btn', :id => 'new-card'
+              = link_to '', @topic, :class => 'btn', :id => 'boxes'

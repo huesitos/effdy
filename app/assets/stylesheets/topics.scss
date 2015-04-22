@@ -3,65 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .topics {
-	.btn {
-		margin-right: 4px;
-	}
-	.settings {
-		width: 70px;
-		top: -210px;
-		z-index: 0;
-		position: relative;
-		left: 435px;
-		form {
-			display: inline;
-			input[type=submit] {
-				background: transparent;
-				border: 0;
-				width: 25px;
-				height: 25px;
-			}
-			span#reset-number {
-				position: relative;
-				left: -14px;
-				top: -7px;
-				font-size: 4px;
-				font-weight: bold;
-			}
-			#reset {
-				background: url(asset-path("box-cards.png")) no-repeat center;
-				background-size: 20px;
-				padding: 3%;
-			}
-			#reviewing {
-				background: url(asset-path("review-on.png")) no-repeat center;
-				background-size: 25px;
-			}
-			#not-reviewing {
-				background: url(asset-path("review-off.png")) no-repeat center;
-				background-size: 25px;
-			}
-		}
-	}
-	.boxes-numbers {
-		position: relative;
-		top: -78px;
-		left: 2px;
-		span {
-			display: inline-block;
-			margin: 0 15px;
-			width: 100px;
-			height: 100px;
-			text-align: center;
-			font-weight: bold;
-		}
-		.has-cards {
-			color: white;
-		}
-	}
-	.boxes, .boxes-numbers {
+		.boxes{
 		padding: 0 15px;;
 	}
-	.box, .box-cards {
+	.box {
 		display: inline-block;
 		width: 100px;
 		height: 80px;
@@ -96,17 +41,5 @@
 
 	.b3{
 	 background: url(asset-path("box3_half.png")) no-repeat center;
-	}
-
-	.box-cards {
-		background-size: 100px;
-		padding: 3%;
-
-		.btn {
-			width: inherit;
-			height: inherit;
-			position: relative;
-			z-index: 1;
-		}
 	}
 }

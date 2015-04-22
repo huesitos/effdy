@@ -1,7 +1,5 @@
 %p#notice= notice
 
-%h1 Listing topics
-
 = form_tag("/topics/", method: "get") do
   %select{name: 'subject'}
     %option{value: 'all'} All
