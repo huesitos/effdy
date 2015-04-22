@@ -300,21 +300,6 @@ table {
 }
 
 .topics, .cards, .review_box {
-	#new-card{
-		background: url(asset-path("new_card.png")) no-repeat center;
-		background-size: 25px;
-	}
-	#cards{
-		background: url(asset-path("cards.png")) no-repeat center;
-		background-size: 25px;
-	}
-	#boxes {
-		background: url(asset-path("all_boxes.png")) no-repeat center;
-		background-size: 25px;
-	}
-}
-
-.topics, .cards {
 	#options-bar {
 		width: 50px;
 		z-index: 0;
@@ -347,6 +332,19 @@ table {
 				background: url(asset-path("review-off.png")) no-repeat center;
 				background-size: 25px;
 			}
+		}
+
+		#new-card{
+			background: url(asset-path("new_card.png")) no-repeat center;
+			background-size: 25px;
+		}
+		#cards{
+			background: url(asset-path("cards.png")) no-repeat center;
+			background-size: 25px;
+		}
+		#boxes {
+			background: url(asset-path("all_boxes.png")) no-repeat center;
+			background-size: 25px;
 		}
 	}
 }
