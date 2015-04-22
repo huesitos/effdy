@@ -1,6 +1,7 @@
 # SubjectsController
 class SubjectsController < ApplicationController
 	before_action :set_subject, except: [:index, :new, :create]
+  before_action :authenticate_user!
 
   # GET /subjects
   def index
@@ -26,6 +27,7 @@ class SubjectsController < ApplicationController
     subject_params[:code].upcase!
     @subject = Subject.new(subject_params)
     @subject.archived = false
+    @subject.user = User.find_by(username: self.current_user.username)
 
     respond_to do |format|
       if @subject.save

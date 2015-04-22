@@ -21,6 +21,12 @@ class Topic
 
   scope :not_archived, ->{where(archived: false)}
 
+  # Finds all the topics that belong to a user based on the username
+  def self.from_user(username)
+    user = User.find_by(username: username)
+    user ? Topic.where(user_id: user._id) : nil
+  end
+
   # Moves all the cards back to box 1.
   def self.reset_cards(topic)
     topic.cards.each do |card|

@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
-
-  get 'session/create'
-  get 'session/destroy'
-  get 'welcome/index'
+  root 'welcome#welcome'
 
   get 'filter_subject' => 'application#filter_subject'
   get 'today_study' => 'review_box#today_study'
@@ -26,7 +22,7 @@ Rails.application.routes.draw do
 
   get '/auth/:provider', to: lambda{|env| [404, {}, ["Not Found"]]}, as: 'login'
   get '/auth/:provider/callback', to: 'session#create'
-  get '/logout', to: 'sessions#destroy', as: 'logout'
+  get '/logout', to: 'session#destroy', as: 'logout'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
