@@ -25,6 +25,8 @@ class TopicsController < ApplicationController
       @topics = Topic.all
     end
     @topics = @topics.from_user(session[:user_uname])
+
+    @view_title = "Topics"
   end
 
   # GET /topics/1
@@ -37,6 +39,7 @@ class TopicsController < ApplicationController
 
   # GET /topics/new
   def new
+    @url = new_topic_path
     @view_title = "New topic"
     @configs = ReviewConfiguration.all
     @topic = Topic.new
@@ -128,7 +131,7 @@ class TopicsController < ApplicationController
 
     # Set the subject specified by the param[:subject].
     def set_subject
-      params[:subject_id].lowercase != 'none' ? @subject = Subject.find(params[:subject_id]) : @subject = nil
+      params[:subject_id].downcase != 'none' ? @subject = Subject.find(params[:subject_id]) : @subject = nil
     end
 
     # Search for all the subjects and the particular topic's subject, if exists
