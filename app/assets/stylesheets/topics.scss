@@ -28,16 +28,16 @@
 				font-weight: bold;
 			}
 			#reset {
-				background: url(box-cards.png) no-repeat center;
+				background: url(asset-path("box-cards.png")) no-repeat center;
 				background-size: 20px;
 				padding: 3%;
 			}
 			#reviewing {
-				background: url(review-on.png) no-repeat center;
+				background: url(asset-path("review-on.png")) no-repeat center;
 				background-size: 25px;
 			}
 			#not-reviewing {
-				background: url(review-off.png) no-repeat center;
+				background: url(asset-path("review-off.png")) no-repeat center;
 				background-size: 25px;
 			}
 		}
@@ -70,15 +70,15 @@
 	}
 
 	.b1_e{
-	 background: url(box1_empty.png) no-repeat center;
+	 background: url(asset-path("box1_empty.png")) no-repeat center;
 	}
 
 	.b2_e{
-	 background: url(box2_empty.png) no-repeat center;
+	 background: url(asset-path("box2_empty.png")) no-repeat center;
 	}
 
 	.b3_e{
-	 background: url(box3_empty.png) no-repeat center;
+	 background: url(asset-path("box3_empty.png")) no-repeat center;
 	}
 
 	.box {
@@ -87,15 +87,15 @@
 	}
 
   .b1{
-	 background: url(box1_half.png) no-repeat center;
+	 background: url(asset-path("box1_half.png")) no-repeat center;
 	}
 
 	.b2{
-	 background: url(box2_half.png) no-repeat center;
+	 background: url(asset-path("box2_half.png")) no-repeat center;
 	}
 
 	.b3{
-	 background: url(box3_half.png) no-repeat center;
+	 background: url(asset-path("box3_half.png")) no-repeat center;
 	}
 
 	.box-cards {

@@ -21,7 +21,7 @@ body {
 	margin: 0 0;
 	padding: 0 0;
 	display: flex;
-	background: url(swirl.png);
+	background: url(asset-path("swirl.png"));
 	background-size: 100px;
 }
 
@@ -120,7 +120,7 @@ table {
 	width: 75%;
 	flex-direction: column;
 	position: relative;
-	background: url("crossword.png");
+	background: url(asset-path("crossword.png"));
 	background-size: 250px;
 }
 
@@ -176,7 +176,7 @@ table {
 
 .styled-select {
 	overflow: hidden;
-	background: url(down-arrow.svg) no-repeat right #fff;
+	background: url(asset-path("down-arrow.svg")) no-repeat right #fff;
 	border-right: 1px solid #dd8;
 	background-size: 15px;
 	select {
@@ -216,7 +216,7 @@ table {
 			padding: 0;
 			width: 100%;
 			height: 100%;
-			background: url(search-icon.svg) no-repeat #fff;
+			background: url(asset-path("search-icon.svg")) no-repeat #fff;
 			background-size: 100% 100%;
 			border: none;
 			vertical-align: top;
@@ -294,25 +294,25 @@ table {
 }
 
 .destroy{
-	background: url(destroy.svg) no-repeat center;
+	background: url(asset-path("destroy.svg")) no-repeat center;
 	background-size: 15px;
 }
 .edit{
-	background: url(edit.svg) no-repeat center;
+	background: url(asset-path("edit.svg")) no-repeat center;
 	background-size: 15px;
 }
 
 .topics, .cards, .review_box {
 	#new-card{
-		background: url(new-card.svg) no-repeat center;
+		background: url(asset-path("new-card.svg")) no-repeat center;
 		background-size: 15px;
 	}
 	#cards{
-		background: url(cards.svg) no-repeat center;
+		background: url(asset-path("cards.svg")) no-repeat center;
 		background-size: 15px;
 	}
 	#boxes {
-		background: url(box-cards.svg) no-repeat center;
+		background: url(asset-path("box-cards.svg")) no-repeat center;
 		background-size: 15px;
 	}
 }
