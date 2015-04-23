@@ -23,6 +23,7 @@ body {
 	display: flex;
 	background: url(asset-path("swirl.png"));
 	background-size: 100px;
+	font-family: 'Lato', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, p, span, label, input, textarea, td, th, a {
@@ -107,6 +108,13 @@ table {
 	.action {
 		width: 20px;
 	}
+}
+
+.right {
+	float: right;
+}
+.left {
+	float: left;
 }
 
 #left {
@@ -407,4 +415,14 @@ table {
 
 .bold {
 	font-weight: bold;
+}
+
+#profile {
+	color: white;
+	font-size: 1em;
+	margin-right: 0.5em;
+	
+	a {
+		font-size: 1em;
+	}
 }

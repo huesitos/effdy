@@ -6,7 +6,7 @@ class ReviewBoxController < ApplicationController
 
   # GET /today_study
   def today_study
-    @view_title = "Today study"
+    @view_title = "Today's study"
     @review_boxes = ReviewBox.today_study
   end
 
