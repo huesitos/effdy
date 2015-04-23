@@ -6,5 +6,9 @@
   = link_to 'Box 2', topic_cards_path(@topic, box: 2), :class => (@box == 2 && 'active')
   = link_to 'Box 3', topic_cards_path(@topic, box: 3), :class => (@box == 3 && 'active')
 
-.cards
-  = render @cards
+- if @cards.count > 0
+  .cards
+    = render @cards
+- else
+  .placeholder
+    %p You have no cards in this topic! Create some, and study hard
