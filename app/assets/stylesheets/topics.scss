@@ -4,7 +4,7 @@
 
 .topics {
 	.boxes{
-		padding: 0 15px;;
+		padding: 0 10%;
 	}
 	.box {
 		display: inline-block;
@@ -23,30 +23,53 @@
 	.b1_e{
 	  background: url(asset-path("box1_empty.png")) no-repeat center;
 	  background-size: 100px;
+	  margin-bottom: 1.5em;
 	}
 
 	.b2_e{
 	  background: url(asset-path("box2_empty.png")) no-repeat center;
 	  background-size: 100px;
+	  margin-bottom: 1.5em;
 	}
 
 	.b3_e{
 	  background: url(asset-path("box3_empty.png")) no-repeat center;
 	  background-size: 100px;
+	  margin-bottom: 1.5em;
 	}
 
   .b1{
 	  background: url(asset-path("box1_half.png")) no-repeat center;
 	  background-size: 100px;
+	  margin-bottom: 1.5em;
 	}
 
 	.b2{
 	  background: url(asset-path("box2_half.png")) no-repeat center;
 	  background-size: 100px;
+	  margin-bottom: 1.5em;
 	}
 
 	.b3{
 	  background: url(asset-path("box3_half.png")) no-repeat center;
 	  background-size: 100px;
+	  margin-bottom: 1.5em;
+	}
+}
+
+@media only screen and (min-width: 30em) {
+  .topics {
+	.boxes{
+		padding: 0 50%;
+	}
+	}
+
+}
+
+@media only screen and (min-width: 50em) {
+  .topics {
+	.boxes{
+		padding: 0 8%;
+	}
 	}
 }

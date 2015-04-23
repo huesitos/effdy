@@ -373,9 +373,7 @@ table {
 	#options-bar {
 		width: 50px;
 		z-index: 0;
-		position: fixed;
-		right: -0.5em;
-		top: 7em;
+		margin-top:-10em;
 		form {
 			display: block;
 			input[type=submit] {
@@ -421,4 +419,13 @@ table {
 
 .bold {
 	font-weight: bold;
+}
+
+@media only screen and (min-width: 30em) {
+
+
+}
+
+@media only screen and (min-width: 50em) {
+
 }
