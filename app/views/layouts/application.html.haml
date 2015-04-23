@@ -24,24 +24,27 @@
         #topics-list
           %p Topics
           - menu_topics = flash[:subjects] ? flash[:subjects] : @menu_topics
-          #new-topic.topic= link_to 'New Topic', new_topic_path
+          #new-topic.topic= link_to 'Add topic', new_topic_path
           - menu_topics.each do |topic|
             .topic
               - if topic.subject
                 %span{style: "background-color:##{topic.subject.color}; color: #fff" }= topic.subject.code
               = link_to topic.title, topic
     #right
-      %nav#main-options.right.top
-        = link_to 'Today\'s study', today_study_path
-        = link_to 'Subjects', subjects_path
-        = link_to 'Topics', topics_path
-        = link_to 'Logout', logout_path
+      %nav.top#main-options
+        .left
+          = link_to 'Today\'s study', today_study_path
+          = link_to 'Subjects', subjects_path
+          = link_to 'Topics', topics_path
+        #profile.right
+          = @user.username
+          = link_to 'Logout', logout_path
       #title-bar
         %h1= @view_title
         - if controller.controller_name == "subjects"
-          = link_to 'New Subject', new_subject_path
+          = link_to 'Add subject', new_subject_path
         - if "#{controller.controller_name}##{controller.action_name}" == "topics#index"
-          = link_to 'New Topic', new_topic_path
+          = link_to 'Add topic', new_topic_path
       #content
         #yield
           = yield
