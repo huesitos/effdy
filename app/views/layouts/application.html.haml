@@ -24,7 +24,7 @@
         #topics-list
           %p Topics
           - menu_topics = flash[:subjects] ? flash[:subjects] : @menu_topics
-          #new-topic.topic= link_to 'New Topic', new_topic_path
+          #new-topic.topic= link_to 'Add topic', new_topic_path
           - menu_topics.each do |topic|
             .topic
               - if topic.subject
@@ -39,9 +39,9 @@
       #title-bar
         %h1= @view_title
         - if controller.controller_name == "subjects"
-          = link_to 'New Subject', new_subject_path
+          = link_to 'Add subject', new_subject_path
         - if "#{controller.controller_name}##{controller.action_name}" == "topics#index"
-          = link_to 'New Topic', new_topic_path
+          = link_to 'Add topic', new_topic_path
       #content
         #yield
           = yield
