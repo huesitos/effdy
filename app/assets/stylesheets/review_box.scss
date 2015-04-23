@@ -32,4 +32,55 @@
 	#card:first-child {
 		margin-right: 10px;
 	}
+
+	#todays_study {
+		ul {
+			list-style: none;
+			padding: 0;
+
+			li {
+				padding-top: 0.5em;
+
+				a {
+					vertical-align: bottom;
+
+					.box {
+						display: inline-block;
+						width: 1.5em;
+						height: 1.5em;
+						vertical-align: inherit;
+					}
+
+					.b1 {
+						background: url(asset-path("box1_half.png")) no-repeat center;
+						background-size: 100%;
+					}
+					.b2 {
+						background: url(asset-path("box2_half.png")) no-repeat center;
+						background-size: 100%;
+					}
+					.b3 {
+						background: url(asset-path("box3_half.png")) no-repeat center;
+						background-size: 100%;
+					}
+				}
+
+				a:hover {
+					color: #000;
+				}
+			}
+			li:first-child {
+				padding-top: 0;
+			}
+		}
+		#subject {
+			display: inline-block;
+			width: 6em;
+			height: 1.5em;
+			text-align: center;
+			border-radius: 0.2em;
+			color: white;
+			font-size: 0.75em;
+		}
+	}
 }
