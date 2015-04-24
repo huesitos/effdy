@@ -1,6 +1,7 @@
 # SubjectsController
 class SubjectsController < ApplicationController
 	before_action :set_subject, except: [:index, :new, :create]
+  before_action :set_errors, only: [:new, :edit]
   before_action :authenticate_user!
 
   # GET /subjects
@@ -22,7 +23,6 @@ class SubjectsController < ApplicationController
     @subject = Subject.new
   end
 
-
   # POST /subjects
   def create
     subject_params[:code].upcase!
@@ -35,7 +35,7 @@ class SubjectsController < ApplicationController
         format.html { redirect_to subjects_url }
         format.json { render :show, status: :created, location: @subject }
       else
-        format.html { render :new }
+        format.html { redirect_to new_subject_path(errors: @subject.errors.full_messages.each.to_a) }
         format.json { render json: @subject.errors, status: :unprocessable_entity }
       end
     end
@@ -48,7 +48,7 @@ class SubjectsController < ApplicationController
         format.html { redirect_to subjects_url }
         format.json { render :show, status: :ok, location: @subject }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_subject_path(errors: @subject.errors.full_messages.each.to_a) }
         format.json { render json: @subject.errors, status: :unprocessable_entity }
       end
     end
@@ -96,6 +96,11 @@ class SubjectsController < ApplicationController
       if Rails.cache.read('subject') and Rails.cache.read('subject') == subject.code
         Rails.cache.write('subject', 'all')
       end
+    end
+
+    # Pack errors in a variable to be shown in the form
+    def set_errors
+      @errors = params[:errors] if params[:errors]
     end
 
   	# Never trust parameters from the scary internet, only allow the white list through.
