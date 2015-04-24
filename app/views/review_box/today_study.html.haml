@@ -4,10 +4,13 @@
     %ul
       - @review_boxes.each do |box_review|
         %li
-          -if box_review.topic.subject
-            %span#subject{style: "background-color:##{box_review.topic.subject.color}"}=box_review.topic.subject.code
+          - if box_review.review_date < Date.today.to_s
+            %span.tag{style: "background-color:red"} Expired
+          - if box_review.topic.subject
+            %span.tag{style: "background-color:##{box_review.topic.subject.color}"}
+              =box_review.topic.subject.code
           %a{href: topic_prepare_review_path(b: box_review.box, topic_id: box_review.topic_id)}
-            %span{style: box_review.review_date < Date.today.to_s && "color:red"}
+            %span
               = box_review.topic.title
             %span{class: "box b#{box_review.box}"}
 - else
