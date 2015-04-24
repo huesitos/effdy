@@ -13,8 +13,8 @@
     - @topics.each do |topic|
       %li
         .info
-          - if topic.subject
-            %span#code{style: topic.subject.nil? || "color:##{topic.subject.color}" }
+          %span#code{style: topic.subject.nil? || "color:##{topic.subject.color}" }
+            - if topic.subject
               = topic.subject.code
           %span#link
             = link_to topic.title, topic
