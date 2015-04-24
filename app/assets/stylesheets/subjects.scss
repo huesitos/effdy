@@ -3,14 +3,46 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .subjects {
-	table {
-		tr.archived {
-			background-color: #eee;
-			font-style: italic;	color: #999 !important;
+	#subjects-list {
+	  ul {
+	  	list-style: none;
+	  	padding: 0;
+
+	  	li {
+	  		width: 65%;
+
+			  .info {
+			  	display: inline-block;
+			  	width: 80%;
+			  	height: 25px;
+			  	line-height: 2em;
+
+		  		span {
+		  			display: inline-block;
+		  		}
+		  		
+		  		#code {
+		  			width: 27%;
+		  		}
+			  }
+	  	}
+	  }
+		.options {
+			display: inline-block;
+
+			.btn {
+				display: inherit;
+				vertical-align: bottom;
+			}
 		}
-		#archive{
-			background: url(asset-path("archive.svg")) no-repeat center;
-			background-size: 25px;
-		}
+	}
+	.archived {
+		background-color: #eee;
+		font-style: italic;	
+		color: #999;
+	}
+	#archive{
+		background: url(asset-path("archive.svg")) no-repeat center;
+		background-size: 25px;
 	}
 }
