@@ -9,10 +9,10 @@
           - if box_review.topic.subject
             %span.tag{style: "background-color:##{box_review.topic.subject.color}"}
               =box_review.topic.subject.code
-          %a{href: topic_prepare_review_path(b: box_review.box, topic_id: box_review.topic_id)}
-            %span
+          %span
+            %a{href: topic_prepare_review_path(b: box_review.box, topic_id: box_review.topic_id)}
               = box_review.topic.title
-            %span{class: "box b#{box_review.box}"}
+              %span{class: "box b#{box_review.box}", id: "box"}
 - else
   .placeholder
     %p There are no boxes to study today! If you don't have any topics set for reviewing, set some.
