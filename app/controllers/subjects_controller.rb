@@ -6,7 +6,7 @@ class SubjectsController < ApplicationController
 
   # GET /subjects
   def index
-    @view_title = "Listing subjects"
+    @view_title = "Subjects"
     @subjects = Subject.all
     @subjects = @subjects.sort(archived:1)
   end

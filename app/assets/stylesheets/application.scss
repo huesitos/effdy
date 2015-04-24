@@ -59,7 +59,7 @@ a.btn {
 	background-size: 25px;
 }
 form {
-	width: 50%;
+	width: 55%;
 	label {
 		display: inline-block;
 		width: 100%;
@@ -368,7 +368,7 @@ table {
 }
 
 
-.topics, .subjects {
+#topics-list, #subjects-list {
 	ul {
   	list-style: none;
   	padding: 0;
@@ -393,7 +393,7 @@ table {
 	  			text-align: center;
 	  		}
 	  		#link {
-	  			width: 81%;
+	  			width: 76%;
 	  			a {
 	  				display: inline-block;
 		  			width: 100%;
