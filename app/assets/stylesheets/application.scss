@@ -308,52 +308,104 @@ table {
 	background: url(asset-path("edit.png")) no-repeat center;
 }
 
-.topics, .cards, .review_box {
-	#options-bar {
-		width: 50px;
-		z-index: 0;
-		position: fixed;
-		right: -0.5em;
-		top: 7em;
-		form {
-			display: block;
-			input[type=submit] {
-				background: transparent;
-				border: 0;
-				width: 25px;
-				height: 25px;
-				padding: 0;
-			}
-			input[type=submit]:hover {
-				cursor: pointer;
-				cursor: hand;
-			}
-			#reset {
-				background: url(asset-path("box-cards.png")) no-repeat center;
-				background-size: 25px;
-				padding: 3%;
-			}
-			#reviewing {
-				background: url(asset-path("review-on.png")) no-repeat center;
-				background-size: 25px;
-			}
-			#not-reviewing {
-				background: url(asset-path("review-off.png")) no-repeat center;
-				background-size: 25px;
-			}
-		}
+#options-bar {
+	width: 50px;
+	z-index: 0;
+	position: fixed;
+	right: -0.5em;
+	top: 7em;
+	form {
+		display: block;
 
-		#new-card{
-			background: url(asset-path("new_card.png")) no-repeat center;
+		#reset {
+			background: url(asset-path("box-cards.png")) no-repeat center;
+			background-size: 25px;
+			padding: 3%;
+		}
+	}
+}
+
+#options-bar, #topics-list {
+	form {
+		input[type=submit] {
+			background: transparent;
+			border: 0;
+			width: 25px;
+			height: 25px;
+			padding: 0;
+		}
+		input[type=submit]:hover {
+			cursor: pointer;
+			cursor: hand;
+		}
+		#reviewing {
+			background: url(asset-path("review-on.png")) no-repeat center;
 			background-size: 25px;
 		}
-		#cards{
-			background: url(asset-path("cards.png")) no-repeat center;
+		#not-reviewing {
+			background: url(asset-path("review-off.png")) no-repeat center;
 			background-size: 25px;
 		}
-		#boxes {
-			background: url(asset-path("all_boxes.png")) no-repeat center;
-			background-size: 25px;
+	}
+}
+
+#new-card {
+	background: url(asset-path("new_card.png")) no-repeat center;
+	background-size: 25px;
+}
+#cards {
+	background: url(asset-path("cards.png")) no-repeat center;
+	background-size: 25px;
+}
+#boxes {
+	background: url(asset-path("all_boxes.png")) no-repeat center;
+	background-size: 25px;
+}
+
+
+.topics, .subjects {
+	ul {
+  	list-style: none;
+  	padding: 0;
+
+  	li {
+  		width: 90%;
+  		display: block;
+  		border-bottom: #ccc 1px dashed;
+
+		  .info {
+		  	display: inline-block;
+		  	width: 80%;
+		  	height: 25px;
+		  	line-height: 2em;
+
+	  		span {
+	  			display: inline-block;
+	  		}
+	  		
+	  		#code {
+	  			width: 22%;
+	  			text-align: center;
+	  		}
+	  		#link {
+	  			width: 78%;
+	  			a {
+	  				display: inline-block;
+		  			width: 100%;
+	  			}
+	  		}
+		  	#link:hover {
+					background-color: #efefef;
+				}
+		  }
+  	}
+  }
+	.options {
+		display: inline-block;
+
+		.btn {
+			display: inherit;
+			vertical-align: bottom;
 		}
 	}
 }
