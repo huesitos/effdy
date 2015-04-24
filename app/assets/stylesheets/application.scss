@@ -161,7 +161,7 @@ table {
 #content {
 	padding: 10px 0 25px 5px;
 	background: inherit;
-	width: 55em;
+	width: 98%;
 }
 
 #topics-menu {
@@ -297,7 +297,9 @@ table {
 	}
 }
 #yield {
-	margin: 0 10px;
+	margin-left: 10px;
+	width: 90%;
+	display: inline-block;
 }
 
 .destroy{
@@ -309,11 +311,12 @@ table {
 }
 
 #options-bar {
-	width: 50px;
 	z-index: 0;
-	position: fixed;
-	right: -0.5em;
-	top: 7em;
+	display: inline-block;
+	width: 4%;
+	padding: 0 1%;
+	vertical-align: top;
+
 	form {
 		display: block;
 
@@ -388,7 +391,7 @@ table {
 	  			text-align: center;
 	  		}
 	  		#link {
-	  			width: 78%;
+	  			width: 81%;
 	  			a {
 	  				display: inline-block;
 		  			width: 100%;
