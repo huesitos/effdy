@@ -59,7 +59,7 @@ a.btn {
 	background-size: 25px;
 }
 form {
-	width: 50%;
+	width: 55%;
 	label {
 		display: inline-block;
 		width: 100%;
@@ -174,6 +174,7 @@ table {
 #content {
 	padding: 10px 0 25px 5px;
 	background: inherit;
+	width: 98%;
 }
 
 #topics-menu {
@@ -200,7 +201,9 @@ table {
 	background: url(asset-path("down-arrow.svg")) no-repeat right #fff;
 	border-right: 1px solid #dd8;
 	background-size: 15px;
+
 	select {
+		padding-left: 0.5em;
 		background: transparent;
 		width: 110%;
 		border: 0;
@@ -310,14 +313,11 @@ table {
 		  line-height: 25px;
     }
 
-
 	.topic {
 		border-bottom: 1px solid #dd8;
 		padding: 2px 5px;
 		background: #fff;
 		line-height: 25px;
-
-
 
 		a {
 			font-size: 1.75em;
@@ -366,7 +366,9 @@ table {
 	}
 }
 #yield {
-	margin: 0 10px;
+	margin-left: 10px;
+	width: 90%;
+	display: inline-block;
 }
 
 .destroy{
@@ -377,50 +379,105 @@ table {
 	background: url(asset-path("edit.png")) no-repeat center;
 }
 
-.topics, .cards, .review_box {
-	#options-bar {
-		width: 50px;
-		z-index: 0;
-		margin-top:-10em;
-		form {
-			display: block;
-			input[type=submit] {
-				background: transparent;
-				border: 0;
-				width: 25px;
-				height: 25px;
-				padding: 0;
-			}
-			input[type=submit]:hover {
-				cursor: pointer;
-				cursor: hand;
-			}
-			#reset {
-				background: url(asset-path("box-cards.png")) no-repeat center;
-				background-size: 25px;
-				padding: 3%;
-			}
-			#reviewing {
-				background: url(asset-path("review-on.png")) no-repeat center;
-				background-size: 25px;
-			}
-			#not-reviewing {
-				background: url(asset-path("review-off.png")) no-repeat center;
-				background-size: 25px;
-			}
-		}
+#options-bar {
+	z-index: 0;
+	display: inline-block;
+	width: 4%;
+	padding: 0 1%;
+	vertical-align: top;
 
-		#new-card{
-			background: url(asset-path("new_card.png")) no-repeat center;
+	form {
+		display: block;
+
+		#reset {
+			background: url(asset-path("box-cards.png")) no-repeat center;
+			background-size: 25px;
+			padding: 3%;
+		}
+	}
+}
+
+#options-bar, #topics-list {
+	form {
+		input[type=submit] {
+			background: transparent;
+			border: 0;
+			width: 25px;
+			height: 25px;
+			padding: 0;
+		}
+		input[type=submit]:hover {
+			cursor: pointer;
+			cursor: hand;
+		}
+		#reviewing {
+			background: url(asset-path("review-on.png")) no-repeat center;
 			background-size: 25px;
 		}
-		#cards{
-			background: url(asset-path("cards.png")) no-repeat center;
+		#not-reviewing {
+			background: url(asset-path("review-off.png")) no-repeat center;
 			background-size: 25px;
 		}
-		#boxes {
-			background: url(asset-path("all_boxes.png")) no-repeat center;
-			background-size: 25px;
+	}
+}
+
+#new-card {
+	background: url(asset-path("new_card.png")) no-repeat center;
+	background-size: 25px;
+}
+#cards {
+	background: url(asset-path("cards.png")) no-repeat center;
+	background-size: 25px;
+}
+#boxes {
+	background: url(asset-path("all_boxes.png")) no-repeat center;
+	background-size: 25px;
+}
+
+
+#topics-list, #subjects-list {
+	ul {
+  	list-style: none;
+  	padding: 0;
+
+  	li {
+  		width: 90%;
+  		display: block;
+  		border-bottom: #ccc 1px dashed;
+
+		  .info {
+		  	display: inline-block;
+		  	width: 80%;
+		  	height: 25px;
+		  	line-height: 2em;
+
+	  		span {
+	  			display: inline-block;
+	  		}
+	  		
+	  		#code {
+	  			width: 22%;
+	  			text-align: center;
+	  		}
+	  		#link {
+	  			width: 76%;
+	  			a {
+	  				display: inline-block;
+		  			width: 100%;
+	  			}
+	  		}
+		  	#link:hover {
+					background-color: #efefef;
+				}
+		  }
+  	}
+  }
+	.options {
+		display: inline-block;
+
+		.btn {
+			display: inherit;
+			vertical-align: bottom;
 		}
 	}
 }

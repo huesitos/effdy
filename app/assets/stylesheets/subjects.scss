@@ -3,14 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .subjects {
-	table {
-		tr.archived {
-			background-color: #eee;
-			font-style: italic;	color: #999 !important;
-		}
-		#archive{
-			background: url(asset-path("archive.svg")) no-repeat center;
-			background-size: 25px;
-		}
+	.archived {
+		background-color: #eee;
+		font-style: italic;	
+		color: #999;
+	}
+	#archive{
+		background: url(asset-path("archive.svg")) no-repeat center;
+		background-size: 25px;
 	}
 }

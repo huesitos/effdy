@@ -7,7 +7,8 @@ class ReviewBoxController < ApplicationController
   # GET /today_study
   def today_study
     @view_title = "Today's study"
-    @review_boxes = ReviewBox.today_study
+    user = User.find_by(username: session[:user_uname])
+    @review_boxes = ReviewBox.today_study(user)
   end
 
   # GET	/topics/:topic_id/set_review

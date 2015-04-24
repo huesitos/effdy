@@ -3,6 +3,29 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .topics {
+	form#in-filter {
+		select {
+			width: 79%;
+			padding-left: 1em;
+		}
+	}
+	#topics-list {
+		form {
+			display: inline-block;
+			width: 25px;
+		}
+		li {
+			width: 100%;
+
+			#code {
+				width: 18%;
+			}
+
+			.info {
+				width: 76%;
+			}
+		}
+	}
 	.boxes{
 		padding: 0 10%;
 	}
