@@ -1,6 +1,6 @@
 %p#notice= notice
 
-= form_tag("/topics/", method: "get") do
+= form_tag("/topics/", method: "get", id: "in-filter") do
   %select{name: 'subject'}
     %option{value: 'all'} All
     - @subjects.each do |subject|

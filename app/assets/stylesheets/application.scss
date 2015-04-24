@@ -187,7 +187,9 @@ table {
 	background: url(asset-path("down-arrow.svg")) no-repeat right #fff;
 	border-right: 1px solid #dd8;
 	background-size: 15px;
+
 	select {
+		padding-left: 0.5em;
 		background: transparent;
 		width: 110%;
 		border: 0;

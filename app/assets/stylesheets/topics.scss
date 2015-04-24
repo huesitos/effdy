@@ -3,6 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .topics {
+	form#in-filter {
+		select {
+			width: 79%;
+			padding-left: 1em;
+		}
+	}
 	#topics-list {
 		form {
 			display: inline-block;
