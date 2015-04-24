@@ -14,17 +14,19 @@ class ReviewBox
 
   # Returns the review boxes from all unarchived topics set for review that must 
   # be studied today.
-  def self.today_study
-    topics = Topic.not_archived.where(reviewing: true)
+  def self.today_study(user)
+    topics = Topic.not_archived.where(reviewing: true, user_id: user._id)
     review_boxes = []
 
+    # get topics
     topics.each do |topic|
       topic.review_boxes.where(:review_date.lte => Date.today.to_s).each do |review_box|
         review_boxes.push(review_box) if topic.cards.where(box: review_box.box).count() > 0 # only add if there are cards in the box
       end
     end
 
-    review_boxes
+    review_boxes.sort! { |rb1, rb2| rb2.review_date <=> rb1.review_date }
+    review_boxes.sort! { |rb1, rb2| rb1.box <=> rb2.box }
   end
 
   # Grabs all the card_ids of the cards inside the box, shuffles them, and pushes 

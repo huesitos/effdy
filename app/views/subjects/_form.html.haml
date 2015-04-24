@@ -1,9 +1,9 @@
 = form_for @subject do |f|
-  - if @subject.errors.any?
+  - if @errors
     #error_explanation
-      %h2= "#{pluralize(@subject.errors.count, "error")} prohibited this subject from being saved:"
+      %h2= "#{pluralize(@errors.count, "error")} prohibited this subject from being saved:"
       %ul
-        - @subject.errors.full_messages.each do |msg|
+        - @errors.each do |msg|
           %li= msg
 
   .field
