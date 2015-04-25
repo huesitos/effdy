@@ -8,8 +8,8 @@
           .info
             %span#code{style: "color:##{subject.color}"}
               = subject.code
-            %span
-              = subject.name
+            %span#link
+              = link_to subject.name, subject_path(subject)
           .options
             = link_to '', edit_subject_path(subject), :class => "btn edit"
             = link_to '', subject_archive_path(subject), :method => :patch, :id => 'archive', :class => "btn"

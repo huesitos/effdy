@@ -11,6 +11,12 @@ class SubjectsController < ApplicationController
     @subjects = @subjects.sort(archived:1)
   end
 
+  # Get /subject/:id
+  def show
+    @view_title = @subject.name
+    @topics = Topic.where(subject_id: @subject._id)
+  end
+
   # GET /subjects/edit
   def edit
     @view_title = "Editing subject"
