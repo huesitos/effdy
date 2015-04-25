@@ -127,6 +127,8 @@ table {
  #home.top {
    a{
     background: url(asset-path("A+.png"));
+    background-size:100%;
+    display: inline-block;
     height: 32px;
     width: 32px;
    }
@@ -454,7 +456,7 @@ table {
 	  		span {
 	  			display: inline-block;
 	  		}
-	  		
+
 	  		#code {
 	  			width: 22%;
 	  			text-align: center;
@@ -490,7 +492,7 @@ table {
 	color: white;
 	font-size: 1em;
 	margin-right: 0.5em;
-	
+
 	a {
 		font-size: 1em;
 	}
