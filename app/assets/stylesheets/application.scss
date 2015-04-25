@@ -129,6 +129,10 @@ table {
 	position: relative;
 	background: url(asset-path("crossword.png"));
 	background-size: 250px;
+
+	#logo {
+		display: none;
+	}
 }
 
 #home {
@@ -426,5 +430,23 @@ table {
 	
 	a {
 		font-size: 1em;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	#left {
+		display: none;
+	}
+	#main-options a, #profile {
+		font-size: 0.8em;
+	}
+	#right {
+		width: 100%;
+
+		#logo {
+			display: inline;
+			color: white;
+			margin-right: 1em;
+		}
 	}
 }
