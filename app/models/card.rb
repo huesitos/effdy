@@ -8,6 +8,7 @@ class Card
   field :answer, type: String
   field :box, type: Integer
   belongs_to :topic
+  belongs_to :user
 
   validates :question, :answer, :topic, :box, presence: true
   validates :box, inclusion: 1..3

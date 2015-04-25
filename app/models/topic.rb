@@ -20,6 +20,7 @@ class Topic
   validates_associated :cards
 
   scope :not_archived, ->{where(archived: false)}
+  scope :reviewing, ->{where(reviewing: true)}
 
   # Finds all the topics that belong to a user based on the username
   def self.from_user(username)
@@ -36,9 +37,25 @@ class Topic
 
   # Creates three review boxes for the topic.
   def self.set_review_boxes(topic)
-    topic.review_boxes.create(box:1)
-    topic.review_boxes.create(box:2)
-    topic.review_boxes.create(box:3)
+    topic.review_boxes.create(box:1, user_id: topic.user_id)
+    topic.review_boxes.create(box:2, user_id: topic.user_id)
+    topic.review_boxes.create(box:3, user_id: topic.user_id)
+  end
+
+  # Set topic and its review boxes as reviewing
+  def self.set_reviewing(topic)
+    topic.update(reviewing: true)
+    topic.review_boxes.each do |rb|
+      rb.update(reviewing: true)
+    end
+  end
+
+  # Unset topic and its review boxes as reviewing
+  def self.unset_reviewing(topic)
+    topic.update(reviewing: false)
+    topic.review_boxes.each do |rb|
+      rb.update(reviewing: false)
+    end
   end
 
   # Sets the review dates of the boxes based on the topic's review configuration.
@@ -46,7 +63,7 @@ class Topic
     config = ReviewConfiguration.find_by(name: topic.review_configuration)
 
     topic.review_boxes.find_by(box:1).update(review_date: Date.today)
-    topic.review_boxes.find_by(box:2).update(review_date: (Date.today + config.box2_frequency.days).to_s)
-    topic.review_boxes.find_by(box:3).update(review_date: (Date.today + config.box3_frequency.days).to_s)
+    topic.review_boxes.find_by(box:2).update(review_date: (Date.today + config.box_frequencies[1]).to_s)
+    topic.review_boxes.find_by(box:3).update(review_date: (Date.today + config.box_frequencies[2]).to_s)
   end
 end
