@@ -48,6 +48,7 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
     @card.box = 1
     @card.topic = @topic
+    @card.user = @topic.user
 
     respond_to do |format|
       if @card.save
