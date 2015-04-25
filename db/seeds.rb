@@ -14,9 +14,9 @@ ReviewConfiguration.all.destroy
 Card.all.destroy
 
 # Creating default configurations
-normal = ReviewConfiguration.create(name: 'normal', box1_frequency: 1, box2_frequency: 3, box3_frequency: 7)
-tight = ReviewConfiguration.create(name: 'tight', box1_frequency: 1, box2_frequency: 2, box3_frequency: 3)
-spread = ReviewConfiguration.create(name: 'spread', box1_frequency: 3, box2_frequency: 6, box3_frequency: 9)
+normal = ReviewConfiguration.create(name: 'normal', box_frequencies: [1, 3, 7])
+tight = ReviewConfiguration.create(name: 'tight', box_frequencies: [1, 2, 3])
+spread = ReviewConfiguration.create(name: 'spread', box_frequencies: [3, 6, 9])
 
 # Example topics
 

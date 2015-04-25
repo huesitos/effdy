@@ -8,7 +8,7 @@
   %body{:class => controller.controller_name}
     #left
       %section#home.top
-        %a{:href => today_study_url} A+
+        %a{:href => todays_study_path} A+
       #topics-menu
         #subject-filter
           = form_tag("/filter_subject", method: "get") do
@@ -33,7 +33,8 @@
     #right
       %nav.top#main-options
         .left
-          = link_to 'Today\'s study', today_study_path
+          = link_to 'Today\'s study', todays_study_path
+          = link_to 'Week\'s study', weeks_study_path
           = link_to 'Subjects', subjects_path
           = link_to 'Topics', topics_path
         #profile.right
@@ -48,7 +49,7 @@
       #content
         #yield
           = yield
-        - if ( ["topics", "cards", "review_box"].include? controller.controller_name and not ["topics#index", "topics#new", 'review_box#today_study'].include? "#{controller.controller_name}##{controller.action_name}")
+        - if ( ["topics", "cards", "review_box"].include? controller.controller_name and not ["topics#index", "topics#new", 'review_box#todays_study', 'review_box#weeks_study'].include? "#{controller.controller_name}##{controller.action_name}")
           #options-bar
             = form_tag("/topics/#{@topic._id}/set_reviewing", method: "patch") do
               = @topic.reviewing ? submit_tag('', id: 'reviewing') : submit_tag('', id: 'not-reviewing')

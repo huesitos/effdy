@@ -61,7 +61,6 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         Topic.set_review_boxes @topic
-        Topic.set_review_dates @topic
         format.html { redirect_to @topic }
       else
         format.html { redirect_to new_topic_path(errors: @topic.errors.full_messages.each.to_a) }
@@ -103,9 +102,9 @@ class TopicsController < ApplicationController
   def set_reviewing
     respond_to do |format|
       if @topic.reviewing
-        @topic.update(reviewing: false)
+        Topic.unset_reviewing @topic
       else 
-        @topic.update(reviewing: true)
+        Topic.set_reviewing @topic
         Topic.set_review_dates @topic
       end
 

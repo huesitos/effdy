@@ -1,0 +1,13 @@
+%h2 Review boxes
+
+#weeks_study
+	- @review_boxes.each do |day, rbl|
+		%ul
+			#day= "#{@wdays[Date.parse(day).wday]} #{day[-2..-1]}th"
+			- rbl.each do |rb|
+				%li
+					- if rb.topic.subject
+						%span.tag{style: "background-color:##{rb.topic.subject.color}"}
+							=rb.topic.subject.code
+					= rb.topic.title
+					%span{class: "box b#{rb.box}", id: "box"}

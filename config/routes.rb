@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   get 'share_request/destroy'
 
   get 'filter_subject' => 'application#filter_subject'
-  get 'today_study' => 'review_box#today_study'
-  get 'week_study' => 'review_box#week_study'
+  get 'todays_study' => 'review_box#todays_study'
+  get 'weeks_study' => 'review_box#weeks_study'
 
   resources :subjects do
     patch 'archive' => 'subjects#archive', as: :archive

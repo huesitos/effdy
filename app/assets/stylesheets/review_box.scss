@@ -33,7 +33,7 @@
 		margin-right: 10px;
 	}
 
-	#todays_study {
+	#todays_study, #weeks_study {
 		ul {
 			list-style: none;
 			padding: 0;
@@ -89,6 +89,19 @@
 			border-radius: 0.2em;
 			color: white;
 			font-size: 0.85em;
+		}
+	}
+
+	#weeks_study {
+		ul {
+			display: inline-block;
+			vertical-align: top;
+			margin-right: 4em;
+		}
+
+		#day {
+			text-align: center;
+			font-weight: bold;
 		}
 	}
 }

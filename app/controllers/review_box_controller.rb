@@ -1,14 +1,22 @@
 # ReviewBoxController
 class ReviewBoxController < ApplicationController
-  before_action :set_topic, except: [:today_study]
+  before_action :set_topic, except: [:todays_study, :weeks_study]
   before_action :set_card, only: [:front, :back, :answer]
   before_action :authenticate_user!
 
-  # GET /today_study
-  def today_study
+  # GET /todays_study
+  def todays_study
     @view_title = "Today's study"
     user = User.find_by(username: session[:user_uname])
-    @review_boxes = ReviewBox.today_study(user)
+    @review_boxes = ReviewBox.todays_study(user)
+  end
+
+  # GET /week_study
+  def weeks_study
+    @wdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    @view_title = "Week's study"
+    user = User.find_by(username: session[:user_uname])
+    @review_boxes = ReviewBox.weeks_study(user)
   end
 
   # GET	/topics/:topic_id/set_review
