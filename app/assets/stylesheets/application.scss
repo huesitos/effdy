@@ -218,6 +218,7 @@ table {
 	display: flex;
 	border-bottom: 0.2em solid #dd8;
 	height: 30px;
+	margin-top:1.25em;
 
 	form {
 		width: 100%;
@@ -254,22 +255,7 @@ table {
 	}
 }
 
-#search-topic{
-       h5{
-      font-size: 1.5em;
-      }
-			text-align: center;
-			border-radius: 0.5em;
-			background-color: #6D929B;
-			color: #fff;
-			width: 90%;
-			margin-top:1.75em;
-			margin-bottom: 1em;
-			margin-left: 0.5em;
-			border-bottom: 1px solid #dd8;
-	   	padding: 0.5em 5px;
-		  line-height: 25px;
-}
+
 
 
 #topics-list {
@@ -285,35 +271,7 @@ table {
 		border-bottom: 1px dashed #dd8;
 	}
 
-	  #new-topic {
 
-			text-align: center;
-			border-radius: 0.5em;
-			background-color: #6D929B;
-			color: #fff;
-			width: 90%;
-			margin: 1em auto;
-			padding: 0.5em 5px;
-
-			a:visited {
-			color: #fff;
-		}
-     }
-
-    #old-topic {
-      h5{
-      font-size: 1.5em;
-      }
-			text-align: center;
-			border-radius: 0.5em;
-			background-color: #6D929B;
-			color: #fff;
-			width: 90%;
-			margin: 1em auto;
-			border-bottom: 1px solid #dd8;
-		  padding: 0.5em 5px;
-		  line-height: 25px;
-    }
 
 	.topic {
 		border-bottom: 1px solid #dd8;
