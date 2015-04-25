@@ -10,20 +10,4 @@
 
 #topics-list
   %ul
-    - @topics.each do |topic|
-      %li
-        .info
-          %span#code{style: topic.subject.nil? || "color:##{topic.subject.color}" }
-            - if topic.subject
-              = topic.subject.code
-          %span#link
-            = link_to topic.title, topic
-        .options
-          / Enable after adding AJAX because it will redirect to topic's page
-          / = form_tag("/topics/#{topic._id}/set_reviewing", method: "patch") do
-          /   = topic.reviewing ? submit_tag('', id: 'reviewing') : submit_tag('', id: 'not-reviewing')
-          = link_to '', topic, :class => 'btn', :id => 'boxes'
-          = link_to '', new_topic_card_path(topic), :class => 'btn', :id => 'new-card'
-          = link_to '', topic_cards_path(topic), :class => 'btn', :id => 'cards'
-          = link_to '', edit_topic_path(topic), :class => 'btn edit'
-          = link_to '', topic, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'
+    = render @topics
