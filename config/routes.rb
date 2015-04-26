@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root 'welcome#welcome'
 
+  get 'share_request/new/:type/:oid' => 'share_request#new', as: :share_request_new
+  post 'share_requests/:type/:oid' => 'share_request#create', as: :share_requests
+  post 'share_request/share'
+  get 'share_request/notify'
+  delete 'share_request/destroy'
+
   get 'filter_subject' => 'application#filter_subject'
   get 'todays_study' => 'review_box#todays_study'
   get 'weeks_study' => 'review_box#weeks_study'
