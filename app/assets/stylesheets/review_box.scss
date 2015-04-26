@@ -14,13 +14,17 @@
 		border: 1px solid #eee;
 		box-shadow: 0 3px 3px 0 #ccc;
 
+		textarea {
+			width: 95%;
+			height: 4.5em;
+			margin-top: 0.5em;
+			margin-bottom: 5px;
+			border-color: #ccc;
+			padding: 0.5em;
+		}
+
 		form {
 			width: 100%;
-			#u_answer {
-			  width: 97%;
-				height: 60px;
-				margin-bottom: 5px;
-			}
 		}
 		p#front {
 			line-height: 115px;

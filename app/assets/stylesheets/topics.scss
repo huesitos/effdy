@@ -3,17 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .topics {
-	form#in-filter {
-		select {
-			width: 79%;
-			padding-left: 1em;
-		}
-	}
 	#topics-list {
-		form {
-			display: inline-block;
-			width: 25px;
-		}
 		li {
 			width: 100%;
 
@@ -77,6 +67,36 @@
 	  background: url(asset-path("box3_half.png")) no-repeat center;
 	  background-size: 100%;
 	  margin-bottom: 1.5em;
+	}
+
+	.destroy{
+		background-size: 2em;
+	}
+	.edit{
+		background-size: 2em;
+	}
+
+	#filter {
+		width: 40%;
+		margin-bottom: 1em;
+		margin-left: 59%;
+
+		form {
+			width: 100%;
+		}
+
+		#subject-list {
+			border-width: medium medium 1px;
+			border-style: none none solid;
+			border-color: -moz-use-text-color -moz-use-text-color #CCC;
+			width: 80%;
+		}
+
+		#submit {
+			display: inline-block;
+			width: 13%;
+			vertical-align: bottom;
+		}
 	}
 }
 /*

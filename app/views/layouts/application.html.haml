@@ -45,8 +45,6 @@
         %h1= @view_title
         - if controller.controller_name == "subjects"
           = link_to 'Add subject', new_subject_path
-        - if "#{controller.controller_name}##{controller.action_name}" == "topics#index"
-          = link_to 'Add topic', new_topic_path
       #content
         #yield
           = yield

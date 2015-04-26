@@ -5,7 +5,13 @@
     .answer
       = card.answer.length > 100 ? card.answer[0, 100]+"..." : card.answer
   .options
-    .box-number
-      =card.box
+    - box = ""
+    - if card.box == 1
+      - box = "b1"
+    - if card.box == 2 
+      - box = "b2"
+    - if card.box == 3 
+      - box = "b3"
+    %div{class: "box #{box}"}
     =link_to '', edit_topic_card_path(card.topic_id, card._id), :class => 'btn edit'
     =link_to '', topic_card_path(card.topic_id, card._id), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'

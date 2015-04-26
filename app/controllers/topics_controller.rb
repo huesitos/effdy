@@ -12,7 +12,7 @@ class TopicsController < ApplicationController
   def index
     @subjects = Subject.only(:code).all
 
-    if params[:commit] == "Search"
+    if params[:commit] == "Search" and params[:subject] != ""
       if params[:subject] == "all"
         @topics = Topic.all
       elsif params[:subject] == "none"

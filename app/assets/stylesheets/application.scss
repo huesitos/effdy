@@ -21,8 +21,9 @@ body {
 	margin: 0 0;
 	padding: 0 0;
 	background: url(asset-path("swirl.png"));
-	background-size: 100px;
+	background-size: 15em;
 	line-height: 1em;
+	font-size: 12px;
 	font-family: 'Lato', sans-serif;
 }
 
@@ -43,6 +44,7 @@ textarea {
 
 h1 {
 	font-size: 2em;
+	margin-bottom: 1em;
 }
 h2 {
 	font-size: 1.5em;
@@ -86,7 +88,7 @@ form {
 	}
 	input[type=text] {
 		width: 100%;
-		height: 3em;
+		height: 1.5em;
 		padding: 0 .5em;
 	}
 	a {
@@ -96,20 +98,18 @@ form {
 		color: #333;
 	}
 	input[type=submit] {
-		background: transparent;
-		border: 1px solid #7DB07D;
-		border-radius: 2px;
-		background: #7DB07D;
-		color: white;
+		color: rgb(125, 176, 125);
+		background: none repeat scroll 0% 0% transparent;
+		border: medium none;
 	}
 	input[type=submit]:hover {
-		background: #B0BD4E;
-		border: 1px solid #B0BD4E;
+		cursor: pointer;
+		cursor: hand;
 	}
 }
 
 select {
-	font-size: 15px;
+	font-size: 1em;
 	width: 100%;
 }
 
@@ -133,6 +133,9 @@ table {
 .left {
 	float: left;
 }
+.actions {
+	margin-top: 0.5em;
+}
 
 .top {
 	background-color: #507642;
@@ -149,7 +152,7 @@ table {
 
 	#home {
 		text-align: center;
-		width: 9%;
+		width: 25%;
 		display: inline-block;
 
 		a{
@@ -163,7 +166,7 @@ table {
 
 	#main-options {
 		display: inline-block;
-		width: 90%;
+		width: 74%;
 		margin-top: 1em;
 		vertical-align: top;
 		line-height: 2em;
@@ -195,6 +198,7 @@ table {
 
 .bottom {
 	width: 100%;
+	height: 100%;
 	margin-top: 4em;
 
 	#left {
@@ -206,22 +210,6 @@ table {
 		#topics-menu {
 			width: 100%;
 			z-index: 2;
-		}
-
-		.styled-select {
-			overflow: hidden;
-			background: url(asset-path("down-arrow.svg")) no-repeat right #fff;
-			border-right: 1px solid #dd8;
-			background-size: 15px;
-
-			select {
-				padding-left: 0.5em;
-				background: transparent;
-				width: 110%;
-				border: 0;
-				height: 100%;
-				-webkit-appearance: none;
-			}
 		}
 
 		#subject-filter {
@@ -279,7 +267,6 @@ table {
 			}
 
 			#new-topic, .topic {
-				padding: .1em .5em;
 				a {
 					display: inline-block;
 				}
@@ -292,13 +279,15 @@ table {
 				a{
 					width: 100%;
 					color: white;
+					display: inline-block;
+					padding: 0.5em 0;
 				}
 			}
 
 			.topic {
 				border-bottom: 1px dashed #ccc;
 				background: #fff;
-
+				padding: .1em .5em;
 
 		    a:hover {
 		      color: #45bbe6;
@@ -335,7 +324,8 @@ table {
 		#title-bar {
 			position: relative;
 			z-index: 0.5;
-			padding: 0.5em;
+			padding-top: 1em;
+			padding-left: 1em;
 
 			h1 {
 				display: inline-block;
@@ -352,6 +342,7 @@ table {
 			padding: 0.5em 0.5em;
 			background: inherit;
 			width: 98%;
+			font-size: 1.1em;
 
 			#yield {
 				margin-left: 10px;
@@ -367,24 +358,36 @@ table {
 			padding: 0 1%;
 			vertical-align: top;
 
+			.btn {
+				width: 2em;
+				height: 2em;
+			}
+
 			form {
 				display: block;
 
 				#reset {
 					background: url(asset-path("box1_half.png")) no-repeat center;
-					background-size: 25px;
+					background-size: 2em;
 					padding: 3%;
 				}
 			}
-		}
 
-		#options-bar, #topics-list {
+			#new-card {
+				background: url(asset-path("new_card.png")) no-repeat center;
+				background-size: 2em;
+			}
+			#boxes {
+				background: url(asset-path("all_boxes.png")) no-repeat center;
+				background-size: 2em;
+			}
+
 			form {
 				input[type=submit] {
 					background: transparent;
 					border: 0;
-					width: 25px;
-					height: 25px;
+					width: 2em;
+					height: 2em;
 					padding: 0;
 				}
 				input[type=submit]:hover {
@@ -393,27 +396,36 @@ table {
 				}
 				#reviewing {
 					background: url(asset-path("review-on.png")) no-repeat center;
-					background-size: 25px;
+					background-size: 2em;
 				}
 				#not-reviewing {
 					background: url(asset-path("review-off.png")) no-repeat center;
-					background-size: 25px;
+					background-size: 2em;
 				}
+			}
+
+			#cards {
+				background: url(asset-path("cards.png")) no-repeat center;
+				background-size: 2em;
+			}		
+			.destroy{
+				background: url(asset-path("destroy.svg")) no-repeat center;
+				background-size: 2em;
+			}
+			.edit{
+				background: url(asset-path("edit.png")) no-repeat center;
+				background-size: 2em;
+			}
+			.share{
+				background: url(asset-path("share.png")) no-repeat center;
+				background-size: 2em;
 			}
 		}
 
-		#new-card {
-			background: url(asset-path("new_card.png")) no-repeat center;
-			background-size: 1.5em;
-		}
 		#cards {
 			background: url(asset-path("cards.png")) no-repeat center;
 			background-size: 1.5em;
-		}
-		#boxes {
-			background: url(asset-path("all_boxes.png")) no-repeat center;
-			background-size: 1.5em;
-		}
+		}		
 		.destroy{
 			background: url(asset-path("destroy.svg")) no-repeat center;
 			background-size: 1.5em;
@@ -433,7 +445,6 @@ table {
 		  	padding: 0;
 
 		  	li {
-		  		width: 90%;
 		  		display: block;
 		  		border-bottom: #ccc 1px dashed;
 
@@ -441,7 +452,7 @@ table {
 				  	display: inline-block;
 				  	width: 80%;
 				  	height: 25px;
-				  	line-height: 2em;
+				  	line-height: 1em;
 
 			  		span {
 			  			display: inline-block;
@@ -459,7 +470,7 @@ table {
 			  			}
 			  		}
 				  	#link:hover {
-							background-color: #efefef;
+							background-color: rgb(239, 255, 203);
 						}
 				  }
 		  	}

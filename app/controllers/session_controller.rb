@@ -11,6 +11,8 @@ class SessionController < ApplicationController
 
   def destroy
   	reset_session
+  	cache = Rails.cache
+    cache.write('subject', '')
   	# Go back to welcome page
 		redirect_to root_url
   end

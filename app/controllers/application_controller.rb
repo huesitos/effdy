@@ -35,7 +35,6 @@ class ApplicationController < ActionController::Base
       @app_subjects = @app_subjects.not_archived if @app_subjects
 
       cache = Rails.cache
-      # cache.write('subject', 'all')
 
       @menu_topics = Topic.from_user(session[:user_uname])
 
@@ -54,7 +53,7 @@ class ApplicationController < ActionController::Base
           @menu_topics = @menu_topics.not_archived
         end
 
-        @menu_topics = @menu_topics.sort(reviewing:-1)
+        @menu_topics = @menu_topics.sort(reviewing:-1).limit(15)
       end
     end
     

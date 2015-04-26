@@ -1,7 +1,7 @@
 #card
   %div
     %p.question.bold= @card.question
-    %p.answer= @card.answer
+    = text_area_tag(:answer, @card.answer, disabled: true)
 
 #card
   %p.bold Your answer:

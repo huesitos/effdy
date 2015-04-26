@@ -1,8 +1,8 @@
 #card
-  %p.question.bold#front= @card.question
+	%p.question.bold#front= @card.question
 
 #card
-  = form_tag(topic_card_back_path, method: 'get') do
-    = label_tag(:u_answer, "Your answer", class: "bold")
-    = text_area_tag(:u_answer)
-    = submit_tag('Flip')
+	= form_tag(topic_card_back_path, method: 'get') do
+		= label_tag(:u_answer, "Your answer", class: "bold")
+		= text_area_tag(:u_answer)
+		= submit_tag('Flip')
