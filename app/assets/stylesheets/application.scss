@@ -487,6 +487,28 @@ table {
 	}
 }
 
+.review_box, .welcome {
+	.box {
+		display: inline-block;
+		width: 2em;
+		height: 2em;
+		vertical-align: bottom;
+	}
+	
+	.b1 {
+		background: url(asset-path("box1.png")) no-repeat center;
+		background-size: 100%;
+	}
+	.b2 {
+		background: url(asset-path("box2.png")) no-repeat center;
+		background-size: 100%;
+	}
+	.b3 {
+		background: url(asset-path("box3.png")) no-repeat center;
+		background-size: 100%;
+	}
+}
+
 .review_box {
 	#todays_study, #weeks_study {
 		ul {
@@ -501,28 +523,8 @@ table {
 					display: inline-block;
 				}
 
-				.box {
-					display: inline-block;
-					width: 2em;
-					height: 2em;
-					vertical-align: bottom;
-				}
-
 				#box {
 					margin-left: 1em;
-				}
-
-				.b1 {
-					background: url(asset-path("box1.png")) no-repeat center;
-					background-size: 100%;
-				}
-				.b2 {
-					background: url(asset-path("box2.png")) no-repeat center;
-					background-size: 100%;
-				}
-				.b3 {
-					background: url(asset-path("box3.png")) no-repeat center;
-					background-size: 100%;
 				}
 
 				a {

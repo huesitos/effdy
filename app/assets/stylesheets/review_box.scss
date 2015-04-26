@@ -25,6 +25,35 @@
 
 		form {
 			width: 100%;
+
+			.answer {
+				margin-top: 0.30em;
+				width: 2em;
+				height: 1em;
+				display: inline-block;
+			}
+			.answer:first-child {
+				margin-right: 20%;
+			}
+
+			#check, #wrong {
+				color: transparent;
+			}
+
+			#check {
+				width: 100%;
+				heigth: 100%;
+				background: url(asset-path("check.png")) no-repeat center;
+				background-size: 100%;
+			}
+
+			#wrong {
+				width: 100%;
+				heigth: 100%;
+				background: url(asset-path("wrong.png")) no-repeat center;
+				background-size: 100%;
+			}
+
 		}
 		p#front {
 			line-height: 115px;
