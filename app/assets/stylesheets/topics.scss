@@ -31,9 +31,9 @@
 	}
 	.box {
 		display: inline-block;
-		width: 100px;
-		height: 80px;
-		margin: 0 15px;
+		width: 8em;
+		height: 8em;
+		margin: 0 1em;
 		text-align: center;
 		padding: 3%;
 
@@ -45,54 +45,55 @@
 
 	.b1_e{
 	  background: url(asset-path("box1_empty.png")) no-repeat center;
-	  background-size: 100px;
+	  background-size: 100%;
 	  margin-bottom: 1.5em;
 	}
 
 	.b2_e{
 	  background: url(asset-path("box2_empty.png")) no-repeat center;
-	  background-size: 100px;
+	  background-size: 100%;
 	  margin-bottom: 1.5em;
 	}
 
 	.b3_e{
 	  background: url(asset-path("box3_empty.png")) no-repeat center;
-	  background-size: 100px;
+	  background-size: 100%;
 	  margin-bottom: 1.5em;
 	}
 
   .b1{
 	  background: url(asset-path("box1_half.png")) no-repeat center;
-	  background-size: 100px;
+	  background-size: 100%;
 	  margin-bottom: 1.5em;
 	}
 
 	.b2{
 	  background: url(asset-path("box2_half.png")) no-repeat center;
-	  background-size: 100px;
+	  background-size: 100%;
 	  margin-bottom: 1.5em;
 	}
 
 	.b3{
 	  background: url(asset-path("box3_half.png")) no-repeat center;
-	  background-size: 100px;
+	  background-size: 100%;
 	  margin-bottom: 1.5em;
 	}
 }
-
-@media only screen and (min-width: 30em) {
+/*
+@media only screen and (max-width: 550px) {
   .topics {
-	.boxes{
-		padding: 0 50%;
-	}
+		.boxes{
+			padding: 0 50%;
+		}
 	}
 
 }
 
 @media only screen and (min-width: 50em) {
   .topics {
-	.boxes{
-		padding: 0 8%;
-	}
+		.boxes{
+			padding: 0 8%;
+		}
 	}
 }
+*/
