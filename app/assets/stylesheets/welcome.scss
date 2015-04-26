@@ -38,30 +38,36 @@
   		    height: 28px;
         }
 
+        }
+
       #image{
-         a{
-          display: inline-block;
-          img{
-          width:1em;
-          height:1em;
-          }
-         }
-      }
-  		}
+          margin:auto;
+          width: 40%;
+             img{
+             display: inline-block;
+             }
     }
+ }
 }
 
-@media only screen and (min-width: 30em) {
+@media only screen and (min-width: 25em) {
   .welcome{
     #head {
       h1{
         font-size: 4em;
       }
     }
+     #image{
+          margin:auto;
+          width: 40%;
+             img{
+             display: block;
+             }
+    }
   }
 }
 
-@media only screen and (min-width: 60em) {
+@media only screen and (min-width: 50em) {
   .welcome{
     #head {
       h1{
@@ -70,5 +76,10 @@
         margin-bottom: 0.5em;
       }
     }
+    #image{
+          margin:auto;
+          width: 50%;
+    }
+
   }
 }
