@@ -39,12 +39,13 @@
         }
 
       #image{
-         background: url(asset-path("box1_empty.png")) no-repeat center;
-	       background-size: 100%;
-	       margin-bottom: 1.5em;
-	       height: 2em;
-	       width: 2em;
-	       display: inline-block;
+         a{
+          display: inline-block;
+          img{
+          width:1em;
+          height:1em;
+          }
+         }
       }
   		}
     }
