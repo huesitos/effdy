@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
       @menu_topics = Topic.from_user(session[:user_uname])
 
       if @menu_topics
-        if cache.read('subject') != ''
+        if cache.read('subject') != "" and cache.read('subject')
           @selected_subject = cache.read('subject')
           if @selected_subject == "all"
             @menu_topics = @menu_topics.not_archived
