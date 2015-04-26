@@ -25,12 +25,13 @@
     }
 
     #image{
-      background: url(asset-path("box1_empty.png")) no-repeat center;
-      background-size: 100%;
-      margin-bottom: 1.5em;
-      height: 2em;
-      width: 2em;
-      display: inline-block;
+      margin: 0 41%;
+      padding: 0 7px;
+      img{
+        width: 9em;
+        height: 9em;
+        display: inline-block;
+      }
     }
 
     #twitter {
@@ -41,7 +42,6 @@
       margin-top: -14em;
       margin-right:0.75em;
     }
-
     a{
       display: inline-block;
       width: 158px;
@@ -51,13 +51,13 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
+
   .welcome{
     #head {
       h1{
         font-size: 4em;
       }
     }
-
     #twitter {
       width: 158px;
       height: 28px;
