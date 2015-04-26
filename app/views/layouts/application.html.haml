@@ -58,5 +58,6 @@
             = link_to '', topic_cards_path(@topic), :class => 'btn', :id => 'cards'
             = form_tag("/topics/#{@topic._id}/reset_cards", method: "patch") do
               = submit_tag('', id: 'reset')
+            = link_to '', share_request_new_path(type:'topic', oid:@topic._id), :class => 'btn share'
             = link_to '', edit_topic_path(@topic), :class => 'btn edit'
             = link_to '', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'

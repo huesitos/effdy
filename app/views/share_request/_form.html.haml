@@ -1,4 +1,4 @@
-= form_for @share_request, url:share_request_create_path do |f|
+= form_for @share_request, url: @url do |f|
   - if @share_request.errors.any?
     #error_explanation
       %h2= "#{pluralize(@share_request.errors.count, "error")} prohibited this subject from being saved:"
