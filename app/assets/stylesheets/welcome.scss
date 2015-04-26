@@ -11,11 +11,11 @@
       text-align: center;
       font-family: 'Lato', sans-serif;
       font-size: 3em;
-      line-height: 1.25em;
+      line-height: 1em;
     }
 
-     h2{
-      margin-top:0.75em;
+    h2{
+      margin-top:0.50em;
       margin-left: 2em;
       margin-right: 2em;
       text-align: center;
@@ -24,50 +24,68 @@
       line-height: 1.25em;
     }
 
-
-		#twitter {
-		  width: 158px;
-		  height: 28px;
-		  background: image-url("sign-in-with-twitter.png") no-repeat center;
-      float: right;
-      margin-top: 0.75em;
-      margin-right:0.75em;
-       a{
-        display: inline-block;
-        width: 158px;
-		    height: 28px;
-      }
-
     #image{
-       background: url(asset-path("box1_empty.png")) no-repeat center;
-       background-size: 100%;
-       margin-bottom: 1.5em;
-       height: 2em;
-       width: 2em;
-       display: inline-block;
+      background: url(asset-path("box1_empty.png")) no-repeat center;
+      background-size: 100%;
+      margin-bottom: 1.5em;
+      height: 2em;
+      width: 2em;
+      display: inline-block;
     }
-		}
+
+    #twitter {
+      width: 158px;
+      height: 28px;
+      background: image-url("sign-in-with-twitter.png") no-repeat center;
+      float: right;
+      margin-top: -14em;
+      margin-right:0.75em;
+    }
+
+    a{
+      display: inline-block;
+      width: 158px;
+      height: 28px;
+    }
   }
 }
 
-@media only screen and (min-width: 30em) {
+@media screen and (min-width: 320px) and (max-width: 768px) {
   .welcome{
     #head {
       h1{
         font-size: 4em;
       }
     }
+
+    #twitter {
+      width: 158px;
+      height: 28px;
+      background: image-url("sign-in-with-twitter.png") no-repeat center;
+      float: right;
+      margin-top: -19em;
+      margin-right:0.75em;
+    }
   }
 }
 
-@media only screen and (min-width: 60em) {
+@media only screen and (min-width: 320px) and (max-width: 550px) {
   .welcome{
     #head {
       h1{
         font-size: 4.5em;
-        line-height: 0.75em;
+        line-height: 1em;
         margin-bottom: 0.5em;
       }
+    }
+
+    #twitter {
+      width: 158px;
+      height: 28px;
+      background: image-url("sign-in-with-twitter.png") no-repeat center;
+      float: right;
+      margin-top: -21.5em;
+      margin-right:0.75em;
     }
   }
 }
