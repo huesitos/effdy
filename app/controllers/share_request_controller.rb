@@ -11,23 +11,22 @@ class ShareRequestController < ApplicationController
 
     user=User.find_by(username: params[:share_request][:recipient])
 
- respond_to do |format|
+    respond_to do |format|
       if user
         if @share_request.save
           if params[:type] == 'topic'
-          format.html { redirect_to Topic.find(params[:oid]) }
-        else 
-          format.html { redirect_to Subject.find(params[:oid]) }
+            format.html { redirect_to Topic.find(params[:oid]) }
+          else 
+            format.html { redirect_to Subject.find(params[:oid]) }
+            end
+        else
+          format.html { render :new }
+          format.json { render json: @share_request.errors, status: :unprocessable_entity }
         end
       else
-        format.html { render :new }
-        format.json { render json: @share_request.errors, status: :unprocessable_entity }
-      end
-      else
-       format.html { redirect_to share_request_new_path, notice: "username not found" }
+        format.html { redirect_to share_request_new_path, notice: "username not found" }
       end
     end
-    
   end
 
   def share
