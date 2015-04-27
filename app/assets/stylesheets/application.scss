@@ -83,28 +83,38 @@ form {
 		display: inline-block;
 		width: 100%;
 	}
+	
 	label:after {
 		content: ":";
 	}
+	
 	input[type=text] {
 		width: 100%;
 		height: 1.5em;
 		padding: 0 .5em;
 	}
+	
 	a {
 		margin-right: 10px;
 	}
+	
 	a:visited {
 		color: #333;
 	}
+	
 	input[type=submit] {
 		color: rgb(125, 176, 125);
 		background: none repeat scroll 0% 0% transparent;
 		border: medium none;
 	}
+	
 	input[type=submit]:hover {
 		cursor: pointer;
 		cursor: hand;
+	}
+
+	label {
+		margin-bottom: 0.25em;
 	}
 }
 
@@ -222,7 +232,7 @@ table {
 
 				#subject-list {
 					font-size: 2em;
-					width: 70%;
+					width: 80%;
 					height: 100%;
 					border-bottom: none;
 					border-top: none;
@@ -231,7 +241,7 @@ table {
 				}
 
 				#search-submit {
-					width: 20%;
+					width: 14%;
 					heigth: 100%;
 					text-align: center;
 
@@ -334,7 +344,7 @@ table {
 			a {
 				float: right;
 				display: inline-block;
-				margin-right: 0.25em;
+				margin-right: 0.5em;
 			}
 		}
 
@@ -558,12 +568,17 @@ table {
 			width: 33%;
 			font-size: 0.7em;
 			margin: 0 0 2em 0;
+
+			li {
+				border-bottom: 1px dashed #7DB07D;
+				padding-bottom: 0.25em;
+			}
 		}
 
 		#day {
 			text-align: center;
 			font-weight: bold;
-			border-bottom: 0.1em solid rgb(125, 176, 125);
+			border-bottom: 0.1em dashed rgb(125, 176, 125);
 			padding-bottom: 0.3em;
 		}
 	}
@@ -578,34 +593,107 @@ table {
 	font-weight: bold;
 }
 
-@media only screen and (min-width: 30em) {
-
-
-}
-
-@media only screen and (min-width: 50em) {
-
-}
-
-@media only screen and (max-width: 768px) {
-	#left {
-		display: none;
-	}
-	#main-options a, #profile {
-		font-size: 0.8em;
-	}
-	#right {
-		width: 100%;
-
-		/* #logo {
-			display: inline-block;
-			color: white;
-			margin-right: 1em;
-			background: url(asset-path("A+.png")) no-repeat bottom center;
-			background-size: 3em;
-			display: inline-block;
-			height: 32px;
-			width: 12%;
-		}*/ 
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+	.bottom #right #content #yield #weeks_study ul {
+		margin: 0 1em 2em;
+		width: 45%;
 	}
 }
+
+@media only screen and (max-width: 800px) {
+	body {
+		font-size: 9px;
+	}
+	.top { 
+		#main-options {
+			width: 89%
+		}
+
+		#home {
+	    width: 9%;
+	  }
+  }
+	
+	.bottom { 
+		#left {
+			display: none;
+
+			#subject-filter form #subject-list {
+				width: 67%;
+				font-size: 1.8em;
+			}
+
+			#topics-list .topic a {
+		    line-height: 1.4em;
+		  }
+		}
+
+	  #right {
+	    width: 100%;
+	  }
+	}
+}
+
+@media only screen and (max-width: 600px) {
+ 	.bottom #right #content #options-bar {
+	 	margin-left: -0.5em;
+	 }
+}
+
+@media only screen and (min-width: 970px) and (max-width: 1000px) {
+	.bottom {
+		#left #topics-menu #subject-filter form #subject-list {
+			width: 71%;
+		}
+	
+		#right #content #yield #weeks_study ul {
+			width: 49%;
+		}
+	}
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1280px) {
+	.bottom {
+		#left #topics-menu #subject-filter form #subject-list {
+			width: 77%;
+		}
+
+		#right #content #yield #weeks_study ul {
+			width: 37%;
+			margin-right: 2em;
+		}
+	}
+}
+
+@media only screen and (min-width: 970px) and (max-width: 1280px) {
+	body {
+		font-size: 10px;
+	}
+
+	.bottom {
+		#left #topics-menu #topics-list .topic {
+			span {
+				margin-top: 0.35em;
+				font-size: 0.7em;
+				width: 4em;
+			}
+
+			a {
+				line-height: 1.3em;
+			}
+		}
+
+		#right { 
+			#content { 
+				#yield #filter form #subject-list {
+					width: 65%;
+				}
+			}
+
+			#options-bar {
+		  	margin-left: -0.5em;
+		  }
+		}
+	}
+}
+

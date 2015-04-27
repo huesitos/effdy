@@ -30,7 +30,7 @@
                 %option{value: "#{subject.code}"}
               %option{value: 'none'}
             #search-submit
-              = submit_tag("Search")
+              = submit_tag("Go")
         #topics-list
           %h4 Topic(s)
           #new-topic= link_to 'Add topic', new_topic_path
@@ -45,6 +45,8 @@
         %h1= @view_title
         - if controller.controller_name == "subjects"
           = link_to 'Add subject', new_subject_path
+        - if "#{controller.controller_name}##{controller.action_name}" == "topics#index"
+          = link_to 'Add Topic', new_topic_path
       #content
         #yield
           = yield

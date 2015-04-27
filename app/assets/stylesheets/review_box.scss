@@ -3,11 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .review_box {
-	#card {
+	.card {
 		width: 45%;
 		display: inline-block;
 		vertical-align: top;
-		height: 9em;
+		height: 11em;
 		margin: 0 auto;
 		padding: 5px;
 		background-color: #fff;
@@ -16,11 +16,40 @@
 
 		textarea {
 			width: 95%;
-			height: 4.5em;
+			height: 6em;
 			margin-top: 0.5em;
 			margin-bottom: 5px;
 			border-color: #ccc;
 			padding: 0.5em;
+		}
+
+		textarea#question_front {
+			width: 100%;
+			margin: 0px;
+			border: medium none;
+			height: 100%;
+			padding: 0px;
+		}
+
+		textarea#question_front, textarea#question_back {
+			color: black;
+			text-align: center;
+		}
+
+		textarea#question_back {
+			margin: 0;
+			height: 4em;
+		}
+
+		textarea#answer {
+			color: #555;
+			height: 6.5em;
+		}
+
+		textarea#question_back, textarea#answer {
+			border: none;
+			width: 100%;
+			padding: 0;
 		}
 
 		form {
@@ -64,5 +93,16 @@
 	}
 	#card:first-child {
 		margin-right: 10px;
+	}
+}
+
+@media only screen and (max-width: 1290px) {
+  .review_box {
+		.card {
+			width: 95%;
+		}
+		.card:first-child {
+			margin-bottom: 1em;
+		}
 	}
 }

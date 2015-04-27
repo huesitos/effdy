@@ -1,9 +1,9 @@
-#card
+.card
 	%div
-		%p.question.bold= @card.question
+		= text_area_tag(:question_back, @card.question, disabled: true)
 		= text_area_tag(:answer, @card.answer, disabled: true)
 
-#card
+.card
 	%p.bold Your answer:
 	= form_tag(topic_card_answer_path, method: 'post') do
 		= text_area_tag(:u_answer, (@u_answer != "") ? @u_answer : "No answer", disabled: true)

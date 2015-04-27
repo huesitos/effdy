@@ -99,21 +99,37 @@
 		}
 	}
 }
-/*
-@media only screen and (max-width: 550px) {
-  .topics {
+
+@media only screen and (max-width: 800px) {
+	.topics {
 		.boxes{
-			padding: 0 50%;
+			padding: 0 25%;
 		}
-	}
 
-}
-
-@media only screen and (min-width: 50em) {
-  .topics {
-		.boxes{
-			padding: 0 8%;
+		#filter #subject-list {
+			width: 60%;
+			font-size: 0.8em;
 		}
 	}
 }
-*/
+
+@media only screen and (min-width: 1001px) and (max-width: 1280px) {
+  .topics {
+		.boxes{
+			padding: 0;
+		}
+	}
+}
+
+@media only screen and (min-width: 970px) and (max-width: 1000px) {
+  .topics {
+		.box {
+			width: 5em;
+			height: 5em;
+		}
+
+		.boxes {
+			padding: 0;
+		}
+	}
+}
