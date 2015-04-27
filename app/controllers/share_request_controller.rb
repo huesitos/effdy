@@ -34,6 +34,8 @@ class ShareRequestController < ApplicationController
   end
 
   def notify
+    @view_title = "Notifications"
+    @share_requests = ShareRequest.where(recipient: session[:user_uname])
   end
 
   def destroy

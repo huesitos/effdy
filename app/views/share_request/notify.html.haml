@@ -1,2 +1,8 @@
-%h1 ShareRequest#notify
-%p Find me in app/views/share_request/notify.html.haml
+%h2 Share Request
+%ul
+  -@share_requests.each do |sr|
+    %li
+      = "#{sr.sender} wants to share a #{sr.type} with you."
+      = link_to "Accept", share_request_share_path(sr._id)
+      = link_to "Decline", share_request_destroy_path(sr._id), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
