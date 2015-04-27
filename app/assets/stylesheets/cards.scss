@@ -63,18 +63,20 @@
 
 			.question {
 				height: 30%;
+				width: 100%;
 				font-weight: bold;
 				border-bottom: 1px dashed #888;
 				font-size: 0.8em;
 			}
 			.answer {
 				height: 45%;
+				width: 100%;
 				color: #666;
 				font-size: 0.6em;
 			}
 
 			.question, .answer{
-				padding: 0.5em;
+				padding: 0.5em 0.2em;
 			}
 		}
 		.options {
