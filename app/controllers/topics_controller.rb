@@ -92,7 +92,7 @@ class TopicsController < ApplicationController
   def destroy
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to today_study_path }
+      format.html { redirect_to todays_study_path }
       format.json { head :no_content }
     end
   end
