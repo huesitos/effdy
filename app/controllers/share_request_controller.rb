@@ -31,15 +31,16 @@ class ShareRequestController < ApplicationController
 
   def share
      share_request = ShareRequest.find(params[:id])
-  if share_request[:type] == "topic"
-    Topic.share(Topic.find(share_request[:oid]), session[:user_uname])
-  else
-    Subject.share(Subject.find(share_request[:oid]), session[:user_uname])
-  end
+     if share_request[:type] == "topic"
+       Topic.share(Topic.find(share_request[:oid]), session[:user_uname])
+     else
+       Subject.share(Subject.find(share_request[:oid]), session[:user_uname])
+     end
+     share_request.destroy
 
-  respond_to do |format|
-    format.html { redirect_to share_request_notify_path }
-  end
+     respond_to do |format|
+       format.html { redirect_to share_request_notify_path }
+     end
   end
 
   def notify
@@ -48,10 +49,11 @@ class ShareRequestController < ApplicationController
   end
 
   def destroy
-  share_request = ShareRequest.find(params[:id])
-  share_request.destroy
+    share_request = ShareRequest.find(params[:id])
+    share_request.destroy
 
-  respond_to do |format|
-    format.html { redirect_to share_request_notify_path }
+    respond_to do |format|
+      format.html { redirect_to share_request_notify_path }
+    end
   end
 end
