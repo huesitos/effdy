@@ -59,15 +59,18 @@
 			background-color: #fff;
 			border: 1px solid #e8d9f6;
 			box-shadow: 0 3px 3px 0 #ccc;
+			line-height: 1em;
 
 			.question {
 				height: 30%;
 				font-weight: bold;
 				border-bottom: 1px dashed #888;
+				font-size: 0.8em;
 			}
 			.answer {
 				height: 45%;
 				color: #666;
+				font-size: 0.6em;
 			}
 
 			.question, .answer{

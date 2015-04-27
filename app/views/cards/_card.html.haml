@@ -1,9 +1,9 @@
 .card-container
   .values
     .question
-      =card.question.length > 100 ? card.question[0, 100]+"..." : card.question
+      =card.question.length > 60 ? card.question[0, 60]+"..." : card.question
     .answer
-      = card.answer.length > 100 ? card.answer[0, 100]+"..." : card.answer
+      = card.answer.length > 150 ? card.answer[0, 150]+"..." : card.answer
   .options
     - box = ""
     - if card.box == 1
