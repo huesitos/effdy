@@ -7,27 +7,34 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body{:class => controller.controller_name}
+  .top
+    %section#home
+      %a{:href => todays_study_path}
+    %nav#main-options
+      = link_to 'Today\'s study', todays_study_path
+      = link_to 'Week\'s study', weeks_study_path
+      = link_to 'Subjects', subjects_path
+      = link_to 'Topics', topics_path
+      #profile.right
+        %span= "Hello #{@user.username}!"
+        = link_to 'Logout', logout_path
+  .bottom
     #left
-      %section#home.top
-        %a{:href => todays_study_path}
       #topics-menu
         #subject-filter
           = form_tag("/filter_subject", method: "get") do
-            .styled-select
-              %select{name: 'subject' }
-                %option{value: 'all', selected: @selected_subject == "all" && 'selected'} All
-                - @app_subjects.each do |subject|
-                  %option{value: "#{subject.code}", selected: @selected_subject == "#{subject.code}" && 'selected'}= subject.code
-                %option{value: 'none', selected: @selected_subject == "none" && 'selected'} None
+            %input#subject-list{type: 'text', name: 'subject', list: "subject", placeholder: "filter by subject"}
+            %datalist{id: 'subject'}
+              %option{value: 'all'}
+              - @app_subjects.each do |subject|
+                %option{value: "#{subject.code}"}
+              %option{value: 'none'}
             #search-submit
-              %button{type: 'submit'}
-
-
+              = submit_tag("Go")
         #topics-list
+          %h4 Topic(s)
+          #new-topic= link_to 'Add topic', new_topic_path
           - menu_topics = flash[:subjects] ? flash[:subjects] : @menu_topics
-          #old-topic
-            %h5 Existing Topic(s)
-          #new-topic.topic= link_to 'Add topic', new_topic_path
           - menu_topics.each do |topic|
             .topic
               - if topic.subject
@@ -49,7 +56,7 @@
         - if controller.controller_name == "subjects"
           = link_to 'Add subject', new_subject_path
         - if "#{controller.controller_name}##{controller.action_name}" == "topics#index"
-          = link_to 'Add topic', new_topic_path
+          = link_to 'Add Topic', new_topic_path
       #content
         #yield
           = yield

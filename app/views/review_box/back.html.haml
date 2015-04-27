@@ -1,11 +1,13 @@
-#card
-  %div
-    %p.question.bold= @card.question
-    %p.answer= @card.answer
+.card
+	%div
+		= text_area_tag(:question_back, @card.question, disabled: true)
+		= text_area_tag(:answer, @card.answer, disabled: true)
 
-#card
-  %p.bold Your answer:
-  = form_tag(topic_card_answer_path, method: 'post') do
-    = text_area_tag(:u_answer, (@u_answer != "") ? @u_answer : "No answer", disabled: true)
-    = submit_tag("Correct")
-    = submit_tag("Incorrect")
+.card
+	%p.bold Your answer:
+	= form_tag(topic_card_answer_path, method: 'post') do
+		= text_area_tag(:u_answer, (@u_answer != "") ? @u_answer : "No answer", disabled: true)
+		.answer
+			= submit_tag("Correct", id: "check")
+		.answer
+			= submit_tag("Incorrect", id: "wrong")

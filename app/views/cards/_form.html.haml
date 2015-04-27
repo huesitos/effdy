@@ -8,10 +8,10 @@
           
   .field.side
     = f.label :question
-    = f.text_area :question, placeholder: "Front side"
+    = f.text_area :question, placeholder: "Front side (question)"
   .field.side
     = f.label :answer
-    = f.text_area :answer, placeholder: "Back side"
+    = f.text_area :answer, placeholder: "Back side (answer)"
   .actions
     %a{href: "#{topic_cards_path(@topic)}"} Cancel
     - if @url[/cards\/[0-9]/]

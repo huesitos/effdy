@@ -8,13 +8,14 @@
 		.side {
 			display: inline-block;
 			width: 45%;
-			margin-right: 5px;
+			margin-right: 0.25em;
 
 			textarea {
 				width: 95%;
-				height: 100px;
+				height: 8em;
 				box-shadow: 0 3px 3px 0 #ccc;
 				border: 1px solid #eee;
+				padding: 0.5em;
 			}
 		}
 	}
@@ -28,7 +29,7 @@
 			text-align: center;
 			display: inline-block;
 			width: 3.5em;
-			margin-right: -5px;
+			margin-right: -0.25em;
 		}
 		a:last-child {
 			border-right: 1px solid #aaa;
@@ -40,38 +41,136 @@
 
 	.cards {
 		clear: both;
+		margin-top: 0.5em;
 	}
 
 	.card-container {
-		width: 30%;
+		width: 35%;
 		display: inline-block;
-		font-size: 8px;
 		vertical-align: top;
 		text-align: center;
-		margin: 5px;
+		margin: 0.25em;
+		height: 7em;
 
 		.values {
 			width: 84%;
+			height: 100%;
 			display: inline-block;
 			background-color: #fff;
 			border: 1px solid #e8d9f6;
 			box-shadow: 0 3px 3px 0 #ccc;
+			line-height: 1em;
+			word-wrap: break-word;
 
 			.question {
+				height: 30%;
 				font-weight: bold;
 				border-bottom: 1px dashed #888;
-				padding: 0 2px;
+				font-size: 0.8em;
 			}
 			.answer {
-				padding: 0 2px;
+				height: 45%;
 				color: #666;
+				font-size: 0.6em;
+			}
+
+			.question, .answer{
+				padding: 0.5em 0.2em;
+				width: 97%;
 			}
 		}
 		.options {
 			vertical-align: top;
 			width: 12%;
 			display: inline-block;
-		}
 
+			.box {
+				display: inline-block;
+				width: 1.5em;
+				height: 1.5em;
+			}
+
+			.b1 {
+				background: url(asset-path("box1.png")) no-repeat center;
+				background-size: 100%;
+			}
+			.b2 {
+				background: url(asset-path("box2.png")) no-repeat center;
+				background-size: 100%;
+			}
+			.b3 {
+				background: url(asset-path("box3.png")) no-repeat center;
+				background-size: 100%;
+			}
+		}
 	}
+}
+
+@media only screen and (max-width: 600px) {
+	.cards {
+  	.bottom #right #content #yield {
+  		width: 87%;
+  	}
+  	.bottom #right #content #options-bar {
+	  	margin-left: 0.5em;
+	  }
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1280px) {
+	.cards {
+		.card-container .values {
+			font-size: 0.8em;
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 980px) {
+	.cards {
+		.card-container {
+			width: 47%;
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 800px) {
+	.cards {
+		.card-container {
+			height: 8.5em;
+
+			.values {
+				font-size: 1em;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  .cards {
+  	.bottom #right #content #yield {
+  		width: 87%;
+  	}
+  	.bottom #right #content #options-bar {
+	  	margin-left: 1em;
+	  }
+  }
+}
+
+@media only screen and (max-width: 1290px) {
+  .cards {
+		form .side {
+			width: 95%;
+		}
+	}
+}
+
+@media only screen and (min-width: 970px) and (max-width: 1000px) {
+	.cards {
+  	.bottom #right #content #yield {
+  		width: 87%;
+  	}
+		.bottom #right #content #options-bar {
+	  	margin-left: 0.5em;
+	  }
+  }
 }

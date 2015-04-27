@@ -1,13 +1,19 @@
 %p#notice= notice
 
-= form_tag("/topics/", method: "get", id: "in-filter") do
-  %select{name: 'subject'}
-    %option{value: 'all'} All
-    - @subjects.each do |subject|
-      %option{value: "#{subject.code}"}= subject.code
-    %option{value: 'none'} None
-  = submit_tag('Search')
+%h2 Listing topics
 
-#topics-list
-  %ul
-    = render @topics
+%div
+	#filter
+		= form_tag(topics_path, method: "get") do
+			%input#subject-list{type: 'text', name: 'subject', list: "subject", placeholder: "filter by subject"}
+			%datalist{id: 'subject'}
+				%option{value: 'all'}
+				- @app_subjects.each do |subject|
+					%option{value: "#{subject.code}"}
+				%option{value: 'none'}
+			#submit
+				= submit_tag("Search")
+
+	#topics-list
+		%ul
+			= render @topics

@@ -3,17 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .topics {
-	form#in-filter {
-		select {
-			width: 79%;
-			padding-left: 1em;
-		}
-	}
 	#topics-list {
-		form {
-			display: inline-block;
-			width: 25px;
-		}
 		li {
 			width: 100%;
 
@@ -31,9 +21,9 @@
 	}
 	.box {
 		display: inline-block;
-		width: 100px;
-		height: 80px;
-		margin: 0 15px;
+		width: 8em;
+		height: 8em;
+		margin: 0 1em;
 		text-align: center;
 		padding: 3%;
 
@@ -45,54 +35,101 @@
 
 	.b1_e{
 	  background: url(asset-path("box1_empty.png")) no-repeat center;
-	  background-size: 100px;
+	  background-size: 100%;
 	  margin-bottom: 1.5em;
 	}
 
 	.b2_e{
 	  background: url(asset-path("box2_empty.png")) no-repeat center;
-	  background-size: 100px;
+	  background-size: 100%;
 	  margin-bottom: 1.5em;
 	}
 
 	.b3_e{
 	  background: url(asset-path("box3_empty.png")) no-repeat center;
-	  background-size: 100px;
+	  background-size: 100%;
 	  margin-bottom: 1.5em;
 	}
 
   .b1{
 	  background: url(asset-path("box1_half.png")) no-repeat center;
-	  background-size: 100px;
+	  background-size: 100%;
 	  margin-bottom: 1.5em;
 	}
 
 	.b2{
 	  background: url(asset-path("box2_half.png")) no-repeat center;
-	  background-size: 100px;
+	  background-size: 100%;
 	  margin-bottom: 1.5em;
 	}
 
 	.b3{
 	  background: url(asset-path("box3_half.png")) no-repeat center;
-	  background-size: 100px;
+	  background-size: 100%;
 	  margin-bottom: 1.5em;
 	}
+
+	.destroy{
+		background-size: 2em;
+	}
+	.edit{
+		background-size: 2em;
+	}
+
+	#filter {
+		width: 40%;
+		margin-bottom: 1em;
+		margin-left: 59%;
+
+		form {
+			width: 100%;
+		}
+
+		#subject-list {
+			border-width: medium medium 1px;
+			border-style: none none solid;
+			border-color: -moz-use-text-color -moz-use-text-color #CCC;
+			width: 80%;
+		}
+
+		#submit {
+			display: inline-block;
+			width: 13%;
+			vertical-align: bottom;
+		}
+	}
 }
 
-@media only screen and (min-width: 30em) {
-  .topics {
-	.boxes{
-		padding: 0 50%;
-	}
-	}
+@media only screen and (max-width: 800px) {
+	.topics {
+		.boxes{
+			padding: 0 25%;
+		}
 
+		#filter #subject-list {
+			width: 60%;
+			font-size: 0.8em;
+		}
+	}
 }
 
-@media only screen and (min-width: 50em) {
+@media only screen and (min-width: 1001px) and (max-width: 1280px) {
   .topics {
-	.boxes{
-		padding: 0 8%;
+		.boxes{
+			padding: 0;
+		}
 	}
+}
+
+@media only screen and (min-width: 970px) and (max-width: 1000px) {
+  .topics {
+		.box {
+			width: 5em;
+			height: 5em;
+		}
+
+		.boxes {
+			padding: 0;
+		}
 	}
 }
