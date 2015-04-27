@@ -15,6 +15,7 @@
       = link_to 'Week\'s study', weeks_study_path
       = link_to 'Subjects', subjects_path
       = link_to 'Topics', topics_path
+      = link_to 'Notifications', share_request_notify_path
       #profile.right
         %span= "Hello #{@user.username}!"
         = link_to 'Logout', logout_path
@@ -41,16 +42,6 @@
                 %span{style: "background-color:##{topic.subject.color}; color: #fff" }= topic.subject.code
               = link_to topic.title, topic
     #right
-      %nav.top#main-options
-        .left
-          = link_to 'Today\'s study', todays_study_path
-          = link_to 'Week\'s study', weeks_study_path
-          = link_to 'Subjects', subjects_path
-          = link_to 'Topics', topics_path
-          = link_to 'Notifications', share_request_notify_path
-        #profile.right
-          = @user.username
-          = link_to 'Logout', logout_path
       #title-bar
         %h1= @view_title
         - if controller.controller_name == "subjects"
