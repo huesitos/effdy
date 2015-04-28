@@ -23,7 +23,7 @@ class Subject
     user = User.find_by(username: username)
     user ? Subject.where(user_id: user._id) : nil
   end
-  
+
   # Archives a subject and all its topics.
   def self.archive(subject)
     subject.update(archived: true)
@@ -39,4 +39,20 @@ class Subject
       topic.update(archived: false)
     end
   end
+  # Shares the subject that belongs to another user, with the current user
+# It creates a new copy of the subject that belongs to the current user
+def self.share(subject, username)
+  user = User.find_by(username: username)
+
+  # makes a copy of the subject for the current user
+  new_subject = user.subjects.create(
+    code: subject.code,
+    color: subject.color,
+    archived: false)
+
+  # copies all the topics in the subject to the new subject
+  subject.topics.each do |topic|
+    Topic.share(topic, username)
+  end
+end
 end

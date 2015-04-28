@@ -16,7 +16,7 @@ class ShareRequestController < ApplicationController
         if @share_request.save
           if params[:type] == 'topic'
             format.html { redirect_to Topic.find(params[:oid]) }
-          else 
+          else
             format.html { redirect_to Subject.find(params[:oid]) }
             end
         else
@@ -30,11 +30,30 @@ class ShareRequestController < ApplicationController
   end
 
   def share
+     share_request = ShareRequest.find(params[:id])
+     if share_request[:type] == "topic"
+       Topic.share(Topic.find(share_request[:oid]), session[:user_uname])
+     else
+       Subject.share(Subject.find(share_request[:oid]), session[:user_uname])
+     end
+     share_request.destroy
+
+     respond_to do |format|
+       format.html { redirect_to share_request_notify_path }
+     end
   end
 
   def notify
+    @view_title = "Notifications"
+    @share_requests = ShareRequest.where(recipient: session[:user_uname])
   end
 
   def destroy
+    share_request = ShareRequest.find(params[:id])
+    share_request.destroy
+
+    respond_to do |format|
+      format.html { redirect_to share_request_notify_path }
+    end
   end
 end

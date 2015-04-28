@@ -160,6 +160,10 @@ table {
 		font-size: 2em;
 	}
 
+	#menu {
+		display: none;
+	}
+
 	#home {
 		text-align: center;
 		width: 25%;
@@ -216,6 +220,7 @@ table {
 		border-right: 1px solid #fff;
 		line-height: 18px;
 		display: inline-block;
+	  border-right: 1px dashed #ccc;
 
 		#topics-menu {
 			width: 100%;
@@ -593,6 +598,18 @@ table {
 	font-weight: bold;
 }
 
+@media only screen and (min-width: 700px) and (max-width: 1030px) {
+	.top #main-options {
+		a{
+			margin-right: 0;
+		}
+
+		#profile {
+			margin-right: 0;
+		}
+	}
+}
+
 @media only screen and (min-width: 768px) and (max-width: 979px) {
 	.bottom #right #content #yield #weeks_study ul {
 		margin: 0 1em 2em;
@@ -640,7 +657,7 @@ table {
 	 }
 }
 
-@media only screen and (min-width: 970px) and (max-width: 1000px) {
+@media only screen and (min-width: 970px) and (max-width: 1080px) {
 	.bottom {
 		#left #topics-menu #subject-filter form #subject-list {
 			width: 71%;
@@ -652,7 +669,7 @@ table {
 	}
 }
 
-@media only screen and (min-width: 1001px) and (max-width: 1280px) {
+@media only screen and (min-width: 1080px) and (max-width: 1280px) {
 	.bottom {
 		#left #topics-menu #subject-filter form #subject-list {
 			width: 77%;
@@ -697,3 +714,68 @@ table {
 	}
 }
 
+@media only screen and (min-width: 1281px) and (max-width: 1560px) {
+	.bottom {
+		#left #topics-menu #subject-filter form #subject-list {
+			width: 75%;
+		}
+	}
+}
+
+@media only screen and (min-width: 1561px) and (max-width: 1880px) {
+	.bottom {
+		#left #topics-menu #subject-filter form #subject-list {
+			width: 78%;
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.bottom {
+		#right #content #yield #weeks_study ul {
+			width: 49%;
+		}
+	}
+}
+
+@media only screen and (max-width: 699px) {
+	.top {
+		height: 5em;
+
+		#main-options {
+			display: none;
+		}
+
+		#menu {
+			display: inline-block;
+
+			img {
+				width: 2em;
+				height: 2em;
+				margin: 0 0.5em;
+			}
+		}
+
+		#home {
+			margin-top: 0.5em;
+			width: 85%;
+		}
+	}
+}
+
+@media only screen and (max-width: 375px) {
+	.top {
+		#home {
+			margin-top: 0.5em;
+			width: 73%;
+		}
+	}
+}
+
+@media only screen and (max-width: 430px) {
+	.bottom {
+		#right #content #yield #weeks_study ul {
+			width: 95%;
+		}
+	}
+}
