@@ -53,3 +53,4 @@ class ShareRequestController < ApplicationController
     format.html { redirect_to share_request_notify_path }
   end
 end
+end
