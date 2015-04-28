@@ -1,13 +1,16 @@
 %h2 Share Request
 
 - if @share_requests.count() > 0
-    %ul
-  -@share_requests.each do |sr|
-    %li
-      = "#{sr.sender} wants to share a #{sr.type} with you."
-      = link_to "Accept", share_request_share_path(sr._id)
-      = link_to "Decline", share_request_destroy_path(sr._id), :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+	#notifications
+		%ul
+			-@share_requests.each do |sr|
+				%li
+					%span.sender= sr.sender
+					%span wants to share a
+					%span{class: sr.type == 'topic'? 'topic' : 'subject' }= sr.type 
+					%span with you.
+					= link_to "Accept", share_request_share_path(sr._id)
+					= link_to "Decline", share_request_destroy_path(sr._id), :method => :delete, :data => { :confirm => 'Are you sure?' }
 - else
-  .placeholder
-    %p There are no share request in your inbox today! If you don't have any topics set for reviewing, set some.
+	.placeholder
+		%p There are no share request in your inbox today!

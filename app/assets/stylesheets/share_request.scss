@@ -1,6 +1,7 @@
 // Place all the styles related to the ShareRequest controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+<<<<<<< HEAD
 
 .share_requests 
 {
@@ -11,3 +12,36 @@
 }
 
 }
+=======
+.share_request {
+	a {
+		text-decoration: none;
+		color: #7DB07D;
+	}
+
+	a:hover {
+		background-color: inherit;
+		color: #9BCE9B;
+	}
+	
+	#notifications {
+		ul {
+			li {
+				.sender {
+					color: #0e2f44;
+				}
+				.topic {
+					color: #ff6666;
+				}
+				.subject {
+					color: #8d6590;
+				}
+
+				a {
+					margin-left: 1em;
+				}
+			}
+		}
+	}
+}
+>>>>>>> bfde7a2b30a05e7420006ca4a76590d06c96ed70

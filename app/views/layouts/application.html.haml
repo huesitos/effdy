@@ -1,4 +1,4 @@
-!!!
+!!!5
 %html
   %head
     %link{:href => "http://fonts.googleapis.com/css?family=Lato", :rel => "stylesheet", :type => "text/css"}/
@@ -8,15 +8,19 @@
     = csrf_meta_tags
   %body{:class => controller.controller_name}
   .top
-    %section#home
+    #menu
+      %a{:href => menu_path}
+        = image_tag("menu.png")
+    #home
       %a{:href => todays_study_path}
     %nav#main-options
       = link_to 'Today\'s study', todays_study_path
       = link_to 'Week\'s study', weeks_study_path
       = link_to 'Subjects', subjects_path
       = link_to 'Topics', topics_path
+      = link_to 'Notifications', share_request_notify_path
       #profile.right
-        %span= "Hello #{@user.username}!"
+        %span= "#{@user.username}"
         = link_to 'Logout', logout_path
   .bottom
     #left
@@ -41,20 +45,13 @@
                 %span{style: "background-color:##{topic.subject.color}; color: #fff" }= topic.subject.code
               = link_to topic.title, topic
     #right
-      %nav.top#main-options
-        .left
-          = link_to 'Today\'s study', todays_study_path
-          = link_to 'Week\'s study', weeks_study_path
-          = link_to 'Subjects', subjects_path
-          = link_to 'Topics', topics_path
-          = link_to 'Notifications', share_request_notify_path
-        #profile.right
-          = @user.username
-          = link_to 'Logout', logout_path
       #title-bar
         %h1= @view_title
         - if controller.controller_name == "subjects"
-          = link_to 'Add subject', new_subject_path
+          - if controller.action_name == "show"
+            = link_to 'Add Topic', new_topic_path(back: subject_path(@subject._id))
+          - else
+            = link_to 'Add subject', new_subject_path
         - if "#{controller.controller_name}##{controller.action_name}" == "topics#index"
           = link_to 'Add Topic', new_topic_path
       #content
@@ -72,3 +69,8 @@
             = link_to '', share_request_new_path(type:'topic', oid:@topic._id), :class => 'btn share'
             = link_to '', edit_topic_path(@topic), :class => 'btn edit'
             = link_to '', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'
+        - if "subjects#show" == "#{controller.controller_name}##{controller.action_name}"
+          #options-bar
+            = link_to '', share_request_new_path(type:'subject', oid:@subject._id), :class => 'btn share'
+            = link_to '', edit_topic_path(@subject), :class => 'btn edit'
+            = link_to '', @subject, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'
