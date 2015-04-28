@@ -40,19 +40,19 @@ class Subject
     end
   end
   # Shares the subject that belongs to another user, with the current user
-# It creates a new copy of the subject that belongs to the current user
-def self.share(subject, username)
-  user = User.find_by(username: username)
+  # It creates a new copy of the subject that belongs to the current user
+  def self.share(subject, username)
+    user = User.find_by(username: username)
 
-  # makes a copy of the subject for the current user
-  new_subject = user.subjects.create(
-    code: subject.code,
-    color: subject.color,
-    archived: false)
+    # makes a copy of the subject for the current user
+    new_subject = user.subjects.create(
+      code: subject.code,
+      color: subject.color,
+      archived: false)
 
-  # copies all the topics in the subject to the new subject
-  subject.topics.each do |topic|
-    Topic.share(topic, username)
+    # copies all the topics in the subject to the new subject
+    subject.topics.each do |topic|
+      Topic.share(topic, username)
+    end
   end
-end
 end

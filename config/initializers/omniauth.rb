@@ -7,4 +7,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   # in your .zshrc file. In order to obatin your Twitter Key and Twitter Secret,
   # you need to first log into https://dev.twitter.com/ and create a new application
   provider :twitter, ENV['APLUS_TWITTER_KEY'], ENV['APLUS_TWITTER_SECRET']
+  provider :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
 end

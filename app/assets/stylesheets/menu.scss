@@ -1,0 +1,50 @@
+// Place all the styles related to the Menu controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@media only screen and (max-width: 699px) {
+	.menu {
+		span {
+			display: block;
+			margin: 0.5em auto;
+		}
+
+		#main-options {
+			a {
+				display: block;
+				padding: 0.5em 0;
+				background-color: #7DB07D;
+				border-bottom: 1px solid white;
+			}
+		}
+
+		span, a, a:hover, a:visited {
+			text-align: center;
+			color: white;
+			font-size: 2em;
+		}
+
+		.bottom { 
+			#right {
+				background-color: #507642;
+				background-image: none;
+				
+				#content {
+					width: 100%;
+					padding: 0;
+					padding-top: 0.5em;
+
+					#yield {
+						padding: 0;
+						margin: 0;
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		#title-bar {
+			display: none;
+		}
+	}
+}

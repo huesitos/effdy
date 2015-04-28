@@ -15,7 +15,12 @@ class User
     if @user = find_by(provider: hash['provider'], uid: hash['uid'])
       @user
     else
-      @user = User.create(username: hash['info']['nickname'], name: hash['info']['name'],image: hash['info']['image'], provider: hash['provider'], uid: hash['uid'])
+      if hash['provider'] == "twitter"
+        @user = User.create(username: hash['info']['nickname'], name: hash['info']['name'],image: hash['info']['image'], provider: hash['provider'], uid: hash['uid'])
+      else
+        username = hash['info']['email'].split('@')[0]
+        @user = User.create(username: username, name: hash['info']['name'],image: hash['info']['image'], provider: hash['provider'], uid: hash['uid'])
+      end
     end
   end
 end
