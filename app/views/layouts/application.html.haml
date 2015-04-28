@@ -66,3 +66,8 @@
             = link_to '', share_request_new_path(type:'topic', oid:@topic._id), :class => 'btn share'
             = link_to '', edit_topic_path(@topic), :class => 'btn edit'
             = link_to '', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'
+        - if "subjects#show" == "#{controller.controller_name}##{controller.action_name}"
+          #options-bar
+            = link_to '', share_request_new_path(type:'subject', oid:@subject._id), :class => 'btn share'
+            = link_to '', edit_topic_path(@subject), :class => 'btn edit'
+            = link_to '', @subject, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'
