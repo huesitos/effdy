@@ -68,25 +68,25 @@ class Topic
   end
 
   # Shares the topic that belongs to another user, with the current user
-# It creates a new copy of the topic that belongs to the current user
-def self.share(topic, username)
-  user = User.find_by(username: username)
+  # It creates a new copy of the topic that belongs to the current user
+  def self.share(topic, username)
+    user = User.find_by(username: username)
 
-  # makes a copy of the topic for the current user
-  new_topic = user.topics.create(title: topic.title,
-    reviewing: false,
-    review_configuration: topic.review_configuration,
-    archived: false,
-    subject: topic.subject_id)
+    # makes a copy of the topic for the current user
+    new_topic = user.topics.create(title: topic.title,
+      reviewing: false,
+      review_configuration: topic.review_configuration,
+      archived: false,
+      subject: topic.subject_id)
 
-  Topic.set_review_boxes new_topic
+    Topic.set_review_boxes new_topic
 
-  # copies all the cards in topic to the new topic
-  topic.cards.each do |card|
-    new_topic.cards.create(question: card.question,
-      answer: card.answer,
-      box: card.box,
-      user_id: user._id)
+    # copies all the cards in topic to the new topic
+    topic.cards.each do |card|
+      new_topic.cards.create(question: card.question,
+        answer: card.answer,
+        box: card.box,
+        user_id: user._id)
+    end
   end
-end
 end
