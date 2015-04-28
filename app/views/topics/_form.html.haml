@@ -25,7 +25,10 @@
       - @subjects.each do |subject|
         %option{value: "#{subject._id}"}= subject.code
   .actions
-    = link_to 'Back', @topic
+    -if @back
+      = link_to 'Back', @back
+    - else
+      = link_to 'Back', @topic
     - if @url == new_topic_path
       = f.submit 'Create'
     - else
