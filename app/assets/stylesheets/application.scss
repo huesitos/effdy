@@ -524,8 +524,8 @@ table {
 	}
 }
 
-.review_box {
-	#todays_study, #weeks_study {
+.review_box, .share_request {
+	#todays_study, #weeks_study, #notifications {
 		ul {
 			list-style: none;
 			padding: 0;
@@ -553,6 +553,11 @@ table {
 				padding-top: 0;
 			}
 		}
+	}
+}
+
+.review_box {
+	#todays_study, #weeks_study {
 		.tag {
 			display: inline-block;
 			width: 6em;
