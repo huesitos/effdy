@@ -37,9 +37,9 @@ class Topic
 
   # Creates three review boxes for the topic.
   def self.set_review_boxes(topic)
-    topic.review_boxes.create(box:1, user_id: topic.user_id)
-    topic.review_boxes.create(box:2, user_id: topic.user_id)
-    topic.review_boxes.create(box:3, user_id: topic.user_id)
+    topic.review_boxes.create(box:1, user_id: topic.user_id, review_date: "")
+    topic.review_boxes.create(box:2, user_id: topic.user_id, review_date: "")
+    topic.review_boxes.create(box:3, user_id: topic.user_id, review_date: "")
   end
 
   # Set topic and its review boxes as reviewing
