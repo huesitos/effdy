@@ -39,6 +39,7 @@ class TopicsController < ApplicationController
 
   # GET /topics/new
   def new
+    @back = params[:back]
     @url = new_topic_path
     @view_title = "New topic"
     @configs = ReviewConfiguration.all
@@ -92,7 +93,7 @@ class TopicsController < ApplicationController
   def destroy
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to todays_study_path }
+      format.html { redirect_to topics_path }
       format.json { head :no_content }
     end
   end
