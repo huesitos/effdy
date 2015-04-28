@@ -7,7 +7,7 @@ class ShareRequestController < ApplicationController
 
   def create
     @view_title = "Share with"
-    @share_request = ShareRequest.new(type: params[:type], oid: params[:oid], sender: session[:user_uname], recipient: params[:share_request][:recipient])
+    @share_request = ShareRequest.new(type: params[:type], name: params[:name], oid: params[:oid], sender: session[:user_uname], recipient: params[:share_request][:recipient])
 
     user=User.find_by(username: params[:share_request][:recipient])
 

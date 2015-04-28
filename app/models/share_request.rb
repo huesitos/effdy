@@ -4,5 +4,6 @@ class ShareRequest
   field :oid, type: String
   field :recipient, type: String
   field :sender, type: String
-  validates :type, :oid, :recipient, :sender, presence: true
+  field :name, type: String
+  validates :type, :oid, :recipient, :name, :sender, presence: true
 end
