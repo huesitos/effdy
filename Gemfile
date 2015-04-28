@@ -38,6 +38,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omniauth'
 # Use the Twitter strategy so that users log in with Twitter accounts
 gem 'omniauth-twitter'
+# Use the Gmail strategy so that users log in with Gmail accounts
+gem 'omniauth-google-oauth2'
+gem 'json'
 
 group :development do
   gem 'brice'

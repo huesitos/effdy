@@ -35,14 +35,30 @@
       }
     }
 
-    #twitter {
+    #twitter, #gmail {
       width: 158px;
       height: 28px;
-      background: image-url("sign-in-with-twitter.png") no-repeat center;
       float: right;
-      margin-top: -14em;
       margin-right:0.75em;
     }
+
+    #twitter {
+      background: image-url("sign-in-with-twitter.png") no-repeat center;
+      margin-top: -14em;
+    }
+
+    #gmail {
+      margin-top: -11em;
+      border-radius: 3px;
+      background: image-url("sign-in-with-google.png") no-repeat center;
+      background-size: 158px 28px;
+
+      a {
+        color: white;
+        display: block;
+      }
+    }
+
     a{
       display: inline-block;
       width: 158px;
