@@ -59,18 +59,19 @@
           = yield
         - if ( ["topics", "cards", "review_box"].include? controller.controller_name and not ["topics#index", "topics#new", 'review_box#todays_study', 'review_box#weeks_study'].include? "#{controller.controller_name}##{controller.action_name}")
           #options-bar
-            = form_tag("/topics/#{@topic._id}/set_reviewing", method: "patch") do
+            = form_tag("/topics/#{@topic._id}/set_reviewing", method: "patch", :alt => "review on/off", :title => "review on/off") do
               = @topic.reviewing ? submit_tag('', id: 'reviewing') : submit_tag('', id: 'not-reviewing')
-            = link_to '', @topic, :class => 'btn', :id => 'boxes'
-            = link_to '', new_topic_card_path(@topic), :class => 'btn', :id => 'new-card'
-            = link_to '', topic_cards_path(@topic), :class => 'btn', :id => 'cards'
+            =link_to '', @topic,:class => 'btn', :id => 'boxes', :alt => " view boxes", :title => "view boxes"
+            %a{:alt =>"new car", :title =>"new card"}
+            = link_to '', new_topic_card_path(@topic), :class => 'btn', :id => 'new-card', :alt => "new card", :title => "new card"
+            = link_to '', topic_cards_path(@topic), :class => 'btn', :id => 'cards', :alt => "card list", :title => "card list"
             = form_tag("/topics/#{@topic._id}/reset_cards", method: "patch") do
-              = submit_tag('', id: 'reset')
-            = link_to '', share_request_new_path(type:'topic', oid:@topic._id), :class => 'btn share'
-            = link_to '', edit_topic_path(@topic), :class => 'btn edit'
-            = link_to '', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'
+              = submit_tag('', id: 'reset', :alt => "reset cards", :title => "reset cards") 
+            = link_to '', share_request_new_path(type:'topic', oid:@topic._id), :class => 'btn share', :alt => "share", :title => "share"
+            = link_to '', edit_topic_path(@topic), :class => 'btn edit', :alt => "edit", :title => "edit"
+            = link_to '', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy', :alt => "delete", :title => "delete"
         - if "subjects#show" == "#{controller.controller_name}##{controller.action_name}"
           #options-bar
-            = link_to '', share_request_new_path(type:'subject', oid:@subject._id), :class => 'btn share'
-            = link_to '', edit_topic_path(@subject), :class => 'btn edit'
-            = link_to '', @subject, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'
+            = link_to '', share_request_new_path(type:'subject', oid:@subject._id), :class => 'btn share', :alt => "share", :title => "share"
+            = link_to '', edit_topic_path(@subject), :class => 'btn edit', :alt => "edit", :title => "edit"
+            = link_to '', @subject, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy', :alt => "delete", :title => "delete"

@@ -13,9 +13,9 @@
             %span#link
               = link_to subject.name, subject_path(subject)
           .options
-            = link_to '', edit_subject_path(subject), :class => "btn edit"
-            = link_to '', subject_archive_path(subject), :method => :patch, :id => 'archive', :class => "btn"
-            = link_to '', subject, :method => :delete, :data => { :confirm => 'This will destroy the subject and its topics. Are you sure?' }, :class => "btn destroy"
+            = link_to '', edit_subject_path(subject), :class => "btn edit", :alt => "edit", :title => "edit"
+            = link_to '', subject_archive_path(subject), :method => :patch, :id => 'archive', :class => "btn", :alt => "archive", :title => "archive"
+            = link_to '', subject, :method => :delete, :data => { :confirm => 'This will destroy the subject and its topics. Are you sure?' }, :class => "btn destroy", :alt => "delete", :title => "delete"
 - else
   .placeholder
     %p There are no subjects! Add subjects for a smarter topic filtering.
