@@ -136,9 +136,10 @@ class TopicsController < ApplicationController
 
     # Search for all the subjects and the particular topic's subject, if exists
     def set_subjects
+      user = User.find_by(username: session[:user_uname])
       params[:id] ? @subject = Topic.find(params[:id]).subject : @subject = nil
 
-      @subject ? @subjects = Subject.where(:_id.ne => @subject._id, :archived => false) : @subjects = Subject.not_archived
+      @subject ? @subjects = Subject.where(:_id.ne => @subject._id, :archived => false, user_id: user._id) : @subjects = Subject.not_archived.where(user_id: user._id)
     end
 
     # Pack errors in a variable to be shown in the form
