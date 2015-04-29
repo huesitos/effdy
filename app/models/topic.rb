@@ -69,7 +69,7 @@ class Topic
 
   # Shares the topic that belongs to another user, with the current user
   # It creates a new copy of the topic that belongs to the current user
-  def self.share(topic, username)
+  def self.share(topic, username, subject)
     user = User.find_by(username: username)
 
     # makes a copy of the topic for the current user
@@ -77,7 +77,7 @@ class Topic
       reviewing: false,
       review_configuration: topic.review_configuration,
       archived: false,
-      subject: topic.subject_id)
+      subject: subject._id)
 
     Topic.set_review_boxes new_topic
 

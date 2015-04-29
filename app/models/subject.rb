@@ -11,7 +11,7 @@ class Subject
   has_many :topics, dependent: :destroy
   belongs_to :user
 
-  validates :code, uniqueness: true, length: { maximum: 7 }
+  validates :code, length: { maximum: 7 }
   validates :name, :code, :color, presence: true
   validates :color, format: { with: /\A([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})\z/, message: "only hex numbers" }
   validates_associated :topics
@@ -47,12 +47,13 @@ class Subject
     # makes a copy of the subject for the current user
     new_subject = user.subjects.create(
       code: subject.code,
+      name: subject.name,
       color: subject.color,
       archived: false)
 
     # copies all the topics in the subject to the new subject
     subject.topics.each do |topic|
-      Topic.share(topic, username)
+      Topic.share(topic, username, new_subject)
     end
   end
 end

@@ -33,9 +33,9 @@ class ShareRequestController < ApplicationController
   def share
      share_request = ShareRequest.find(params[:id])
      if share_request[:type] == "topic"
-       Topic.share(Topic.find(share_request[:oid]), session[:user_uname])
+       Topic.share(Topic.find(share_request[:oid]), share_request.recipient, nil)
      else
-       Subject.share(Subject.find(share_request[:oid]), session[:user_uname])
+       Subject.share(Subject.find(share_request[:oid]), share_request.recipient)
      end
      share_request.destroy
 

@@ -9,8 +9,8 @@
 					%span= "wants to share #{sr.type} "
 					%span{class: sr.type == 'topic'? 'topic' : 'subject' }= sr.name 
 					%span with you.
-					= link_to "Accept", share_request_share_path(sr._id)
-					= link_to "Decline", share_request_destroy_path(sr._id), :method => :delete, :data => { :confirm => 'Are you sure?' }
+					= link_to "Accept", share_request_share_path(sr._id), class: 'option'
+					= link_to "Decline", share_request_destroy_path(sr._id), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'option'
 - else
 	.placeholder
 		%p There are no share request in your inbox today!

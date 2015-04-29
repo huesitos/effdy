@@ -2,12 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .share_request {
-	a {
+	.option {
 		text-decoration: none;
 		color: #7DB07D;
 	}
 
-	a:hover {
+	.option:hover {
 		background-color: inherit;
 		color: #9BCE9B;
 	}
@@ -15,8 +15,11 @@
 	#notifications {
 		ul {
 			li {
+				.sender, .topic, .subject {
+					font-weight: bold;
+				}
 				.sender {
-					color: #0e2f44;
+					color: #bc727a;
 				}
 				.topic {
 					color: #ff6666;
