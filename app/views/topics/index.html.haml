@@ -2,18 +2,22 @@
 
 %h2 Listing topics
 
-%div
-	#filter
-		= form_tag(topics_path, method: "get") do
-			%input#subject-list{type: 'text', name: 'subject', list: "subject", placeholder: "filter by subject"}
-			%datalist{id: 'subject'}
-				%option{value: 'all'}
-				- @app_subjects.each do |subject|
-					%option{value: "#{subject.code}"}
-				%option{value: 'none'}
-			#submit
-				= submit_tag("Search")
+- if @topics.count() > 0
+	%div
+		#filter
+			= form_tag(topics_path, method: "get") do
+				%input#subject-list{type: 'text', name: 'subject', list: "subject", placeholder: "filter by subject"}
+				%datalist{id: 'subject'}
+					%option{value: 'all'}
+					- @app_subjects.each do |subject|
+						%option{value: "#{subject.code}"}
+					%option{value: 'none'}
+				#submit
+					= submit_tag("Search")
 
-	#topics-list
-		%ul
-			= render @topics
+		#topics-list
+			%ul
+				= render @topics
+- else
+	.placeholder
+		%p There are no topics!

@@ -62,7 +62,6 @@
             = form_tag("/topics/#{@topic._id}/set_reviewing", method: "patch", :alt => "review on/off", :title => "review on/off") do
               = @topic.reviewing ? submit_tag('', id: 'reviewing') : submit_tag('', id: 'not-reviewing')
             =link_to '', @topic,:class => 'btn', :id => 'boxes', :alt => " view boxes", :title => "view boxes"
-            %a{:alt =>"new car", :title =>"new card"}
             = link_to '', new_topic_card_path(@topic), :class => 'btn', :id => 'new-card', :alt => "new card", :title => "new card"
             = link_to '', topic_cards_path(@topic), :class => 'btn', :id => 'cards', :alt => "card list", :title => "card list"
             = form_tag("/topics/#{@topic._id}/reset_cards", method: "patch") do

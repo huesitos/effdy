@@ -2,12 +2,13 @@ class ShareRequestController < ApplicationController
   def new
     @share_request = ShareRequest.new
     @view_title = "Share with"
-    @url = share_requests_path(params[:type],params[:oid])
+    @url = share_requests_path(params[:type],params[:oid], params[:name])
+    @name
   end
 
   def create
     @view_title = "Share with"
-    @share_request = ShareRequest.new(type: params[:type], oid: params[:oid], sender: session[:user_uname], recipient: params[:share_request][:recipient])
+    @share_request = ShareRequest.new(type: params[:type], name: params[:name], oid: params[:oid], sender: session[:user_uname], recipient: params[:share_request][:recipient])
 
     user=User.find_by(username: params[:share_request][:recipient])
 
@@ -32,9 +33,9 @@ class ShareRequestController < ApplicationController
   def share
      share_request = ShareRequest.find(params[:id])
      if share_request[:type] == "topic"
-       Topic.share(Topic.find(share_request[:oid]), session[:user_uname])
+       Topic.share(Topic.find(share_request[:oid]), share_request.recipient, nil)
      else
-       Subject.share(Subject.find(share_request[:oid]), session[:user_uname])
+       Subject.share(Subject.find(share_request[:oid]), share_request.recipient)
      end
      share_request.destroy
 

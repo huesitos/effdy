@@ -7,7 +7,8 @@ class SubjectsController < ApplicationController
   # GET /subjects
   def index
     @view_title = "Subjects"
-    @subjects = Subject.all
+    user = User.find_by(username: session[:user_uname])
+    @subjects = Subject.where(user_id: user._id)
     @subjects = @subjects.sort(archived:1)
   end
 
