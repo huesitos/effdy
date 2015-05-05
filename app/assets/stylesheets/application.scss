@@ -24,15 +24,23 @@ body {
 	background-size: 15em;
 	line-height: 1em;
 	font-size: 12px;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Bitter', serif;
 }
 
-h1, h2, h3, h4, h5, h6, p, span, label, input, textarea, td, th, a, ul, li, ol {
+h1, h2, h3, h4, h5, h6, span, label, input, textarea, td, th, a, ul, li, ol  {
 	margin: 0 0;
 	padding: 0 0;
 	font-size: 1em;
 	line-height: 1em;
 	font-family: 'Lato', sans-serif;
+}
+
+p {
+	margin: 0 0;
+	padding: 0 0;
+	font-size: 1em;
+	line-height: 1em;
+	font-family: 'Bitter', serif;
 }
 
 textarea {
@@ -83,31 +91,31 @@ form {
 		display: inline-block;
 		width: 100%;
 	}
-	
+
 	label:after {
 		content: ":";
 	}
-	
+
 	input[type=text] {
 		width: 100%;
 		height: 1.5em;
 		padding: 0 .5em;
 	}
-	
+
 	a {
 		margin-right: 10px;
 	}
-	
+
 	a:visited {
 		color: #333;
 	}
-	
+
 	input[type=submit] {
 		color: rgb(125, 176, 125);
 		background: none repeat scroll 0% 0% transparent;
 		border: medium none;
 	}
-	
+
 	input[type=submit]:hover {
 		cursor: pointer;
 		cursor: hand;
@@ -422,7 +430,7 @@ table {
 			#cards {
 				background: url(asset-path("cards.png")) no-repeat center;
 				background-size: 2em;
-			}		
+			}
 			.destroy{
 				background: url(asset-path("destroy.svg")) no-repeat center;
 				background-size: 2em;
@@ -440,7 +448,7 @@ table {
 		#cards {
 			background: url(asset-path("cards.png")) no-repeat center;
 			background-size: 1.5em;
-		}		
+		}
 		.destroy{
 			background: url(asset-path("destroy.svg")) no-repeat center;
 			background-size: 1.5em;
@@ -509,7 +517,7 @@ table {
 		height: 2em;
 		vertical-align: bottom;
 	}
-	
+
 	.b1 {
 		background: url(asset-path("box1.png")) no-repeat center;
 		background-size: 100%;
@@ -626,7 +634,7 @@ table {
 	body {
 		font-size: 9px;
 	}
-	.top { 
+	.top {
 		#main-options {
 			width: 89%
 		}
@@ -635,8 +643,8 @@ table {
 	    width: 9%;
 	  }
   }
-	
-	.bottom { 
+
+	.bottom {
 		#left {
 			display: none;
 
@@ -667,7 +675,7 @@ table {
 		#left #topics-menu #subject-filter form #subject-list {
 			width: 71%;
 		}
-	
+
 		#right #content #yield #weeks_study ul {
 			width: 49%;
 		}
@@ -705,8 +713,8 @@ table {
 			}
 		}
 
-		#right { 
-			#content { 
+		#right {
+			#content {
 				#yield #filter form #subject-list {
 					width: 65%;
 				}
