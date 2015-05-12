@@ -74,7 +74,9 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
-        @topic.update(subject_id: @subject._id)
+        if @subject
+          @topic.update(subject_id: @subject._id)
+        end
         if @topic.review_configuration != params[:review_configuration]
           @topic.update(review_configuration: params[:review_configuration])
           Topic.set_review_dates @topic
