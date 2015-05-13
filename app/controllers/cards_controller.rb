@@ -1,6 +1,6 @@
 # CardsController
 class CardsController < ApplicationController
-  before_action :set_topic, except: [:show, :update, :destroy]
+  before_action :set_topic, except: [:show, :destroy]
   before_action :set_errors, only: [:new, :edit]
   before_action :set_card, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -36,6 +36,8 @@ class CardsController < ApplicationController
   # GET /cards/1/edit
   def edit
     @view_title = "Editing card"
+    user = User.find_by(username: session[:user_uname])
+    @topics = Topic.not_archived.where(:user_id => user._id, :_id.ne => @card.topic_id)
     @url = topic_card_path(@topic._id, @card._id) # url the form will use to send the values of the form
   end
 
@@ -68,8 +70,10 @@ class CardsController < ApplicationController
   # PATCH/PUT /cards/1.json
   def update
     respond_to do |format|
+      @card.topic = Topic.find(params[:new_topic])
       if @card.update(card_params)
-        format.html { redirect_to topic_cards_path(@card.topic) }
+        @card.save
+        format.html { redirect_to topic_cards_path(@topic) }
       else
         format.html { redirect_to edit_topic_card_path(@card.topic_id, @card._id, errors: @card.errors.full_messages.each.to_a) }
         format.json { render json: @card.errors, status: :unprocessable_entity }

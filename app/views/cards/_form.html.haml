@@ -6,6 +6,14 @@
         - @errors.each do |msg|
           %li= msg
           
+  - if @url[/cards\/[0-9]/]
+    .field
+      = f.label :new_topic
+      %select{name: :new_topic, id: :new_topic}
+        %option{value: "#{@card.topic_id}"}= @card.topic.title
+        - if @topics
+          - @topics.each do |topic|
+            %option{value: "#{topic._id}"}= topic.title
   .field.side
     = f.label :question
     = f.text_area :question, placeholder: "Front side (question)"
