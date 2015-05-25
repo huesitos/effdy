@@ -6,8 +6,8 @@
 			#day= "#{@wdays[Date.parse(day).wday]} #{Date.parse(day).day.ordinalize}"
 			- rbl.each do |rb|
 				%li
-					%span{class: "box b#{rb.box}", id: "box"}
 					- if rb.topic.subject
 						%span.tag{style: "background-color:##{rb.topic.subject.color}"}
 							=rb.topic.subject.code
+					%span{class: "box b#{rb.box}", id: "box"}
 					= rb.topic.title
