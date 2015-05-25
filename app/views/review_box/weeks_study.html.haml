@@ -7,7 +7,6 @@
 			- rbl.each do |rb|
 				%li
 					- if rb.topic.subject
-						%span{class: "box b#{rb.box}", id: "box"}
 						%span.tag{style: "background-color:##{rb.topic.subject.color}"}
 							=rb.topic.subject.code
 					%span{class: "box b#{rb.box}", id: "box"}
