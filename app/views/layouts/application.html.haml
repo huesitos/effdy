@@ -2,6 +2,7 @@
 %html
   %head
     %link{:href => "http://fonts.googleapis.com/css?family=Lato", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Bitter:400,400italic,700", :rel => "stylesheet", :type => "text/css"}/
     %title Aplus
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
@@ -65,7 +66,7 @@
             = link_to '', new_topic_card_path(@topic), :class => 'btn', :id => 'new-card', :alt => "new card", :title => "new card"
             = link_to '', topic_cards_path(@topic), :class => 'btn', :id => 'cards', :alt => "card list", :title => "card list"
             = form_tag("/topics/#{@topic._id}/reset_cards", method: "patch") do
-              = submit_tag('', id: 'reset', :alt => "reset cards", :title => "reset cards") 
+              = submit_tag('', id: 'reset', :alt => "reset cards", :title => "reset cards")
             = link_to '', share_request_new_path(type:'topic', oid:@topic._id, name: @topic.title), :class => 'btn share', :alt => "share", :title => "share"
             = link_to '', edit_topic_path(@topic), :class => 'btn edit', :alt => "edit", :title => "edit"
             = link_to '', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy', :alt => "delete", :title => "delete"
