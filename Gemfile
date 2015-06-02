@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use mongodb as database
-gem 'mongoid', '~> 4', github: 'mongoid/mongoid'
+gem 'mongoid', '~> 5', github: 'mongoid/mongoid'
 gem 'bson_ext'
 # Use Haml for default views
 gem 'haml-rails', '~> 0.8'
