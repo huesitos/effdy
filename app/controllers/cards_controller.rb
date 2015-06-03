@@ -59,7 +59,7 @@ class CardsController < ApplicationController
         else
           format.html {
             flash[:success] = 'Card created successfully.'
-            
+
             redirect_to new_topic_card_path(@card.topic)
           }
         end
@@ -77,7 +77,11 @@ class CardsController < ApplicationController
       @card.topic = Topic.find(params[:new_topic])
       if @card.update(card_params)
         @card.save
-        format.html { redirect_to topic_cards_path(@topic) }
+        format.html {
+          flash[:success] = 'Card updated successfully.'
+
+          redirect_to topic_cards_path(@topic)
+        }
       else
         format.html { redirect_to edit_topic_card_path(@card.topic_id, @card._id, errors: @card.errors.full_messages.each.to_a) }
         format.json { render json: @card.errors, status: :unprocessable_entity }
