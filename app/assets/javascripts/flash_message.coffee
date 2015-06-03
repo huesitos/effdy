@@ -11,5 +11,7 @@ $(() ->
   texts = $.map($messages, (el) -> $(el).text())
 
   # TODO: Dispatch appropiate notification type.
+  toastr.options.positionClass = 'toast-bottom-right'
+  
   $.each(texts, (idx, t) -> toastr.success(t))
 )
