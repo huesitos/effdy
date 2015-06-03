@@ -1,6 +1,6 @@
 # SubjectsController
 class SubjectsController < ApplicationController
-	before_action :set_subject, except: [:index, :new, :create]
+  before_action :set_subject, except: [:index, :new, :create]
   before_action :set_errors, only: [:new, :edit]
   before_action :authenticate_user!
 
@@ -39,7 +39,11 @@ class SubjectsController < ApplicationController
 
     respond_to do |format|
       if @subject.save
-        format.html { redirect_to subjects_url }
+        format.html {
+          flash[:success] = 'Subject created sucessfully.'
+
+          redirect_to subjects_url
+        }
         format.json { render :show, status: :created, location: @subject }
       else
         format.html { redirect_to new_subject_path(errors: @subject.errors.full_messages.each.to_a) }
@@ -52,7 +56,11 @@ class SubjectsController < ApplicationController
   def update
     respond_to do |format|
       if @subject.update(subject_params)
-        format.html { redirect_to subjects_url }
+        format.html {
+          flash[:success] = 'Subject updated sucessfully.'
+
+          redirect_to subjects_url
+        }
         format.json { render :show, status: :ok, location: @subject }
       else
         format.html { redirect_to edit_subject_path(errors: @subject.errors.full_messages.each.to_a) }
@@ -66,7 +74,7 @@ class SubjectsController < ApplicationController
   def archive
     respond_to do |format|
       reset_cache @subject
-      
+
       if @subject.archived
         Subject.unarchive @subject
       else
@@ -82,7 +90,11 @@ class SubjectsController < ApplicationController
     @subject.destroy
 
     respond_to do |format|
-      format.html { redirect_to subjects_url }
+      format.html {
+        flash[:success] = 'Subject deleted sucessfully.'
+
+        redirect_to subjects_url
+      }
       format.json { head :no_content }
     end
   end
