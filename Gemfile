@@ -42,6 +42,9 @@ gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'json'
 
+# Use awesome front-end notification manager.
+gem 'toastr-rails'
+
 group :development do
   gem 'brice'
   gem 'hirb'
@@ -50,7 +53,7 @@ end
 group :development, :test do
 	gem 'rspec-rails'
 	gem 'capybara'
-	
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
  gem 'byebug'
 
