@@ -95,7 +95,11 @@ class CardsController < ApplicationController
     topic = @card.topic
     @card.destroy
     respond_to do |format|
-      format.html { redirect_to topic_cards_path(topic) }
+      format.html {
+        flash[:success] = 'Card deleted successfully.'
+        
+        redirect_to topic_cards_path(topic)
+      }
       format.json { head :no_content }
     end
   end
