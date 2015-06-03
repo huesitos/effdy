@@ -57,7 +57,11 @@ class CardsController < ApplicationController
         if params[:commit] == 'Done'
           format.html { redirect_to topic_cards_path(@card.topic) }
         else
-          format.html { redirect_to new_topic_card_path(@card.topic) }
+          format.html {
+            flash[:success] = 'Card created successfully.'
+            
+            redirect_to new_topic_card_path(@card.topic)
+          }
         end
       else
         format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
