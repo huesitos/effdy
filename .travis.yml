@@ -3,4 +3,4 @@ rvm:
   - 2.2.0
 services:
   - mongodb
-script: "rspec"
+script: bundle exec rspec spec
