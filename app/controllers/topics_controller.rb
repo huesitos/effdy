@@ -20,7 +20,7 @@ class TopicsController < ApplicationController
       else
         subject = Subject.find_by(code: params[:subject])
         @topics = Topic.where(subject_id: subject._id)
-      end 
+      end
     else
       @topics = Topic.all
     end
@@ -58,11 +58,15 @@ class TopicsController < ApplicationController
     @topic.subject = @subject
     @topic.review_configuration = params[:review_configuration]
     @topic.user = User.find_by(username: session[:user_uname])
-    
+
     respond_to do |format|
       if @topic.save
         Topic.set_review_boxes @topic
-        format.html { redirect_to @topic }
+        format.html {
+          flash[:success] = 'Topic created successfully.'
+
+          redirect_to @topic
+        }
       else
         format.html { redirect_to new_topic_path(errors: @topic.errors.full_messages.each.to_a) }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
@@ -82,7 +86,11 @@ class TopicsController < ApplicationController
           Topic.set_review_dates @topic
         end
 
-        format.html { redirect_to @topic }
+        format.html {
+          flash[:success] = 'Topic updated successfully.'
+
+          redirect_to @topic
+        }
       else
         format.html { redirect_to edit_topic_path(errors: @topic.errors.full_messages.each.to_a) }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
@@ -95,7 +103,11 @@ class TopicsController < ApplicationController
   def destroy
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to topics_path }
+      format.html {
+        flash[:success] = 'Topic deleted successfully.'
+
+        redirect_to topics_path
+      }
       format.json { head :no_content }
     end
   end
@@ -106,7 +118,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.reviewing
         Topic.unset_reviewing @topic
-      else 
+      else
         Topic.set_reviewing @topic
         Topic.set_review_dates @topic
       end

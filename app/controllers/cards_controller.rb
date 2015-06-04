@@ -54,6 +54,8 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       if @card.save
+        flash[:success] = 'Card created successfully.'
+
         if params[:commit] == 'Done'
           format.html { redirect_to topic_cards_path(@card.topic) }
         else
@@ -73,7 +75,11 @@ class CardsController < ApplicationController
       @card.topic = Topic.find(params[:new_topic])
       if @card.update(card_params)
         @card.save
-        format.html { redirect_to topic_cards_path(@topic) }
+        format.html {
+          flash[:success] = 'Card updated successfully.'
+
+          redirect_to topic_cards_path(@topic)
+        }
       else
         format.html { redirect_to edit_topic_card_path(@card.topic_id, @card._id, errors: @card.errors.full_messages.each.to_a) }
         format.json { render json: @card.errors, status: :unprocessable_entity }
@@ -87,7 +93,11 @@ class CardsController < ApplicationController
     topic = @card.topic
     @card.destroy
     respond_to do |format|
-      format.html { redirect_to topic_cards_path(topic) }
+      format.html {
+        flash[:success] = 'Card deleted successfully.'
+
+        redirect_to topic_cards_path(topic)
+      }
       format.json { head :no_content }
     end
   end
