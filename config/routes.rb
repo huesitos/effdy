@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#welcome'
+  root 'review#study_calendar'
 
   get 'share_request/new/:type/:oid/:name' => 'share_request#new', as: :share_request_new
   post 'share_requests/:type/:oid/:name' => 'share_request#create', as: :share_requests
@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   delete 'share_request/destroy/:id' => 'share_request#destroy', as: :share_request_destroy
 
   get 'filter_subject' => 'application#filter_subject'
-  get 'todays_study' => 'review_box#todays_study'
-  get 'weeks_study' => 'review_box#weeks_study'
+  get 'study_calendar' => 'review#study_calendar'
 
   resources :subjects do
     patch 'archive' => 'subjects#archive', as: :archive
@@ -17,16 +16,17 @@ Rails.application.routes.draw do
 
   resources :topics do
     resources :cards
-    get 'set_review' => 'review_box#set_review', as: :prepare_review
-    get 'review_box/:b' => 'review_box#review_box', as: :review_box
-    get 'review_box/:b/card/:card_id/front/' => 'review_box#front', as: :card_front
-    get 'review_box/:b/card/:card_id/back/' => 'review_box#back', as: :card_back
-    post 'review_box/:b/card/:card_id/answer' => 'review_box#answer', as: :card_answer
+    get 'set_review' => 'review#set_review', as: :prepare_review
+    get 'review/:b' => 'review#review', as: :review
+    get 'review/:b/card/:card_id/front/' => 'review#front', as: :card_front
+    get 'review/:b/card/:card_id/back/' => 'review#back', as: :card_back
+    post 'review/:b/card/:card_id/answer' => 'review#answer', as: :card_answer
     patch 'reset_cards' => 'topics#reset_cards', as: :reset_cards
     patch 'set_reviewing' => 'topics#set_reviewing', as: :set_review
   end
 
-  get '/auth/:provider', to: lambda{|env| [404, {}, ["Not Found"]]}, as: 'login'
+  get 'login' => 'welcome#welcome', as: 'login'
+  get '/auth/:provider', to: lambda{|env| [404, {}, ["Not Found"]]}, as: 'login_provider'
   get '/auth/:provider/callback', to: 'session#create'
   get '/logout', to: 'session#destroy', as: 'logout'
 
