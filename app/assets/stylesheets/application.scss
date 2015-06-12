@@ -169,10 +169,6 @@ table {
 		font-size: 2em;
 	}
 
-	#menu {
-		display: none;
-	}
-
 	#home {
 		text-align: center;
 		width: 25%;
@@ -753,16 +749,6 @@ table {
 
 		#main-options {
 			display: none;
-		}
-
-		#menu {
-			display: inline-block;
-
-			img {
-				width: 2em;
-				height: 2em;
-				margin: 0 0.5em;
-			}
 		}
 
 		#home {
