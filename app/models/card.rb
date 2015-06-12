@@ -7,7 +7,7 @@ class Card
   field :front, type: String
   field :back, type: String
   field :level, type: Integer, default: 1
-  field :review_date, type: Date, default: Date.today
+  field :review_date, type: DateTime, default: DateTime.now
 
   embeds_one :card_statistic
   belongs_to :topic
@@ -21,12 +21,14 @@ class Card
   # Moves a card that was answered correctly to the next level.
   def self.correct(card)
   	card.inc(level: 1)
+    card.card_statistic.inc(times_correct: 1)
   end
 
   # Moves a card that was answered incorrectly to the previous level.
   def self.incorrect(card)
     if card.level > 1
       card.inc(level: -1)
+      card.card_statistic.inc(times_incorrect: 1)
     end
   end
 
@@ -40,7 +42,7 @@ class Card
     n = card.level
 
     # Level of understanding
-    s = 2**level
+    s = 2**n
 
     # t = -ln(R)*S
     t = -s*Math.log(r)

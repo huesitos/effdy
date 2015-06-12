@@ -397,10 +397,6 @@ table {
 				background: url(asset-path("new_card.png")) no-repeat center;
 				background-size: 2em;
 			}
-			#boxes {
-				background: url(asset-path("all_boxes.png")) no-repeat center;
-				background-size: 2em;
-			}
 
 			form {
 				input[type=submit] {
@@ -507,7 +503,7 @@ table {
 	}
 }
 
-.review_box, .welcome {
+.welcome {
 	.box {
 		display: inline-block;
 		width: 2em;
@@ -529,8 +525,8 @@ table {
 	}
 }
 
-.review_box, .share_request {
-	#todays_study, #weeks_study, #notifications {
+.review, .share_request {
+	#notifications {
 		ul {
 			list-style: none;
 			padding: 0;
@@ -552,44 +548,6 @@ table {
 			li:first-child {
 				padding-top: 0;
 			}
-		}
-	}
-}
-
-.review_box {
-	#todays_study, #weeks_study {
-		.tag {
-			display: inline-block;
-			width: 6em;
-			height: 1.4em;
-			text-align: center;
-			border-radius: 0.2em;
-			color: #FFF;
-			font-size: 0.85em;
-			vertical-align: bottom;
-			line-height: 1.5em;
-		}
-	}
-
-	#weeks_study {
-		ul {
-			display: inline-block;
-			vertical-align: top;
-			width: 33%;
-			font-size: 0.7em;
-			margin: 0 0 2em 0;
-
-			li {
-				border-bottom: 1px dashed #7DB07D;
-				padding-bottom: 0.25em;
-			}
-		}
-
-		#day {
-			text-align: center;
-			font-weight: bold;
-			border-bottom: 0.1em dashed rgb(125, 176, 125);
-			padding-bottom: 0.3em;
 		}
 	}
 }

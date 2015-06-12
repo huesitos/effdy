@@ -5,15 +5,6 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  # # GET /cards
-  # # GET /cards.json
-  # # If a specific box is picked, sends back only the cards in that box.
-  def index
-    @view_title = @topic.title
-
-    @cards = Card.where(topic_id: @topic._id)
-  end
-
   # GET /cards/1
   # GET /cards/1.json
   # Not being used. Should test on test users to see if it's necessary
@@ -45,14 +36,14 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
     @card.topic = @topic
     @card.user = @topic.user
-    @card.build_card_statistic()
 
     respond_to do |format|
       if @card.save
+        @card.create_card_statistic()
         flash[:success] = 'Card created successfully.'
 
         if params[:commit] == 'Done'
-          format.html { redirect_to topic_cards_path(@card.topic) }
+          format.html { redirect_to topic_path(@card.topic) }
         else
           format.html { redirect_to new_topic_card_path(@card.topic) }
         end
@@ -91,7 +82,7 @@ class CardsController < ApplicationController
       format.html {
         flash[:success] = 'Card deleted successfully.'
 
-        redirect_to topic_cards_path(topic)
+        redirect_to topic_path(topic)
       }
       format.json { head :no_content }
     end

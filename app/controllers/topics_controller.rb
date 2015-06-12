@@ -52,12 +52,12 @@ class TopicsController < ApplicationController
   # POST /topics
   def create
     @topic = Topic.new(topic_params)
-    # @topic.recall_percentage = 0.8
     @topic.subject = @subject
     @topic.user = User.find_by(username: session[:user_uname])
 
     respond_to do |format|
       if @topic.save
+        @topic.create_review(cards: [])
         format.html {
           flash[:success] = 'Topic created successfully.'
 

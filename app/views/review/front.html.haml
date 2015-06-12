@@ -1,5 +1,5 @@
 .card
-	= text_area_tag(:question_front, @card.question, disabled: true)
+	= text_area_tag(:question_front, @card.front, disabled: true)
 
 .card
 	= form_tag(topic_card_back_path, method: 'get') do

@@ -12,6 +12,8 @@ class Topic
   field :recall_percentage, type: Float, default: 0.8
 
   has_many :cards, dependent: :destroy
+  has_one :review, dependent: :destroy
+
   belongs_to :subject
   belongs_to :user
 

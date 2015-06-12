@@ -15,12 +15,11 @@ Rails.application.routes.draw do
   end
 
   resources :topics do
-    resources :cards
-    get 'set_review' => 'review#set_review', as: :prepare_review
-    get 'review/:b' => 'review#review', as: :review
-    get 'review/:b/card/:card_id/front/' => 'review#front', as: :card_front
-    get 'review/:b/card/:card_id/back/' => 'review#back', as: :card_back
-    post 'review/:b/card/:card_id/answer' => 'review#answer', as: :card_answer
+    resources :cards, except: [:index]
+    get 'review/' => 'review#review', as: :review
+    get 'review/card/:card_id/front/' => 'review#front', as: :card_front
+    get 'review/card/:card_id/back/' => 'review#back', as: :card_back
+    post 'review/card/:card_id/answer' => 'review#answer', as: :card_answer
     patch 'reset_cards' => 'topics#reset_cards', as: :reset_cards
     patch 'set_reviewing' => 'topics#set_reviewing', as: :set_review
   end
