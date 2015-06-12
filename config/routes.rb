@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'welcome#welcome'
-  get 'menu' => 'menu#menu'
 
   get 'share_request/new/:type/:oid/:name' => 'share_request#new', as: :share_request_new
   post 'share_requests/:type/:oid/:name' => 'share_request#create', as: :share_requests
