@@ -5,18 +5,13 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  # GET /cards
-  # GET /cards.json
-  # If a specific box is picked, sends back only the cards in that box.
+  # # GET /cards
+  # # GET /cards.json
+  # # If a specific box is picked, sends back only the cards in that box.
   def index
     @view_title = @topic.title
 
-    if params[:box]
-      @cards = Card.where(topic_id: @topic._id, box: params[:box].to_i)
-      @box = params[:box].to_i # the number of the box that will have the active class
-    else
-      @cards = Card.where(topic_id: @topic._id)
-    end
+    @cards = Card.where(topic_id: @topic._id)
   end
 
   # GET /cards/1
@@ -48,9 +43,9 @@ class CardsController < ApplicationController
   # it returns to a new topic card path.
   def create
     @card = Card.new(card_params)
-    @card.box = 1
     @card.topic = @topic
     @card.user = @topic.user
+    @card.build_card_statistic()
 
     respond_to do |format|
       if @card.save
@@ -120,6 +115,6 @@ class CardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.require(:card).permit(:question, :answer)
+      params.require(:card).permit(:front, :back)
     end
 end

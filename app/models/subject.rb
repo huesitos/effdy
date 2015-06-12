@@ -8,6 +8,7 @@ class Subject
   field :name, type: String
   field :color, type: String
   field :archived, type: Boolean, default: false
+  
   has_many :topics, dependent: :destroy
   belongs_to :user
 
