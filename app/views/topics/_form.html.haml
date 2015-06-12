@@ -14,8 +14,6 @@
     %select{name: :review_configuration, id: :review_configuration}
       - if @topic.review_configuration
         %option{value: "#{@topic.review_configuration}"}= @topic.review_configuration.capitalize
-      - @configs.each do |config|
-        %option{value: "#{config.name}"}= config.name.capitalize
   .field
     = f.label :subject_id
     %select{name: :subject_id, id: :subject_id}
