@@ -8,6 +8,8 @@ class Card
   field :back, type: String
   field :level, type: Integer, default: 1
   field :review_date, type: Date, default: Date.today
+
+  embbeds_one :card_statistic
   belongs_to :topic
   belongs_to :user
 
