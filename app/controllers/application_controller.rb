@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
     
     def authenticate_user!
       if not session[:user_uname]
-        redirect_to root_url
+        redirect_to login_path
       end
     end
 end
