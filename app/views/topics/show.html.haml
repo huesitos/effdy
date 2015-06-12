@@ -1,20 +1,2 @@
 %p#notice= notice
 
-%h2 Review boxes
-
-.boxes
-  -if @box_has_cards[0]
-    .box.b1
-      = link_to '', topic_prepare_review_path(@topic._id, b: 1), :class => 'btn'
-  - else
-    .box.b1_e
-  -if @box_has_cards[1]
-    .box.b2
-      = link_to '', topic_prepare_review_path(@topic._id, b: 2), :class => 'btn'
-  - else
-    .box.b2_e
-  -if @box_has_cards[2]
-    .box.b3
-      = link_to '', topic_prepare_review_path(@topic._id, b: 3), :class => 'btn'
-  - else
-    .box.b3_e

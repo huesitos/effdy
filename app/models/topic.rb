@@ -9,7 +9,7 @@ class Topic
   field :title, type: String
   field :reviewing, type: Boolean, default: false
   field :archived, type: Boolean, default: false
-  field :recall_percentage, type: Integer, default: 0.80
+  field :recall_percentage, type: Float, default: 0.8
 
   has_many :cards, dependent: :destroy
   belongs_to :subject

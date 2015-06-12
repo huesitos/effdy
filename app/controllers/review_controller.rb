@@ -1,22 +1,14 @@
 # ReviewBoxController
-class ReviewBoxController < ApplicationController
-  before_action :set_topic, except: [:todays_study, :weeks_study]
+class ReviewController < ApplicationController
+  before_action :set_topic, except: [:study_calendar]
   before_action :set_card, only: [:front, :back, :answer]
   before_action :authenticate_user!
 
-  # GET /todays_study
-  def todays_study
-    @view_title = "Today's study"
-    user = User.find_by(username: session[:user_uname])
-    @review_boxes = ReviewBox.todays_study(user)
-  end
-
-  # GET /week_study
-  def weeks_study
-    @wdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    @view_title = "Week's study"
-    user = User.find_by(username: session[:user_uname])
-    @review_boxes = ReviewBox.weeks_study(user)
+  # GET /study_calendar
+  def study_calendar
+    @view_title = "Study calendar"
+    # user = User.find_by(username: session[:user_uname])
+    # @review_boxes = ReviewBox.todays_study(user)
   end
 
   # GET	/topics/:topic_id/set_review
@@ -25,10 +17,10 @@ class ReviewBoxController < ApplicationController
   def set_review
     # reset the cards to review them again
     review_box = @topic.review_boxes.find_by(box: params[:b])
-    ReviewBox.set_cards review_box, params[:b]
+    Review.set_cards review_box, params[:b]
 
     # update the review date of the box to be reviewed
-    ReviewBox.update_date review_box
+    Review.update_date review_box
 
     respond_to do |format|
       format.html {redirect_to topic_review_box_path(@topic, params[:b])}

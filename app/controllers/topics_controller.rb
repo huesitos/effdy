@@ -52,6 +52,7 @@ class TopicsController < ApplicationController
   # POST /topics
   def create
     @topic = Topic.new(topic_params)
+    # @topic.recall_percentage = 0.8
     @topic.subject = @subject
     @topic.user = User.find_by(username: session[:user_uname])
 
@@ -153,6 +154,6 @@ class TopicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def topic_params
-      params.require(:topic).permit(:title, :review_configuration, :subject)
+      params.require(:topic).permit(:title, :subject)
     end
 end

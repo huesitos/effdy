@@ -1,19 +1,6 @@
-%h2 Review boxes
+%h2 Topics
 
-- if @review_boxes.count() > 0
-  #todays_study
-    %ul
-      - @review_boxes.each do |review_box|
-        %li
-          - if review_box.review_date < Date.today.to_s
-            %span.tag{style: "background-color:red"} Expired
-          - if review_box.topic.subject
-            %span.tag{style: "background-color:##{review_box.topic.subject.color}"}
-              =review_box.topic.subject.code
-          %span
-            %span{class: "box b#{review_box.box}", id: "box"}
-            %a{href: topic_prepare_review_path(b: review_box.box, topic_id: review_box.topic_id)}
-              = review_box.topic.title
+- if false
 - else
   .placeholder
     %p There are no boxes to study today! If you don't have any topics set for reviewing, set some.
