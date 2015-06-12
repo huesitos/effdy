@@ -12,7 +12,6 @@ class Topic
   field :recall_percentage, type: Float, default: 0.8
 
   has_many :cards, dependent: :destroy
-  has_one :review, dependent: :destroy
 
   belongs_to :subject
   belongs_to :user
@@ -35,6 +34,33 @@ class Topic
     topic.cards.each do |card|
       Card.reset card
     end
+  end
+
+  # Returns all the topics that have to be reviewed today, with the number of cards
+  # they have and the approximate amount of time it will take to study it
+  def self.topics_to_study(username, date)
+    study_topics = []
+    topics = Topic.from_user username
+
+    topics.each do |t|
+      cards = t.cards.where(:review_date => {"$lte": date})
+      at = 0 # approximate time to answer everything
+
+      if cards.count > 0
+        cards.each do |c|
+          at += CardStatistic.approx_time_to_answer c.card_statistic
+        end
+        at /= cards.count
+
+        study_topics.push({
+          topic: t,
+          cards_count: Integer(t.cards.where(:review_date => {"$lte": DateTime.now}).count),
+          approx_time: Integer(at)
+        })
+      end
+    end
+
+    study_topics
   end
 
   # Shares the topic that belongs to another user, with the current user

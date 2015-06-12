@@ -57,7 +57,6 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        @topic.create_review(cards: [])
         format.html {
           flash[:success] = 'Topic created successfully.'
 

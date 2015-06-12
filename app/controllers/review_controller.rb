@@ -7,8 +7,7 @@ class ReviewController < ApplicationController
   # GET /study_calendar
   def study_calendar
     @view_title = "Study calendar"
-    # user = User.find_by(username: session[:user_uname])
-    # @review_boxes = ReviewBox.todays_study(user)
+    @study_topics = Topic.topics_to_study(session[:user_uname], DateTime.now)
   end
 
   # GET topics/:topic_id/review_box/:b
