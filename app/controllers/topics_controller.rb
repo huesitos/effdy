@@ -34,7 +34,6 @@ class TopicsController < ApplicationController
   # Shows the topic's boxes. Empty boxes have a different icon.
   def show
     @view_title = @topic.title
-    @box_has_cards = [@topic.cards.where(box: 1).count() > 0 ? true : false, @topic.cards.where(box: 2).count() > 0 ? true : false, @topic.cards.where(box: 3).count() > 0 ? true : false]
   end
 
   # GET /topics/new
@@ -42,26 +41,22 @@ class TopicsController < ApplicationController
     @back = params[:back]
     @url = new_topic_path
     @view_title = "New topic"
-    @configs = ReviewConfiguration.all
     @topic = Topic.new
   end
 
   # GET /topics/1/edit
   def edit
     @view_title = "Editing topic"
-    @configs = ReviewConfiguration.where(:name.ne => @topic.review_configuration)
   end
 
   # POST /topics
   def create
     @topic = Topic.new(topic_params)
     @topic.subject = @subject
-    @topic.review_configuration = params[:review_configuration]
     @topic.user = User.find_by(username: session[:user_uname])
 
     respond_to do |format|
       if @topic.save
-        Topic.set_review_boxes @topic
         format.html {
           flash[:success] = 'Topic created successfully.'
 
@@ -80,10 +75,6 @@ class TopicsController < ApplicationController
       if @topic.update(topic_params)
         if @subject
           @topic.update(subject_id: @subject._id)
-        end
-        if @topic.review_configuration != params[:review_configuration]
-          @topic.update(review_configuration: params[:review_configuration])
-          Topic.set_review_dates @topic
         end
 
         format.html {
@@ -117,10 +108,9 @@ class TopicsController < ApplicationController
   def set_reviewing
     respond_to do |format|
       if @topic.reviewing
-        Topic.unset_reviewing @topic
+        @topic.update(reviewing: false)
       else
-        Topic.set_reviewing @topic
-        Topic.set_review_dates @topic
+        @topic.update(reviewing: true)
       end
 
       format.html { redirect_to @topic }
@@ -163,6 +153,6 @@ class TopicsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def topic_params
-      params.require(:topic).permit(:title, :review_configuration, :subject)
+      params.require(:topic).permit(:title, :subject)
     end
 end

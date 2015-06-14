@@ -1,0 +1,12 @@
+%h2 Topics
+
+- if not @study_topics.empty?
+	- @study_topics.each do |st|
+		- if st[:topic].subject
+			%span{style: "background-color:##{st[:topic].subject.color}; color: #fff" }= st[:topic].subject.code
+		= link_to "#{st[:topic].title}", topic_review_path(st[:topic].id)
+		%span= st[:cards_count]
+		%span= "#{st[:approx_time]} min"
+- else
+	.placeholder
+		%p There are no topics to study today! If you don't have any topics set for reviewing, set some.

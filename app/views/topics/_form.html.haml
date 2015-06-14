@@ -10,12 +10,8 @@
     = f.label :title
     = f.text_field :title
   .field
-    = f.label :review_configuration
-    %select{name: :review_configuration, id: :review_configuration}
-      - if @topic.review_configuration
-        %option{value: "#{@topic.review_configuration}"}= @topic.review_configuration.capitalize
-      - @configs.each do |config|
-        %option{value: "#{config.name}"}= config.name.capitalize
+    = f.label :recall_percentage
+    = f.text_field :recall_percentage, value: @topic.recall_percentage
   .field
     = f.label :subject_id
     %select{name: :subject_id, id: :subject_id}
