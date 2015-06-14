@@ -14,9 +14,9 @@ class ReviewController < ApplicationController
   # Picks a card and redirects to the front side.
   def review
     respond_to do |format|
-      if @topic.cards.where(:review_date => {"$lte": DateTime.now}).count > 0
+      if @topic.cards.where(:review_date => {"$lte" => DateTime.now}).count > 0
         # Retrieve next card to study
-        card_id = Card.where(:review_date => {"$lte": DateTime.now})[0]
+        card_id = Card.where(:review_date => {"$lte" => DateTime.now})[0]
 
         if card_id
           @card = Card.find(card_id)

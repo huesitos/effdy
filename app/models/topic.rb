@@ -43,7 +43,7 @@ class Topic
     topics = Topic.from_user username
 
     topics.each do |t|
-      cards = t.cards.where(:review_date => {"$lte": date})
+      cards = t.cards.where(:review_date => {"$lte" => date})
       at = 0 # approximate time to answer everything
 
       if cards.count > 0
@@ -54,7 +54,7 @@ class Topic
 
         study_topics.push({
           topic: t,
-          cards_count: Integer(t.cards.where(:review_date => {"$lte": DateTime.now}).count),
+          cards_count: Integer(t.cards.where(:review_date => {"$lte" => DateTime.now}).count),
           approx_time: Integer(at)
         })
       end
