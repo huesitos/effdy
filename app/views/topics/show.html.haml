@@ -6,4 +6,5 @@
 = link_to 'Study', topic_review_path(@topic, review: 'all')
 
 .cards
+	%p= "# of cards: #{Integer(@topic.cards.count)}"
 	= render @topic.cards
