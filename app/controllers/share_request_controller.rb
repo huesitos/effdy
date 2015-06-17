@@ -3,7 +3,6 @@ class ShareRequestController < ApplicationController
     @share_request = ShareRequest.new
     @view_title = "Share with"
     @url = share_requests_path(params[:type],params[:oid], params[:name])
-    @name
   end
 
   def create

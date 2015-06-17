@@ -54,7 +54,7 @@ class ReviewController < ApplicationController
     if params[:commit] == "Correct"
       Card.correct @card 
     else 
-      Card.reset @card 
+      Card.incorrect @card 
     end
 
     Card.update_review_date @card
