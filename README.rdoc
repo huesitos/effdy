@@ -11,3 +11,4 @@ way, the student can program her reviews so that the first box is visited more f
 * Share topic/subject as collaboration
 * Study all cards, even those not due today, taking in consideration the actual 'recall percentage', but without moving to a next level.
 * Improve layout.
+
