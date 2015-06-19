@@ -19,16 +19,16 @@ class Card
   validates :level, numericality: { only_integer: true, greater_than: 0 }
 
   # Moves a card that was answered correctly to the next level.
-  def self.correct(card)
-  	card.inc(level: 1)
-    card.card_statistic.inc(times_correct: 1)
+  def correct
+  	self.inc(level: 1)
+    self.card_statistic.inc(times_correct: 1)
   end
 
   # Moves a card that was answered incorrectly to the previous level.
-  def self.incorrect(card)
-    if card.level > 1
-      card.inc(level: -1)
-      card.card_statistic.inc(times_incorrect: 1)
+  def incorrect
+    if self.level > 1
+      self.inc(level: -1)
+      self.card_statistic.inc(times_incorrect: 1)
     end
   end
 
@@ -37,9 +37,9 @@ class Card
   # where t is the number of days that can pass without studying the card before
   # it recall percentage drops below the topic's.
   # S = 2^n, where n is the card level
-  def self.update_review_date(card)
-    r = card.topic.recall_percentage
-    n = card.level
+  def update_review_date
+    r = self.topic.recall_percentage
+    n = self.level
 
     # Level of understanding
     s = 2**n
@@ -48,12 +48,12 @@ class Card
     t = -s*Math.log(r)
 
     # Update date
-    card.review_date += t
-    card.save
+    self.review_date += t
+    self.save
   end
 
   # Moves a card back to box 1.
-  def self.reset(card)
-  	card.update(level: 1)
+  def reset
+  	self.update(level: 1)
   end
 end

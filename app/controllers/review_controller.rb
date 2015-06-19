@@ -52,12 +52,12 @@ class ReviewController < ApplicationController
   # Answers the card and updates the review date if the review_date is today.
   def answer
     if params[:commit] == "Correct"
-      Card.correct @card 
+      @card.correct 
     else 
-      Card.incorrect @card 
+      @card.incorrect 
     end
 
-    Card.update_review_date @card
+    @card.update_review_date
 
     respond_to do |format|
   		format.html { redirect_to topic_review_path(@topic) }

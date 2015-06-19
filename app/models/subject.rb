@@ -26,34 +26,34 @@ class Subject
   end
 
   # Archives a subject and all its topics.
-  def self.archive(subject)
-    subject.update(archived: true)
-    subject.topics.each do |topic|
+  def archive
+    self.update(archived: true)
+    self.topics.each do |topic|
       topic.update(archived: true)
     end
   end
 
   # Unarchives a subject and all its topics.
-  def self.unarchive(subject)
-    subject.update(archived: false)
-    subject.topics.each do |topic|
+  def unarchive
+    self.update(archived: false)
+    self.topics.each do |topic|
       topic.update(archived: false)
     end
   end
   # Shares the subject that belongs to another user, with the current user
   # It creates a new copy of the subject that belongs to the current user
-  def self.share(subject, username)
+  def share(username)
     user = User.find_by(username: username)
 
     # makes a copy of the subject for the current user
     new_subject = user.subjects.create(
-      code: subject.code,
-      name: subject.name,
-      color: subject.color,
+      code: self.code,
+      name: self.name,
+      color: self.color,
       archived: false)
 
     # copies all the topics in the subject to the new subject
-    subject.topics.each do |topic|
+    self.topics.each do |topic|
       Topic.share(topic, username, new_subject)
     end
   end
