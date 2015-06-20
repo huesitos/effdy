@@ -15,13 +15,13 @@
           - @topics.each do |topic|
             %option{value: "#{topic._id}"}= topic.title
   .field.side
-    = f.label :question
-    = f.text_area :question, placeholder: "Front side (question)"
+    = f.label :front
+    = f.text_area :front, placeholder: "Front side"
   .field.side
-    = f.label :answer
-    = f.text_area :answer, placeholder: "Back side (answer)"
+    = f.label :back
+    = f.text_area :back, placeholder: "Back side"
   .actions
-    %a{href: "#{topic_cards_path(@topic)}"} Cancel
+    %a{href: "#{topic_path(@topic)}"} Cancel
     - if @url[/cards\/[0-9]/]
       = f.submit 'Save'
     - else

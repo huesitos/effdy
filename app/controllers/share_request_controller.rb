@@ -3,7 +3,6 @@ class ShareRequestController < ApplicationController
     @share_request = ShareRequest.new
     @view_title = "Share with"
     @url = share_requests_path(params[:type],params[:oid], params[:name])
-    @name
   end
 
   def create
@@ -25,7 +24,8 @@ class ShareRequestController < ApplicationController
           format.json { render json: @share_request.errors, status: :unprocessable_entity }
         end
       else
-        format.html { redirect_to share_request_new_path, notice: "username not found" }
+        flash[:error] = "Username not found."
+        format.html { redirect_to share_request_new_path }
       end
     end
   end
@@ -33,9 +33,11 @@ class ShareRequestController < ApplicationController
   def share
      share_request = ShareRequest.find(params[:id])
      if share_request[:type] == "topic"
-       Topic.share(Topic.find(share_request[:oid]), share_request.recipient, nil)
+      topic = Topic.find(share_request[:oid])
+      topic.share(share_request.recipient, nil)
      else
-       Subject.share(Subject.find(share_request[:oid]), share_request.recipient)
+      subject = Subject.find(share_request[:oid])
+      subject.share(share_request.recipient)
      end
      share_request.destroy
 

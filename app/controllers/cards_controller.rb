@@ -5,20 +5,6 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  # GET /cards
-  # GET /cards.json
-  # If a specific box is picked, sends back only the cards in that box.
-  def index
-    @view_title = @topic.title
-
-    if params[:box]
-      @cards = Card.where(topic_id: @topic._id, box: params[:box].to_i)
-      @box = params[:box].to_i # the number of the box that will have the active class
-    else
-      @cards = Card.where(topic_id: @topic._id)
-    end
-  end
-
   # GET /cards/1
   # GET /cards/1.json
   # Not being used. Should test on test users to see if it's necessary
@@ -48,16 +34,16 @@ class CardsController < ApplicationController
   # it returns to a new topic card path.
   def create
     @card = Card.new(card_params)
-    @card.box = 1
     @card.topic = @topic
     @card.user = @topic.user
 
     respond_to do |format|
       if @card.save
+        @card.create_card_statistic()
         flash[:success] = 'Card created successfully.'
 
         if params[:commit] == 'Done'
-          format.html { redirect_to topic_cards_path(@card.topic) }
+          format.html { redirect_to topic_path(@card.topic) }
         else
           format.html { redirect_to new_topic_card_path(@card.topic) }
         end
@@ -96,7 +82,7 @@ class CardsController < ApplicationController
       format.html {
         flash[:success] = 'Card deleted successfully.'
 
-        redirect_to topic_cards_path(topic)
+        redirect_to topic_path(topic)
       }
       format.json { head :no_content }
     end
@@ -120,6 +106,6 @@ class CardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.require(:card).permit(:question, :answer)
+      params.require(:card).permit(:front, :back)
     end
 end

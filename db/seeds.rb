@@ -9,14 +9,8 @@
 # Removing all documents from the DB
 Topic.all.destroy
 Subject.all.destroy
-ReviewBox.all.destroy
-ReviewConfiguration.all.destroy
 Card.all.destroy
 
-# Creating default configurations
-normal = ReviewConfiguration.create(name: 'normal', box_frequencies: [1, 3, 7])
-tight = ReviewConfiguration.create(name: 'tight', box_frequencies: [1, 2, 3])
-spread = ReviewConfiguration.create(name: 'spread', box_frequencies: [3, 6, 9])
 
 # Example topics
 

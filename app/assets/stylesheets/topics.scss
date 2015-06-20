@@ -16,58 +16,6 @@
 			}
 		}
 	}
-	.boxes{
-		padding: 0 10%;
-	}
-	.box {
-		display: inline-block;
-		width: 8em;
-		height: 8em;
-		margin: 0 1em;
-		text-align: center;
-		padding: 3%;
-
-		.btn {
-			width: 100%;
-			height: 100%;
-		}
-	}
-
-	.b1_e{
-	  background: url(asset-path("box1_empty.png")) no-repeat center;
-	  background-size: 100%;
-	  margin-bottom: 1.5em;
-	}
-
-	.b2_e{
-	  background: url(asset-path("box2_empty.png")) no-repeat center;
-	  background-size: 100%;
-	  margin-bottom: 1.5em;
-	}
-
-	.b3_e{
-	  background: url(asset-path("box3_empty.png")) no-repeat center;
-	  background-size: 100%;
-	  margin-bottom: 1.5em;
-	}
-
-  .b1{
-	  background: url(asset-path("box1_half.png")) no-repeat center;
-	  background-size: 100%;
-	  margin-bottom: 1.5em;
-	}
-
-	.b2{
-	  background: url(asset-path("box2_half.png")) no-repeat center;
-	  background-size: 100%;
-	  margin-bottom: 1.5em;
-	}
-
-	.b3{
-	  background: url(asset-path("box3_half.png")) no-repeat center;
-	  background-size: 100%;
-	  margin-bottom: 1.5em;
-	}
 
 	.destroy{
 		background-size: 2em;
@@ -98,14 +46,52 @@
 			vertical-align: bottom;
 		}
 	}
+
+	.card-container {
+		width: 35%;
+		display: inline-block;
+		vertical-align: top;
+		text-align: center;
+		margin: 0.25em;
+		height: 7em;
+
+		.values {
+			width: 84%;
+			height: 100%;
+			display: inline-block;
+			background-color: #fff;
+			border: 1px solid #e8d9f6;
+			box-shadow: 0 3px 3px 0 #ccc;
+			line-height: 1em;
+			word-wrap: break-word;
+
+			.question {
+				height: 30%;
+				font-weight: bold;
+				border-bottom: 1px dashed #888;
+				font-size: 0.8em;
+			}
+			.answer {
+				height: 45%;
+				color: #666;
+				font-size: 0.6em;
+			}
+
+			.question, .answer{
+				padding: 0.5em 0.2em;
+				width: 97%;
+			}
+		}
+		.options {
+			vertical-align: top;
+			width: 12%;
+			display: inline-block;
+		}
+	}
 }
 
 @media only screen and (max-width: 800px) {
 	.topics {
-		.boxes{
-			padding: 0 25%;
-		}
-
 		#filter #subject-list {
 			width: 60%;
 			font-size: 0.8em;
@@ -113,23 +99,30 @@
 	}
 }
 
-@media only screen and (min-width: 1001px) and (max-width: 1280px) {
-  .topics {
-		.boxes{
-			padding: 0;
+@media only screen and (min-width: 600px) and (max-width: 1280px) {
+	.topics {
+		.card-container .values {
+			font-size: 0.8em;
 		}
 	}
 }
 
-@media only screen and (min-width: 970px) and (max-width: 1000px) {
-  .topics {
-		.box {
-			width: 5em;
-			height: 5em;
+@media only screen and (min-width: 768px) and (max-width: 980px) {
+	.topics {
+		.card-container {
+			width: 47%;
 		}
+	}
+}
 
-		.boxes {
-			padding: 0;
+@media only screen and (min-width: 768px) and (max-width: 800px) {
+	.topics {
+		.card-container {
+			height: 8.5em;
+
+			.values {
+				font-size: 1em;
+			}
 		}
 	}
 }

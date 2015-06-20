@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe "menu/menu.html.haml", type: :view do
+RSpec.describe CardStatistic, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

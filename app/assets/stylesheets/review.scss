@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.review_box {
+.review {
 	.card {
 		width: 45%;
 		display: inline-block;
@@ -97,7 +97,7 @@
 }
 
 @media only screen and (max-width: 1290px) {
-  .review_box {
+  .review {
 		.card {
 			width: 95%;
 		}

@@ -2,13 +2,13 @@
 
 %p
   %b Question:
-  = @card.question
+  = @card.front
 %p
   %b Answer:
-  = @card.answer
+  = @card.back
 %p
-  %b Box:
-  = @card.box
+  %b Level:
+  = @card.level
 
 = link_to 'Edit', edit_topic_card_path(@card.topic_id, @card)
 \|
