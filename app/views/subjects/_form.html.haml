@@ -14,7 +14,7 @@
     = f.text_field :name
   .field
     = f.label :color
-    = f.text_field :color, placeholder: "e.g. 000000, ddd"
+    = f.text_field :color, placeholder: "e.g. 000000, ddd", class: 'colorpicker'
   .actions
     %a{href: "#{subjects_path}"} Cancel
     - if @url == new_subject_path
