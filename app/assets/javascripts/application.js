@@ -16,6 +16,3 @@
 //= require toastr
 //= require jquery.minicolors
 //= require_tree .
-jQuery( function($) {
-    $(".colorpicker").minicolors({theme: 'bootstrap', control: 'wheel'})
-});
