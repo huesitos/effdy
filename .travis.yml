@@ -1,6 +1,12 @@
 language: ruby
 rvm:
-  - 2.2.0
+- 2.2.0
 services:
-  - mongodb
+- mongodb
 script: bundle exec rspec spec
+deploy:
+  provider: heroku
+  api_key:
+    secure: AC9ofbxoBCqyCiMewX79DJmfeqynyZ5cT9PX9rvc59rKem9fWrok/alisTRdB5m17cI4MsrDYIFU7CFlzUvoQY622nxKcQ7cV/jNeEYkKcfuvQMr//gQFQHvnnvqy6rIcz/i1ADkhayTf9GTk/05ISMs59DxZ3Mi0bQyQ8ZTP6otDI+fXxUDvWJuhuTe3ADv475F44Cio95CPxDKfPJtB4EDpWD5d8TIKU42PMvbgTuXX4lf5tXc1x7zR0PxDv/AnHAXKyPZ0DfOCOEFttMR3VPbTE5Xtb/5aZ9T+P3d97H3hcVl/x2dHtiQct3zZRNDRm1nQksW19h53nX1leLFhIeL7f8FJEaey+GDWgjMvkp9vWirbJKzSIxHLsavOX4IkikuzC6GJ1OmqFNRnesmD/tSSBpx8AAhjKF0q4F6tgWrrOfxIZoSb6yDOcPBDOHXLn25bIk81/86R3N4MFW0YZqCGagiRmVtzj1e3t/f3uNUNxxeqle61TkhepUkBXQq5DC+V7peQUD/ZEDzQwH02npH1fe4h+Xdg1LgzSG4tV7+Xb8YHARC1nne6SieeB5hitw7KoIjR6scUFR11M66t1Jy5QtxRAmZxXBEdi1DWFLLlE4tt+EANKgch0707aI92POUzpA9wjn2Qmv5GOyQriQNIPD16E3AXmeVR+M3jXI=
+  app: 
+    master: afternoon-journey-8075
