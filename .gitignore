@@ -14,3 +14,4 @@
 
 # Ignore all backup files
 *.*~
+*.swp

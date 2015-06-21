@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require toastr
+//= require jquery.minicolors
 //= require_tree .

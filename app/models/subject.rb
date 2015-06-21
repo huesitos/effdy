@@ -14,7 +14,7 @@ class Subject
 
   validates :code, length: { maximum: 7 }
   validates :name, :code, :color, presence: true
-  validates :color, format: { with: /\A([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})\z/, message: "only hex numbers" }
+  validates :color, format: { with: /\A#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})\z/, message: "only hex numbers" }
   validates_associated :topics
 
   scope :not_archived, -> { where(archived: false) }

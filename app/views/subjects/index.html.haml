@@ -8,7 +8,7 @@
       - @subjects.each do |subject|
         %li{class: subject.archived && "archived"}
           .info
-            %span#code{style: "color:##{subject.color}"}
+            %span#code{style: "color:#{subject.color}"}
               = subject.code
             %span#link
               = link_to subject.name, subject_path(subject)
