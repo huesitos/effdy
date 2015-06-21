@@ -8,10 +8,21 @@ $(() ->
 
   $messageList.hide();
 
-  texts = $.map($messages, (el) -> $(el).text())
+  texts = $.map(
+    $messages, (el) ->
+      $el = $(el)
+      regExp = /flash-message-(\w+)/gi
 
-  # TODO: Dispatch appropiate notification type.
+      # type is the 1st matching group.
+      type = regExp.exec($el.attr 'class')[1] || 'info'
+
+      return {
+        type: type,
+        text: $el.text()
+      }
+  )
+
   toastr.options.positionClass = 'toast-bottom-right'
-  
-  $.each(texts, (idx, t) -> toastr.success(t))
+
+  $.each(texts, (idx, t) -> toastr[t.type](t.text))
 )
