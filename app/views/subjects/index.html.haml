@@ -15,7 +15,8 @@
           .options
             = link_to '', edit_subject_path(subject), :class => "btn edit", :alt => "edit", :title => "edit"
             = link_to '', subject_archive_path(subject), :method => :patch, :id => 'archive', :class => "btn", :alt => "archive", :title => "archive"
-            = link_to '', subject, :method => :delete, :data => { :confirm => 'This will destroy the subject and its topics. Are you sure?' }, :class => "btn destroy", :alt => "delete", :title => "delete"
+            = link_to '', subject, :class => "btn destroy delete-link", :alt => "delete", :title => "delete", style: 'display:none'
+            %a.btn.destroy.subject-destroy{href:'javascript:void(0)'}
 - else
   .placeholder
     %p There are no subjects! Add subjects for a smarter topic filtering.
