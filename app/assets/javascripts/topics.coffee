@@ -5,11 +5,13 @@
 $(document).on 'load page:ready page:change', ->
   $('.destroy-action').click ->
     topic_delte = $(this).closest('li')
-    console.log $(this).prev('.delete-link').attr 'href'
+    delete_from_left_menu = $("##{ $(this).prev('.delete-link').attr('href').substring(8) }")
     $.ajax({
       url: $(this).prev('.delete-link').attr 'href'
       type: 'DELETE'
       dataType: 'json'
       success: ->
         topic_delte.remove()
+        #removes the topic from the topic menu
+        delete_from_left_menu.remove()
     })

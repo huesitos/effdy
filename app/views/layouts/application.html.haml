@@ -37,7 +37,7 @@
           #new-topic= link_to 'Add topic', new_topic_path
           - menu_topics = flash[:subjects] ? flash[:subjects] : @menu_topics
           - menu_topics.each do |topic|
-            .topic
+            .topic{id: "#{topic.id}"}
               - if topic.subject
                 %span{style: "background-color:#{topic.subject.color}; color: #fff" }= topic.subject.code
               = link_to topic.title, topic
