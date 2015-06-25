@@ -8,4 +8,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   # you need to first log into https://dev.twitter.com/ and create a new application
   provider :twitter, ENV['APLUS_TWITTER_KEY'], ENV['APLUS_TWITTER_SECRET']
   provider :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
+  provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_SECRET']
 end

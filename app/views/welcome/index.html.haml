@@ -1,13 +1,12 @@
 #head
  %link{:href => "http://fonts.googleapis.com/css?family=Lato&effect=shadow-multiple", :rel => "stylesheet", :type => "text/css"}/
- #twitter
-  = link_to ' ', login_provider_path(provider: 'twitter')
- #gmail
-  = link_to '', login_provider_path(provider: 'google_oauth2')
  %h1
   .font-effect-shadow-multiple Welcome to Aplus
  %h2 A flashcards app that makes your study more effective.
- #image
-  = image_tag("box1_empty.png")
-  = image_tag("box2_half.png")
-  = image_tag("box3_full.png")
+ #login
+  #twitter
+   = link_to ' ', login_provider_path(provider: 'twitter')
+  #gmail
+   = link_to '', login_provider_path(provider: 'google_oauth2')
+  #facebook
+   = link_to ' ', login_provider_path(provider: 'facebook')

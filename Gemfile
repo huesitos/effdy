@@ -39,6 +39,8 @@ gem 'jquery-minicolors-rails'
 gem 'omniauth'
 # Use the Twitter strategy so that users log in with Twitter accounts
 gem 'omniauth-twitter'
+# Use the Facebook strategy so that users log in with Facebook accounts
+gem 'omniauth-facebook'
 # Use the Gmail strategy so that users log in with Gmail accounts
 gem 'omniauth-google-oauth2'
 gem 'json'
