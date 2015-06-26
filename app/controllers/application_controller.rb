@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
-  
+
   def current_user
     if session[:user_id]
       @user = User.find(session[:user_id])
@@ -38,14 +38,12 @@ class ApplicationController < ActionController::Base
     # and topics are picked. The topics are filtered based on the subject
     # code in cache.
     def set_context
-      @user = User.find_by(username: session[:user_uname])
-      
-      @app_subjects = Subject.from_user(session[:user_uname])
+      @app_subjects = Subject.from_user(session[:user_id])
       @app_subjects = @app_subjects.not_archived if @app_subjects
 
       cache = Rails.cache
 
-      @menu_topics = Topic.from_user(session[:user_uname])
+      @menu_topics = Topic.from_user(session[:user_id])
 
       if @menu_topics
         if cache.read('subject') != "" and cache.read('subject')

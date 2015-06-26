@@ -17,7 +17,7 @@
       = link_to 'Topics', topics_path
       = link_to 'Notifications', share_request_notify_path
       #profile.right
-        %span= "#{@user.username}"
+        %span= "#{current_user.username}"
         = link_to 'Logout', logout_path
   .bottom
     #left

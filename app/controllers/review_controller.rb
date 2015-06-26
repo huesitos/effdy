@@ -7,30 +7,27 @@ class ReviewController < ApplicationController
   # GET /study_calendar
   def study_calendar
     @view_title = "Study calendar"
-    @study_topics = Topic.topics_to_study(session[:user_uname], DateTime.now)
+    @study_topics = Topic.topics_to_study(session[:user_id], DateTime.now)
   end
 
   # GET topics/:topic_id/review_box/:b
   # Picks a card and redirects to the front side.
   def review
     respond_to do |format|
-      if @topic.cards.where(:review_date => {"$lte" => DateTime.now}).count > 0
-        # Retrieve next card to study
-        card_id = Card.where(:review_date => {"$lte" => DateTime.now})[0]
+      card_ids = CardStatistic.where(
+        :review_date => {"$lte" => DateTime.now},
+        :user_id => session[:user_id]).pluck(:card_id)
+      cards = @topic.cards.where(:_id => { "$in" => card_ids.to_a })
 
-        if card_id
-          @card = Card.find(card_id)
-          format.html { redirect_to topic_card_front_path(card_id: @card._id) }
-        else 
-          format.html { 
-            flash[:success] = "Review finished successfully."
-            redirect_to @topic 
-          }
-        end
+      if cards.count > 0
+        # Retrieve next card to study
+        card_id = cards[0]
+
+        @card = Card.find(card_id)
+        format.html { redirect_to topic_card_front_path(card_id: @card._id) }
       else
-        format.html { 
-          redirect_to topic_path(@topic), 
-          notice: "Topic has no cards to study." }
+        flash[:success] = "Review finished successfully."
+        format.html { redirect_to topic_path(@topic) }
       end
   	end
   end
@@ -56,12 +53,14 @@ class ReviewController < ApplicationController
   # Answers the card and updates the review date if the review_date is today.
   def answer
     time_answering = params[:difference].delete(',').to_i
+
+    cs = CardStatistic.find_by(card_id: @card.id, user_id: session[:user_id])
     if params[:commit] == "Correct"
-      @card.correct time_answering
+      cs.correct time_answering
     else 
-      @card.incorrect time_answering
+      cs.incorrect time_answering
     end
-    @card.update_review_date
+    cs.update_review_date
 
     respond_to do |format|
   		format.html { redirect_to topic_review_path(@topic) }

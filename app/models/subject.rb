@@ -19,10 +19,9 @@ class Subject
 
   scope :not_archived, -> { where(archived: false) }
 
-  # Finds all the topics that belong to a user based on the username
-  def self.from_user(username)
-    user = User.find_by(username: username)
-    user ? Subject.where(user_id: user._id) : nil
+  # Finds all the topics that belong to a user based on the user_id
+  def self.from_user(user_id)
+    Subject.where(user_id: user_id)
   end
 
   # Archives a subject and all its topics.
@@ -50,8 +49,8 @@ class Subject
 
   # Shares the subject that belongs to another user, with the current user
   # It creates a new copy of the subject that belongs to the current user
-  def share(username)
-    user = User.find_by(username: username)
+  def share(user_id)
+    user = User.find(user_id)
 
     # makes a copy of the subject for the current user
     new_subject = user.subjects.create(
@@ -62,7 +61,7 @@ class Subject
 
     # copies all the topics in the subject to the new subject
     self.topics.each do |topic|
-      topic.share(username, new_subject)
+      topic.share(user_id, new_subject)
     end
   end
 end

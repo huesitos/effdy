@@ -2,14 +2,16 @@ class ShareRequestController < ApplicationController
   def new
     @share_request = ShareRequest.new
     @view_title = "Share with"
+    @users = User.where(:_id => { "$ne" => session[:user_id]}).pluck(:username, :_id)
     @url = share_requests_path(params[:type],params[:oid], params[:name])
   end
 
   def create
     @view_title = "Share with"
-    @share_request = ShareRequest.new(type: params[:type], name: params[:name], oid: params[:oid], sender: session[:user_uname], recipient: params[:share_request][:recipient])
+    sender = User.find(session[:user_id])
+    @share_request = ShareRequest.new(type: params[:type], name: params[:name], oid: params[:oid], sender: sender.username, recipient: params[:share_request][:recipient])
 
-    user=User.find_by(username: params[:share_request][:recipient])
+    user=User.find(params[:share_request][:recipient])
 
     respond_to do |format|
       if user
@@ -48,7 +50,7 @@ class ShareRequestController < ApplicationController
 
   def notify
     @view_title = "Notifications"
-    @share_requests = ShareRequest.where(recipient: session[:user_uname])
+    @share_requests = ShareRequest.where(recipient: session[:user_id])
   end
 
   def destroy

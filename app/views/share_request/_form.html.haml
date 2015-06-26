@@ -8,6 +8,6 @@
 
   .field
     = f.label :recipient  
-    = f.text_field :recipient, placeholder: "twitter username"
+    = f.select :recipient, options_for_select(@users)
   .actions
     = f.submit 'Save'

@@ -8,9 +8,9 @@ class User
 
   has_many :topics
   has_many :subjects
+  has_many :card_statistics
 
   validates :username, :provider, :uid, presence: true
-  validates :username, uniqueness: true
 
   def self.find_or_create_from_auth_hash(hash)
     if @user = find_by(provider: hash['provider'], uid: hash['uid'])

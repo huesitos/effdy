@@ -24,7 +24,7 @@ class TopicsController < ApplicationController
     else
       @topics = Topic.all
     end
-    @topics = @topics.from_user(session[:user_uname])
+    @topics = @topics.from_user(session[:user_id])
 
     @view_title = "Topics"
   end
@@ -34,7 +34,8 @@ class TopicsController < ApplicationController
   # Shows the topic's boxes. Empty boxes have a different icon.
   def show
     @view_title = @topic.title
-    @exist_cards_to_study = @topic.cards.where(:review_date.lte => DateTime.now).count > 0
+    cts = @topic.cards_to_study(session[:user_id])
+    @exist_cards_to_study = cts.to_a.length > 0
   end
 
   # GET /topics/new
@@ -54,7 +55,7 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     @topic.subject = @subject
-    @topic.user = User.find_by(username: session[:user_uname])
+    @topic.user = User.find(session[:user_id])
 
     respond_to do |format|
       if @topic.save
@@ -141,7 +142,7 @@ class TopicsController < ApplicationController
 
     # Search for all the subjects and the particular topic's subject, if exists
     def set_subjects
-      user = User.find_by(username: session[:user_uname])
+      user = User.find(session[:user_id])
       params[:id] ? @subject = Topic.find(params[:id]).subject : @subject = nil
 
       @subject ? @subjects = Subject.where(:_id.ne => @subject._id, :archived => false, user_id: user._id) : @subjects = Subject.not_archived.where(user_id: user._id)

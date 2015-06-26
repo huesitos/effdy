@@ -22,7 +22,7 @@ class CardsController < ApplicationController
   # GET /cards/1/edit
   def edit
     @view_title = "Editing card"
-    user = User.find_by(username: session[:user_uname])
+    user = User.find(session[:user_id])
     @topics = Topic.not_archived.where(:user_id => user._id, :_id.ne => @card.topic_id)
     @url = topic_card_path(@topic._id, @card._id) # url the form will use to send the values of the form
   end
@@ -35,11 +35,10 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     @card.topic = @topic
-    @card.user = @topic.user
 
     respond_to do |format|
       if @card.save
-        @card.create_card_statistic()
+        @card.card_statistics << CardStatistic.create(user_id: @topic.user.id)
         flash[:success] = 'Card created successfully.'
 
         if params[:commit] == 'Done'
