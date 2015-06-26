@@ -18,16 +18,20 @@ class Card
   validates :user, presence: { is: true, message: "must belong to a user." }
   validates :level, numericality: { only_integer: true, greater_than: 0 }
 
-  # Moves a card that was answered correctly to the next level.
-  def correct
+  # Moves a card that was answered correctly to the next level, and updates
+  # the time it takes to answer the card.
+  def correct(total_time)
   	self.inc(level: 1)
+    self.card_statistic.inc(time_answering: total_time)
     self.card_statistic.inc(times_correct: 1)
   end
 
-  # Moves a card that was answered incorrectly to the previous level.
-  def incorrect
+  # Moves a card that was answered incorrectly to the previous level, and updates
+  # the time it takes to answer the card.
+  def incorrect(total_time)
     if self.level > 1
       self.inc(level: -1)
+      self.card_statistic.inc(time_answering: total_time)
       self.card_statistic.inc(times_incorrect: 1)
     end
   end

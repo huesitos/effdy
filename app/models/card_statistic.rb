@@ -5,17 +5,18 @@ class CardStatistic
   include Mongoid::Document
   field :times_correct, type: Integer, default: 0
   field :times_incorrect, type: Integer, default: 0
-  field :time_answering, type: Integer, default: 2
+  field :time_answering, type: Integer, default: 60 #secs
 
   embedded_in :card
 
   # Returns the approximate time it takes to answer the card in 
-  def self.approx_time_to_answer(card_statistic)
-  	d = card_statistic.times_correct + card_statistic.times_incorrect
-  	if d > 0
-  		card_statistic.time_answering / d
-  	else
-  		card_statistic.time_answering
-  	end
+  # minutes
+  def approx_time_to_answer
+    d = self.times_correct + self.times_incorrect
+    if d > 0
+      (self.time_answering / d) / 60
+    else
+      (self.time_answering) / 60
+    end
   end
 end

@@ -39,6 +39,7 @@ class ReviewController < ApplicationController
   # Shows the front side of the card.
   def front
     @view_title = "#{@topic.title}"
+    @start_time = DateTime.now
   end
 
   # GET topics/:topic_id/review_box/:b/card/:card_id/back/
@@ -46,17 +47,20 @@ class ReviewController < ApplicationController
   def back
     @view_title = "#{@topic.title}"
     @u_answer = params[:u_answer]
+    end_time = DateTime.now
+    start_time = DateTime.parse(params[:start_time])
+    @difference = end_time.to_time - start_time.to_time
   end
 
   # POST topics/:topic_id/review_box/:b/card/:card_id/answer
   # Answers the card and updates the review date if the review_date is today.
   def answer
+    time_answering = params[:difference].delete(',').to_i
     if params[:commit] == "Correct"
-      @card.correct 
+      @card.correct time_answering
     else 
-      @card.incorrect 
+      @card.incorrect time_answering
     end
-
     @card.update_review_date
 
     respond_to do |format|

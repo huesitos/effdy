@@ -7,6 +7,7 @@
 	%p.bold Your answer:
 	= form_tag(topic_card_answer_path, method: 'post') do
 		= text_area_tag(:u_answer, (@u_answer != "") ? @u_answer : "No answer", disabled: true)
+		= text_field_tag(:difference, @difference, style: 'display:none')
 		.answer
 			= submit_tag("Correct", id: "check")
 		.answer

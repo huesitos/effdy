@@ -48,9 +48,8 @@ class Topic
 
       if cards.count > 0
         cards.each do |c|
-          at += CardStatistic.approx_time_to_answer c.card_statistic
+          at += c.card_statistic.approx_time_to_answer
         end
-        at /= cards.count
 
         study_topics.push({
           topic: t,
