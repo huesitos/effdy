@@ -3,7 +3,9 @@
 		= link_to 'Subject', @topic.subject
 
 = link_to 'New card', new_topic_card_path(@topic)
-= link_to 'Study', topic_review_path(@topic, review: 'all')
+
+- if @exist_cards_to_study
+	= link_to 'Study', topic_review_path(@topic)
 
 .cards
 	%p= "# of cards: #{Integer(@topic.cards.count)}"

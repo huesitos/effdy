@@ -34,6 +34,7 @@ class TopicsController < ApplicationController
   # Shows the topic's boxes. Empty boxes have a different icon.
   def show
     @view_title = @topic.title
+    @exist_cards_to_study = @topic.cards.where(:review_date.lte => DateTime.now).count > 0
   end
 
   # GET /topics/new

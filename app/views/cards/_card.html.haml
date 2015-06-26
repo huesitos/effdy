@@ -4,6 +4,7 @@
       =card.front.length > 60 ? card.front[0, 60]+"..." : card.front
     .answer
       = card.back.length > 150 ? card.back[0, 150]+"..." : card.back
+      / = card.review_date.to_time
   .options
     =link_to '', edit_topic_card_path(card.topic_id, card._id), :class => 'btn edit'
     =link_to '', topic_card_path(card.topic_id, card._id), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy'
