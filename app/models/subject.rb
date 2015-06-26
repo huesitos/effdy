@@ -9,7 +9,7 @@ class Subject
   field :color, type: String
   field :archived, type: Boolean, default: false
   
-  has_many :topics, dependent: :destroy
+  has_many :topics
   belongs_to :user
 
   validates :code, length: { maximum: 7 }
@@ -40,6 +40,14 @@ class Subject
       topic.update(archived: false)
     end
   end
+
+  # Destroys all topics inside the subject
+  def destroy_topics
+    self.topics.each do |t|
+      t.destroy
+    end
+  end
+
   # Shares the subject that belongs to another user, with the current user
   # It creates a new copy of the subject that belongs to the current user
   def share(username)

@@ -69,4 +69,5 @@
           #options-bar
             = link_to '', share_request_new_path(type:'subject', oid:@subject._id, name: @subject.name), :class => 'btn share', :alt => "share", :title => "share"
             = link_to '', edit_topic_path(@subject), :class => 'btn edit', :alt => "edit", :title => "edit"
-            = link_to '', @subject, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy', :alt => "delete", :title => "delete"
+            = link_to '', @subject, :method => :delete, :data => { :confirm => 'This will delete the subject. Are you sure?' }, :class => 'btn destroy', :alt => "delete", :title => "delete"
+            = link_to '', subject_path(@subject.id, delete_all: true), :method => :delete, :data => { :confirm => 'This will delete the subject with all its topics. Are you sure?' }, :class => 'btn destroy', :alt => "delete all", :title => "delete all"

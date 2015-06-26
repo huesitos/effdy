@@ -76,9 +76,9 @@ class SubjectsController < ApplicationController
       reset_cache @subject
 
       if @subject.archived
-        Subject.unarchive @subject
+        @subject.unarchive
       else
-        Subject.archive @subject
+        @subject.archive
       end
       format.html { redirect_to subjects_url }
     end
@@ -87,6 +87,11 @@ class SubjectsController < ApplicationController
   # DELETE /subjects/1
   def destroy
     reset_cache @subject
+
+    if params[:delete_all]
+      @subject.destroy_topics
+    end
+
     @subject.destroy
 
     respond_to do |format|

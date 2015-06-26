@@ -12,11 +12,24 @@ $(document).on 'ready page:load', ->
 
   $('.subject-destroy').click ->
     console.log $(this).prev('.delete-link').attr 'href'
-    confirmation = confirm('this will delete the subject with all its topics. Are you sure?')
+    confirmation = confirm('This will delete the subject. Are you sure?')
     if confirmation
       subject_delete = $(this).closest('li')
       $.ajax({
         url: $(this).prev('.delete-link').attr 'href'
+        type: 'DELETE'
+        dataType: 'json'
+        success: ->
+          subject_delete.remove()
+      })
+
+  $('.subject-destroy-all').click ->
+    $link = $(this).closest('li').children('.options').children('.delete-all').attr 'href'
+    confirmation = confirm('This will delete the subject with all its topics. Are you sure?')
+    if confirmation
+      subject_delete = $(this).closest('li')
+      $.ajax({
+        url: $link
         type: 'DELETE'
         dataType: 'json'
         success: ->
