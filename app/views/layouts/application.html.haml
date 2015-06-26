@@ -57,8 +57,8 @@
           = yield
         - if ( ["topics", "cards", "review_box"].include? controller.controller_name and not ["topics#index", "topics#new", 'review_box#study_calendar'].include? "#{controller.controller_name}##{controller.action_name}")
           #options-bar
-            = form_tag("/topics/#{@topic._id}/set_reviewing", method: "patch", :alt => "review on/off", :title => "review on/off") do
-              = @topic.reviewing ? submit_tag('', id: 'reviewing') : submit_tag('', id: 'not-reviewing')
+            = form_tag("/topics/#{@topic._id}/set_reviewing", method: "patch", :alt => "review on/off", :title => "review on/off", remote: true) do
+              = @topic.reviewing ? submit_tag('', class: 'reviewing') : submit_tag('', class: 'not-reviewing')
             = link_to '', topic_path(@topic), :class => 'btn', :id => 'cards', :alt => "card list", :title => "card list"
             = form_tag("/topics/#{@topic._id}/reset_cards", method: "patch") do
               = submit_tag('', id: 'reset', :alt => "reset cards", :title => "reset cards")

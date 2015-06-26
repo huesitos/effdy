@@ -113,7 +113,7 @@ class TopicsController < ApplicationController
         @topic.update(reviewing: true)
       end
 
-      format.html { redirect_to @topic }
+      format.html { render @topic }
     end
   end
 
