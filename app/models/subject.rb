@@ -62,7 +62,7 @@ class Subject
 
     # copies all the topics in the subject to the new subject
     self.topics.each do |topic|
-      Topic.share(topic, username, new_subject)
+      topic.share(username, new_subject)
     end
   end
 end

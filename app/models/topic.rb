@@ -68,8 +68,9 @@ class Topic
     user = User.find_by(username: username)
 
     # makes a copy of the topic for the current user
-    new_topic = user.topics.create(title: self.title,
-      subject: subject._id)
+    new_topic = user.topics.create(title: self.title)
+
+    new_topic.subject_id = subject.id if subject
 
     # copies all the cards in topic to the new topic
     self.cards.each do |card|
