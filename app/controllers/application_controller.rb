@@ -16,12 +16,21 @@ class ApplicationController < ActionController::Base
   	end
   end
 
-  protected
-
-    def current_user=(user)
-      session[:user_uname] = user.username
-      session[:user_name] = user.name
+  helper_method :current_user
+  
+  def current_user
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    else
+      @user = nil
     end
+  end
+
+  def current_user=(user)
+    session[:user_uname] = user.username
+    session[:user_name] = user.name
+    session[:user_id] = user.id.to_s
+  end
 
   private
 
@@ -58,8 +67,6 @@ class ApplicationController < ActionController::Base
     end
     
     def authenticate_user!
-      if not session[:user_uname]
-        redirect_to login_path
-      end
+      redirect_to login_path unless current_user
     end
 end
