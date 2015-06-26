@@ -411,11 +411,11 @@ table {
 					cursor: pointer;
 					cursor: hand;
 				}
-				#reviewing {
+				input[type=submit].reviewing {
 					background: url(asset-path("review-on.png")) no-repeat center;
 					background-size: 2em;
 				}
-				#not-reviewing {
+				input[type=submit].not-reviewing {
 					background: url(asset-path("review-off.png")) no-repeat center;
 					background-size: 2em;
 				}
