@@ -10,9 +10,6 @@
     = f.label :title
     = f.text_field :title
   .field
-    = f.label :recall_percentage
-    = f.text_field :recall_percentage, value: @topic.recall_percentage
-  .field
     = f.label :subject_id
     %select{name: :subject_id, id: :subject_id}
       - if @subject

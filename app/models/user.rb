@@ -7,7 +7,9 @@ class User
   field :uid, type: String
 
   has_many :topics
+  has_many :topic_configs
   has_many :subjects
+  has_many :subject_configs
   has_many :card_statistics
 
   validates :username, :provider, :uid, presence: true

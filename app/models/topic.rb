@@ -7,11 +7,9 @@
 class Topic
   include Mongoid::Document
   field :title, type: String
-  field :reviewing, type: Boolean, default: false
-  field :archived, type: Boolean, default: false
-  field :recall_percentage, type: Float, default: 0.8
 
   has_many :cards, dependent: :destroy
+  has_many :topic_configs, dependent: :destroy
 
   belongs_to :subject
   belongs_to :user

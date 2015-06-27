@@ -39,7 +39,7 @@
           - menu_topics.each do |topic|
             .topic{id: "#{topic.id}"}
               - if topic.subject
-                %span{style: "background-color:#{topic.subject.color}; color: #fff" }= topic.subject.code
+                %span{style: "background-color:#{topic.subject.subject_configs.find_by(user_id: current_user().id).color}; color: #fff" }= topic.subject.code
               = link_to topic.title, topic
     #right
       #title-bar

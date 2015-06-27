@@ -6,18 +6,20 @@ class Subject
   include Mongoid::Document
   field :code, type: String
   field :name, type: String
-  field :color, type: String
-  field :archived, type: Boolean, default: false
   
   has_many :topics
+  has_many :subject_configs
   belongs_to :user
 
   validates :code, length: { maximum: 7 }
-  validates :name, :code, :color, presence: true
-  validates :color, format: { with: /\A#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})\z/, message: "only hex numbers" }
+  validates :name, :code, presence: true
   validates_associated :topics
 
-  scope :not_archived, -> { where(archived: false) }
+  # Finds all subjects from a user that are not archived
+  def self.not_archived(user_id)
+    subject_ids = SubjectConfig.where(user_id: user_id, archived: false).pluck(:color)
+    @subjects = Subject.where(:_id => { "$in" => subject_ids })
+  end
 
   # Finds all the topics that belong to a user based on the user_id
   def self.from_user(user_id)

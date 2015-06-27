@@ -7,9 +7,8 @@ class SubjectsController < ApplicationController
   # GET /subjects
   def index
     @view_title = "Subjects"
-    user = User.find_by(username: session[:user_uname])
-    @subjects = Subject.where(user_id: user._id)
-    @subjects = @subjects.sort(archived:1)
+    @user_id = session[:user_id]
+    @subjects = Subject.where(user_id: session[:user_id])
   end
 
   # Get /subject/:id
@@ -32,13 +31,20 @@ class SubjectsController < ApplicationController
 
   # POST /subjects
   def create
+    user = User.find(session[:user_id])
+
     subject_params[:code].upcase!
-    @subject = Subject.new(subject_params)
-    @subject.archived = false
-    @subject.user = User.find_by(username: session[:user_uname])
+    @subject = Subject.new(code: subject_params[:code], name: subject_params[:name])
+    subject_config = SubjectConfig.new(
+      archived: false, 
+      color: params[:subject_color],
+      user_id: session[:user_id])
+    @subject.user = user
 
     respond_to do |format|
-      if @subject.save
+      if @subject.save && subject_config.save
+        @subject.subject_configs << subject_config
+
         format.html {
           flash[:success] = 'Subject created sucessfully.'
 

@@ -59,6 +59,8 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
+        @topic.topic_configs.create()
+
         format.html {
           flash[:success] = 'Topic created successfully.'
 
@@ -142,10 +144,13 @@ class TopicsController < ApplicationController
 
     # Search for all the subjects and the particular topic's subject, if exists
     def set_subjects
-      user = User.find(session[:user_id])
       params[:id] ? @subject = Topic.find(params[:id]).subject : @subject = nil
 
-      @subject ? @subjects = Subject.where(:_id.ne => @subject._id, :archived => false, user_id: user._id) : @subjects = Subject.not_archived.where(user_id: user._id)
+      if @subject 
+        @subjects = Subject.not_archived(user_id: session[:user_id]).where(:_id.ne => @subject._id)
+      else 
+        @subjects = Subject.not_archived(user_id: session[:user_id])
+      end
     end
 
     # Pack errors in a variable to be shown in the form

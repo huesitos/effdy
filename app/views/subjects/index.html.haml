@@ -6,9 +6,10 @@
   #subjects-list
     %ul
       - @subjects.each do |subject|
-        %li{class: subject.archived && "archived"}
+        - subject_config = subject.subject_configs.find_by(user_id: @user_id)
+        %li{class: subject_config.archived && "archived"}
           .info
-            %span#code{style: "color:#{subject.color}"}
+            %span#code{style: "color:#{subject_config.color}"}
               = subject.code
             %span#link
               = link_to subject.name, subject_path(subject)

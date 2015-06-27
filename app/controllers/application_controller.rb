@@ -38,8 +38,7 @@ class ApplicationController < ActionController::Base
     # and topics are picked. The topics are filtered based on the subject
     # code in cache.
     def set_context
-      @app_subjects = Subject.from_user(session[:user_id])
-      @app_subjects = @app_subjects.not_archived if @app_subjects
+      @app_subjects = Subject.not_archived(session[:user_id])
 
       cache = Rails.cache
 
