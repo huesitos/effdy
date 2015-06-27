@@ -46,6 +46,7 @@ class CardsController < ApplicationController
           format.html { redirect_to topic_path(@card.topic) }
         else
           format.html { redirect_to new_topic_card_path(@card.topic) }
+          format.json { head :no_content }
         end
       else
         format.html { redirect_to new_topic_card_path(@card.topic, errors: @card.errors.full_messages.each.to_a)}
