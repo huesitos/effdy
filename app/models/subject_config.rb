@@ -8,4 +8,9 @@ class SubjectConfig
 
   validates :color, presence: true
   validates :color, format: { with: /\A#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})\z/, message: "only hex numbers" }
+
+  # Finds all the topics that belong to a user based on the user_id
+  def self.from_user(user_id)
+    SubjectConfig.where(user_id: user_id)
+  end
 end

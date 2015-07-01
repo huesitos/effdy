@@ -55,8 +55,9 @@ class CardStatistic
   # where t is the number of days that can pass without studying the card before
   # it recall percentage drops below the topic's.
   # S = 2^n, where n is the card level
-  def update_review_date
-    r = self.card.topic.recall_percentage
+  def update_review_date(user_id)
+    topic_config = self.card.topic.topic_configs.find_by(user_id: user_id)
+    r = topic_config.recall_percentage
     n = self.level
 
     # Level of understanding

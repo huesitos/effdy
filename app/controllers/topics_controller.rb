@@ -36,6 +36,7 @@ class TopicsController < ApplicationController
     @view_title = @topic.title
     cts = @topic.cards_to_study(session[:user_id])
     @exist_cards_to_study = cts.to_a.length > 0
+    @topic_config = @topic.topic_configs.find_by(user_id: session[:user_id])
   end
 
   # GET /topics/new
@@ -49,6 +50,7 @@ class TopicsController < ApplicationController
   # GET /topics/1/edit
   def edit
     @view_title = "Editing topic"
+    @topic_config = @topic.topic_configs.find_by(user_id: session[:user_id])
   end
 
   # POST /topics
@@ -59,8 +61,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        @topic.topic_configs.create()
-
+        topic_config = @topic.topic_configs.create(user_id: session[:user_id])
         format.html {
           flash[:success] = 'Topic created successfully.'
 
@@ -110,11 +111,12 @@ class TopicsController < ApplicationController
   # PATCH /topics/:id/set_reviewing
   # Sets the topic for reviewing.
   def set_reviewing
+    topic_config = @topic.topic_configs.find_by(user_id: session[:user_id])
     respond_to do |format|
-      if @topic.reviewing
-        @topic.update(reviewing: false)
+      if topic_config.reviewing
+        topic_config.update(reviewing: false)
       else
-        @topic.update(reviewing: true)
+        topic_config.update(reviewing: true)
       end
 
       format.html { render @topic }
@@ -147,9 +149,9 @@ class TopicsController < ApplicationController
       params[:id] ? @subject = Topic.find(params[:id]).subject : @subject = nil
 
       if @subject 
-        @subjects = Subject.not_archived(user_id: session[:user_id]).where(:_id.ne => @subject._id)
+        @subjects = Subject.not_archived(session[:user_id]).where(:_id.ne => @subject._id)
       else 
-        @subjects = Subject.not_archived(user_id: session[:user_id])
+        @subjects = Subject.not_archived(session[:user_id])
       end
     end
 

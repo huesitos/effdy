@@ -17,7 +17,7 @@ class Subject
 
   # Finds all subjects from a user that are not archived
   def self.not_archived(user_id)
-    subject_ids = SubjectConfig.where(user_id: user_id, archived: false).pluck(:color)
+    subject_ids = SubjectConfig.where(archived: false, user_id: user_id).pluck(:subject_id)
     @subjects = Subject.where(:_id => { "$in" => subject_ids })
   end
 
@@ -51,19 +51,24 @@ class Subject
 
   # Shares the subject that belongs to another user, with the current user
   # It creates a new copy of the subject that belongs to the current user
-  def share(user_id)
-    user = User.find(user_id)
+  def share(owner_id, recipient_id)
+    user = User.find(recipient_id)
 
     # makes a copy of the subject for the current user
+    subject_config = self.subject_configs.find_by(user_id: owner_id)
+
     new_subject = user.subjects.create(
       code: self.code,
-      name: self.name,
-      color: self.color,
-      archived: false)
+      name: self.name)
+
+    new_subject.subject_configs.create(
+      color: subject_config.color,
+      archived: false,
+      user_id: user.id)
 
     # copies all the topics in the subject to the new subject
     self.topics.each do |topic|
-      topic.share(user_id, new_subject)
+      topic.share(user.id, new_subject.id)
     end
   end
 end

@@ -96,6 +96,7 @@ class CardsController < ApplicationController
     # Get the current topic
     def set_topic
       @topic = Topic.find(params[:topic_id])
+      @topic_config = @topic.topic_configs.find_by(user_id: session[:user_id])
     end
 
     # Pack errors in a variable to be shown in the form

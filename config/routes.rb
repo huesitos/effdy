@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'review#study_calendar'
 
-  get 'share_request/new/:type/:oid/:name' => 'share_request#new', as: :share_request_new
-  post 'share_requests/:type/:oid/:name' => 'share_request#create', as: :share_requests
+  get 'share_request/new/:object_type/:oid/:name' => 'share_request#new', as: :share_request_new
+  post 'share_requests/:object_type/:oid/:name' => 'share_request#create', as: :share_requests
   get 'share_request/share/:id' => 'share_request#share', as: :share_request_share
   get 'share_request/notify' => 'share_request#notify', as: :share_request_notify
   delete 'share_request/destroy/:id' => 'share_request#destroy', as: :share_request_destroy

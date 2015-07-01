@@ -5,9 +5,9 @@
 		%ul
 			-@share_requests.each do |sr|
 				%li
-					%span.sender= sr.sender
-					%span= "wants to share #{sr.type} "
-					%span{class: sr.type == 'topic'? 'topic' : 'subject' }= sr.name 
+					%span.sender= sr.sender_uname
+					%span= "wants to #{sr.kind} #{sr.object_type} "
+					%span{class: sr.object_type == 'topic'? 'topic' : 'subject' }= sr.name 
 					%span with you.
 					= link_to "Accept", share_request_share_path(sr._id), class: 'option'
 					= link_to "Decline", share_request_destroy_path(sr._id), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'option'

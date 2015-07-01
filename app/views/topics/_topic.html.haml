@@ -1,6 +1,8 @@
 %li
   .info
-    %span#code{style: topic.subject.nil? || "color:#{topic.subject.color}" }
+    - if topic.subject
+      - color = topic.subject.subject_configs.find_by(user_id: current_user.id).color
+    %span#code{style: topic.subject.nil? || "color:#{color}" }
       - if topic.subject
         = topic.subject.code
     %span#link

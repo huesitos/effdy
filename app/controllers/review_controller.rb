@@ -60,7 +60,7 @@ class ReviewController < ApplicationController
     else 
       cs.incorrect time_answering
     end
-    cs.update_review_date
+    cs.update_review_date(session[:user_id])
 
     respond_to do |format|
   		format.html { redirect_to topic_review_path(@topic) }
