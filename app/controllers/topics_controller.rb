@@ -57,11 +57,32 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     @topic.subject = @subject
-    @topic.user = User.find(session[:user_id])
+
+    # If it has a subject, make sure they share the same owner
+    # In case the current user is not the owner, then at least the subject user
+    # will reference to the real owner
+    if @subject
+      @topic.user = @subject.user
+    else
+      @topic.user = User.find(session[:user_id])
+    end
 
     respond_to do |format|
       if @topic.save
-        topic_config = @topic.topic_configs.create(user_id: session[:user_id])
+
+        # If the topic is in a subject, then grab all the collaborators and the owner
+        # and make a config for them.
+        # If not, then only make it for the owner.
+        if @subject
+          collaborators = @subject.subject_configs.pluck(:user_id)
+
+          collaborators.each do |c|
+            @topic.topic_configs.create(user_id: c)
+          end
+        else
+          @topic.topic_configs.create(user_id: session[:user_id])
+        end
+
         format.html {
           flash[:success] = 'Topic created successfully.'
 

@@ -38,7 +38,12 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       if @card.save
-        @card.card_statistics << CardStatistic.create(user_id: @topic.user.id)
+        collaborators = @topic.topic_configs.pluck(:user_id)
+
+        collaborators.each do |c|
+          @card.card_statistics << CardStatistic.create(user_id: c)
+        end
+
         flash[:success] = 'Card created successfully.'
 
         if params[:commit] == 'Done'

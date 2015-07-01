@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get 'share_request/share/:id' => 'share_request#share', as: :share_request_share
   get 'share_request/notify' => 'share_request#notify', as: :share_request_notify
   delete 'share_request/destroy/:id' => 'share_request#destroy', as: :share_request_destroy
+  delete 'share_request/:object_type/:oid/remove_collaborator/:user_id' => 'share_request#remove_collaborator', as: :share_request_remove_collaborator
 
-  get 'filter_subject' => 'application#filter_subject'
   get 'study_calendar' => 'review#study_calendar'
 
   resources :subjects do

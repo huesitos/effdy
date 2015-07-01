@@ -22,16 +22,6 @@
   .bottom
     #left
       #topics-menu
-        #subject-filter
-          = form_tag("/filter_subject", method: "get") do
-            %input#subject-list{type: 'text', name: 'subject', list: "subject", placeholder: "filter by subject"}
-            %datalist{id: 'subject'}
-              %option{value: 'all'}
-              - @app_subjects.each do |subject|
-                %option{value: "#{subject.code}"}
-              %option{value: 'none'}
-            #search-submit
-              = submit_tag("Go")
         #topics-list
           %h4 Topic(s)
           #new-topic= link_to 'Add topic', new_topic_path

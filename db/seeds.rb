@@ -8,7 +8,9 @@
 
 # Removing all documents from the DB
 Topic.all.destroy
+TopicConfig.all.destroy
 Subject.all.destroy
+SubjectConfig.all.destroy
 Card.all.destroy
 
 

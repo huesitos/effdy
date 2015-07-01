@@ -14,7 +14,7 @@
     = f.text_field :name
   .field
     = label_tag "Color"
-    %input{name: "subject_color", id: "subject_color", type: 'text', class: 'colorpicker', placeholder: "#ddd, #e8e8e8"}
+    %input{name: "subject_color", id: "subject_color", type: 'text', class: 'colorpicker', placeholder: "#ddd, #e8e8e8", value: @subject_config && @subject_config.color}
     %span#preview
   .actions
     %a{href: "#{subjects_path}"} Cancel

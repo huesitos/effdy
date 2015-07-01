@@ -51,11 +51,11 @@ class Subject
 
   # Shares the subject that belongs to another user, with the current user
   # It creates a new copy of the subject that belongs to the current user
-  def share(owner_id, recipient_id)
+  def share(recipient_id)
     user = User.find(recipient_id)
 
     # makes a copy of the subject for the current user
-    subject_config = self.subject_configs.find_by(user_id: owner_id)
+    subject_config = self.subject_configs.find_by(user_id: self.user.id)
 
     new_subject = user.subjects.create(
       code: self.code,
@@ -69,6 +69,28 @@ class Subject
     # copies all the topics in the subject to the new subject
     self.topics.each do |topic|
       topic.share(user.id, new_subject.id)
+    end
+  end
+
+  # Adds a new collaborator to the subject and its topics
+  def add_collaborator(recipient_id)
+    owner_subject_config = self.subject_configs.find_by(user_id: self.user.id)
+    self.subject_configs.create(
+      user_id: recipient_id, 
+      color: owner_subject_config.color)
+
+    self.topics.each do |t|
+      t.add_collaborator(recipient_id)
+    end
+  end
+
+  # Adds a remove collaborator to the subject and its topics
+  def remove_collaborator(recipient_id)
+    subject_config = self.subject_configs.find_by(user_id: recipient_id)
+    subject_config.destroy if subject_config
+
+    self.topics.each do |t|
+      t.remove_collaborator(recipient_id)
     end
   end
 end

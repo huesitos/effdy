@@ -23,3 +23,23 @@
 - else
   .placeholder
     %p There are no subjects! Add subjects for a smarter topic filtering.
+
+- if @collaborating_subjects.count() > 0
+  %h3 Collaborating in
+  #subjects-list
+    %ul
+      - @collaborating_subjects.each do |subject|
+        - subject_config = subject.subject_configs.find_by(user_id: @user_id)
+        %li{class: subject_config.archived && "archived"}
+          .info
+            %span#code{style: "color:#{subject_config.color}"}
+              = subject.code
+            %span#link
+              = link_to subject.name, subject_path(subject)
+          .options
+            = link_to '', edit_subject_path(subject), :class => "btn edit", :alt => "edit", :title => "edit"
+            = link_to '', subject_archive_path(subject), :method => :patch, :id => 'archive', :class => "btn", :alt => "archive", :title => "archive"
+            = link_to '', subject_path(subject.id, delete_all: true), :class => "btn destroy delete-all", style: 'display:none'
+            = link_to '', subject, :class => "btn destroy delete-link", style: 'display:none'
+            %a.btn.destroy.subject-destroy{href:'javascript:void(0)', :alt => "delete", :title => "delete"}
+            %a.btn.destroy.subject-destroy-all{href:'javascript:void(0)', :alt => "delete all", :title => "delete all"}

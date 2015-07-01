@@ -7,7 +7,7 @@ class Card
   field :front, type: String
   field :back, type: String
 
-  has_many :card_statistics
+  has_many :card_statistics, dependent: :destroy
   belongs_to :topic
 
   validates :front, :back, presence: true

@@ -9,6 +9,12 @@ class SubjectsController < ApplicationController
     @view_title = "Subjects"
     @user_id = session[:user_id]
     @subjects = Subject.where(user_id: session[:user_id])
+
+    col_subj_ids = SubjectConfig.where(user_id: session[:user_id]).pluck(:subject_id)
+    @collaborating_subjects = Subject.where(
+      :_id => { "$in" => col_subj_ids}, 
+      :user_id => { "$ne" => session[:user_id]}
+      )
   end
 
   # Get /subject/:id
@@ -20,6 +26,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/edit
   def edit
     @view_title = "Editing subject"
+    @subject_config = @subject.subject_configs.find_by(user_id: session[:user_id])
   end
 
   # GET /subjects/new
@@ -34,7 +41,7 @@ class SubjectsController < ApplicationController
     user = User.find(session[:user_id])
 
     subject_params[:code].upcase!
-    @subject = Subject.new(code: subject_params[:code], name: subject_params[:name])
+    @subject = Subject.new(subject_params)
     subject_config = SubjectConfig.new(
       archived: false, 
       color: params[:subject_color],
@@ -62,6 +69,9 @@ class SubjectsController < ApplicationController
   def update
     respond_to do |format|
       if @subject.update(subject_params)
+        subject_config = @subject.subject_configs.find_by(user_id: session[:user_id])
+        subject_config.update(color: params[:subject_color])
+
         format.html {
           flash[:success] = 'Subject updated sucessfully.'
 
@@ -135,6 +145,6 @@ class SubjectsController < ApplicationController
 
   	# Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:code, :name, :color)
+      params.require(:subject).permit(:code, :name)
     end
 end

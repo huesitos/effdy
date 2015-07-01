@@ -1,17 +1,18 @@
-%li
-  .info
-    - if topic.subject
-      - color = topic.subject.subject_configs.find_by(user_id: current_user.id).color
-    %span#code{style: topic.subject.nil? || "color:#{color}" }
+- if topic.topic_configs.find_by(user_id: current_user.id)
+  %li
+    .info
       - if topic.subject
-        = topic.subject.code
-    %span#link
-      = link_to topic.title, topic
-  .options
-    / Enable after adding AJAX because it will redirect to topic's page
-    / = form_tag("/topics/#{topic._id}/set_reviewing", method: "patch") do
-    /   = topic.reviewing ? submit_tag('', id: 'reviewing') : submit_tag('', id: 'not-reviewing')
-    = link_to '', topic_cards_path(topic), :class => 'btn', :id => 'cards'
-    = link_to '', edit_topic_path(topic), :class => 'btn edit'
-    = link_to '', topic_path(topic), :class => 'btn destroy delete-link', style: 'display:none'
-    %a.btn.destroy.destroy-action{href:'javascript:void(0)'}
+        - color = topic.subject.subject_configs.find_by(user_id: current_user.id).color
+      %span#code{style: topic.subject.nil? || "color:#{color}" }
+        - if topic.subject
+          = topic.subject.code
+      %span#link
+        = link_to topic.title, topic
+    .options
+      / Enable after adding AJAX because it will redirect to topic's page
+      / = form_tag("/topics/#{topic._id}/set_reviewing", method: "patch") do
+      /   = topic.reviewing ? submit_tag('', id: 'reviewing') : submit_tag('', id: 'not-reviewing')
+      = link_to '', topic_cards_path(topic), :class => 'btn', :id => 'cards'
+      = link_to '', edit_topic_path(topic), :class => 'btn edit'
+      = link_to '', topic_path(topic), :class => 'btn destroy delete-link', style: 'display:none'
+      %a.btn.destroy.destroy-action{href:'javascript:void(0)'}

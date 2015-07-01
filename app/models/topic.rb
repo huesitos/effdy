@@ -87,4 +87,27 @@ class Topic
       new_card.card_statistics.create(user_id: user.id)
     end
   end
+
+  # Adds a new collaborator to the topic
+  def add_collaborator(recipient_id)
+    self.topic_configs.create(user_id: recipient_id)
+
+    self.cards.each do |card|
+      card.card_statistics.create(user_id: recipient_id)
+    end
+  end
+
+  # Adds a remove collaborator to the topic
+  def remove_collaborator(recipient_id)
+    topic_config = self.topic_configs.find_by(user_id: recipient_id)
+    if topic_config
+      topic_config.destroy
+
+      # Destroy the card_statistic related to the removed collaborator
+      self.cards.each do |card|
+        cs = card.card_statistics.find_by(user_id: recipient_id)
+        cs.destroy
+      end
+    end
+  end
 end

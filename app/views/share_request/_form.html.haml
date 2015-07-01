@@ -11,4 +11,5 @@
     = f.select :recipient, options_for_select(@users)
   .actions
     = f.submit 'Send copy'
-    = f.submit 'Add collaborator'
+    - if @owner == current_user.id
+      = f.submit 'Add collaborator'
