@@ -51,7 +51,7 @@ class Topic
 
         study_topics.push({
           topic: t,
-          cards_count: card_ids.length,
+          cards_count: cards.length.to_i,
           approx_time: at.to_i
         })
       end

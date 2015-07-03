@@ -21,9 +21,9 @@
     = f.label :back
     = f.text_area :back, placeholder: "Back side"
   .actions
-    %a{href: "#{topic_path(@topic)}"} Cancel
+    %a{href: "#{topic_path(@topic)}", class: 'btn'} Cancel
     - if @url[/cards\/[0-9]/]
-      = f.submit 'Save'
+      = f.submit 'Save', class: 'btn btn-default'
     - else
-      = f.submit 'Done'
-      %a{href: 'javascript:void(0)', id: 'continue', style: 'color:#7DB07D'} Continue
+      = f.submit 'Done', class: 'btn btn-default'
+      %a{href: 'javascript:void(0)', id: 'continue', class: 'btn btn-default'} Continue

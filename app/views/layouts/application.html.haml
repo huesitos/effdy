@@ -42,9 +42,9 @@
               %a{:href => share_request_new_path(object_type:'topic', oid:@topic._id, name: @topic.title), :alt => "share", :title => "share"}
                 = image_tag("share.png")
 
-          - if controller.controller_name == "subjects"
+          - if controller.controller_name == "subjects" and  "#{controller.controller_name}##{controller.action_name}" != "subjects#index"
             %li
-              %a{:href => subject_path(@subject), :id => 'cards', :alt => "card list", :title => "card list"}
+              %a{:href => subject_path(@subject), :id => 'topics', :alt => "subject's topics", :title => "subject's topics"}
                 = image_tag("topic.png")
             %li
               %a{:href => edit_subject_path(@subject), :alt => "edit", :title => "edit"}
