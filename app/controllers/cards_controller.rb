@@ -22,8 +22,7 @@ class CardsController < ApplicationController
   # GET /cards/1/edit
   def edit
     @view_title = "Editing card"
-    user = User.find(session[:user_id])
-    @topics = Topic.not_archived.where(:user_id => user._id, :_id.ne => @card.topic_id)
+    @topics = TopicConfig.topics_from_user(session[:user_id]).where(:_id.ne => @card.topic_id)
     @url = topic_card_path(@topic._id, @card._id) # url the form will use to send the values of the form
   end
 
@@ -69,7 +68,7 @@ class CardsController < ApplicationController
         format.html {
           flash[:success] = 'Card updated successfully.'
 
-          redirect_to topic_cards_path(@topic)
+          redirect_to topic_path(@topic.id)
         }
       else
         format.html { redirect_to edit_topic_card_path(@card.topic_id, @card._id, errors: @card.errors.full_messages.each.to_a) }

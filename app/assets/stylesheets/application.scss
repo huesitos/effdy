@@ -22,11 +22,8 @@ html, body {
 body {
 	margin: 0 0;
 	padding: 0 0;
-	background: url(asset-path("swirl.png"));
-	background-size: 15em;
 	line-height: 1em;
 	font-size: 12px;
-	font-family: 'Bitter', serif;
 }
 
 h1, h2, h3, h4, h5, h6, span, label, input, textarea, td, th, a, ul, li, ol  {
@@ -34,10 +31,13 @@ h1, h2, h3, h4, h5, h6, span, label, input, textarea, td, th, a, ul, li, ol  {
 	padding: 0 0;
 	font-size: 1em;
 	line-height: 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
 	font-family: 'Lato', sans-serif;
 }
 
-p {
+p, span, label, input, textarea, td, th, a, ul, li, ol {
 	margin: 0 0;
 	padding: 0 0;
 	font-size: 1em;
@@ -147,229 +147,105 @@ table {
 	}
 }
 
-.right {
-	float: right;
-}
-.left {
-	float: left;
-}
 .actions {
 	margin-top: 0.5em;
 }
 
-.top {
-	background-color: #507642;
-	height: 4em;
+#main-menu {
+	height: 100vh;
 	position: fixed;
-	top: 0;
-	width: 100%;
+	background-color: #1f356f;
+	width: 4vw;
 	z-index: 1;
+	overflow: hidden;
 
 	a {
 		color: #fff;
 		font-size: 2em;
 	}
 
-	#home {
-		text-align: center;
-		width: 25%;
-		display: inline-block;
+	a#home {
+		margin-left: 5px;
 
-		a{
-			background: url(asset-path("A+.png")) no-repeat center;
-			background-size:100%;
-			display: inline-block;
-			height: 2em;
-			width: 2em;
+		img {
+			width: 90%;
 		}
 	}
 
+	a#profile img {
+		border-radius: 100%;
+	}
+
 	#main-options {
-		display: inline-block;
-		width: 74%;
 		margin-top: 1em;
-		vertical-align: top;
-		line-height: 2em;
 
-		a {
-			display: inline-block;
-			margin-right: 10px;
-			font-size: 2em;
-			padding: 0.2em;
+		ul li {
+			margin-top: 25px;
+			margin-left: 8px;
 		}
 
-		a:hover {
-			text-decoration: underline;
-			color: #45bbe6;
+		.divider {
+			margin-top: 25px;
+			display: block;
+			border-bottom: 1px solid white;
 		}
 
-		#profile {
-			color: white;
-			margin-right: 0.5em;
-			span, a {
-				font-size: 1.5em;
-			}
-			a {
-				margin: 0;
-			}
+		img {
+			width: 90%;
 		}
 	}
 }
 
-.bottom {
-	width: 100%;
-	height: 100%;
-	margin-top: 4em;
+#add-menu {
+	text-align: left;
+	position: fixed;
+	top: 50px;
+	right: 100px;
 
-	#left {
-		width: 25%;
-		border-right: 1px solid #fff;
-		line-height: 18px;
-		display: inline-block;
-	  border-right: 1px dashed #ccc;
-
-		#topics-menu {
-			width: 100%;
-			z-index: 2;
-		}
-
-		#subject-filter {
-			background-color: white;
-			height: 4em;
-
-			form {
-				width: 100%;
-				height: inherit;
-
-				#subject-list {
-					font-size: 2em;
-					width: 80%;
-					height: 100%;
-					border-bottom: none;
-					border-top: none;
-					border-left: none;
-					background-color: inherit;
-				}
-
-				#search-submit {
-					width: 14%;
-					heigth: 100%;
-					text-align: center;
-
-					input[type=submit] {
-						background-color: inherit;
-						color: #7DB07D;
-						border: none;
-						font-size: 2.5em;
-					}
-
-					input[type=submit]:hover {
-						cursor: hand;
-						cursor: pointer;
-					}
-				}
-
-				#search-submit, #subject-list{
-					display: inline-block;
-				}
-
-			}
-		}
-
-		#topics-list {
-			line-height: 2em;
-			font-size: 1.75em;
-
-			h4 {
-				margin: 0;
-				display: inline-block;
-				padding: 0 .5em;
-				font-weight: normal;
-			}
-
-			#new-topic, .topic {
-				a {
-					display: inline-block;
-				}
-			}
-
-			#new-topic {
-				background: #7DB07D;
-				text-align: center;
-
-				a{
-					width: 100%;
-					color: white;
-					display: inline-block;
-					padding: 0.5em 0;
-				}
-			}
-
-			.topic {
-				border-bottom: 1px dashed #ccc;
-				background: #fff;
-				padding: .1em .5em;
-
-		    a:hover {
-		      color: #45bbe6;
-		    }
-
-				a:visited {
-					color: #000;
-				}
-
-				span{
-					display: inline-block;
-					width: 5em;
-					float: left;
-					font-size: 1em;
-					text-align: center;
-					margin-right: 0.5em;
-					border-radius: 2px;
-					color: #000;
-					line-height: 2em;
-				}
-			}
-		}
+	button {
+		border: none;
+		background: url(asset-path("add.png")) no-repeat center;
+		background-size: 100%;
+		width: 2em;
+		height: 2em;
 	}
 
-	#right {
-		width: 74.9%;
+	a#review {
+		width: 2em;
+		height: 2em;
+		display: block;
+	}
+
+	a.on {
+		background: url(asset-path("review-on.png")) no-repeat center;
+		background-size: 100%;
+	}
+	a.off {
+		background: url(asset-path("review-off.png")) no-repeat center;
+		background-size: 100%;
+	}
+}
+
+.dropdown-menu {
+	left: -135px;
+}
+
+#main-content {
+	width: 96vw;
+	height: 100vh;
+	margin-left: 4vw;
+
+	#page {
+		width: 100%;
 		height: 100%;
 		display: inline-block;
-		background: url(asset-path("crossword.png"));
-		background-size: 250px;
-		position: absolute;
 		font-size: 2em;
+		padding: 1em 1em;
 
-		#title-bar {
-			position: relative;
-			z-index: 0.5;
-			padding-top: 1em;
-			padding-left: 1em;
-
-			h1 {
-				display: inline-block;
-			}
-
-			a {
-				float: right;
-				display: inline-block;
-				margin-right: 0.5em;
-			}
-		}
-
-		#content {
-			padding: 0.5em 0.5em;
-			background: inherit;
-			width: 98%;
-			font-size: 1.1em;
-
-			#yield {
-				margin-left: 10px;
-				width: 90%;
-				display: inline-block;
-			}
+		#yield {
+			width: 100%;
+			margin-left: 10px;
+			display: inline-block;
 		}
 
 		#options-bar {
@@ -560,176 +436,4 @@ table {
 
 .bold {
 	font-weight: bold;
-}
-
-@media only screen and (min-width: 700px) and (max-width: 1030px) {
-	.top #main-options {
-		a{
-			margin-right: 0;
-		}
-
-		#profile {
-			margin-right: 0;
-		}
-	}
-}
-
-@media only screen and (min-width: 768px) and (max-width: 979px) {
-	.bottom #right #content #yield #weeks_study ul {
-		margin: 0 1em 2em;
-		width: 45%;
-	}
-}
-
-@media only screen and (max-width: 800px) {
-	body {
-		font-size: 9px;
-	}
-	.top {
-		#main-options {
-			width: 89%
-		}
-
-		#home {
-	    width: 9%;
-	  }
-  }
-
-	.bottom {
-		#left {
-			display: none;
-
-			#subject-filter form #subject-list {
-				width: 67%;
-				font-size: 1.8em;
-			}
-
-			#topics-list .topic a {
-		    line-height: 1.4em;
-		  }
-		}
-
-	  #right {
-	    width: 100%;
-	  }
-	}
-}
-
-@media only screen and (max-width: 600px) {
- 	.bottom #right #content #options-bar {
-	 	margin-left: -0.5em;
-	 }
-}
-
-@media only screen and (min-width: 970px) and (max-width: 1080px) {
-	.bottom {
-		#left #topics-menu #subject-filter form #subject-list {
-			width: 71%;
-		}
-
-		#right #content #yield #weeks_study ul {
-			width: 49%;
-		}
-	}
-}
-
-@media only screen and (min-width: 1080px) and (max-width: 1280px) {
-	.bottom {
-		#left #topics-menu #subject-filter form #subject-list {
-			width: 77%;
-		}
-
-		#right #content #yield #weeks_study ul {
-			width: 37%;
-			margin-right: 2em;
-		}
-	}
-}
-
-@media only screen and (min-width: 970px) and (max-width: 1280px) {
-	body {
-		font-size: 10px;
-	}
-
-	.bottom {
-		#left #topics-menu #topics-list .topic {
-			span {
-				margin-top: 0.35em;
-				font-size: 0.7em;
-				width: 4em;
-			}
-
-			a {
-				line-height: 1.3em;
-			}
-		}
-
-		#right {
-			#content {
-				#yield #filter form #subject-list {
-					width: 65%;
-				}
-			}
-
-			#options-bar {
-		  	margin-left: -0.5em;
-		  }
-		}
-	}
-}
-
-@media only screen and (min-width: 1281px) and (max-width: 1560px) {
-	.bottom {
-		#left #topics-menu #subject-filter form #subject-list {
-			width: 75%;
-		}
-	}
-}
-
-@media only screen and (min-width: 1561px) and (max-width: 1880px) {
-	.bottom {
-		#left #topics-menu #subject-filter form #subject-list {
-			width: 78%;
-		}
-	}
-}
-
-@media only screen and (max-width: 768px) {
-	.bottom {
-		#right #content #yield #weeks_study ul {
-			width: 49%;
-		}
-	}
-}
-
-@media only screen and (max-width: 699px) {
-	.top {
-		height: 5em;
-
-		#main-options {
-			display: none;
-		}
-
-		#home {
-			margin-top: 0.5em;
-			width: 85%;
-		}
-	}
-}
-
-@media only screen and (max-width: 375px) {
-	.top {
-		#home {
-			margin-top: 0.5em;
-			width: 73%;
-		}
-	}
-}
-
-@media only screen and (max-width: 430px) {
-	.bottom {
-		#right #content #yield #weeks_study ul {
-			width: 95%;
-		}
-	}
 }

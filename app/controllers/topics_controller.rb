@@ -132,15 +132,16 @@ class TopicsController < ApplicationController
   # PATCH /topics/:id/set_reviewing
   # Sets the topic for reviewing.
   def set_reviewing
-    topic_config = @topic.topic_configs.find_by(user_id: session[:user_id])
+    @topic_config = @topic.topic_configs.find_by(user_id: session[:user_id])
+
     respond_to do |format|
-      if topic_config.reviewing
-        topic_config.update(reviewing: false)
+      if @topic_config.reviewing
+        @topic_config.update(reviewing: false)
       else
-        topic_config.update(reviewing: true)
+        @topic_config.update(reviewing: true)
       end
 
-      format.html { render @topic }
+      format.html { redirect_to @topic }
     end
   end
 

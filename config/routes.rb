@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get 'review/card/:card_id/back/' => 'review#back', as: :card_back
     post 'review/card/:card_id/answer' => 'review#answer', as: :card_answer
     patch 'reset_cards' => 'topics#reset_cards', as: :reset_cards
-    patch 'set_reviewing' => 'topics#set_reviewing', as: :set_review
+    patch 'set_reviewing' => 'topics#set_reviewing', as: :set_reviewing
   end
 
   get 'login' => 'welcome#welcome', as: 'login'

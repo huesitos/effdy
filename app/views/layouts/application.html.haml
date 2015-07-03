@@ -1,63 +1,88 @@
 !!!5
 %html
   %head
+    / Latest compiled and minified CSS
+    %link{:rel => "stylesheet", :href =>"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"}
+
     %link{:href => "http://fonts.googleapis.com/css?family=Lato", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "http://fonts.googleapis.com/css?family=Bitter:400,400italic,700", :rel => "stylesheet", :type => "text/css"}/
     %title Aplus
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    %script{src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"}
     = csrf_meta_tags
   %body{:class => controller.controller_name}
-  .top
-    #home
-      %a{:href => study_calendar_path}
-    %nav#main-options
-      = link_to 'Study calendar', study_calendar_path
-      = link_to 'Subjects', subjects_path
-      = link_to 'Topics', topics_path
-      = link_to 'Notifications', share_request_notify_path
-      #profile.right
-        %span= "#{current_user.username}"
-        = link_to 'Logout', logout_path
-  .bottom
-    #left
-      #topics-menu
-        #topics-list
-          %h4 Topic(s)
-          #new-topic= link_to 'Add topic', new_topic_path
-          - menu_topics = flash[:subjects] ? flash[:subjects] : @menu_topics
-          - menu_topics.each do |topic|
-            .topic{id: "#{topic.id}"}
-              - if topic.subject
-                %span{style: "background-color:#{topic.subject.subject_configs.find_by(user_id: current_user().id).color}; color: #fff" }= topic.subject.code
-              = link_to topic.title, topic
-    #right
-      #title-bar
-        %h1= @view_title
-        - if controller.controller_name == "subjects"
-          - if controller.action_name == "show"
-            = link_to 'Add Topic', new_topic_path(back: subject_path(@subject._id))
-          - else
-            = link_to 'Add subject', new_subject_path
-        - if "#{controller.controller_name}##{controller.action_name}" == "topics#index"
-          = link_to 'Add Topic', new_topic_path
-      #content
-        = flash_message
+    #main-menu
+      %a#home{:href => study_calendar_path}= image_tag("A+.png")
+      %nav#main-options
+        %ul
+          %li
+            %a{:href => study_calendar_path, :alt => "Study calendar", :title => "Study calendar"}
+              = image_tag("calendar.png")
+          %li
+            %a{:href => share_request_notify_path, :alt => "Notifications", :title => "Notifications"}
+              = image_tag("notification.png")
+          %li
+            %a{:href => subjects_path, :alt => "Subjects", :title => "Subjects"}
+              = image_tag("subject.png")
+          %li
+            %a{:href => topics_path, :alt => "Topics", :title => "Topics"}
+              = image_tag("topic.png")
+
+          %span.divider
+
+          - if ["topics", "cards", "review_box"].include? controller.controller_name and not ["topics#index", "topics#new", 'review_box#study_calendar'].include? "#{controller.controller_name}##{controller.action_name}"
+            %li
+              %a{:href => topic_path(@topic), :id => 'cards', :alt => "card list", :title => "card list"}
+                = image_tag("flashcard_icon.png")
+            %li
+              %a{:href => edit_topic_path(@topic), :alt => "edit", :title => "edit"}
+                = image_tag("edit.png")
+            %li
+              %a{:href => share_request_new_path(object_type:'topic', oid:@topic._id, name: @topic.title), :alt => "share", :title => "share"}
+                = image_tag("share.png")
+
+          - if controller.controller_name == "subjects"
+            %li
+              %a{:href => subject_path(@subject), :id => 'cards', :alt => "card list", :title => "card list"}
+                = image_tag("topic.png")
+            %li
+              %a{:href => edit_subject_path(@subject), :alt => "edit", :title => "edit"}
+                = image_tag("edit.png")
+            %li
+              %a{:href => share_request_new_path(object_type:'subject', oid:@subject._id, name: @subject.name), :alt => "share", :title => "share"}
+                = image_tag("share.png")
+
+          %li
+            %a#profile{:href => logout_path}
+              = image_tag(current_user.image)
+
+      / #topics-menu
+      /   #topics-list
+      /     %h4 Topic(s)
+      /     #new-topic= link_to 'Add topic', new_topic_path
+      /     - menu_topics = flash[:subjects] ? flash[:subjects] : @menu_topics
+      /     - menu_topics.each do |topic|
+      /       .topic{id: "#{topic.id}"}
+      /         - if topic.subject
+      /           %span{style: "background-color:#{topic.subject.subject_configs.find_by(user_id: current_user().id).color}; color: #fff" }= topic.subject.code
+      /         = link_to topic.title, topic
+    #main-content
+      #page
+        #title-bar
+          %h1= @view_title
         #yield
           = yield
-        - if ( ["topics", "cards", "review_box"].include? controller.controller_name and not ["topics#index", "topics#new", 'review_box#study_calendar'].include? "#{controller.controller_name}##{controller.action_name}")
-          #options-bar
-            = form_tag("/topics/#{@topic._id}/set_reviewing", method: "patch", :alt => "review on/off", :title => "review on/off", remote: true) do
-              = @topic_config.reviewing ? submit_tag('', class: 'reviewing') : submit_tag('', class: 'not-reviewing')
-            = link_to '', topic_path(@topic), :class => 'btn', :id => 'cards', :alt => "card list", :title => "card list"
-            = form_tag("/topics/#{@topic._id}/reset_cards", method: "patch") do
-              = submit_tag('', id: 'reset', :alt => "reset cards", :title => "reset cards")
-            = link_to '', share_request_new_path(object_type:'topic', oid:@topic._id, name: @topic.title), :class => 'btn share', :alt => "share", :title => "share"
-            = link_to '', edit_topic_path(@topic), :class => 'btn edit', :alt => "edit", :title => "edit"
-            = link_to '', @topic, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn destroy', :alt => "delete", :title => "delete"
-        - if "subjects#show" == "#{controller.controller_name}##{controller.action_name}"
-          #options-bar
-            = link_to '', share_request_new_path(object_type:'subject', oid:@subject._id, name: @subject.name), :class => 'btn share', :alt => "share", :title => "share"
-            = link_to '', edit_topic_path(@subject), :class => 'btn edit', :alt => "edit", :title => "edit"
-            = link_to '', @subject, :method => :delete, :data => { :confirm => 'This will delete the subject. Are you sure?' }, :class => 'btn destroy', :alt => "delete", :title => "delete"
-            = link_to '', subject_path(@subject.id, delete_all: true), :method => :delete, :data => { :confirm => 'This will delete the subject with all its topics. Are you sure?' }, :class => 'btn destroy', :alt => "delete all", :title => "delete all"
+        #add-menu
+          .dropdown
+            %button#dropdownMenu1.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+            %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
+              %li= link_to 'Add topic', new_topic_path
+              %li= link_to 'Add subject', new_subject_path
+              - if "#{controller.controller_name}##{controller.action_name}" == "topics#show"
+                %li= link_to 'Add card', new_topic_card_path(@topic)
+          - if "#{controller.controller_name}##{controller.action_name}" == "topics#show"
+            - topic_config = @topic.topic_configs.find_by(user_id: current_user.id)
+            - topic_config.reviewing ? rclass = "on" : rclass = "off"
+            = link_to "", {:controller => "topics", :action => "set_reviewing", :topic_id => @topic.id}, {:method => :patch, :id => 'review', :class => rclass}
+        = flash_message
