@@ -35,9 +35,36 @@ class Topic
     study_topics = []
     topic_ids = TopicConfig.from_user(user_id).not_archived.reviewing.pluck(:topic_id)
     topics = Topic.where(:_id => { "$in" => topic_ids })
-    card_ids = CardStatistic.where(
-      :user_id => user_id, 
-      :review_date => {"$lte" => DateTime.now}).pluck(:card_id)
+
+    # If the date it's going to look for the topics to study is today, also pick
+    # all the cards with a review date from previous days.
+    if date <= Date.today
+      card_ids = CardStatistic.where(
+        :user_id => user_id, 
+        :review_date => {"$lte" => date}).pluck(:card_id)
+    else
+      card_ids = CardStatistic.where(
+        :user_id => user_id, 
+        :review_date => {"$gt" => date, "$lt" => date+1}).pluck(:card_id)
+
+      CardStatistic.where(:user_id => user_id, :review_date => {"$lt" => date}).each do |cs|
+
+        # Calculate the next review dates as long as it doesn't go beyond "date".
+        # If the review date happens to be equal to "date", then add it to the cards
+        # that have to be studied that day
+        n = 1
+        rd = cs.card_review_projection(cs.review_date, cs.level+n)
+
+        while rd < date
+          n += 1
+          rd = cs.card_review_projection(rd, cs.level+n)
+        end
+        
+        if rd.to_date == date
+          card_ids << cs.card_id
+        end
+      end
+    end
 
     topics.each do |t|
       cards = t.cards.where(:_id => { "$in" => card_ids })

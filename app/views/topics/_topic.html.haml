@@ -1,18 +1,18 @@
 - if topic.topic_configs.find_by(user_id: current_user.id)
   %li
-    .info
+    .col-sm-7
       - if topic.subject
         - color = topic.subject.subject_configs.find_by(user_id: current_user.id).color
-      %span#code{style: topic.subject.nil? || "color:#{color}" }
+      %span.label{style: if topic.subject then "background-color:#{color}" else "background-color:#aaa" end}
         - if topic.subject
           = topic.subject.code
+        - else
+          NONE
       %span#link
         = link_to topic.title, topic
-    .options
+    .col-sm-3.options
       / Enable after adding AJAX because it will redirect to topic's page
       / = form_tag("/topics/#{topic._id}/set_reviewing", method: "patch") do
       /   = topic.reviewing ? submit_tag('', id: 'reviewing') : submit_tag('', id: 'not-reviewing')
-      = link_to '', topic_cards_path(topic), :class => 'btn', :id => 'cards'
-      = link_to '', edit_topic_path(topic), :class => 'btn edit'
-      = link_to '', topic_path(topic), :class => 'btn destroy delete-link', style: 'display:none'
-      %a.btn.destroy.destroy-action{href:'javascript:void(0)'}
+      = link_to '', topic_path(topic), :class => 'icon-btn-inline destroy delete-link', style: 'display:none'
+      %a.icon-btn-inline.destroy.destroy-action{href:'javascript:void(0)'}

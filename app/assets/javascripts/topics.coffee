@@ -3,6 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'load page:ready page:change', ->
+  $('.front').addClass('active')
+
   $('.destroy-action').click ->
     confirmation = confirm('Are you sure?')
     if confirmation
@@ -17,3 +19,12 @@ $(document).on 'load page:ready page:change', ->
           #removes the topic from the topic menu
           delete_from_left_menu.remove()
       })
+
+  $('.side').click ->
+    $side = $('.active')
+    if $side.hasClass('front')
+      $(this).children('.front').toggleClass('active')
+      $(this).children('.back').toggleClass('active')
+    else
+      $(this).children('.back').toggleClass('active')
+      $(this).children('.front').toggleClass('active')

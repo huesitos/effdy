@@ -55,7 +55,6 @@ textarea {
 
 h1 {
 	font-size: 2em;
-	margin-bottom: 0.5em;
 }
 h2 {
 	font-size: 1.5em;
@@ -72,20 +71,12 @@ a {
 }
 
 form {
-	width: 55%;
-	label {
-		display: inline-block;
-		width: 100%;
-	}
-
 	label:after {
 		content: ":";
 	}
 
 	input[type=text] {
-		width: 100%;
-		height: 1.5em;
-		padding: 0 .5em;
+		width: 90%;
 	}
 
 	a {
@@ -205,6 +196,23 @@ table {
 	}
 }
 
+#notification-bell {
+	position: absolute;
+	top: 20px;
+	right: 70px;
+
+	a img{
+		width: 2em;
+		height: 2em;
+	}
+
+	.badge {
+		position: relative;
+		right: 18px;
+		top: -10px;
+	}
+}
+
 .dropdown-menu {
 	left: -135px;
 }
@@ -227,11 +235,18 @@ table {
 			display: inline-block;
 		}
 
-		.icon-btn {
-			display: block;
+		.icon-btn, .icon-btn-inline {
 			width: 1.5em;
 			height: 1.5em;
 			background-size: 1.5em;
+		}
+
+		.icon-btn {
+			display: block;
+		}
+
+		.icon-btn-inline {
+			display: inline-block;
 		}
 
 		#cards {
@@ -258,43 +273,21 @@ table {
 
 		  	li {
 		  		display: block;
-		  		border-bottom: #ccc 1px dashed;
 
-				  .info {
-				  	display: inline-block;
-				  	width: 80%;
-				  	height: 25px;
-				  	line-height: 1em;
+		  		.label {
+		  			margin-right: 10px;
+		  		}
 
-			  		span {
-			  			display: inline-block;
-			  		}
-
-			  		#code {
-			  			width: 22%;
-			  			text-align: center;
-			  		}
-			  		#link {
-			  			width: 76%;
-			  			a {
-			  				display: inline-block;
-				  			width: 100%;
-			  			}
-			  		}
-				  	#link:hover {
-							background-color: rgb(239, 255, 203);
-						}
-				  }
+		  		#link {
+		  			font-size: 0.9em;
+		  		}
 		  	}
-		  }
-			.options {
-				display: inline-block;
 
-				.btn {
-					display: inherit;
-					vertical-align: bottom;
+		  	.options {
+					position: relative;
+					top: -5px;
 				}
-			}
+		  }
 		}
 	}
 }
@@ -305,43 +298,6 @@ table {
 		width: 2em;
 		height: 2em;
 		vertical-align: bottom;
-	}
-
-	.b1 {
-		background: url(asset-path("box1.png")) no-repeat center;
-		background-size: 100%;
-	}
-	.b2 {
-		background: url(asset-path("box2.png")) no-repeat center;
-		background-size: 100%;
-	}
-	.b3 {
-		background: url(asset-path("box3.png")) no-repeat center;
-		background-size: 100%;
-	}
-}
-
-.review, .share_request {
-	#notifications {
-		ul {
-			list-style: none;
-			padding: 0;
-
-			li {
-				font-size: inherit;
-				padding-top: 0.5em;
-
-				span {
-					display: inline-block;
-				}
-				a {
-					display: inline-block;
-				}
-			}
-			li:first-child {
-				padding-top: 0;
-			}
-		}
 	}
 }
 
@@ -354,6 +310,74 @@ table {
 	font-weight: bold;
 }
 
+// Topics, Subjects
+
+.topics, .subjects {
+	.cards {
+		margin-top: 20px;
+
+		.card-container {
+			width: 22%;
+			display: inline-block;
+			vertical-align: top;
+			text-align: center;
+			margin: 0.25em;
+			height: 7em;
+
+			.side {
+				width: 100%;
+				height: 100%;
+				display: inline-block;
+				background-color: #fff;
+				border: 1px solid #e8d9f6;
+				box-shadow: 0 3px 3px 0 #ccc;
+				line-height: 1em;
+				word-wrap: break-word;
+				cursor: hand;
+				cursor: pointer;
+
+				.front {
+					font-weight: bold;
+					display: none;
+				}
+				.back {
+					color: #666;
+					font-size: 0.6em;
+					display: none;
+				}
+
+				.front, .back{
+					padding: 0.5em 0.2em;
+					font-size: 0.8em;
+					height: 75%;
+					overflow: hidden;
+				}
+
+				.active {
+					display: block;
+				}
+
+				.review_date {
+					font-size: 0.5em;
+				}
+			}
+
+			.options {
+				vertical-align: top;
+				width: 25%;
+				display: inline-block;
+				position: relative;
+				top: -40px;
+				right: -115px;
+
+				a.icon-btn {
+					display: inline-block !important;
+				}
+			}
+		}
+	}
+}
+
 // Bootstrap rewrite
 
 .btn-default {
@@ -361,8 +385,18 @@ table {
 	border-color: #d42d2d;
 }
 
-.btn-default:hover {
-	color: #fb6464;
+.btn-default:hover, .btn-default:focus {
+	color: white;
+  background-color: #fb6464;
 	border-color: #fb6464;
-	background-color: #fff;
+}
+
+.page-header {
+	border-color: #D9DDE7;
+	margin-bottom: 30px;
+}
+
+.label {
+	display: inline-block;
+	min-width: 100px;
 }

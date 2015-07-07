@@ -4,13 +4,14 @@
 	#notifications
 		%ul
 			-@share_requests.each do |sr|
-				%li
+				%li.col-sm-10
 					%span.sender= sr.sender_uname
 					%span= "wants to #{sr.kind} #{sr.object_type} "
 					%span{class: sr.object_type == 'topic'? 'topic' : 'subject' }= sr.name 
 					%span with you.
-					= link_to "Accept", share_request_share_path(sr._id), class: 'option'
-					= link_to "Decline", share_request_destroy_path(sr._id), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'option'
+					.options.pull-right
+						= link_to "Accept", share_request_share_path(sr._id), class: 'btn btn-default'
+						= link_to "Decline", share_request_destroy_path(sr._id), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-default'
 - else
 	.placeholder
-		%p There are no share request in your inbox today!
+		%p There are no share request.

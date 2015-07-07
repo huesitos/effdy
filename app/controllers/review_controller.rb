@@ -6,8 +6,15 @@ class ReviewController < ApplicationController
 
   # GET /study_calendar
   def study_calendar
-    @view_title = "Study calendar"
-    @study_topics = Topic.topics_to_study(session[:user_id], DateTime.now)
+    @view_title = "Review calendar"
+
+    if params[:date]
+      @date = DateTime.parse(params[:date])
+    else
+      @date = Date.today
+    end
+
+    @study_topics = Topic.topics_to_study(session[:user_id], @date)
   end
 
   # GET topics/:topic_id/review_box/:b
@@ -60,7 +67,7 @@ class ReviewController < ApplicationController
     else 
       cs.incorrect time_answering
     end
-    cs.update_review_date(session[:user_id])
+    cs.update_review_date
 
     respond_to do |format|
   		format.html { redirect_to topic_review_path(@topic) }

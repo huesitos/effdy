@@ -94,15 +94,34 @@
 	#card:first-child {
 		margin-right: 10px;
 	}
-}
 
-@media only screen and (max-width: 1290px) {
-  .review {
-		.card {
-			width: 95%;
+	.study_topic {
+		margin: 15px 0;
+
+		.shaded {
+			color: #999;
 		}
-		.card:first-child {
-			margin-bottom: 1em;
+	}
+
+	.study-topics {
+
+	}
+
+	.week-menu ul {
+		border-left: 1px solid #ddd;
+		padding-left: 15px;
+
+		p, li {
+			margin-bottom: 20px;
+		}
+
+		li {
+			list-style: none;
+		}
+		li.active {
+			a {
+				color: #fb6464;
+			}
 		}
 	}
 }

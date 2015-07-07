@@ -6,19 +6,28 @@
         - @errors.each do |msg|
           %li= msg
 
-  .field
-    = f.label :code
-    = f.text_field :code, placeholder: "e.g. COM381, PS200"
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = label_tag "Color"
-    %input{name: "subject_color", id: "subject_color", type: 'text', class: 'colorpicker', placeholder: "#ddd, #e8e8e8", value: @subject_config && @subject_config.color}
-    %span#preview
-  .actions
-    %a{href: "#{subjects_path}"} Cancel
-    - if @url == new_subject_path
-      = f.submit 'Create'
-    - else
-      = f.submit 'Save'
+  .form-horizontal
+    .form-group
+      .field
+        = f.label :code, class: 'control-label col-sm-2'
+        .col-sm-7
+          = f.text_field :code, placeholder: "e.g. COM381, PS200", class: 'from-control'
+    .form-group
+      .field
+        = f.label :name, class: 'control-label col-sm-2'
+        .col-sm-7
+          = f.text_field :name, class: 'from-control'
+    .form-group
+      .field
+        = label_tag "subject_color", "Color", {class: 'control-label col-sm-2'}
+        .col-sm-7
+          %input{name: "subject_color", id: "subject_color", type: 'text', placeholder: "#ddd, #e8e8e8", value: @subject_config && @subject_config.color, class: 'colorpicker from-control'}
+    .form-group
+      %span.label
+      .col-sm-offset-2.col-sm-7
+        .actions
+          %a{href: "#{subjects_path}", class: 'btn btn-default'} Cancel
+          - if @url == new_subject_path
+            = f.submit 'Create', class: 'btn btn-default'
+          - else
+            = f.submit 'Save', class: 'btn btn-default'

@@ -7,8 +7,8 @@ $(document).on 'ready page:load', ->
   $('#subject_color, #subject_code').on 'change keyup', ->
     subject_code = $('#subject_code')
     subject_color = $('#subject_color')
-    $('#preview').text(subject_code.val())
-    $('#preview').css {'background-color': subject_color.val(), 'margin-left': '80%', color: '#fff'}
+    $('.label').text(subject_code.val())
+    $('.label').css {'background-color': subject_color.val(), color: '#fff', 'margin': '15px 0 10px 244px'}
 
   $('.subject-destroy').click ->
     console.log $(this).prev('.delete-link').attr 'href'

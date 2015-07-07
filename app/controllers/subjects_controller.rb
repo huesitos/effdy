@@ -8,7 +8,16 @@ class SubjectsController < ApplicationController
   def index
     @view_title = "Subjects"
     @user_id = session[:user_id]
-    @subjects = Subject.where(user_id: session[:user_id])
+
+    @total = Subject.count.to_i
+
+    if @total == 1
+      @subjects_first_half = SubjectConfig.where(user_id: session[:user_id])
+      @subjects_second_half = []
+    else
+      @subjects_first_half = SubjectConfig.where(user_id: session[:user_id]).sort(archived: 1).limit(@total/2)
+      @subjects_second_half = SubjectConfig.where(user_id: session[:user_id]).sort(archived: 1).skip(@total/2)
+    end
 
     col_subj_ids = SubjectConfig.where(user_id: session[:user_id]).pluck(:subject_id)
     @collaborating_subjects = Subject.where(
@@ -21,6 +30,20 @@ class SubjectsController < ApplicationController
   def show
     @view_title = @subject.name
     @topics = Topic.where(subject_id: @subject._id)
+
+    @subject_config = SubjectConfig.find_by(subject_id: @subject.id)
+    @total = @subject.topics.count.to_i
+
+    topic_ids = TopicConfig.from_user(session[:user_id]).pluck(:topic_id)
+    topics = Topic.where(_id: {"$in" => topic_ids}, subject_id: @subject.id)
+
+    if @total == 1
+      @topics_first_half = topics
+      @topics_second_half = []
+    else
+      @topics_first_half = topics.limit(@total/2)
+      @topics_second_half = topics.skip(@total/2)
+    end
   end
 
   # GET /subjects/edit
@@ -89,14 +112,18 @@ class SubjectsController < ApplicationController
   # Archives subject with all its topics.
   def archive
     respond_to do |format|
-      reset_cache @subject
+      subject_config = @subject.subject_configs.find_by(user_id: session[:user_id])
 
-      if @subject.archived
-        @subject.unarchive
+      if subject_config.archived
+        subject_config.unarchive(session[:user_id])
       else
-        @subject.archive
+        subject_config.archive(session[:user_id])
       end
-      format.html { redirect_to subjects_url }
+      if params[:back]
+        format.html { redirect_to params[:back] }
+      else
+        format.html { redirect_to subjects_url }
+      end
     end
   end
 

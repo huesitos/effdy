@@ -26,22 +26,6 @@ class Subject
     Subject.where(user_id: user_id)
   end
 
-  # Archives a subject and all its topics.
-  def archive
-    self.update(archived: true)
-    self.topics.each do |topic|
-      topic.update(archived: true)
-    end
-  end
-
-  # Unarchives a subject and all its topics.
-  def unarchive
-    self.update(archived: false)
-    self.topics.each do |topic|
-      topic.update(archived: false)
-    end
-  end
-
   # Destroys all topics inside the subject
   def destroy_topics
     self.topics.each do |t|

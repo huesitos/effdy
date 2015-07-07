@@ -1,15 +1,18 @@
-	
-.info
-	%h4
-		Info
-	- if @topic.subject
-		%p
-			Subject:
-			= link_to @topic.subject.name, @topic.subject
-	%p= "# of cards: #{Integer(@topic.cards.count)}"
+.topic-content
+	.info
+		%h4
+			Info
+		- if @topic.subject
+			%p
+				Subject:
+				= link_to @topic.subject.name, @topic.subject
+		%p= "# of cards: #{Integer(@topic.cards.count)}"
 
-- if @exist_cards_to_study
-	= link_to 'Study', topic_review_path(@topic), class: 'btn btn-default', id: 'study'
+	.buttons
+		- @topic_config.reviewing ? text = 'Reviewing' : text = "Review"
+		= link_to text, topic_set_reviewing_path(@topic), method: :patch, class: "btn btn-default #{text.downcase}", id: 'review'
+		- if @exist_cards_to_study
+			= link_to 'Study', topic_review_path(@topic), class: 'btn btn-default', id: 'study'
 
 .cards
 	= render @topic.cards

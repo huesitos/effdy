@@ -1,0 +1,15 @@
+- subject_config = subject.subject_configs.find_by(user_id: current_user.id)
+%li
+  .col-sm-7
+    %span.label{style: "background-color:#{subject_config.color}"}
+      = subject.code
+    %span#link{class: subject_config.archived && "archived"}
+      = link_to subject.name, subject_path(subject)
+  .col-sm-4.options
+    - subject_config = subject.subject_configs.find_by(user_id: current_user.id)
+    - subject_config.archived ? text = 'Archived' : text = "Archive"
+    = link_to text, subject_archive_path(subject), method: :patch, class: "btn btn-default #{text.downcase}", id: 'archive'
+    = link_to '', subject_path(subject.id, delete_all: true), :class => "icon-btn-inline destroy delete-all", style: 'display:none'
+    = link_to '', subject, :class => "btn destroy delete-link", style: 'display:none'
+    %a.icon-btn-inline.destroy.subject-destroy{href:'javascript:void(0)', :alt => "delete", :title => "delete"}
+    %a.icon-btn-inline.destroy.subject-destroy-all{href:'javascript:void(0)', :alt => "delete all", :title => "delete all"}

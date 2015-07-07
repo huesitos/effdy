@@ -25,6 +25,8 @@ class ApplicationController < ActionController::Base
 
     # Sets the context for the topics menu
     def set_context
+      @total_notifications = ShareRequest.where(recipient: session[:user_id]).count.to_i
+
       @app_subjects = SubjectConfig.subjects_from_user(session[:user_id])
       @menu_topics = TopicConfig.topics_from_user(session[:user_id]).sort(reviewing: -1)
     end

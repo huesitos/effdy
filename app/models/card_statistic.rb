@@ -50,24 +50,35 @@ class CardStatistic
     self.update(level: 1)
   end
 
-  # Update review date based on level, and desired recall percentage of the topic.
+  # Given a level and a recall percentage, calculate the time span before reviewing again
   # Recall function: R = e^(-t/S)
   # where t is the number of days that can pass without studying the card before
   # it recall percentage drops below the topic's.
   # S = 2^n, where n is the card level
-  def update_review_date(user_id)
-    topic_config = self.card.topic.topic_configs.find_by(user_id: user_id)
-    r = topic_config.recall_percentage
-    n = self.level
-
+  def calculate_time(r, n)
     # Level of understanding
     s = 2**n
 
     # t = -ln(R)*S
     t = -s*Math.log(r)
+    t
+  end
+
+  # Update review date based on level, and desired recall percentage of the topic.
+  def update_review_date
+    topic_config = self.card.topic.topic_configs.find_by(user_id: self.user.id)
+
+    t = self.calculate_time(topic_config.recall_percentage, self.level)
 
     # Update date
-    self.review_date += t
-    self.save
+    self.update(review_date: DateTime.now + t)
+  end
+
+  def card_review_projection(review_date, n)
+    topic_config = self.card.topic.topic_configs.find_by(user_id: self.user.id)
+
+    t = calculate_time(topic_config.recall_percentage, n)
+
+    review_date + t
   end
 end

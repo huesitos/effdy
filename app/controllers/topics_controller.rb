@@ -10,21 +10,15 @@ class TopicsController < ApplicationController
   # GET /topics.json
   # Shows the complete list of topics
   def index
-    @subjects = Subject.only(:code).all
+    @total = Topic.count.to_i
 
-    if params[:commit] == "Search" and params[:subject] != ""
-      if params[:subject] == "all"
-        @topics = Topic.all
-      elsif params[:subject] == "none"
-        @topics = Topic.where(subject_id: nil)
-      else
-        subject = Subject.find_by(code: params[:subject])
-        @topics = Topic.where(subject_id: subject._id)
-      end
+    if @total == 1
+      @topics_first_half = TopicConfig.where(user_id: session[:user_id])
+      @topics_second_half = []
     else
-      @topics = Topic.all
+      @topics_first_half = TopicConfig.where(user_id: session[:user_id]).sort(reviewing: -1, archived: 1).limit(@total/2)
+      @topics_second_half = TopicConfig.where(user_id: session[:user_id]).sort(reviewing: -1, archived: 1).skip(@total/2)
     end
-    @topics = @topics.from_user(session[:user_id])
 
     @view_title = "Topics"
   end
@@ -36,7 +30,13 @@ class TopicsController < ApplicationController
     @view_title = @topic.title
     cts = @topic.cards_to_study(session[:user_id])
     @exist_cards_to_study = cts.to_a.length > 0
+
     @topic_config = @topic.topic_configs.find_by(user_id: session[:user_id])
+    @card_statistics = {}
+
+    CardStatistic.where(user_id: session[:user_id]).each do |cs|
+      @card_statistics[cs.card_id] = cs
+    end
   end
 
   # GET /topics/new

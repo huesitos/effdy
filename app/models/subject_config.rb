@@ -22,4 +22,20 @@ class SubjectConfig
 
     Subject.where(:_id => { "$in" => subject_ids })
   end
+
+  # Archives a subject and all its topics.
+  def archive(user_id)
+    self.update(archived: true)
+    self.subject.topics.each do |topic|
+      topic.topic_configs.find_by(user_id: user_id).archive user_id
+    end
+  end
+
+  # Unarchives a subject and all its topics.
+  def unarchive(user_id)
+    self.update(archived: false)
+    self.subject.topics.each do |topic|
+      topic.topic_configs.find_by(user_id: user_id).unarchive user_id
+    end
+  end
 end

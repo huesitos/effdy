@@ -2,20 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.share_request {
-	.option {
-		text-decoration: none;
-		color: #7DB07D;
-	}
-
-	.option:hover {
-		background-color: inherit;
-		color: #9BCE9B;
-	}
-	
+.share_request {	
 	#notifications {
 		ul {
 			li {
+				padding: 10px 0;
+				border-bottom: 1px solid #D9DDE7;
+				list-style: none;
+
 				.sender, .topic, .subject {
 					font-weight: bold;
 				}

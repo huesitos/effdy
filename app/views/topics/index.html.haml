@@ -1,23 +1,14 @@
 %p#notice= notice
 
-%h2 Listing topics
-
-- if @topics.count() > 0
-	%div
-		#filter
-			= form_tag(topics_path, method: "get") do
-				%input#subject-list{type: 'text', name: 'subject', list: "subject", placeholder: "filter by subject"}
-				%datalist{id: 'subject'}
-					%option{value: 'all'}
-					- @app_subjects.each do |subject|
-						%option{value: "#{subject.code}"}
-					%option{value: 'none'}
-				#submit
-					= submit_tag("Search")
-
-		#topics-list
-			%ul
-				= render @topics
+- if @total > 0
+	#topics-list
+		%ul
+			.col-sm-6
+				- @topics_first_half.each do |t_config|
+					= render t_config.topic
+			.col-sm-6
+				- @topics_second_half.each do |t_config|
+					= render t_config.topic
 - else
 	.placeholder
 		%p There are no topics!

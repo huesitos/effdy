@@ -1,25 +1,15 @@
 %p#notice= notice
 
-%h2 Listing subjects
-
-- if @subjects.count() > 0
+- if @total > 0 
   #subjects-list
     %ul
-      - @subjects.each do |subject|
-        - subject_config = subject.subject_configs.find_by(user_id: @user_id)
-        %li{class: subject_config.archived && "archived"}
-          .info
-            %span#code{style: "color:#{subject_config.color}"}
-              = subject.code
-            %span#link
-              = link_to subject.name, subject_path(subject)
-          .options
-            = link_to '', edit_subject_path(subject), :class => "btn edit", :alt => "edit", :title => "edit"
-            = link_to '', subject_archive_path(subject), :method => :patch, :id => 'archive', :class => "btn", :alt => "archive", :title => "archive"
-            = link_to '', subject_path(subject.id, delete_all: true), :class => "btn destroy delete-all", style: 'display:none'
-            = link_to '', subject, :class => "btn destroy delete-link", style: 'display:none'
-            %a.btn.destroy.subject-destroy{href:'javascript:void(0)', :alt => "delete", :title => "delete"}
-            %a.btn.destroy.subject-destroy-all{href:'javascript:void(0)', :alt => "delete all", :title => "delete all"}
+      .col-sm-6
+        - @subjects_first_half.each do |s_config|
+          = render s_config.subject
+      .col-sm-6
+        - @subjects_second_half.each do |s_config|
+          = render s_config.subject
+
 - else
   .placeholder
     %p There are no subjects! Add subjects for a smarter topic filtering.
@@ -29,17 +19,4 @@
   #subjects-list
     %ul
       - @collaborating_subjects.each do |subject|
-        - subject_config = subject.subject_configs.find_by(user_id: @user_id)
-        %li{class: subject_config.archived && "archived"}
-          .info
-            %span#code{style: "color:#{subject_config.color}"}
-              = subject.code
-            %span#link
-              = link_to subject.name, subject_path(subject)
-          .options
-            = link_to '', edit_subject_path(subject), :class => "btn edit", :alt => "edit", :title => "edit"
-            = link_to '', subject_archive_path(subject), :method => :patch, :id => 'archive', :class => "btn", :alt => "archive", :title => "archive"
-            = link_to '', subject_path(subject.id, delete_all: true), :class => "btn destroy delete-all", style: 'display:none'
-            = link_to '', subject, :class => "btn destroy delete-link", style: 'display:none'
-            %a.btn.destroy.subject-destroy{href:'javascript:void(0)', :alt => "delete", :title => "delete"}
-            %a.btn.destroy.subject-destroy-all{href:'javascript:void(0)', :alt => "delete all", :title => "delete all"}
+        = render subject

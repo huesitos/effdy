@@ -22,4 +22,14 @@ class TopicConfig
 
     Topic.where(:_id => { "$in" => topic_ids })
   end
+
+  # Archives a subject and all its topics.
+  def archive(user_id)
+    self.update(archived: true)
+  end
+
+  # Unarchives a subject and all its topics.
+  def unarchive(user_id)
+    self.update(archived: false)
+  end
 end

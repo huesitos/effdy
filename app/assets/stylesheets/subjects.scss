@@ -4,11 +4,55 @@
 
 .subjects {
 	.archived {
-		background-color: #eee;
 		font-style: italic;	
-		color: #999;
+
+		a {
+			color: #999 !important;
+		}
 	}
-	#archive{
-		background: url(asset-path("archive.svg")) no-repeat center;
+
+	.title {
+		#archive {
+		  position: relative;
+		  top: -54px;
+		  right: 120px;
+		}
+	}
+
+	#cards-list {
+		.row {
+			margin-top: 15px;
+		}
+	}
+
+	#archive {
+		vertical-align: top;
+	}
+
+	a.archive {
+		color: #242424;
+		border-color: #242424;
+	}
+
+	a.archive:hover, a.archive:focus {
+		color: white;
+	  background-color: #242424;
+		border-color: #242424;
+	}
+
+	a.archived {
+		color: white;
+	  background-color: #242424;
+		border-color: #242424;
+	}
+
+	a.archived:hover, a.archived:focus {
+		color: #242424;
+	  background-color: white;
+		border-color: #242424;
+	}
+
+	#cards-list {
+		display: block;
 	}
 }

@@ -23,7 +23,7 @@ a {
   &:visited {
     color: #d42d2d;
   }
-  &:hover {
+  &:hover, &:active {
     color: #fb6464;
     text-decoration: none;
   }

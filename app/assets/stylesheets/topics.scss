@@ -4,6 +4,9 @@
 
 .topics {
 	.info {
+		width: 80%;
+	  display: inline-block;
+
 		h4 {
 			margin-bottom: 10px;
 		}
@@ -11,11 +14,45 @@
 			font-size: 0.8em;
 			margin-bottom: 5px;
 		}
+
+	}
+
+	.buttons {
+		display: inline-block;
+	  vertical-align: top;
+	}
+
+	a#review {
+		position: relative;
+	}
+
+	a.review {
+		color: #0a9d0f;
+		border-color: #0a9d0f;
+	}
+
+	a.review:hover, a.review:focus {
+		color: white;
+	  background-color: #0a9d0f;
+		border-color: #0a9d0f;
+	}
+
+	a.reviewing {
+		color: white;
+		border-color: #0a9d0f;
+	  background-color: #0a9d0f;
+	}
+
+	a.reviewing:hover, a.reviewing:focus {
+		color: #0a9d0f !important;
+	  background-color: white !important;
+		border-color: #0a9d0f !important;
 	}
 
 	.destroy{
 		background-size: 2em;
 	}
+
 	.edit{
 		background-size: 2em;
 	}
@@ -41,53 +78,5 @@
 			width: 13%;
 			vertical-align: bottom;
 		}
-	}
-
-	.card-container {
-		width: 30%;
-		display: inline-block;
-		vertical-align: top;
-		text-align: center;
-		margin: 0.25em;
-		height: 7em;
-
-		.values {
-			width: 84%;
-			height: 100%;
-			display: inline-block;
-			background-color: #fff;
-			border: 1px solid #e8d9f6;
-			box-shadow: 0 3px 3px 0 #ccc;
-			line-height: 1em;
-			word-wrap: break-word;
-
-			.question {
-				height: 30%;
-				font-weight: bold;
-				border-bottom: 1px dashed #888;
-				font-size: 0.8em;
-			}
-			.answer {
-				height: 45%;
-				color: #666;
-				font-size: 0.6em;
-			}
-
-			.question, .answer{
-				padding: 0.5em 0.2em;
-				width: 97%;
-			}
-		}
-		.options {
-			vertical-align: top;
-			width: 12%;
-			display: inline-block;
-		}
-	}
-
-	#study {
-		position: absolute;
-		top: 95px;
-		right: 170px;
 	}
 }
