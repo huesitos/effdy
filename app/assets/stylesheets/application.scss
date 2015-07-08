@@ -309,6 +309,7 @@ table {
 // Topics, Subjects
 
 .topics, .subjects {
+	// Style for all cards displayed in both topics/subjects show
 	.cards {
 		margin-top: 20px;
 
@@ -371,6 +372,65 @@ table {
 				}
 			}
 		}
+	}
+
+	// Style for listing archived topics/subjects
+	span.archived {
+		font-style: italic;	
+
+		a {
+			color: #999 !important;
+		}
+	}
+
+	// Style for setting review on and off
+	a.review {
+		color: #0a9d0f;
+		border-color: #0a9d0f;
+	}
+
+	a.review:hover, a.review:focus {
+		color: white;
+	  background-color: #0a9d0f;
+		border-color: #0a9d0f;
+	}
+
+	a.reviewing {
+		color: white;
+		border-color: #0a9d0f;
+	  background-color: #0a9d0f;
+	}
+
+	a.reviewing:hover, a.reviewing:focus {
+		color: #0a9d0f !important;
+	  background-color: white !important;
+		border-color: #0a9d0f !important;
+	}
+
+	// Separate rows of topics and subjects
+	.row {
+		margin: 0;
+		margin-bottom: 10px;
+		float: left;
+		width: 50%;
+	}
+
+	span#link {
+		a {
+			font-size: 0.8em;
+		}
+	}
+
+	#review, #archive {
+		display: inline-block;
+	}
+
+	#archive{
+		min-width: 87px;
+	}
+	
+	#review{
+		min-width: 96px;
 	}
 }
 

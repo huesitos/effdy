@@ -11,14 +11,7 @@ class TopicsController < ApplicationController
   # Shows the complete list of topics
   def index
     @total = Topic.count.to_i
-
-    if @total == 1
-      @topics_first_half = TopicConfig.where(user_id: session[:user_id])
-      @topics_second_half = []
-    else
-      @topics_first_half = TopicConfig.where(user_id: session[:user_id]).sort(reviewing: -1, archived: 1).limit(@total/2)
-      @topics_second_half = TopicConfig.where(user_id: session[:user_id]).sort(reviewing: -1, archived: 1).skip(@total/2)
-    end
+    @topic_configs = TopicConfig.where(user_id: session[:user_id]).sort(reviewing: -1, archived: 1)
 
     @view_title = "Topics"
   end

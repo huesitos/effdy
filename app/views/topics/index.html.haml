@@ -3,12 +3,8 @@
 - if @total > 0
 	#topics-list
 		%ul
-			.col-sm-6
-				- @topics_first_half.each do |t_config|
-					= render t_config.topic
-			.col-sm-6
-				- @topics_second_half.each do |t_config|
-					= render t_config.topic
+			- @topic_configs.each do |tc|
+				= render tc.topic
 - else
 	.placeholder
 		%p There are no topics!

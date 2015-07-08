@@ -1,18 +1,16 @@
-.title
-	%h2 Topics
+.subject-options
 	- @subject_config.archived ? text = 'Archived' : text = "Archive"
 	= link_to text, subject_archive_path(@subject, back: subject_path(@subject)), method: :patch, class: "btn btn-default #{text.downcase} pull-right", id: 'archive'
 
-.row
-	#topics-list
-		%ul
-			.col-sm-6
-				= render @topics_first_half
-			.col-sm-6
-				= render @topics_second_half
+%h2 Topics
 
-%h2 Cards
+#topics-list
+	%ul
+		- @topics.each do |topic|
+			= render topic
+
 #cards-list
+	%h2 Cards
 	- @subject.topics.each do |topic|
 		-if topic.cards.count > 0
 			.row

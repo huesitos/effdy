@@ -22,61 +22,11 @@
 	  vertical-align: top;
 	}
 
-	a#review {
-		position: relative;
-	}
-
-	a.review {
-		color: #0a9d0f;
-		border-color: #0a9d0f;
-	}
-
-	a.review:hover, a.review:focus {
-		color: white;
-	  background-color: #0a9d0f;
-		border-color: #0a9d0f;
-	}
-
-	a.reviewing {
-		color: white;
-		border-color: #0a9d0f;
-	  background-color: #0a9d0f;
-	}
-
-	a.reviewing:hover, a.reviewing:focus {
-		color: #0a9d0f !important;
-	  background-color: white !important;
-		border-color: #0a9d0f !important;
-	}
-
 	.destroy{
 		background-size: 2em;
 	}
 
 	.edit{
 		background-size: 2em;
-	}
-
-	#filter {
-		width: 40%;
-		margin-bottom: 1em;
-		margin-left: 59%;
-
-		form {
-			width: 100%;
-		}
-
-		#subject-list {
-			border-width: medium medium 1px;
-			border-style: none none solid;
-			border-color: -moz-use-text-color -moz-use-text-color #CCC;
-			width: 80%;
-		}
-
-		#submit {
-			display: inline-block;
-			width: 13%;
-			vertical-align: bottom;
-		}
 	}
 }

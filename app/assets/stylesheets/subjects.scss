@@ -3,23 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .subjects {
-	span.archived {
-		font-style: italic;	
-
-		a {
-			color: #999 !important;
-		}
-	}
-
-	.title {
+	.subject-options {
 		#archive {
 		  position: relative;
-		  top: -54px;
-		  right: 120px;
+		  top: 0px;
+		  right: 208px;
 		}
 	}
 
 	#cards-list {
+		clear: both;
 		.row {
 			margin-top: 15px;
 		}

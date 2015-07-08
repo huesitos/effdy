@@ -8,7 +8,7 @@ class Subject
   field :name, type: String
   
   has_many :topics
-  has_many :subject_configs
+  has_many :subject_configs, dependent: :destroy
   belongs_to :user
 
   validates :code, length: { maximum: 7 }

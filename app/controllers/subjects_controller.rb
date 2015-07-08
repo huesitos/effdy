@@ -10,15 +10,8 @@ class SubjectsController < ApplicationController
     @user_id = session[:user_id]
 
     @total = Subject.count.to_i
-
-    if @total == 1
-      @subjects_first_half = SubjectConfig.where(user_id: session[:user_id])
-      @subjects_second_half = []
-    else
-      @subjects_first_half = SubjectConfig.where(user_id: session[:user_id]).sort(archived: 1).limit(@total/2)
-      @subjects_second_half = SubjectConfig.where(user_id: session[:user_id]).sort(archived: 1).skip(@total/2)
-    end
-
+    @subjects = SubjectConfig.subjects_from_user(session[:user_id])
+    
     col_subj_ids = SubjectConfig.where(user_id: session[:user_id]).pluck(:subject_id)
     @collaborating_subjects = Subject.where(
       :_id => { "$in" => col_subj_ids}, 
@@ -29,21 +22,14 @@ class SubjectsController < ApplicationController
   # Get /subject/:id
   def show
     @view_title = @subject.name
-    @topics = Topic.where(subject_id: @subject._id)
+    topic_ids = TopicConfig.where(user_id: session[:user_id]).sort(reviewing: -1, archived: 1).pluck(:topic_id)
+    @topics = Topic.where(_id: {"$in" => topic_ids}, subject_id: @subject.id)
 
     @subject_config = SubjectConfig.find_by(subject_id: @subject.id)
     @total = @subject.topics.count.to_i
 
     topic_ids = TopicConfig.from_user(session[:user_id]).pluck(:topic_id)
     topics = Topic.where(_id: {"$in" => topic_ids}, subject_id: @subject.id)
-
-    if @total == 1
-      @topics_first_half = topics
-      @topics_second_half = []
-    else
-      @topics_first_half = topics.limit(@total/2)
-      @topics_second_half = topics.skip(@total/2)
-    end
   end
 
   # GET /subjects/edit
@@ -66,7 +52,6 @@ class SubjectsController < ApplicationController
     subject_params[:code].upcase!
     @subject = Subject.new(subject_params)
     subject_config = SubjectConfig.new(
-      archived: false, 
       color: params[:subject_color],
       user_id: session[:user_id])
     @subject.user = user

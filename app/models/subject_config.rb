@@ -18,7 +18,7 @@ class SubjectConfig
 
   # Finds all the subjects that belong to a user based on the user_id
   def self.subjects_from_user(user_id)
-    subject_ids = SubjectConfig.not_archived.where(user_id: user_id).pluck(:topic_id)
+    subject_ids = SubjectConfig.not_archived.where(user_id: user_id).pluck(:subject_id)
 
     Subject.where(:_id => { "$in" => subject_ids })
   end

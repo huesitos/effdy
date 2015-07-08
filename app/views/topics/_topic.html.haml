@@ -1,4 +1,4 @@
-- if topic.topic_configs.find_by(user_id: current_user.id)
+.row
   %li
     .col-sm-7
       - if topic.subject
@@ -8,11 +8,11 @@
           = topic.subject.code
         - else
           NONE
-      %span#link
+      - topic_config = topic.topic_configs.find_by(user_id: current_user.id)
+      %span#link{class: topic_config.archived && "archived"}
         = link_to topic.title, topic
-    .col-sm-3.options
-      / Enable after adding AJAX because it will redirect to topic's page
-      / = form_tag("/topics/#{topic._id}/set_reviewing", method: "patch") do
-      /   = topic.reviewing ? submit_tag('', id: 'reviewing') : submit_tag('', id: 'not-reviewing')
-      = link_to '', topic_path(topic), :class => 'icon-btn-inline destroy delete-link', style: 'display:none'
-      %a.icon-btn-inline.destroy.destroy-action{href:'javascript:void(0)'}
+    .col-sm-4.options
+      - topic_config.reviewing ? text = 'Reviewing' : text = "Review"
+      = link_to text, topic_set_reviewing_path(topic), method: :patch, class: "btn btn-default #{text.downcase}", id: 'review', remote: true
+      = link_to 'Delete', topic_path(topic), :class => 'btn btn-default destroy delete-link', style: 'display:none'
+      %a.btn.btn-default.destroy-action{href:'javascript:void(0)'} Delete

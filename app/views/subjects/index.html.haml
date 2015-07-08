@@ -3,12 +3,8 @@
 - if @total > 0 
   #subjects-list
     %ul
-      .col-sm-6
-        - @subjects_first_half.each do |s_config|
-          = render s_config.subject
-      .col-sm-6
-        - @subjects_second_half.each do |s_config|
-          = render s_config.subject
+      - @subjects.each do |subject|
+        = render subject
 
 - else
   .placeholder

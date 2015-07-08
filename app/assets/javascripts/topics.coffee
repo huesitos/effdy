@@ -8,7 +8,7 @@ $(document).on 'load page:ready page:change', ->
   $('.destroy-action').click ->
     confirmation = confirm('Are you sure?')
     if confirmation
-      topic_delte = $(this).closest('li')
+      topic_delte = $(this).closest('.row')
       delete_from_left_menu = $("##{ $(this).prev('.delete-link').attr('href').substring(8) }")
       $.ajax({
         url: $(this).prev('.delete-link').attr 'href'

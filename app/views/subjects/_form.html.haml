@@ -23,8 +23,8 @@
         .col-sm-6
           %input{name: "subject_color", id: "subject_color", type: 'text', placeholder: "#ddd, #e8e8e8", value: @subject_config && @subject_config.color, class: 'colorpicker form-control'}
     .form-group
-      %span.label
       .col-sm-offset-3.col-sm-6
+        %span.label
         .actions
           %a{href: "#{subjects_path}", class: 'btn btn-default'} Cancel
           - if @url == new_subject_path

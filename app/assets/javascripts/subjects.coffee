@@ -8,7 +8,7 @@ $(document).on 'ready page:load', ->
     subject_code = $('#subject_code')
     subject_color = $('#subject_color')
     $('.label').text(subject_code.val())
-    $('.label').css {'background-color': subject_color.val(), color: '#fff', 'margin': '15px 0 10px 244px'}
+    $('.label').css {'background-color': subject_color.val(), color: '#fff', 'margin': '15px 0'}
 
   $('.subject-destroy').click ->
     console.log $(this).prev('.delete-link').attr 'href'
