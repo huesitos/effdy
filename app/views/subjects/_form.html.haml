@@ -9,22 +9,22 @@
   .form-horizontal
     .form-group
       .field
-        = f.label :code, class: 'control-label col-sm-2'
-        .col-sm-7
-          = f.text_field :code, placeholder: "e.g. COM381, PS200", class: 'from-control'
+        = f.label :code, class: 'control-label col-sm-3'
+        .col-sm-6
+          = f.text_field :code, placeholder: "e.g. COM381, PS200", class: 'form-control'
     .form-group
       .field
-        = f.label :name, class: 'control-label col-sm-2'
-        .col-sm-7
-          = f.text_field :name, class: 'from-control'
+        = f.label :name, class: 'control-label col-sm-3'
+        .col-sm-6
+          = f.text_field :name, class: 'form-control'
     .form-group
       .field
-        = label_tag "subject_color", "Color", {class: 'control-label col-sm-2'}
-        .col-sm-7
-          %input{name: "subject_color", id: "subject_color", type: 'text', placeholder: "#ddd, #e8e8e8", value: @subject_config && @subject_config.color, class: 'colorpicker from-control'}
+        = label_tag "subject_color", "Color", {class: 'control-label col-sm-3'}
+        .col-sm-6
+          %input{name: "subject_color", id: "subject_color", type: 'text', placeholder: "#ddd, #e8e8e8", value: @subject_config && @subject_config.color, class: 'colorpicker form-control'}
     .form-group
       %span.label
-      .col-sm-offset-2.col-sm-7
+      .col-sm-offset-3.col-sm-6
         .actions
           %a{href: "#{subjects_path}", class: 'btn btn-default'} Cancel
           - if @url == new_subject_path

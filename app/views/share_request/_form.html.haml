@@ -6,10 +6,15 @@
         - @share_request.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :recipient  
-    = f.select :recipient, options_for_select(@users)
-  .actions
-    = f.submit 'Send copy'
-    - if @owner == current_user.id
-      = f.submit 'Add collaborator'
+  .form-horizontal
+    .form-group
+      .field
+        = f.label :recipient, class: 'control-label col-sm-3' 
+        .col-sm-6
+          = f.select :recipient, options_for_select(@users), {}, {:class => 'form-control'}
+    .form-group
+      .col-sm-offset-3.col-sm-6
+        .actions
+          = f.submit 'Send copy', class: 'btn btn-default'
+          - if @owner == current_user.id
+            = f.submit 'Add collaborator', class: 'btn btn-default'

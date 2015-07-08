@@ -16,10 +16,10 @@
             %option{value: "#{topic._id}"}= topic.title
   .field.side
     = f.label :front
-    = f.text_area :front, placeholder: "Front side"
+    = f.text_area :front, placeholder: "Front side", class: 'form-control'
   .field.side
     = f.label :back
-    = f.text_area :back, placeholder: "Back side"
+    = f.text_area :back, placeholder: "Back side", class: 'form-control'
   .actions
     %a{href: "#{topic_path(@topic)}", class: 'btn'} Cancel
     - if @url[/cards\/[0-9]/]

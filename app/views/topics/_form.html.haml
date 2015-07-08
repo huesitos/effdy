@@ -6,23 +6,30 @@
         - @errors.each do |msg|
           %li= msg
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :subject_id
-    %select{name: :subject_id, id: :subject_id}
-      - if @subject
-        %option{value: "#{@subject._id}"}= @subject.code
-      %option{value: "none"} None
-      - @subjects.each do |subject|
-        %option{value: "#{subject._id}"}= subject.code
-  .actions
-    -if @back
-      = link_to 'Back', @back
-    - else
-      = link_to 'Back', @topic
-    - if @url == new_topic_path
-      = f.submit 'Create'
-    - else
-      = f.submit 'Save'
+  .form-horizontal
+    .form-group
+      .field
+        = f.label :title, class: 'control-label col-sm-3'
+        .col-sm-6
+          = f.text_field :title, class: 'form-control'
+    .form-group
+      .field
+        = f.label :subject_id, class: 'control-label col-sm-3'
+        .col-sm-6
+          %select{name: :subject_id, id: :subject_id, class: 'form-control'}
+            - if @subject
+              %option{value: "#{@subject._id}"}= @subject.code
+            %option{value: "none"} None
+            - @subjects.each do |subject|
+              %option{value: "#{subject._id}"}= subject.code
+    .form-group
+      .col-sm-offset-3.col-sm-6
+        .actions
+          -if @back
+            = link_to 'Back', @back, class: 'btn btn-default'
+          - else
+            = link_to 'Back', @topic, class: 'btn btn-default'
+          - if @url == new_topic_path
+            = f.submit 'Create', class: 'btn btn-default'
+          - else
+            = f.submit 'Save', class: 'btn btn-default'
