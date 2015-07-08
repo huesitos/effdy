@@ -161,7 +161,13 @@ class TopicsController < ApplicationController
 
     # Search for all the subjects and the particular topic's subject, if exists
     def set_subjects
-      params[:id] ? @subject = Topic.find(params[:id]).subject : @subject = nil
+      if params[:id] 
+        @subject = Topic.find(params[:id]).subject
+      elsif params[:subject] 
+        @subject = Subject.find(params[:subject])
+      else
+        @subject = nil
+      end
 
       if @subject 
         @subjects = Subject.not_archived(session[:user_id]).where(:_id.ne => @subject._id)

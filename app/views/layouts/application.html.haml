@@ -75,7 +75,10 @@
         #add-menu.dropdown
           %button#dropdownMenu1.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
           %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
-            %li= link_to 'Add topic', new_topic_path
+            - if @subject
+              %li= link_to 'Add topic', new_topic_path(subject: @subject.id)
+            - else
+              %li= link_to 'Add topic', new_topic_path
             %li= link_to 'Add subject', new_subject_path
             - if "#{controller.controller_name}##{controller.action_name}" == "topics#show"
               %li= link_to 'Add card', new_topic_card_path(@topic)
