@@ -14,7 +14,7 @@ $(document).on 'ready page:load', ->
     console.log $(this).prev('.delete-link').attr 'href'
     confirmation = confirm('This will delete the subject. Are you sure?')
     if confirmation
-      subject_delete = $(this).closest('li')
+      subject_delete = $(this).closest('.row')
       $.ajax({
         url: $(this).prev('.delete-link').attr 'href'
         type: 'DELETE'
