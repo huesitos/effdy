@@ -7,10 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Removing all documents from the DB
-ReviewBox.all.destroy
-ReviewConfiguration.all.destroy
-
-
 Topic.all.each do |topic|
 	topic.topic_configs.create(
 		user_id: topic.user_id, 
