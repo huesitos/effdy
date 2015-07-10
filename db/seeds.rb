@@ -13,24 +13,22 @@ Topic.all.each do |topic|
 		reviewing: topic.reviewing, 
 		archived: topic.archived)
 
-	topic.unset(:review_configuration, :reviewing, :archived)
 	topic.save
 end
 
 Subject.all.each do |subject|
 	subject.subject_configs.create(
 		user_id: subject.user_id, 
-		color: subject.color, 
-		archived: subject.archived)
+		color: "#000")
 
 	subject.unset(:color, :archived)
 	subject.save
 end
 
 Card.all.each do |card|
+	card.card_statistics.destroy
 	card.card_statistics.create(user_id: card.user_id)
 
-	card.unset(:level, :review_date)
 	card.save
 end
 
