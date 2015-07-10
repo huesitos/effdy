@@ -25,7 +25,7 @@ end
 
 Card.all.each do |card|
 	card.card_statistics.destroy
-	card.card_statistics.create(user_id: card.user_id)
+	card.card_statistics.create(user_id: card.topic.user_id)
 
 	card.save
 end
