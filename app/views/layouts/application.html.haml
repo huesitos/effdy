@@ -51,9 +51,13 @@
               %a{:href => share_request_new_path(object_type:'subject', oid:@subject._id, name: @subject.name), :alt => "share", :title => "share"}
                 = image_tag("share.png")
 
-      #profile
-        %a{:href => logout_path}
+      #profile.dropup
+        %button#dropdownMenu1.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
           = image_tag(current_user.image)
+        %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
+          %li= link_to 'Settings', "#"
+          %li= link_to 'Getting started', "#"
+          %li= link_to 'Logout', logout_path
 
       / #topics-menu
       /   #topics-list
@@ -73,8 +77,8 @@
         #yield
           = yield
         #add-menu.dropdown
-          %button#dropdownMenu1.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-          %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
+          %button#dropdownMenu2.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+          %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu2"}
             - if @subject
               %li= link_to 'Add topic', new_topic_path(subject: @subject.id)
             - else

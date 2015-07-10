@@ -123,12 +123,6 @@ table {
 	background-color: #1f356f;
 	width: 60px;
 	z-index: 1;
-	overflow: hidden;
-
-	a {
-		color: #fff;
-		font-size: 2em;
-	}
 
 	a#home {
 		margin-left: 5px;
@@ -139,12 +133,22 @@ table {
 	}
 
 	#profile {
-		padding: 10px 6px;
 		border-top: 1px solid #fff;
-	}
 
-	#profile img {
-		border-radius: 100%;
+		button {
+			padding-top: 10px;
+			background: transparent;
+			border: none;
+		}
+
+		img {
+			border-radius: 100%;
+		}
+
+		ul {
+			left: 5px;
+			z-index: 1;
+		}
 	}
 
 	#main-options {
@@ -227,6 +231,7 @@ table {
 	width: 96vw;
 	height: 100vh;
 	margin-left: 60px;
+	z-index: 0;
 
 	#page {
 		width: 100%;
@@ -234,6 +239,7 @@ table {
 		display: inline-block;
 		font-size: 2em;
 		padding: 1em 1em;
+		z-index: 0;
 
 		#yield {
 			width: 100%;

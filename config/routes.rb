@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/settings'
+
   root 'review#study_calendar'
 
   get 'share_request/new/:object_type/:oid/:name' => 'share_request#new', as: :share_request_new
