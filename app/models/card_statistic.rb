@@ -7,7 +7,7 @@ class CardStatistic
   field :times_incorrect, type: Integer, default: 0
   field :time_answering, type: Integer, default: 60 #secs
   field :level, type: Integer, default: 1
-  field :review_date, type: DateTime, default: DateTime.now
+  field :review_date, type: DateTime, default: Date.today
 
   belongs_to :card
   belongs_to :user

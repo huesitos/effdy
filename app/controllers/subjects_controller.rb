@@ -10,8 +10,7 @@ class SubjectsController < ApplicationController
     @user_id = session[:user_id]
 
     @total = Subject.count.to_i
-    @subjects = SubjectConfig.subjects_from_user(session[:user_id])
-    
+    @subjects = Subject.where(user_id: session[:user_id])    
     col_subj_ids = SubjectConfig.where(user_id: session[:user_id]).pluck(:subject_id)
     @collaborating_subjects = Subject.where(
       :_id => { "$in" => col_subj_ids}, 

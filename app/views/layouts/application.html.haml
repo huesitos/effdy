@@ -18,7 +18,7 @@
       %nav#main-options
         %ul
           %li
-            %a{:href => study_calendar_path, :alt => "Study calendar", :title => "Study calendar", :id => 'calendar'}
+            %a{:href => study_calendar_path, :alt => "Review calendar", :title => "Review calendar", :id => 'calendar'}
               = image_tag("Calendar2.png")
           %li
             %a{:href => subjects_path, :alt => "Subjects", :title => "Subjects"}
@@ -51,9 +51,9 @@
               %a{:href => share_request_new_path(object_type:'subject', oid:@subject._id, name: @subject.name), :alt => "share", :title => "share"}
                 = image_tag("share.png")
 
-          %li
-            %a#profile{:href => logout_path}
-              = image_tag(current_user.image)
+      #profile
+        %a{:href => logout_path}
+          = image_tag(current_user.image)
 
       / #topics-menu
       /   #topics-list

@@ -2,7 +2,7 @@
 	.info
 		%h4
 			Info
-		- if @topic.subject
+		- if @topic.subject && @topic.subject.subject_configs.find_by(user_id: current_user.id)
 			%p
 				Subject:
 				= link_to @topic.subject.name, @topic.subject

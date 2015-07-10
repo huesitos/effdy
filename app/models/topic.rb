@@ -117,10 +117,12 @@ class Topic
 
   # Adds a new collaborator to the topic
   def add_collaborator(recipient_id)
-    self.topic_configs.create(user_id: recipient_id)
+    if self.topic_configs.find_by(user_id: recipient_id).nil?
+      self.topic_configs.create(user_id: recipient_id)
 
-    self.cards.each do |card|
-      card.card_statistics.create(user_id: recipient_id)
+      self.cards.each do |card|
+        card.card_statistics.create(user_id: recipient_id)
+      end
     end
   end
 

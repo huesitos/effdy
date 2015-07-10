@@ -1,9 +1,11 @@
-.row
+.st_row
   %li
+    -if topic.subject
+      - subject_config = topic.subject.subject_configs.find_by(user_id: current_user.id)
     .col-sm-7
-      - if topic.subject
+      - if subject_config
         - color = topic.subject.subject_configs.find_by(user_id: current_user.id).color
-      %span.label{style: if topic.subject then "background-color:#{color}" else "background-color:#aaa" end}
+      %span.label{style: if subject_config then "background-color:#{color}" else "background-color:#aaa" end}
         - if topic.subject
           = topic.subject.code
         - else
