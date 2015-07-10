@@ -16,5 +16,5 @@
     .col-sm-4.options
       - topic_config.reviewing ? text = 'Reviewing' : text = "Review"
       = link_to text, topic_set_reviewing_path(topic), method: :patch, class: "btn btn-default #{text.downcase}", id: 'review', remote: true
-      = link_to 'Delete', topic_path(topic), :class => 'btn btn-default', method: :delete, data: {confirm: "Are you sure?"}
-      / %a.btn.btn-default.destroy-action{href:'javascript:void(0)'} Delete
+      = link_to 'Delete', topic_path(topic), :class => 'btn btn-default delete-link', method: :delete, data: {confirm: "Are you sure?"}, style: 'display:none'
+      %a.btn.btn-default.destroy-action{href:'javascript:void(0)'} Delete
