@@ -9,9 +9,7 @@
 # Removing all documents from the DB
 Topic.all.each do |topic|
 	topic.topic_configs.create(
-		user_id: topic.user_id, 
-		reviewing: topic.reviewing, 
-		archived: topic.archived)
+		user_id: topic.user_id)
 
 	topic.save
 end
