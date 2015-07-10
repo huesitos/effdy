@@ -25,6 +25,7 @@ class TopicsController < ApplicationController
     @exist_cards_to_study = cts.to_a.length > 0
 
     @topic_config = @topic.topic_configs.find_by(user_id: session[:user_id])
+
     @card_statistics = {}
 
     CardStatistic.where(user_id: session[:user_id]).each do |cs|

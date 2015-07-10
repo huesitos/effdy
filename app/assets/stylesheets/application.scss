@@ -155,13 +155,55 @@ table {
 		margin-top: 1em;
 		height: 84%;
 
+		#calendar {
+			background: url(asset-path("icons.png")) no-repeat -15px -15px;
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+		}
+
+		#calendar:hover {
+			background: url(asset-path('icons.png')) no-repeat -77px -15px;
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+		}
+
+		#subjects {
+			background: url(asset-path("icons.png")) no-repeat -387px -15px;
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+		}
+
+		#subjects:hover {
+			background: url(asset-path('icons.png')) no-repeat -449px -15px;
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+		}
+
+		#topics {
+			background: url(asset-path("icons.png")) no-repeat -201px -15px;
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+		}
+
+		#topics:hover {
+			background: url(asset-path('icons.png')) no-repeat -263px -15px;
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+		}
+
 		ul {
 			display: inline-block;
 		}
 
 		ul li {
-			margin-top: 25px;
-			margin-left: 8px;
+			display: inline-block;
+			margin: 20px 10px 0;
 		}
 
 		.divider {
@@ -184,10 +226,9 @@ table {
 
 	button {
 		border: none;
-		background: url(asset-path("add.png")) no-repeat center;
-		background-size: 100%;
-		width: 2em;
-		height: 2em;
+		background: url(asset-path('icons.png')) no-repeat -77px -80px;
+		width: 40px;
+		height: 40px;
 	}
 
 	a#review {
@@ -207,9 +248,13 @@ table {
 }
 
 #notification-bell {
+	background: url(asset-path('icons.png')) no-repeat -14px -82px;
+	width: 36px;
+	height: 36px;
+
 	position: absolute;
 	top: 20px;
-	right: 70px;
+	right: 100px;
 
 	a img{
 		width: 2em;
@@ -218,7 +263,7 @@ table {
 
 	.badge {
 		position: relative;
-		right: 18px;
+		right: -35px;
 		top: -10px;
 	}
 }

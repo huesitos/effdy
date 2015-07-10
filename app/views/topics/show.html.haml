@@ -14,5 +14,9 @@
 		- if @exist_cards_to_study
 			= link_to 'Study', topic_review_path(@topic), class: 'btn btn-default', id: 'study'
 
-.cards
-	= render @topic.cards
+- if @topic.cards.count > 0
+	.cards
+		= render @topic.cards
+- else
+	.placeholder
+		%p There are no cards in this topic.

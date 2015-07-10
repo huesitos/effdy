@@ -19,14 +19,11 @@
         %ul
           %li
             %a{:href => study_calendar_path, :alt => "Review calendar", :title => "Review calendar", :id => 'calendar'}
-              = image_tag("Calendar2.png")
           %li
-            %a{:href => subjects_path, :alt => "Subjects", :title => "Subjects"}
-              = image_tag("subject.png")
+            %a{:href => subjects_path, :alt => "Subjects", :title => "Subjects", id: 'subjects'}
           %li
-            %a{:href => topics_path, :alt => "Topics", :title => "Topics"}
-              = image_tag("topic.png")
-
+            %a{:href => topics_path, :alt => "Topics", :title => "Topics", id: 'topics'}
+            
           %span.divider
 
           - if ["topics", "cards", "review_box"].include? controller.controller_name or @topic and not ["topics#index", "topics#new", 'review_box#study_calendar'].include? "#{controller.controller_name}##{controller.action_name}"
@@ -94,5 +91,4 @@
         - if @total_notifications > 0
           #notification-bell
             %a{:href => share_request_notify_path, :alt => "Notifications", :title => "Notifications"}
-              = image_tag("notification.png")
               %span.badge= @total_notifications

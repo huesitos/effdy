@@ -16,6 +16,10 @@ class CardStatistic
   validates :user, presence: { is: true, message: "must belong to a user." }
   validates :level, numericality: { only_integer: true, greater_than: 0 }
 
+  def self.from_user(user_id)
+    CardStatistic.where(user_id: user_id)
+  end
+
   # Returns the approximate time it takes to answer the card in 
   # minutes
   def approx_time_to_answer
