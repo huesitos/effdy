@@ -100,9 +100,9 @@ class SubjectsController < ApplicationController
       subject_config = @subject.subject_configs.find_by(user_id: session[:user_id])
 
       if subject_config.archived
-        subject_config.unarchive(session[:user_id])
+        subject_config.unarchive
       else
-        subject_config.archive(session[:user_id])
+        subject_config.archive
       end
       if params[:back]
         format.html { redirect_to params[:back] }
@@ -116,10 +116,12 @@ class SubjectsController < ApplicationController
   def destroy
     reset_cache @subject
 
+    subject_config = @subject.subject_configs.find_by(user_id: session[:user_id])
+    subject_config.unarchive
+    
     if params[:delete_all]
       @subject.destroy_topics
     end
-
     @subject.destroy
 
     respond_to do |format|

@@ -3,12 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'ready page:load', ->
   $('.colorpicker').minicolors theme: 'bootstrap', control: 'wheel'
+  $('.preview-label').text($('#subject_code').val())
+  $('.preview-label').css {'background-color': $('#subject_color').val(), color: '#fff', 'margin': '15px 0'}
 
   $('#subject_color, #subject_code').on 'change keyup', ->
     subject_code = $('#subject_code')
     subject_color = $('#subject_color')
-    $('.label').text(subject_code.val())
-    $('.label').css {'background-color': subject_color.val(), color: '#fff', 'margin': '15px 0'}
+    $('.preview-label').text(subject_code.val())
+    $('.preview-label').css {'background-color': subject_color.val(), color: '#fff', 'margin': '15px 0'}
 
   $('.subject-destroy').click ->
     console.log $(this).prev('.delete-link').attr 'href'

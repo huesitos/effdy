@@ -1,29 +1,45 @@
 = form_for @topic do |f|
   - if @errors
-    #error_explanation
-      %h2= "#{pluralize(@errors.count, "error")} prohibited this topic from being saved:"
-      %ul
-        - @errors.each do |msg|
-          %li= msg
+    .col-sm-offset-3
+      #error_explanation
+        %h2= "#{pluralize(@errors.count, "error")} prohibited this topic from being saved:"
+        %ul
+          - @errors.each do |msg|
+            %li= msg
 
   .form-horizontal
     .form-group
       .field
         = f.label :title, class: 'control-label col-sm-3'
-        .col-sm-6
+        .col-sm-5
           = f.text_field :title, class: 'form-control'
     .form-group
       .field
         = f.label :subject_id, class: 'control-label col-sm-3'
-        .col-sm-6
+        .col-sm-5
           %select{name: :subject_id, id: :subject_id, class: 'form-control'}
             - if @subject
-              %option{value: "#{@subject._id}"}= @subject.code
-            %option{value: "none"} None
+              %option{value: "#{@subject._id}"}
+                =@subject.code
+                =@subject.name
             - @subjects.each do |subject|
-              %option{value: "#{subject._id}"}= subject.code
+              %option{value: "#{subject._id}"}
+                =subject.code
+                =subject.name
+            %option{value: "none"} None
+    - if @topic_config
+      .form-group
+        .field
+          = label_tag :recall_percentage, "Recall percentage", class: 'control-label col-sm-3'
+          .col-sm-5
+            .input-group
+              = text_field_tag :recall_percentage, @topic_config.recall_percentage*100 , class: 'form-control'
+              %span{class:"input-group-addon"}%
+          .col-sm-3
+            .description
+              %p= "The recall percentage represents an approximation of how much of the content should be remembered before each review. This means that the next review date will be set just before the memorized information drops below the set percentage."
     .form-group
-      .col-sm-offset-3.col-sm-6
+      .col-sm-offset-3.col-sm-5
         .actions
           -if @back
             = link_to 'Back', @back, class: 'btn btn-default'
@@ -33,3 +49,14 @@
             = f.submit 'Create', class: 'btn btn-default'
           - else
             = f.submit 'Save', class: 'btn btn-default'
+    - if @topic
+      .form-group
+        .col-sm-offset-3.col-sm-5
+          %p.bold= "Reset cards"
+          = link_to 'Reset cards', topic_reset_cards_path(@topic), method: :patch, class: 'btn btn-warning reset'
+          .description
+            %p= "Reseting all cards will move them back to level 1. The closest the level is to one, the closest will be each review date from the other."
+      .form-group
+        .col-sm-offset-3.col-sm-5
+          %p.bold= "Delete topic"
+          = link_to 'Delete topic', topic_path(@topic), method: :delete, class: 'btn btn-danger'

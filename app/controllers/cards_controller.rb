@@ -62,7 +62,7 @@ class CardsController < ApplicationController
   # PATCH/PUT /cards/1.json
   def update
     respond_to do |format|
-      @card.topic = Topic.find(params[:new_topic])
+      @card.topic = Topic.find(params[:topic])
       if @card.update(card_params)
         @card.save
         format.html {

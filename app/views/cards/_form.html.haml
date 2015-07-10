@@ -1,29 +1,31 @@
 = form_for @card, url: @url do |f|
   - if @errors
-    #error_explanation
-      %h2= "#{pluralize(@errors, "error")} prohibited this card from being saved:"
-      %ul
-        - @errors.each do |msg|
-          %li= msg
+    .col-sm-offset-3
+      #error_explanation
+        %h2= "#{pluralize(@errors, "error")} prohibited this card from being saved:"
+        %ul
+          - @errors.each do |msg|
+            %li= msg
           
-  - if @url[/cards\/[0-9]/]
-    .field
-      = f.label :new_topic
-      %select{name: :new_topic, id: :new_topic}
-        %option{value: "#{@card.topic_id}"}= @card.topic.title
-        - if @topics
-          - @topics.each do |topic|
-            %option{value: "#{topic._id}"}= topic.title
-  .field.side
-    = f.label :front
-    = f.text_area :front, placeholder: "Front side", class: 'form-control'
-  .field.side
-    = f.label :back
-    = f.text_area :back, placeholder: "Back side", class: 'form-control'
-  .actions
-    %a{href: "#{topic_path(@topic)}", class: 'btn'} Cancel
+  .col-sm-12
     - if @url[/cards\/[0-9]/]
-      = f.submit 'Save', class: 'btn btn-default'
-    - else
-      = f.submit 'Done', class: 'btn btn-default'
-      %a{href: 'javascript:void(0)', id: 'continue', class: 'btn btn-default'} Continue
+      .field
+        = f.label :topic, class: 'control-label'
+        %select{name: :new_topic, id: :new_topic, class: 'form-control'}
+          %option{value: "#{@card.topic_id}"}= @card.topic.title
+          - if @topics
+            - @topics.each do |topic|
+              %option{value: "#{topic._id}"}= topic.title
+    .field.side
+      / = f.label :front
+      = f.text_area :front, placeholder: "Front side", class: 'form-control'
+    .field.side
+      / = f.label :back
+      = f.text_area :back, placeholder: "Back side", class: 'form-control'
+    .actions
+      %a{href: "#{topic_path(@topic)}", class: 'btn'} Cancel
+      - if @url[/cards\/[0-9]/]
+        = f.submit 'Save', class: 'btn btn-default'
+      - else
+        = f.submit 'Done', class: 'btn btn-default'
+        %a{href: 'javascript:void(0)', id: 'continue', class: 'btn btn-default'} Continue

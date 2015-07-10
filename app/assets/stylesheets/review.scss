@@ -3,108 +3,65 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .review {
-	.card {
-		width: 45%;
-		display: inline-block;
-		vertical-align: top;
-		height: 11em;
-		margin: 0 auto;
-		padding: 5px;
-		background-color: #fff;
-		border: 1px solid #eee;
-		box-shadow: 0 3px 3px 0 #ccc;
+	.cards {
+		.card-container {
+			width: 100% !important;
+			height: 11em !important;
+			display: inline-block;
+			vertical-align: top;
+			
+			.side {
+				textarea#front, textarea#back, textarea#u_answer {
+					width: 100%;
+					height: 100%;
+					margin: 0px;
+					border: medium none;
+					padding: 10px;
+				}
 
-		textarea {
-			width: 95%;
-			height: 6em;
-			margin-top: 0.5em;
-			margin-bottom: 5px;
-			border-color: #ccc;
-			padding: 0.5em;
-		}
-
-		textarea#question_front {
-			width: 100%;
-			margin: 0px;
-			border: medium none;
-			height: 100%;
-			padding: 0px;
-		}
-
-		textarea#question_front, textarea#question_back {
-			color: black;
-			text-align: center;
-		}
-
-		textarea#question_back {
-			margin: 0;
-			height: 4em;
-		}
-
-		textarea#answer {
-			color: #555;
-			height: 6.5em;
-		}
-
-		textarea#question_back, textarea#answer {
-			border: none;
-			width: 100%;
-			padding: 0;
-		}
-
-		form {
-			width: 100%;
-
-			.answer {
-				margin-top: 0.30em;
-				width: 2em;
-				height: 1em;
-				display: inline-block;
+				textarea#front, textarea#back {
+					color: black;
+					text-align: center;
+				}
 			}
-			.answer:first-child {
-				margin-right: 20%;
+		}
+
+		.answer {
+			p {
+				margin-bottom: 10px;
 			}
 
-			#check, #wrong {
-				color: transparent;
-			}
+			width: 100% !important;
+			display: inline-block;
+			height: 5em !important;
 
-			#check {
+			textarea {
 				width: 100%;
-				heigth: 100%;
-				background: url(asset-path("check.png")) no-repeat center;
-				background-size: 100%;
+				height: 10em !important;
 			}
 
-			#wrong {
-				width: 100%;
-				heigth: 100%;
-				background: url(asset-path("wrong.png")) no-repeat center;
-				background-size: 100%;
+			form {
+				textarea:disabled {
+					background-color: white;
+				}
 			}
 
-		}
-		p#front {
-			line-height: 115px;
-		}
-		p.question, p.answer {
-			text-align: center;
-		}
-	}
-	#card:first-child {
-		margin-right: 10px;
-	}
+			.result {
+				margin-top: 10px;
 
-	.study_topic {
-		margin: 15px 0;
+				#check {
+					background-color: #449d44;
+					color: #fff;
+				}
 
-		.shaded {
-			color: #999;
+				#wrong {
+					background-color: #c9302c;
+					color: #fff;
+					position:relative;
+					right: -64%;
+				}
+			}
 		}
-	}
-
-	.study-topics {
-
 	}
 
 	.week-menu ul {

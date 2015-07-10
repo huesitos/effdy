@@ -5,14 +5,22 @@
 .cards {
 	form {
 		width: 100%;
+
+		// Bootstrap rewrite
+		.col-sm-12 {
+			padding: 0 30px;
+		}
+		.form-control {
+			display: inline-block;
+		}
+
 		.side {
 			display: inline-block;
 			width: 45%;
-			margin-right: 0.25em;
+			margin-right: 1em;
 
 			textarea {
-				width: 95%;
-				height: 14em;
+				height: 15em;
 				box-shadow: -3px 5px 10px 0 #ccc;
 				padding: 0.5em;
 			}
@@ -39,10 +47,5 @@
 		.active {
 			background-color: #aaa;
 		}
-	}
-
-	.cards {
-		clear: both;
-		margin-top: 0.5em;
 	}
 }

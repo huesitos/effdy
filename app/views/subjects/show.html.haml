@@ -13,7 +13,7 @@
 	%h2 Cards
 	- @subject.topics.each do |topic|
 		-if topic.cards.count > 0
-			.row
+			.row.card-row
 				%h3
 					= topic.title
 					%small= "# of cards #{topic.cards.count.to_i}" 

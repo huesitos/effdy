@@ -306,9 +306,17 @@ table {
 	font-weight: bold;
 }
 
+.form-group {
+	.description {
+		color: #aaa;
+		font-size: 0.8em;
+		text-align: justify;
+	}
+}
+
 // Topics, Subjects
 
-.topics, .subjects {
+.topics, .subjects, .review {
 	// Style for all cards displayed in both topics/subjects show
 	.cards {
 		margin-top: 20px;
@@ -374,6 +382,16 @@ table {
 		}
 	}
 
+	// Bootstrap rewrite
+
+	.btn-warning, .btn-danger {
+		margin: 15px 0;
+	}
+
+	.btn-warning:visited, .btn-danger:visited {
+		color: #fff;
+	}
+
 	// Style for listing archived topics/subjects
 	span.archived {
 		font-style: italic;	
@@ -413,6 +431,10 @@ table {
 		margin-bottom: 10px;
 		float: left;
 		width: 50%;
+	}
+
+	.card-row {
+		width: 100%;
 	}
 
 	span#link {
