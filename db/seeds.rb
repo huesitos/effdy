@@ -7,27 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Removing all documents from the DB
-Topic.all.each do |topic|
-	topic.topic_configs.create(
-		user_id: topic.user_id)
-
-	topic.save
-end
-
-Subject.all.each do |subject|
-	subject.subject_configs.create(
-		user_id: subject.user_id, 
-		color: "#000")
-
-	subject.unset(:color, :archived)
-	subject.save
-end
-
 Card.all.each do |card|
-	card.card_statistics.destroy
-	card.card_statistics.create(user_id: card.topic.user_id)
-
-	card.save
+	card.update(front: card.question, back: card.answer)
+	card.unset(:question, :answer)
 end
 
 # dmlara = User.create("username" => "dmlaramartin", "name" => "Denisse Lara", "image" => "http://pbs.twimg.com/profile_images/3673739764/87b714e822179d84bfce07c72119b0ef_normal.jpeg", "provider" => "twitter", "uid" => "1060238214")
