@@ -1,11 +1,12 @@
-
-= render "form"
+.col-sm-12
+	= render "form"
 
 - if @collaborators.count > 0
 	%h3 Collaborators
-	%ul
-	- @collaborators.each do |c|
-		%li
-			= c.username
-			- if @owner == current_user.id 
-				= link_to 'Remove', share_request_remove_collaborator_path(params[:object_type], params[:oid], c.id), method: :delete
+	%ul.collaborators
+		- @collaborators.each do |c|
+			%li.collaborator
+				= image_tag(c.image)
+				%span= c.username
+				- if @owner == current_user.id 
+					= link_to content_tag(:span, '', class:'glyphicon glyphicon-remove'), share_request_remove_collaborator_path(params[:object_type], params[:oid], c.id), method: :delete

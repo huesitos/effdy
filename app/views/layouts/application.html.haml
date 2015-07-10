@@ -29,7 +29,7 @@
 
           %span.divider
 
-          - if ["topics", "cards", "review_box"].include? controller.controller_name and not ["topics#index", "topics#new", 'review_box#study_calendar'].include? "#{controller.controller_name}##{controller.action_name}"
+          - if ["topics", "cards", "review_box"].include? controller.controller_name or @topic and not ["topics#index", "topics#new", 'review_box#study_calendar'].include? "#{controller.controller_name}##{controller.action_name}"
             %li
               %a{:href => topic_path(@topic), :id => 'cards', :alt => "card list", :title => "card list"}
                 = image_tag("flashcard_icon.png")
@@ -40,7 +40,7 @@
               %a{:href => share_request_new_path(object_type:'topic', oid:@topic._id, name: @topic.title), :alt => "share", :title => "share"}
                 = image_tag("share.png")
 
-          - if controller.controller_name == "subjects" and not ["subjects#index", "subjects#new"].include? "#{controller.controller_name}##{controller.action_name}" 
+          - if @subject and not ["subjects#new"].include? "#{controller.controller_name}##{controller.action_name}" 
             %li
               %a{:href => subject_path(@subject), :id => 'topics', :alt => "subject's topics", :title => "subject's topics"}
                 = image_tag("topic.png")

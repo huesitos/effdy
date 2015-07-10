@@ -29,5 +29,26 @@
 			}
 		}
 	}
+
+	.collaborators {
+		list-style: none;
+
+		.collaborator {
+			display: inline-block;
+			border-radius: 5px;
+			border: 1px solid #fb6464;
+			padding: 5px;
+			margin-right: 10px;
+			margin-bottom: 10px;
+
+			img {
+				border-radius: 100%;
+			}
+
+			a {
+				vertical-align: text-bottom;
+			}
+		}
+	}
 }
 

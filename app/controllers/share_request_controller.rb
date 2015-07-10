@@ -1,4 +1,6 @@
 class ShareRequestController < ApplicationController
+  before_action :set_object, except: [:destroy]
+
   def new
     @share_request = ShareRequest.new
     @view_title = "Share with"
@@ -23,7 +25,7 @@ class ShareRequestController < ApplicationController
     @users = User.where(:_id => { "$ne" => session[:user_id]}).pluck(:username, :_id)
     sender = User.find(session[:user_id])
     params[:commit] == "Send copy" ? kind = "share" : kind = "collaborate"
-      
+
     @share_request = ShareRequest.new(
       kind: kind, 
       object_type: params[:object_type], 
@@ -34,6 +36,13 @@ class ShareRequestController < ApplicationController
       recipient: params[:share_request][:recipient])
 
     user=User.find(params[:share_request][:recipient])
+
+    if session[:user_id] == params[:share_request][:recipient]
+      respond_to do |format|
+        flash[:error] = "Can't share with yourself."
+        redirect_to { share_request_new_path }
+      end
+    end
 
     respond_to do |format|
       if user
@@ -58,20 +67,16 @@ class ShareRequestController < ApplicationController
     share_request = ShareRequest.find(params[:id])
      
     if share_request.object_type == "topic"
-      topic = Topic.find(share_request[:oid])
-
       if share_request.kind == "share"
-        topic.share(share_request.recipient, nil)
+        @topic.share(share_request.recipient, nil)
       else
-        topic.add_collaborator(share_request.recipient)
+        @topic.add_collaborator(share_request.recipient)
       end
     else
-      subject = Subject.find(share_request[:oid])
-
       if share_request.kind == "share"
-        subject.share(share_request.recipient)
+        @subject.share(share_request.recipient)
       else
-        subject.add_collaborator(share_request.recipient)
+        @subject.add_collaborator(share_request.recipient)
       end
     end
     share_request.destroy
@@ -118,4 +123,14 @@ class ShareRequestController < ApplicationController
       format.html { redirect_to share_request_notify_path }
     end
   end
+
+  private
+
+    def set_object
+      if params[:object_type] == "topic"
+        @topic = Topic.find(params[:oid])
+      else
+        @subject = Subject.find(params[:oid])
+      end
+    end
 end

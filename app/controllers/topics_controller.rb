@@ -49,13 +49,13 @@ class TopicsController < ApplicationController
   # POST /topics
   def create
     @topic = Topic.new(topic_params)
-    @topic.subject = @subject
+    @topic.subject = @topic_subject
 
     # If it has a subject, make sure they share the same owner
     # In case the current user is not the owner, then at least the subject user
     # will reference to the real owner
-    if @subject
-      @topic.user = @subject.user
+    if @topic_subject
+      @topic.user = @topic_subject.user
     else
       @topic.user = User.find(session[:user_id])
     end
@@ -66,8 +66,8 @@ class TopicsController < ApplicationController
         # If the topic is in a subject, then grab all the collaborators and the owner
         # and make a config for them.
         # If not, then only make it for the owner.
-        if @subject
-          collaborators = @subject.subject_configs.pluck(:user_id)
+        if @topic_subject
+          collaborators = @topic_subject.subject_configs.pluck(:user_id)
 
           collaborators.each do |c|
             @topic.topic_configs.create(user_id: c)
@@ -92,8 +92,8 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
-        if @subject
-          @topic.update(subject_id: @subject._id)
+        if @topic_subject
+          @topic.update(subject_id: @topic_subject._id)
         end
 
         format.html {
@@ -156,21 +156,21 @@ class TopicsController < ApplicationController
 
     # Set the subject specified by the param[:subject].
     def set_subject
-      params[:subject_id].downcase != 'none' ? @subject = Subject.find(params[:subject_id]) : @subject = nil
+      params[:subject_id].downcase != 'none' ? @topic_subject = Subject.find(params[:subject_id]) : @topic_subject = nil
     end
 
     # Search for all the subjects and the particular topic's subject, if exists
     def set_subjects
       if params[:id] 
-        @subject = Topic.find(params[:id]).subject
+        @topic_subject = Topic.find(params[:id]).subject
       elsif params[:subject] 
-        @subject = Subject.find(params[:subject])
+        @topic_subject = Subject.find(params[:subject])
       else
-        @subject = nil
+        @topic_subject = nil
       end
 
-      if @subject 
-        @subjects = Subject.not_archived(session[:user_id]).where(:_id.ne => @subject._id)
+      if @topic_subject 
+        @subjects = Subject.not_archived(session[:user_id]).where(:_id.ne => @topic_subject._id)
       else 
         @subjects = Subject.not_archived(session[:user_id])
       end
