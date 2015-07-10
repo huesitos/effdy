@@ -39,6 +39,7 @@ class TopicsController < ApplicationController
     @url = new_topic_path
     @view_title = "New topic"
     @topic = Topic.new
+    @new = true
   end
 
   # GET /topics/1/edit

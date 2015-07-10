@@ -4,9 +4,6 @@
 # All cards belong to a topic.
 class Card
   include Mongoid::Document
-  field :question, type: String
-  field :answer, type: String
-  
   field :front, type: String
   field :back, type: String
 

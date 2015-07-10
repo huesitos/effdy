@@ -36,7 +36,7 @@
             = f.submit 'Create', class: 'btn btn-default'
           - else
             = f.submit 'Save', class: 'btn btn-default'
-    - if @subject
+    - if @subject and not @new
       .form-group
         .col-sm-offset-3.col-sm-5
           %p.bold= "Delete subject"

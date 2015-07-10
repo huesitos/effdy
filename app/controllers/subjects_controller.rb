@@ -42,6 +42,7 @@ class SubjectsController < ApplicationController
     @url = new_subject_path
     @view_title = "New subject"
     @subject = Subject.new
+    @new = true
   end
 
   # POST /subjects
@@ -82,7 +83,7 @@ class SubjectsController < ApplicationController
         format.html {
           flash[:success] = 'Subject updated sucessfully.'
 
-          redirect_to subjects_url
+          redirect_to subject_path(@subject)
         }
         format.json { render :show, status: :ok, location: @subject }
       else
