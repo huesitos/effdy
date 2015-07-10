@@ -29,12 +29,15 @@ class SubjectsController < ApplicationController
 
     topic_ids = TopicConfig.from_user(session[:user_id]).pluck(:topic_id)
     topics = Topic.where(_id: {"$in" => topic_ids}, subject_id: @subject.id)
+
+    @subject_show = true
   end
 
   # GET /subjects/edit
   def edit
     @view_title = "Editing subject"
     @subject_config = @subject.subject_configs.find_by(user_id: session[:user_id])
+    @edit = true
   end
 
   # GET /subjects/new

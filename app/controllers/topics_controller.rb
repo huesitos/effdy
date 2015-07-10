@@ -31,6 +31,7 @@ class TopicsController < ApplicationController
     CardStatistic.where(user_id: session[:user_id]).each do |cs|
       @card_statistics[cs.card_id] = cs
     end
+    @topic_show = true
   end
 
   # GET /topics/new

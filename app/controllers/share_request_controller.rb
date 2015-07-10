@@ -18,6 +18,7 @@ class ShareRequestController < ApplicationController
     end
     
     @collaborators = User.where(:_id => { "$in" => user_ids, "$ne" => session[:user_id] })
+    @share = true
   end
 
   def create

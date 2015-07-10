@@ -18,54 +18,44 @@
       %nav#main-options
         %ul
           %li
-            %a{:href => study_calendar_path, :alt => "Review calendar", :title => "Review calendar", :id => 'calendar'}
+            %a{:href => study_calendar_path, :alt => "Review calendar", :title => "Review calendar", :id => 'calendar', class: @view_title == "Review calendar" && 'active'}
           %li
-            %a{:href => subjects_path, :alt => "Subjects", :title => "Subjects", id: 'subjects'}
+            - sclass = 'topics-icon'
+            - sclass += ' active' if @view_title == "Subjects"
+            %a{:href => subjects_path, :alt => "Subjects", :title => "Subjects", id: 'subjects', class: sclass}
           %li
-            %a{:href => topics_path, :alt => "Topics", :title => "Topics", id: 'topics'}
+            - tclass = 'topics-icon'
+            - tclass += ' active' if @view_title == "Topics"
+            %a{:href => topics_path, :locale => 'en', :alt => "Topics", :title => "Topics", class: tclass }
             
           %span.divider
 
           - if ["topics", "cards", "review_box"].include? controller.controller_name or @topic and not ["topics#index", "topics#new", 'review_box#study_calendar'].include? "#{controller.controller_name}##{controller.action_name}"
             %li
-              %a{:href => topic_path(@topic), :id => 'cards', :alt => "card list", :title => "card list"}
-                = image_tag("flashcard_icon.png")
+              %a{:href => topic_path(@topic), :id => 'cards-icon', :alt => "card list", :title => "card list", class: @topic_show && 'active'}
             %li
-              %a{:href => edit_topic_path(@topic), :alt => "edit", :title => "edit"}
-                = image_tag("edit.png")
+              %a{:href => edit_topic_path(@topic), :id => 'edit', :alt => "edit", :title => "edit", class: @edit && 'active'}
             %li
-              %a{:href => share_request_new_path(object_type:'topic', oid:@topic._id, name: @topic.title), :alt => "share", :title => "share"}
-                = image_tag("share.png")
+              %a{:href => share_request_new_path(object_type:'topic', oid:@topic._id, name: @topic.title), :id => 'share-icon', :alt => "share", :title => "share", class: @share && 'active'}
 
           - if @subject and not ["subjects#new"].include? "#{controller.controller_name}##{controller.action_name}" 
             %li
-              %a{:href => subject_path(@subject), :id => 'topics', :alt => "subject's topics", :title => "subject's topics"}
-                = image_tag("topic.png")
+              - sclass = 'topics-icon'
+              - sclass += ' active' if @subject_show
+              %a{:href => subject_path(@subject), :class => sclass, :alt => "subject's topics", :title => "subject's topics"}
             %li
-              %a{:href => edit_subject_path(@subject), :alt => "edit", :title => "edit"}
-                = image_tag("edit.png")
+              %a{:href => edit_subject_path(@subject), :id => 'edit', :alt => "edit", :title => "edit", class: @edit && 'active'}
             %li
-              %a{:href => share_request_new_path(object_type:'subject', oid:@subject._id, name: @subject.name), :alt => "share", :title => "share"}
-                = image_tag("share.png")
+              %a{:href => share_request_new_path(object_type:'subject', oid:@subject._id, name: @subject.name), :id => 'share-icon', :alt => "share", :title => "share", class: @share && 'active'}
 
       #profile.dropup
         %button#dropdownMenu1.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
           = image_tag(current_user.image)
         %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
-          %li= link_to 'Settings', "#"
+          %li= link_to t('.settings'), "#"
           %li= link_to 'Getting started', "#"
           %li= link_to 'Logout', logout_path
 
-      / #topics-menu
-      /   #topics-list
-      /     %h4 Topic(s)
-      /     #new-topic= link_to 'Add topic', new_topic_path
-      /     - menu_topics = flash[:subjects] ? flash[:subjects] : @menu_topics
-      /     - menu_topics.each do |topic|
-      /       .topic{id: "#{topic.id}"}
-      /         - if topic.subject
-      /           %span{style: "background-color:#{topic.subject.subject_configs.find_by(user_id: current_user().id).color}; color: #fff" }= topic.subject.code
-      /         = link_to topic.title, topic
     #main-content
       #page
         #title-bar.page-header

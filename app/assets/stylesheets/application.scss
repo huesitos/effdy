@@ -155,45 +155,131 @@ table {
 		margin-top: 1em;
 		height: 84%;
 
+		// Buttons icons with their states
+
 		#calendar {
-			background: url(asset-path("icons.png")) no-repeat -15px -15px;
-			width: 50px;
-			height: 50px;
+			background: url(asset-path("icons.png")) no-repeat -8px -12px;
+			width: 48px;
+			height: 48px;
 			display: inline-block;
 		}
 
-		#calendar:hover {
-			background: url(asset-path('icons.png')) no-repeat -77px -15px;
-			width: 50px;
-			height: 50px;
+		#calendar:hover, #calendar.active:hover {
+			background: url(asset-path('icons.png')) no-repeat -109px -11px;
+			width: 48px;
+			height: 48px;
+			display: inline-block;
+		}
+
+		#calendar.active {
+			background: url(asset-path('icons.png')) no-repeat -58px -12px;
+			width: 48px;
+			height: 48px;
 			display: inline-block;
 		}
 
 		#subjects {
-			background: url(asset-path("icons.png")) no-repeat -387px -15px;
-			width: 50px;
-			height: 50px;
+			background: url(asset-path("icons.png")) no-repeat -309px -12px;
+			width: 48px;
+			height: 48px;
 			display: inline-block;
 		}
 
-		#subjects:hover {
-			background: url(asset-path('icons.png')) no-repeat -449px -15px;
-			width: 50px;
-			height: 50px;
+		#subjects:hover, #subjects.active:hover {
+			background: url(asset-path('icons.png')) no-repeat -406px -11px;
+			width: 48px;
+			height: 48px;
 			display: inline-block;
 		}
 
-		#topics {
-			background: url(asset-path("icons.png")) no-repeat -201px -15px;
-			width: 50px;
-			height: 50px;
+		#subjects.active {
+			background: url(asset-path('icons.png')) no-repeat -358px -13px;
+			width: 48px;
+			height: 48px;
 			display: inline-block;
 		}
 
-		#topics:hover {
-			background: url(asset-path('icons.png')) no-repeat -263px -15px;
-			width: 50px;
-			height: 50px;
+		.topics-icon {
+			background: url(asset-path("icons.png")) no-repeat -160px -12px;
+			width: 48px;
+			height: 48px;
+			display: inline-block;
+		}
+
+		.topics-icon:hover, .topics-icon.active:hover {
+			background: url(asset-path('icons.png')) no-repeat -259px -11px;
+			width: 48px;
+			height: 48px;
+			display: inline-block;
+		}
+
+		.topics-icon.active {
+			background: url(asset-path('icons.png')) no-repeat -210px -12px;
+			width: 48px;
+			height: 48px;
+			display: inline-block;
+		}
+
+		#edit {
+			background: url(asset-path("icons.png")) no-repeat -94px -76px;
+			width: 47px;
+			height: 48px;
+			display: inline-block;
+		}
+
+		#edit:hover, #edit.active:hover {
+			background: url(asset-path('icons.png')) no-repeat -189px -76px;
+			width: 48px;
+			height: 48px;
+			display: inline-block;
+		}
+
+		#edit.active {
+			background: url(asset-path('icons.png')) no-repeat -141px -76px;
+			width: 48px;
+			height: 48px;
+			display: inline-block;
+		}
+
+		#cards-icon {
+			background: url(asset-path("icons.png")) no-repeat -342px -76px;
+			width: 48px;
+			height: 48px;
+			display: inline-block;
+		}
+
+		#cards-icon:hover, #cards-icon.active:hover {
+			background: url(asset-path('icons.png')) no-repeat -342px -76px;
+			width: 48px;
+			height: 48px;
+			display: inline-block;
+		}
+
+		#cards-icon.active {
+			background: url(asset-path('icons.png')) no-repeat -293px -76px;
+			width: 48px;
+			height: 48px;
+			display: inline-block;
+		}
+
+		#share-icon {
+			background: url(asset-path("icons.png")) no-repeat -455px -12px;
+			width: 48px;
+			height: 48px;
+			display: inline-block;
+		}
+
+		#share-icon:hover, #share-icon.active:hover {
+			background: url(asset-path('icons.png')) no-repeat -396px -76px;
+			width: 48px;
+			height: 48px;
+			display: inline-block;
+		}
+
+		#share-icon.active {
+			background: url(asset-path('icons.png')) no-repeat -447px -76px;
+			width: 48px;
+			height: 48px;
 			display: inline-block;
 		}
 
@@ -226,7 +312,7 @@ table {
 
 	button {
 		border: none;
-		background: url(asset-path('icons.png')) no-repeat -77px -80px;
+		background: url(asset-path('icons.png')) no-repeat -48px -80px;
 		width: 40px;
 		height: 40px;
 	}
@@ -248,7 +334,7 @@ table {
 }
 
 #notification-bell {
-	background: url(asset-path('icons.png')) no-repeat -14px -82px;
+	background: url(asset-path('icons.png')) no-repeat -5px -82px;
 	width: 36px;
 	height: 36px;
 
@@ -292,28 +378,20 @@ table {
 			display: inline-block;
 		}
 
-		.icon-btn, .icon-btn-inline {
-			width: 1.5em;
-			height: 1.5em;
-			background-size: 1.5em;
-		}
-
 		.icon-btn {
-			display: block;
-		}
-
-		.icon-btn-inline {
 			display: inline-block;
 		}
 
 		.destroy{
-			background: url(asset-path("destroy.svg")) no-repeat center;
-			background-size: 1.5em;
+			background: url(asset-path("icons.png")) no-repeat -499px -80px;
+			width: 26px;
+			height: 35px;
 		}
 		
 		.edit{
-			background: url(asset-path("edit-small.png")) no-repeat center;
-			background-size: 1.5em;
+			background: url(asset-path("icons.png")) no-repeat -504px -18px;
+			width: 31px;
+			height: 30px;
 		}
 
 		#topics-list, #subjects-list {
@@ -426,12 +504,8 @@ table {
 				width: 25%;
 				display: inline-block;
 				position: relative;
-				top: -40px;
+				top: -45px;
 				right: -115px;
-
-				a.icon-btn {
-					display: inline-block !important;
-				}
 			}
 		}
 	}
