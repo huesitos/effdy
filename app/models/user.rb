@@ -20,10 +20,10 @@ class User
       @user
     else
       if hash['provider'] == "twitter"
-        @user = User.create(username: hash['info']['nickname'], name: hash['info']['name'],image: hash['info']['image'], provider: hash['provider'], uid: hash['uid'])
+        @user = User.create(username: hash['info']['nickname'], name: hash['info']['name'],image: hash['info']['image'], provider: hash['provider'], uid: hash['uid'], locale: hash['raw_info']['lang'])
       else
         username = hash['info']['email'].split('@')[0]
-        @user = User.create(username: username, name: hash['info']['name'],image: hash['info']['image'], provider: hash['provider'], uid: hash['uid'])
+        @user = User.create(username: username, name: hash['info']['name'],image: hash['info']['image'], provider: hash['provider'], uid: hash['uid'], locale: hash['extra']['raw_info']['locale'])
       end
     end
   end
