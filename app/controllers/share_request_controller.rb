@@ -1,5 +1,6 @@
 class ShareRequestController < ApplicationController
   before_action :set_object,  only: [:new]
+  before_action :authenticate_user!
 
   def new
     @share_request = ShareRequest.new

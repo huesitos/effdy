@@ -37,7 +37,11 @@ class ApplicationController < ActionController::Base
     end
 
     def set_locale
-      user = User.find(session[:user_id])
-      I18n.locale = user.locale
+      if session[:user_id]
+        user = User.find(session[:user_id])
+        I18n.locale = user.locale 
+      else
+        I18n.locale = I18n.default_locale
+      end
     end
  end

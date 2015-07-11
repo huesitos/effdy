@@ -1,5 +1,6 @@
 class SettingsController < ApplicationController
-
+	before_action :authenticate_user!
+	
 	def settings
   	@view_title = t('.settings')
   end

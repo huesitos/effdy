@@ -21,6 +21,7 @@ en:
   review:
     study_calendar:
       review_calendar: 		'Review calendar'
+      topics_review:			'Topics to review'
       week_review: 				'Review week'
       placeholder: 				"There are no topics to study this day."
       n_cards: 						"# of cards"

@@ -21,8 +21,9 @@ es:
   review:
     study_calendar:
       review_calendar: 		'Calendario de repaso'
+      topics_review:      'Temas a repasar'
       week_review: 				'Semana de repaso'
-      placeholder: 				"No hay ninguna tarjeta para estudiar este día."
+      placeholder: 				"No ningún tema a estudiar este día."
       n_cards: 						"no. de cartas."
       review_time: 				"tiempo aprox. de revisión"
 

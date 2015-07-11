@@ -1,7 +1,7 @@
 
 .col-sm-9
 	%h2 
-		Topics for review
+		= t('.topics_review')
 		= @date.to_date
 	- if not @study_topics.empty?
 		- @study_topics.each do |st|
