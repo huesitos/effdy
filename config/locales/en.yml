@@ -6,7 +6,7 @@ en:
       review_calendar: 		'Review calendar'
       subjects_icon:			'Subjects'
       topics_icon:				'Topics'
-      guide:							'Getting started'
+      guide:							'Getting started guide'
       logout:							'Logout'
       add_topic:					'New topic'
       add_subject:				'New subject'
@@ -17,6 +17,20 @@ en:
     index:
       header: 						'A+'
       subtitle: 					'The flashcards app that makes reviewing more effective.'
+      introduction:				"Students have no time to spare. That's why studying hours have to be spent efficiently. Why spend time reviewing content that you already know, when there is a bunch more left to learn? A+ helps you study by scheduling your flashcards reviews in the right time just before you forget the content, but never earlier!"
+      topic-example:				"This is how a topic with its cards would look like"
+      signup:								"Sign up, it's free!"
+      twitter:							'Sign up with Twitter'
+      google:								'Sign up with Google'
+      feature1:							'Forget about the hazzards of creating, editing, organizing, and carrying paper flashcards! With A+ you can create topics with all the flashcards you want and have them ready to review anywhere you are!'
+      feature2:							"Organize your flashcards by topics, and your topics by subjects."
+      feature3:							"Schedule for review the essential topics at the moment."
+      feature4:							"Archive the subjects/topics that you won't be seeing for a long time to make space for other content."
+      feature5:							"Share or collaborate with your friends to create new study content."
+      opensource:						"A+ is an free software project! Check out the Github repository, and give a hand wherever you can. It will be much appreciated by the community."
+      guide:								'Getting started guide'
+      go-guide:							'Want to know more? Check our getting started guide.'
+      repo:									'App repository'
 
   review:
     study_calendar:

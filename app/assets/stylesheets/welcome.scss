@@ -2,28 +2,89 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .welcome {
-  #head {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  text-align: center;
 
-    h1{
-      margin-top: 5em;
-      text-align: center;
-      font-family: 'Lato', sans-serif;
-      font-size: 3em;
-      line-height: 1em;
-      font-weight: 300;
+  section {
+    overflow: hidden;
+    word-wrap: break-word; 
+  }
+
+  .background-blue {
+    background-color: #1f356f;
+    color: #fff;
+
+    .btn-default {
+      color: #fff;
+      border-color: #fff;
+      background: transparent;
     }
 
-    h2{
-      margin-top:0.50em;
-      margin-left: 2em;
-      margin-right: 2em;
-      text-align: center;
-      font-family: 'Lato', sans-serif;
-      font-size: 1.7em;
-      line-height: 1.25em;
-      font-weight: 300;
+    .btn-default:hover, .btn-default:focus {
+      background-color: #314e96;
+    }
+  }
+  .background-ligthgray {
+    background-color: #ececec;
+  }
+  .background-lightpink {
+    background-color: #fb6464;
+    color: #fff;
+  }
+  .background-darkgray {
+    background-color: #242424;
+    color: #fff;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Lato', sans-serif;
+  }
+
+  h1 {
+    font-size: 3em;
+    line-height: 1em;
+    font-weight: 300;
+  }
+
+  h2 {
+    font-size: 2.0em;
+    font-weight: 700;
+  }
+
+  p, li, span, a {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.5em;
+    font-size: 1.2em;
+  }
+
+  button {
+    font-size: inherit;
+  }
+
+  #head {
+    padding: 6em 4em 3em;
+
+    h2 {
+      margin: 1em 2em;
+
+      color: #444;
+    }
+
+    #introduction, #login {
+      p {
+        color: #555;
+      }
+    }
+
+    #introduction, #login {
+      max-width: 590px;
+      margin: 0 auto;
+    }
+
+    #login {
+      margin-top: 1em;
     }
 
     #image{
@@ -37,88 +98,101 @@
       }
     }
 
-    #login {
-      margin: 0 45%;
-    }
-
     #twitter, #gmail, #facebook {
-      width: 158px;
-      height: 28px;
-    }
+      border-radius: 5px;
+      margin: 15px auto;
+      height: 50px;
+      width: 20em;
 
-    #twitter {
-      background: image-url("sign-in-with-twitter.png") no-repeat center;
-    }
-
-    #facebook {
-      background: image-url("facebook.png") no-repeat center;
-      background-size: 158px 28px;
+      a {
+        color: #fff;
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        padding: 8px 0;
+      }
     }
 
     #gmail {
-      border-radius: 3px;
-      background: image-url("sign-in-with-google.png") no-repeat center;
-      background-size: 158px 28px;
+      background-color: #DC4D38;
 
       a {
-        color: white;
-        display: block;
+        background: url(asset-path('google-icon.png')) no-repeat center;
+        background-size: 50px;
+        background-position: 0px;
       }
     }
 
-    a{
-      display: inline-block;
-      width: 158px;
-      height: 28px;
+    #twitter {
+      background-color: #33BDFD;
+      a {
+        background: url(asset-path('twitter-icon.png')) no-repeat center;
+        background-size: 50px;
+        background-position: 0px;
+      }
     }
-  }
-}
 
-@media only screen and (min-width: 320px) and (max-width: 550px) {
-  .welcome{
-    #head {
-      h1{
-        font-size: 4.5em;
-        line-height: 1em;
-        margin-bottom: 0.5em;
-      }
-
-      #login {
-        margin: 0 25%;
-      }
+    #facebook {
     }
   }
-}
 
-@media only screen and (min-width: 400px) and (max-width: 550px) {
-  .welcome{
-    #head {
-      #login {
-        margin: 0 35%;
-      }
+  #summary {
+    padding: 4em 4em 3em;
+
+    .example-description {
+      margin-bottom: 10px;
     }
-  }
-}
 
-@media screen and (min-width: 551px) and (max-width: 800px) {
+    img {
+      max-width: 60em;
+      border: 1px solid #ececec;
+    }
 
-  .welcome{
-    #head {
-      h1{
-        font-size: 4em;
-      }
-      #image {
-        width: 22em;
-          
-        img {
-          width: 7em;
-          height: 7em;
+    #app-description {
+      max-width: 800px;
+      margin: 0 auto;
+
+      ul {
+        list-style: none;
+
+        li {
+          margin: 10px 0;
         }
       }
+    }
 
-      #login {
-        margin: 0 40%;
+    #guide {
+      margin-top: 30px;
+
+      p, a.btn {
+        display: inline-block;
+      }
+
+      a.btn {
+        margin-left: 10px;
       }
     }
+  }
+
+  #opensource {
+    padding: 4em 4em 3em;
+    margin: 0 auto;
+    width: 70%;
+
+    a.btn {
+      margin-top: 15px;
+    }
+
+    img {
+      width: 10em;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+
+  footer {
+    min-height: 80px;
+    font-size: 0.8em;
+    padding: 1em;
   }
 }

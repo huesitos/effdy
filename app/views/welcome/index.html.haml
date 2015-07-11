@@ -1,12 +1,32 @@
-#head
- %link{:href => "http://fonts.googleapis.com/css?family=Lato&effect=shadow-multiple", :rel => "stylesheet", :type => "text/css"}/
- %h1
-  .font-effect-shadow-multiple= t('.header')
- %h2= t('.subtitle')
- #login
-  #twitter
-   = link_to ' ', login_provider_path(provider: 'twitter')
-  #gmail
-   = link_to '', login_provider_path(provider: 'google_oauth2')
-  #facebook
-   = link_to ' ', login_provider_path(provider: 'facebook')
+%section.background-lightgray#head
+	%h1
+		.font-effect-shadow-multiple= t('.header')
+	%h2= t('.subtitle')
+	#introduction
+		%p= t('.introduction')
+	#login
+		%p#signup= t('.signup')
+		#twitter
+			= link_to t('.twitter'), login_provider_path(provider: 'twitter')
+		#gmail
+			= link_to t('.google'), login_provider_path(provider: 'google_oauth2')
+
+%section.background-blue#summary
+	%p.example-description= "#{t('.topic-example')}:"
+	= image_tag('summary-img.png')
+	#app-description
+		%ul
+			%li= t('.feature1')
+			%li= t('.feature2')
+			%li= t('.feature3')
+			%li= t('.feature4')
+			%li= t('.feature5')
+	#guide
+		%p= t('.go-guide')
+		%a{class: 'btn btn-default'}= t('.guide')
+
+%section.background-lightgray#opensource
+	= image_tag('octocat.png')
+	%p= t('.opensource')
+	%a{href: 'https://github.com/huesitos/aplus', class: 'btn btn-default'}= t('.repo')
+
