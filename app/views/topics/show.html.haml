@@ -1,22 +1,22 @@
 .topic-content
 	.info
 		%h4
-			Info
+			= t('.info')
 		- if @topic.subject && @topic.subject.subject_configs.find_by(user_id: current_user.id)
 			%p
 				Subject:
 				= link_to @topic.subject.name, @topic.subject
-		%p= "# of cards: #{Integer(@topic.cards.count)}"
+		%p= "#{t('.n_cards')} #{Integer(@topic.cards.count)}"
 
 	.buttons
-		- @topic_config.reviewing ? text = 'Reviewing' : text = "Review"
-		= link_to text, topic_set_reviewing_path(@topic), method: :patch, class: "btn btn-default #{text.downcase}", id: 'review'
+		- @topic_config.reviewing ? text = t('.reviewing') : text = t('.review')
+		= link_to text, topic_set_reviewing_path(@topic), method: :patch, class: "btn btn-default #{@topic_config.reviewing ? 'reviewing' : 'review'}", id: 'review'
 		- if @exist_cards_to_study
-			= link_to 'Study', topic_review_path(@topic), class: 'btn btn-default', id: 'study'
+			= link_to t('.study'), topic_review_path(@topic), class: 'btn btn-default', id: 'study'
 
 - if @topic.cards.count > 0
 	.cards
 		= render @topic.cards
 - else
 	.placeholder
-		%p There are no cards in this topic.
+		%p= t('.placeholder')

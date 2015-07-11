@@ -6,7 +6,7 @@ class ReviewController < ApplicationController
 
   # GET /study_calendar
   def study_calendar
-    @view_title = "Review calendar"
+    @view_title = t('.review_calendar')
 
     if params[:date]
       @date = DateTime.parse(params[:date])

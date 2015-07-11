@@ -6,9 +6,9 @@
 
 	.col-sm-4
 		.answer
-			%p.bold Your answer
+			%p.bold= t('.your_answer')
 			= form_tag(topic_card_back_path, method: 'get') do
-				= text_area_tag(:u_answer, '', {placeholder: 'Your answer', class: 'form-control'})
+				= text_area_tag(:u_answer, '', {placeholder: t('.your_answer'), class: 'form-control'})
 				= text_field_tag(:start_time, @start_time, style: 'display:none')
 				
 				.result

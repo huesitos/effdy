@@ -9,11 +9,11 @@
 
   - else
     .placeholder
-      %p There are no subjects! Add subjects for a smarter topic filtering.
+      %p= t('.placeholder')
 
 .row
   - if @collaborating_subjects.count() > 0
-    %h3 Collaborating in
+    %h3= t('.collaborating')
     #subjects-list
       %ul
         - @collaborating_subjects.each do |subject|

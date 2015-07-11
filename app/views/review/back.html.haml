@@ -6,11 +6,11 @@
 
 	.col-sm-4
 		.answer
-			%p.bold Your answer:
+			%p.bold= t('.your_answer')
 			= form_tag(topic_card_answer_path, method: 'post') do
-				= text_area_tag(:u_answer, (@u_answer != "") ? @u_answer : "No answer", disabled: true, class: 'form-control')
+				= text_area_tag(:u_answer, (@u_answer != "") ? @u_answer : t(".no_answer"), disabled: true, class: 'form-control')
 				= text_field_tag(:difference, @difference, style: 'display:none')
 
 				.result 
-					= submit_tag("Correct", id: "check", class: 'btn')
-					= submit_tag("Incorrect", id: "wrong", class: 'btn')
+					= submit_tag(t(".correct"), id: "check", class: 'btn')
+					= submit_tag(t(".incorrect"), id: "wrong", class: 'btn')

@@ -10,12 +10,12 @@
   .form-horizontal
     .form-group
       .field
-        = f.label :title, class: 'control-label col-sm-3'
+        = f.label :title, t('.title'), class: 'control-label col-sm-3'
         .col-sm-5
           = f.text_field :title, class: 'form-control'
     .form-group
       .field
-        = f.label :subject_id, class: 'control-label col-sm-3'
+        = f.label :subject_id, t('.subject'), class: 'control-label col-sm-3'
         .col-sm-5
           %select{name: :subject_id, id: :subject_id, class: 'form-control'}
             - if @subject
@@ -30,33 +30,33 @@
     - if @topic_config
       .form-group
         .field
-          = label_tag :recall_percentage, "Recall percentage", class: 'control-label col-sm-3'
+          = label_tag :recall_percentage, t(".recall_percentage"), class: 'control-label col-sm-3'
           .col-sm-5
             .input-group
               = text_field_tag :recall_percentage, @topic_config.recall_percentage*100 , class: 'form-control'
               %span{class:"input-group-addon"}%
           .col-sm-3
             .description
-              %p= "The recall percentage represents an approximation of how much of the content should be remembered before each review. This means that the next review date will be set just before the memorized information drops below the set percentage."
+              %p= t(".recall_per_descrip")
     .form-group
       .col-sm-offset-3.col-sm-5
         .actions
           -if @back
-            = link_to 'Back', @back, class: 'btn btn-default'
+            = link_to t('.cancel'), @back, class: 'btn btn-default'
           - else
-            = link_to 'Back', @topic, class: 'btn btn-default'
+            = link_to t('.cancel'), @topic, class: 'btn btn-default'
           - if @url == new_topic_path
-            = f.submit 'Create', class: 'btn btn-default'
+            = f.submit t('.create'), class: 'btn btn-default'
           - else
-            = f.submit 'Save', class: 'btn btn-default'
+            = f.submit t('.save'), class: 'btn btn-default'
     - if @topic and not @new
       .form-group
         .col-sm-offset-3.col-sm-5
-          %p.bold= "Reset cards"
-          = link_to 'Reset cards', topic_reset_cards_path(@topic), method: :patch, class: 'btn btn-warning reset'
+          %p.bold= t('.reset_cards')
+          = link_to t('.reset_cards'), topic_reset_cards_path(@topic), method: :patch, class: 'btn btn-warning reset'
           .description
-            %p= "Reseting all cards will move them back to level 1. The closest the level is to one, the closest will be each review date from the other."
+            %p= ""
       .form-group
         .col-sm-offset-3.col-sm-5
-          %p.bold= "Delete topic"
-          = link_to 'Delete topic', topic_path(@topic), method: :delete, class: 'btn btn-danger'
+          %p.bold= t('.delete_topic')
+          = link_to t('.delete_topic'), topic_path(@topic), method: :delete, class: 'btn btn-danger'

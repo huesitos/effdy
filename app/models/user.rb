@@ -5,6 +5,7 @@ class User
   field :image, type: String
   field :provider, type: String
   field :uid, type: String
+  field :locale, type: String, default: 'en'
 
   has_many :topics
   has_many :topic_configs

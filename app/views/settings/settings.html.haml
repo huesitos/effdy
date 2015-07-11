@@ -1,0 +1,9 @@
+= form_for :settings, url: update_settings_path do |f|
+	.form-horizontal
+		.form-group.field
+			= f.label :language, t('.language'), class: 'control-label col-sm-3'
+			.col-sm-5
+				= f.select :language, options_for_select(LANGUAGES, I18n.locale.to_s), {}, {class: 'form-control'}
+		.form-group
+			.col-sm-offset-3.col-sm-5
+				= f.submit t('.save'), class: 'btn btn-default'

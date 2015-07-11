@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :set_context
+  before_action :set_locale
 
   helper_method :current_user
 
@@ -33,5 +34,10 @@ class ApplicationController < ActionController::Base
     
     def authenticate_user!
       redirect_to login_path unless current_user
+    end
+
+    def set_locale
+      user = User.find(session[:user_id])
+      I18n.locale = user.locale
     end
  end

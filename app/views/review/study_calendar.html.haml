@@ -13,16 +13,16 @@
 					= link_to "#{st[:topic].title}", topic_review_path(st[:topic].id)
 				- else
 					= st[:topic].title
-				%span.shaded= "# of cards #{st[:cards_count]} /"
-				%span.shaded= "Approx review time: #{st[:approx_time]} min"
+				%span.shaded= "#{t('.n_cards')} #{st[:cards_count]} /"
+				%span.shaded= "#{t('.review_time')} #{st[:approx_time]} min"
 	- else
 		.placeholder
-			%p There are no topics to study today! If you don't have any topics set for reviewing, set some.
+			%p= t('.placeholder')
 
 .col-sm-3
 	.week-menu
 		%ul
-			%p Week review dates
+			%p= t('.week_review')
 			%li{:class => @date == Date.today && "active"}= link_to Date.today.to_s, study_calendar_path(date: Date.today)
 			%li{:class => @date == Date.today+1 && "active"}= link_to (Date.today+1).to_s, study_calendar_path(date: Date.today+1)
 			%li{:class => @date == Date.today+2 && "active"}= link_to (Date.today+2).to_s, study_calendar_path(date: Date.today+2)

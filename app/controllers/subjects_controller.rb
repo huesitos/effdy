@@ -6,7 +6,7 @@ class SubjectsController < ApplicationController
 
   # GET /subjects
   def index
-    @view_title = "Subjects"
+    @view_title = t(".subjects")
     @user_id = session[:user_id]
 
     @total = Subject.count.to_i
@@ -35,7 +35,7 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/edit
   def edit
-    @view_title = "Editing subject"
+    @view_title = t('.edit_subject')
     @subject_config = @subject.subject_configs.find_by(user_id: session[:user_id])
     @edit = true
   end
@@ -43,7 +43,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/new
   def new
     @url = new_subject_path
-    @view_title = "New subject"
+    @view_title = t('.new_subject')
     @subject = Subject.new
     @new = true
   end

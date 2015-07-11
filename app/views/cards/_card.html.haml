@@ -5,7 +5,7 @@
     %p.back
       =card.back
     - cs = card.card_statistics.find_by(user_id: current_user.id)
-    %span.review_date= "Review date #{cs.review_date.to_date}"
+    %span.review_date= "#{t('.review_date')} #{cs.review_date.to_date}"
   .options
     =link_to '', edit_topic_card_path(card.topic_id, card._id), :class => 'icon-btn edit'
-    =link_to '', topic_card_path(card.topic_id, card._id), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'icon-btn destroy'
+    =link_to '', topic_card_path(card.topic_id, card._id), :method => :delete, :data => { :confirm => t('.confirm') }, :class => 'icon-btn destroy'

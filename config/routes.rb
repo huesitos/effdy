@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/settings'
-
   root 'review#study_calendar'
+
+  get 'settings' => 'settings#settings', as: :settings
+  post 'update_settings' => 'settings#update_settings', as: :update_settings
 
   get 'share_request/new/:object_type/:oid/:name' => 'share_request#new', as: :share_request_new
   post 'share_requests/:object_type/:oid/:name' => 'share_request#create', as: :share_requests

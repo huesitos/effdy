@@ -1,23 +1,168 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+
+  layouts:
+    application:
+      settings: 					'Settings'
+      review_calendar: 		'Review calendar'
+      subjects_icon:			'Subjects'
+      topics_icon:				'Topics'
+      guide:							'Getting started'
+      logout:							'Logout'
+      add_topic:					'New topic'
+      add_subject:				'New subject'
+      add_card:						'New flashcard'
+      share_icon:					'Share'
+
+  welcome:
+    index:
+      header: 						'A+'
+      subtitle: 					'The flashcards app that makes reviewing more effective.'
+
+  review:
+    study_calendar:
+      review_calendar: 		'Review calendar'
+      week_review: 				'Review week'
+      placeholder: 				"There are no topics to study this day."
+      n_cards: 						"# of cards"
+      review_time: 				"Approx. review time"
+
+    front:
+      your_answer: 				"Your answer"
+
+    back:
+      your_answer: 				"Your answer"
+      no_answer: 					"No given answer."
+      correct:						"Correct"
+      incorrect:					'Incorrect'
+
+  share_request:
+    new:
+      share_icon:					'Share'
+      collaborators:			'Collaborators'
+      share_title:				'Share with'
+
+    form:
+      recipient:					'Recipient'
+      copy:								'Send copy'
+      add_collab:					'Add as collaborator'
+
+    notify:
+      notifications: 			"Notifications"
+      placeholder:				"There are no share request."
+      share_request:			"Share Request"
+      wants_to:						"wants to"
+      topic:							"topic"
+      subject:						"subject"
+      collaborate:				"collaborate"
+      share:							"give you a copy"
+      the:								"the"
+      with_you:						"with you"
+      confirm:						'Are you sure?'
+      accept: 						"Accept"
+      decline:						"Decline"
+
+  subjects:
+    index:
+      subjects: 					'Subjects'
+      placeholder:				"There are no subjects! Add subjects for a smarter topic filtering."
+      collaborating:		"Collaborating in"
+
+    subject:
+      archive:						"Archive"
+      archived:						"Archived"
+      delete:							"Delete"
+      delete_all:					"Delete all"
+
+    show:
+      topics:							"Topics"
+      archive:						"Archive"
+      archived:						"Archived"
+
+    new:
+      new_subject:				"New subject"
+
+    edit:
+      edit_subject:				"Edit subject"
+
+    form:
+      code:								"Code"
+      name:								"Name"
+      color:							"Color"
+      cancel:							"Cancel"
+      create:							"Create"
+      save:								"Save"
+      preview:						"Preview"
+      color_description:	"Topics that belong to a subject will have a label besides their title with the subject code and the selected color."
+      delete_subject:			"Delete subject"
+      delete_all:					"Delete all"
+      delete_description:	"Delete removes the subject and leaves its topics. Delete all destroys both the subject and its topics."
+
+  topics:
+    index:
+      topics:							"Topics"
+      reviewing:					"Reviewing"
+      review:							"Review"
+      placeholder:				"There are no topics."
+      delete:							"Delete"
+      confirm:						"Are you sure?"
+      placeholder:				"There are no topics."
+
+    topic:
+      delete:							"Delete"
+      confirm:						"Are you sure?"
+      placeholder:				"There are no topics."
+
+    show:
+      n_cards: 						"no. de cartas."
+      info:								"Information"
+      reviewing:					"Reviewing"
+      review:							"Review"
+      study:							'Study'
+      placeholder:				"There are no cards in this topic."
+
+    new:
+      new_topic:					"New topic"
+
+    edit:
+      edit_topic:					"Editing topic"
+
+    form:
+      title:							"Title"
+      subject:						"Subject"
+      recall_percentage:	"Recall percentage"
+      recall_per_descrip: "The recall percentage represents an approximation of how much of the content should be remembered before each review. This means that the next review date will be set just before the memorized information drops below the set percentage."
+      reset_cards:				"Reset cards"
+      delete_topic:				"Delete topic"
+      delete_descrip:			"Reseting all cards will move them back to level 1. The closest the level is to one, the closest will be each review date from the other."
+      cancel:							"Cancel"
+      create:							"Create"
+      save:								"Save"
+
+  cards:
+    card:
+      review_date:				"Review date"
+      confirm:						'Are you sure?'
+
+    show:
+      show_card:					"Showing card"
+
+    edit:
+      edit_card:					"Editing card"
+
+    new:
+      new_card:						"New card"
+
+    form:
+      topic:							"Topic"
+      cancel:							"Cancel"
+      save:								"Save"
+      done:								"done"
+      continue:						"Continue"
+      back_placeholder:		"Front side"
+      front_placeholder:	"Back side"
+
+  settings:
+    settings:
+      settings:						"Configurations"
+      language:						"Language"
+      save:								"Save"

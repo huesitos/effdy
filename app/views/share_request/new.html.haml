@@ -2,7 +2,7 @@
 	= render "form"
 
 - if @collaborators.count > 0
-	%h3 Collaborators
+	%h3= t('.collaborators')
 	%ul.collaborators
 		- @collaborators.each do |c|
 			%li.collaborator

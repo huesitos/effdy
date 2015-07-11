@@ -10,7 +10,7 @@
   .col-sm-12
     - if @url[/cards\/[0-9]/]
       .field
-        = f.label :topic, class: 'control-label'
+        = f.label :topic, t('.topic'), class: 'control-label'
         %select{name: :new_topic, id: :new_topic, class: 'form-control'}
           %option{value: "#{@card.topic_id}"}= @card.topic.title
           - if @topics
@@ -18,14 +18,14 @@
               %option{value: "#{topic._id}"}= topic.title
     .field.side
       / = f.label :front
-      = f.text_area :front, placeholder: "Front side", class: 'form-control'
+      = f.text_area :front, placeholder: t(".front_placeholder"), class: 'form-control'
     .field.side
       / = f.label :back
-      = f.text_area :back, placeholder: "Back side", class: 'form-control'
+      = f.text_area :back, placeholder: t('.back_placeholder'), class: 'form-control'
     .actions
-      %a{href: "#{topic_path(@topic)}", class: 'btn'} Cancel
+      %a{href: "#{topic_path(@topic)}", class: 'btn'}= t('.cancel')
       - if @url[/cards\/[0-9]/]
-        = f.submit 'Save', class: 'btn btn-default'
+        = f.submit t('.save'), class: 'btn btn-default'
       - else
-        = f.submit 'Done', class: 'btn btn-default'
-        %a{href: 'javascript:void(0)', id: 'continue', class: 'btn btn-default'} Continue
+        = f.submit t('.done'), class: 'btn btn-default'
+        %a{href: 'javascript:void(0)', id: 'continue', class: 'btn btn-default'}= t('.continue')

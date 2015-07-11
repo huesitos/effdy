@@ -18,15 +18,15 @@
       %nav#main-options
         %ul
           %li
-            %a{:href => study_calendar_path, :alt => "Review calendar", :title => "Review calendar", :id => 'calendar', class: @view_title == "Review calendar" && 'active'}
+            %a{:href => study_calendar_path, :alt => t('.review_calendar'), :title => t('.review_calendar'), :id => 'calendar', class: @view_title == t('.review_calendar') && 'active'}
           %li
             - sclass = 'topics-icon'
-            - sclass += ' active' if @view_title == "Subjects"
-            %a{:href => subjects_path, :alt => "Subjects", :title => "Subjects", id: 'subjects', class: sclass}
+            - sclass += ' active' if @view_title == t('.subjects')
+            %a{:href => subjects_path, :alt => t('.subjects_icon'), :title => t('.subjects_icon'), id: 'subjects', class: sclass}
           %li
             - tclass = 'topics-icon'
-            - tclass += ' active' if @view_title == "Topics"
-            %a{:href => topics_path, :locale => 'en', :alt => "Topics", :title => "Topics", class: tclass }
+            - tclass += ' active' if @view_title == t('.topics')
+            %a{:href => topics_path, :locale => 'en', :alt => t('.topics_icon'), :title => t('.topics_icon'), class: tclass }
             
           %span.divider
 
@@ -36,7 +36,7 @@
             %li
               %a{:href => edit_topic_path(@topic), :id => 'edit', :alt => "edit", :title => "edit", class: @edit && 'active'}
             %li
-              %a{:href => share_request_new_path(object_type:'topic', oid:@topic._id, name: @topic.title), :id => 'share-icon', :alt => "share", :title => "share", class: @share && 'active'}
+              %a{:href => share_request_new_path(object_type:'topic', oid:@topic._id, name: @topic.title), :id => 'share-icon', :alt => t(".share_icon"), :title => t(".share_icon"), class: @share && 'active'}
 
           - if @subject and not ["subjects#new"].include? "#{controller.controller_name}##{controller.action_name}" 
             %li
@@ -46,15 +46,15 @@
             %li
               %a{:href => edit_subject_path(@subject), :id => 'edit', :alt => "edit", :title => "edit", class: @edit && 'active'}
             %li
-              %a{:href => share_request_new_path(object_type:'subject', oid:@subject._id, name: @subject.name), :id => 'share-icon', :alt => "share", :title => "share", class: @share && 'active'}
+              %a{:href => share_request_new_path(object_type:'subject', oid:@subject._id, name: @subject.name), :id => 'share-icon', :alt => t(".share_icon"), :title => t(".share_icon"), class: @share && 'active'}
 
       #profile.dropup
         %button#dropdownMenu1.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
           = image_tag(current_user.image)
         %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
-          %li= link_to t('.settings'), "#"
-          %li= link_to 'Getting started', "#"
-          %li= link_to 'Logout', logout_path
+          %li= link_to t('.settings'), settings_path
+          %li= link_to t('.guide'), "#"
+          %li= link_to t('.logout'), logout_path
 
     #main-content
       #page
@@ -67,12 +67,12 @@
           %button#dropdownMenu2.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
           %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu2"}
             - if @subject
-              %li= link_to 'Add topic', new_topic_path(subject: @subject.id)
+              %li= link_to t('.add_topic'), new_topic_path(subject: @subject.id)
             - else
-              %li= link_to 'Add topic', new_topic_path
-            %li= link_to 'Add subject', new_subject_path
+              %li= link_to t('.add_topic'), new_topic_path
+            %li= link_to t('.add_subject'), new_subject_path
             - if "#{controller.controller_name}##{controller.action_name}" == "topics#show"
-              %li= link_to 'Add card', new_topic_card_path(@topic)
+              %li= link_to t('.add_card'), new_topic_card_path(@topic)
         - if "#{controller.controller_name}##{controller.action_name}" == "topics#show"
           - topic_config = @topic.topic_configs.find_by(user_id: current_user.id)
           - topic_config.reviewing ? rclass = "on" : rclass = "off"

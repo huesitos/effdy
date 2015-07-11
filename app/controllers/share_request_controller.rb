@@ -3,7 +3,7 @@ class ShareRequestController < ApplicationController
 
   def new
     @share_request = ShareRequest.new
-    @view_title = "Share with"
+    @view_title = t('.share_title')
     @users = User.where(:_id => { "$ne" => session[:user_id]}).pluck(:username, :_id)
     @url = share_requests_path(params[:object_type],params[:oid], params[:name])
 
@@ -22,10 +22,10 @@ class ShareRequestController < ApplicationController
   end
 
   def create
-    @view_title = "Share with"
+    @view_title = t('.share_title')
     @users = User.where(:_id => { "$ne" => session[:user_id]}).pluck(:username, :_id)
     sender = User.find(session[:user_id])
-    params[:commit] == "Send copy" ? kind = "share" : kind = "collaborate"
+    params[:commit] == t('.copy') ? kind = "share" : kind = "collaborate"
 
     @share_request = ShareRequest.new(
       kind: kind, 
@@ -114,7 +114,7 @@ class ShareRequestController < ApplicationController
   end
 
   def notify
-    @view_title = "Notifications"
+    @view_title = t('.notifications')
     @share_requests = ShareRequest.where(recipient: session[:user_id])
   end
 

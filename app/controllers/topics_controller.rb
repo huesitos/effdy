@@ -13,7 +13,7 @@ class TopicsController < ApplicationController
     @total = Topic.count.to_i
     @topic_configs = TopicConfig.where(user_id: session[:user_id]).sort(reviewing: -1, archived: 1)
 
-    @view_title = "Topics"
+    @view_title = t('.topics')
   end
 
   # GET /topics/1
@@ -38,15 +38,16 @@ class TopicsController < ApplicationController
   def new
     @back = params[:back]
     @url = new_topic_path
-    @view_title = "New topic"
+    @view_title = t('.new_topic')
     @topic = Topic.new
     @new = true
   end
 
   # GET /topics/1/edit
   def edit
-    @view_title = "Editing topic"
+    @view_title = t('.edit_topic')
     @topic_config = @topic.topic_configs.find_by(user_id: session[:user_id])
+    @edit = true
   end
 
   # POST /topics

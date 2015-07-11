@@ -242,7 +242,7 @@ table {
 		}
 
 		#cards-icon {
-			background: url(asset-path("icons.png")) no-repeat -342px -76px;
+			background: url(asset-path("icons.png")) no-repeat -245px -75px;
 			width: 48px;
 			height: 48px;
 			display: inline-block;
@@ -342,9 +342,10 @@ table {
 	top: 20px;
 	right: 100px;
 
-	a img{
-		width: 2em;
-		height: 2em;
+	a {
+		display: inline-block;
+		width: 100%;
+		height: 100%;
 	}
 
 	.badge {

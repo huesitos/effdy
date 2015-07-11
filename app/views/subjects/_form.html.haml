@@ -10,37 +10,37 @@
   .form-horizontal
     .form-group
       .field
-        = f.label :code, class: 'control-label col-sm-3'
+        = f.label :code, t('.code'), class: 'control-label col-sm-3'
         .col-sm-5
           = f.text_field :code, placeholder: "e.g. COM381, PS200", class: 'form-control'
     .form-group
       .field
-        = f.label :name, class: 'control-label col-sm-3'
+        = f.label :name, t('.name'), class: 'control-label col-sm-3'
         .col-sm-5
           = f.text_field :name, class: 'form-control'
     .form-group
       .field
-        = label_tag "subject_color", "Color", {class: 'control-label col-sm-3'}
+        = label_tag "subject_color", t('.color'), {class: 'control-label col-sm-3'}
         .col-sm-5
           %input{name: "subject_color", id: "subject_color", type: 'text', placeholder: "#ddd, #e8e8e8", value: @subject_config && @subject_config.color, class: 'colorpicker form-control'}
         .col-sm-3
           .description
-            %p= "Topics that belong to a subject will have a label besides their title with the subject code and the selected color."
-            %p= "Preview"
+            %p= t('.color_description')
+            %p= t('.preview')
             %span.preview-label.label
     .form-group
       .col-sm-offset-3.col-sm-5
         .actions
-          %a{href: "#{subjects_path}", class: 'btn btn-default'} Cancel
+          %a{href: "#{subjects_path}", class: 'btn btn-default'}= t('.cancel')
           - if @url == new_subject_path
-            = f.submit 'Create', class: 'btn btn-default'
+            = f.submit t('.create'), class: 'btn btn-default'
           - else
-            = f.submit 'Save', class: 'btn btn-default'
+            = f.submit t('.save'), class: 'btn btn-default'
     - if @subject and not @new
       .form-group
         .col-sm-offset-3.col-sm-5
-          %p.bold= "Delete subject"
-          = link_to 'Delete subject', subject_path(@subject), method: :delete, class: 'btn btn-danger'
-          = link_to 'Delete all', subject_path(@subject, delete_all: true), method: :delete, class: 'btn btn-danger'
+          %p.bold= t('.delete_subject')
+          = link_to t('.delete_subject'), subject_path(@subject), method: :delete, class: 'btn btn-danger'
+          = link_to t('.delete_all'), subject_path(@subject, delete_all: true), method: :delete, class: 'btn btn-danger'
           .description
-            %p= "Delete removes the subject and leaves its topics. Delete all destroys both the subject and its topics."
+            %p= t('.delete_description')

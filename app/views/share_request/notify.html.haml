@@ -1,4 +1,4 @@
-%h2 Share Request
+%h2= t('.share_request')
 
 - if @share_requests.count() > 0
 	#notifications
@@ -6,12 +6,12 @@
 			-@share_requests.each do |sr|
 				%li.col-sm-10
 					%span.sender= sr.sender_uname
-					%span= "wants to #{sr.kind} #{sr.object_type} "
+					%span= "#{t('.wants_to')} #{t(".#{sr.kind}")} #{sr.kind == 'subject' ? t('.la') : t('.the')} #{t(".#{sr.object_type}")} "
 					%span{class: sr.object_type == 'topic'? 'topic' : 'subject' }= sr.name 
-					%span with you.
+					%span= "#{t('.with_you')}."
 					.options.pull-right
-						= link_to "Accept", share_request_share_path(sr._id), class: 'btn btn-default'
-						= link_to "Decline", share_request_destroy_path(sr._id), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-default'
+						= link_to t('.accept'), share_request_share_path(sr._id), class: 'btn btn-default'
+						= link_to t('.decline'), share_request_destroy_path(sr._id), :method => :delete, :data => { :confirm => t('.confirm') }, class: 'btn btn-default'
 - else
 	.placeholder
-		%p There are no share request.
+		%p= t('.placeholder')

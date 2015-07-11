@@ -1,16 +1,16 @@
 - subject_config = subject.subject_configs.find_by(user_id: current_user.id)
 .st_row
   %li
-    .col-sm-7
+    .col-sm-6
       %span.label{style: "background-color:#{subject_config.color}"}
         = subject.code
       %span#link{class: subject_config.archived && "archived"}
         = link_to subject.name, subject_path(subject)
-    .col-sm-5.options
+    .col-sm-6.options
       - subject_config = subject.subject_configs.find_by(user_id: current_user.id)
-      - subject_config.archived ? text = 'Archived' : text = "Archive"
-      = link_to text, subject_archive_path(subject), method: :patch, class: "btn btn-default #{text.downcase}", id: 'archive'
-      = link_to '', subject_path(subject.id, delete_all: true), :class => "btn.btn-default delete-all", style: 'display:none'
-      = link_to '', subject, :class => "btn.btn-default delete-link", style: 'display:none'
-      %a.btn.btn-default.subject-destroy{href:'javascript:void(0)', :alt => "delete", :title => "delete"} Delete
-      %a.btn.btn-default.subject-destroy-all{href:'javascript:void(0)', :alt => "delete all", :title => "delete all"} Delete all
+      - subject_config.archived ? text = t('.archived') : text = t('.archive')
+      = link_to text, subject_archive_path(subject), method: :patch, class: "btn btn-default #{subject_config.archived ? 'archived' : 'archive'}", id: 'archive'
+      = link_to t('.delete'), subject_path(subject.id, delete_all: true), :class => "btn.btn-default delete-all", style: 'display:none'
+      = link_to t('.delete_all'), subject, :class => "btn.btn-default delete-link", style: 'display:none'
+      %a.btn.btn-default.subject-destroy{href:'javascript:void(0)'}= t('.delete')
+      %a.btn.btn-default.subject-destroy-all{href:'javascript:void(0)'}= t('.delete_all')

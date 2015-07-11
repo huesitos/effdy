@@ -1,8 +1,8 @@
 .subject-options
-	- @subject_config.archived ? text = 'Archived' : text = "Archive"
-	= link_to text, subject_archive_path(@subject, back: subject_path(@subject)), method: :patch, class: "btn btn-default #{text.downcase} pull-right", id: 'archive'
+	- @subject_config.archived ? text = t('.archived') : text = t('.archive')
+	= link_to text, subject_archive_path(@subject, back: subject_path(@subject)), method: :patch, class: "btn btn-default #{@subject_config.archived ? 'archived' : 'archive'} pull-right", id: 'archive'
 
-%h2 Topics
+%h2= t('.topics')
 
 #topics-list
 	%ul

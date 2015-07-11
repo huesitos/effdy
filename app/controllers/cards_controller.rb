@@ -9,7 +9,7 @@ class CardsController < ApplicationController
   # GET /cards/1.json
   # Not being used. Should test on test users to see if it's necessary
   def show
-    @view_title = "Showing card"
+    @view_title = t('.show_card')
   end
 
   # GET /cards/new
@@ -21,7 +21,7 @@ class CardsController < ApplicationController
 
   # GET /cards/1/edit
   def edit
-    @view_title = "Editing card"
+    @view_title = t('.edit_card')
     @topics = TopicConfig.topics_from_user(session[:user_id]).where(:_id.ne => @card.topic_id)
     @url = topic_card_path(@topic._id, @card._id) # url the form will use to send the values of the form
   end

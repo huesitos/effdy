@@ -1,0 +1,171 @@
+es:
+
+  layouts:
+    application:
+      settings: 					'Configuraciones'
+      review_calendar: 		'Calendario de repaso'
+      subjects_icon:			'Asignaturas'
+      topics_icon:				'Temas'
+      guide:							'Guía de uso'
+      logout:							'Cerrar sesión'
+      add_topic:					'Agregar tema'
+      add_subject:				'Agregar asignatura'
+      add_card:						'Agregar tarjeta'
+      share_icon:					'Compartir'
+
+  welcome:
+    index:
+      header: 						'A+'
+      subtitle: 					'La aplicación de tarjetas de estudio que hará tu repaso mucho más eficiente.'
+
+  review:
+    study_calendar:
+      review_calendar: 		'Calendario de repaso'
+      week_review: 				'Semana de repaso'
+      placeholder: 				"No hay ninguna tarjeta para estudiar este día."
+      n_cards: 						"no. de cartas."
+      review_time: 				"tiempo aprox. de revisión"
+
+    front:
+      your_answer: 				"Tu respuesta"
+
+    back:
+      your_answer: 				"Tu respuesta"
+      no_answer: 					"Ninguna respuesta proporcionada."
+      correct:						"Correcto"
+      incorrect:					'Incorrecto'
+
+  share_request:
+    new:
+      share_icon:					'Compartir'
+      collaborators:			'Colaboradores'
+      share_title:				'Compartir con'
+
+    form:
+      recipient:					'Receptor'
+      copy:								'Enviar copia'
+      add_collab:					'Agregar como colaborador'
+
+    create:
+      copy:								'Enviar copia'
+      add_collab:					'Agregar como colaborador'
+
+    notify:
+      notifications: 			"Notificaciones"
+      placeholder: 				"No hay notificaciones."
+      share_request:			"Propuesta de compartir"
+      wants_to:						"quiere"
+      topic:							"tema"
+      subject:						"asignatura"
+      collaborate:				"colaborar"
+      share:							"darte una copia"
+      the:								"el"
+      la:									"la"
+      with_you:						"contigo"
+      confirm:						"¿Está seguro?"
+      accept:							"Aceptar"
+      decline:						"Declinar"
+
+  subjects:
+    index:
+      subjects: 					'Asignaturas'
+      placeholder:				"No hay ninguna asignatura. Agrega alguna para organizar tus temas de forma eficiente."
+      collaborating:			"Colaborando en"
+
+    subject:
+      archive:						"Archivar"
+      archived:						"Archivado"
+      delete:							"Eliminar"
+      delete_all:					"Eliminar todo"
+
+    show:
+      topics:							"Temas"
+      archive:						"Archivar"
+      archived:						"Archivado"
+
+    new:
+      new_subject:				"Nueva asignatura"
+
+    edit:
+      edit_subject:				"Editando asignatura"
+
+    form:
+      code:								"Código"
+      name:								"Nombre"
+      color:							"Color"
+      cancel:							"Cancelar"
+      create:							"Crear"
+      save:								"Guardar"
+      preview:						"Presentación preliminar"
+      color_description:	"Los temas que pertenecen a esta asignatura aparecerán con una etiqueta con el codigo y color de fondo asignados."
+      delete_subject:			"Eliminar asignatura"
+      delete_all:					"Eliminar todo"
+      delete_description:	"'Eliminar asignatura' destruye solo la asignatura. 'Eliminar todo' destruye la asignatura y todos sus temas."
+
+  topics:
+    index:
+      topics:							"Temas"
+      reviewing:					"Repasando"
+      review:							"Repasar"
+      delete:							"Eliminar"
+      confirm:						"¿Está seguro?"
+      placeholder:				"No hay temas."
+
+    topic:
+      delete:							"Eliminar"
+      confirm:						"¿Está seguro?"
+      review:							"Repasar"
+
+    show:
+      n_cards: 						"no. de cartas."
+      info:								"Información"
+      reviewing:					"Repasando"
+      review:							"Repasar"
+      study:							"Estudiar"
+      placeholder:				"No hay cartas en este tema."
+
+    new:
+      new_topic:					"Nuevo tema"
+
+    edit:
+      edit_topic:					"Editando tema"
+
+    form:
+      title:							"Título"
+      subject:						"Asignatura"
+      recall_percentage:  "Porcentaje de retención"
+      recall_per_descrip: "El porcentaje de retención es una aproximación de cuánto contenido se recuerda. Este se utiliza para calcular la siguiente fecha de repaso, que será justo antes de que el porcentaje de retención del contenido baje de lo especificado en este campo."
+      reset_cards:				"Reestablecer tarjetas"
+      delete_topic:				"Eliminar tema"
+      cancel:							"Cancelar"
+      create:							"Crear"
+      save:								"Guardar"
+
+  cards:
+    card:
+      review_date:				"Fecha de revisión"
+      confirm:						"¿Está seguro?"
+
+    show:
+      show_card:					"Mostrando tarjetas"
+
+    edit:
+      edit_card:					"Editar tarjeta"
+
+    new:
+      new_card:						"Nueva tarjeta"
+
+    form:
+      topic:							"Tema"
+      cancel:							"Cancelar"
+      save:								"Guardar"
+      done:								"Terminar"
+      continue:						"Continuar"
+      back_placeholder:		"Lado trasero"
+      front_placeholder:	"Lado frontal"
+
+  settings:
+    settings:
+      settings:						"Configuraciones"
+      language:						"Lenguaje"
+      save:								"Guardar"
