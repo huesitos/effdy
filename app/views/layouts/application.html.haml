@@ -20,12 +20,11 @@
           %li
             %a{:href => study_calendar_path, :alt => t('.review_calendar'), :title => t('.review_calendar'), :id => 'calendar', class: @view_title == t('.review_calendar') && 'active'}
           %li
-            - sclass = 'topics-icon'
-            - sclass += ' active' if @view_title == t('.subjects')
+            - sclass = 'active' if @view_title == t('.subjects_icon')
             %a{:href => subjects_path, :alt => t('.subjects_icon'), :title => t('.subjects_icon'), id: 'subjects', class: sclass}
           %li
             - tclass = 'topics-icon'
-            - tclass += ' active' if @view_title == t('.topics')
+            - tclass += ' active' if @view_title == t('.topics_icon')
             %a{:href => topics_path, :locale => 'en', :alt => t('.topics_icon'), :title => t('.topics_icon'), class: tclass }
             
           %span.divider
@@ -53,7 +52,7 @@
           = image_tag(current_user.image)
         %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
           %li= link_to t('.settings'), settings_path
-          %li= link_to t('.guide'), "#"
+          / %li= link_to t('.guide'), "#"
           %li= link_to t('.logout'), logout_path
 
     #main-content

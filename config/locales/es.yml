@@ -19,8 +19,8 @@ es:
       subtitle: 					'La aplicación de tarjetas de estudio que hará tu repaso mucho más eficiente.'
       introduction:       "Los estudiantes no tienen tiempo para desperciciar. Es por esto que las horas de estudio deben ser utilizadas con eficiencia. ¿Por qué perder tiempo repasando contenido que ya se sabe, cuando todavía queda más por aprender? A+ te ayuda a mantener un horario de estudio donde repasas las tarjetas en el momento justo antes de que olvides su contenido, ¡pero nunca antes!"
       signup:               "Regístrate, ¡es gratis!"
-      twitter:              "Regístrate con Twitter"
-      google:              "Regístrate con Google"
+      twitter:              "Inicia sesión con Twitter"
+      google:               "Inicia sesión con Google"
       topic-example:        "Así es como se vería un tema con tarjetas creadas"
       feature1:             '¡Olvida los inconvemientes de crear, editar, organizar y cargar con tarjetas de papel! Con A+ puedes crear temas que contengan todas las tarjetas que quieras y acceder a ellas donde sea que estés.'
       feature2:             "Organiza tus tarjetas dentro de temas y los temas dentro de asignaturas."
@@ -28,7 +28,7 @@ es:
       feature4:             "Archiva las asignaturas/temas que ya no estarás estudiando durante un largo tiempo para hacer espacio a más contenido."
       feature5:             "Comparte o colabora con tus amigos para crear nuevo contenido de estudio."
       opensource:           "¡A+ es un projecto de código libre! Pasa por el repositorio en Github y brinda una mano donde puedas. La comunidad lo apreciará.!"
-      guide:                'guía de uso'
+      guide:                'Guía de uso'
       go-guide:             '¿Quieres saber más? Revisa nuestra guía de uso.'
       repo:                 'Repositorio'
 
@@ -43,12 +43,13 @@ es:
 
     front:
       your_answer: 				"Tu respuesta"
+      flip:					      'Voltear'
 
     back:
-      your_answer: 				"Tu respuesta"
-      no_answer: 					"Ninguna respuesta proporcionada."
-      correct:						"Correcto"
-      incorrect:					'Incorrecto'
+      your_answer:        "Tu respuesta"
+      no_answer:          "Ninguna respuesta proporcionada."
+      correct:            "Correcto"
+      incorrect:          'Incorrecto'
 
   share_request:
     new:
@@ -184,3 +185,26 @@ es:
       settings:						"Configuraciones"
       language:						"Lenguaje"
       save:								"Guardar"
+
+  session:
+    create:
+      review_title:       "Proceso de repaso"
+      rcard1_front:       "Welcome to A+! This is a sample topic we added to help you learn how review your cards. Click the button 'Flip' to flip this card!"
+      rcard1_back:        "Well done! When reviewing your cards you will see the front side of the card first, which is the side where you should write the question. The back side is for the answer. Now click either the 'Correct' or 'Incorrect' button to continue."
+      rcard2_front:       "When reviewing, you should read the question, and think of the answer. See the 'Your answer' box in the side? It's there in case the answer to the question is too long to remember correctly, like a list of things. For instance, say you have the question: Name all states/provinces of your country. Use the box in the side to help you answer the question. When you are done, flip the card."
+      rcard2_back:        "In this side there should be the answer of the question in the front side. You can compare the answer you wrote with the real answer. However, you are the one that must decide whether your answer is 'Correct' or 'Incorrect'. We'll explain the meaning of the buttons in the next card."
+      rcard3_front:       "Whenever you answer a card correctly, the 'level' of understanding of that card raises. A card with a high level of understanding is a card you shouldn't be reviewing frequently. In contrast, when you answer a card incorrectly, the level is decreased, so that you get to see it more often."
+      rcard3_back:        "The app will use the level of the card to calculate an approximated review date. This date is generated using what the topic current 'recall percentage'."
+      rcard4_front:       "The topic 'recall percentage' means 'how much percentage of the information is recalled'. For example, say you want to review a card before you forget more than 10% of it, then you'd set the topic's recall percentage to 90%. Don't worry if it's complicated to understand right now. Click flip to continue."
+      rcard4_back:        "You can edit each topic's 'recall percentage' in the topic's edit page. The default value is 80%. If you set it higher than, review dates will be closer to each other, if you set it lower, review dates will be more sparced."
+      rcard5_front:       "This is most of what you have to know about the reviewing process. There is another topic that covers the basic app navigation and page description."
+      rcard5_back:          "For now, here's a quick summary of the main menu: the first option is the review schedule, which shows what topics you have to review today and also projects the topic to review a week from now; the second option is the subjects list, and the third is the topic's list. After you answer this question you'll be sent to this topic's show page where you can edit, delete, and add cards."
+      navigation_title:   "Basic navigation and features"
+      ncard1_front:       "Welcome to A+! This is a sample topic we added to help you learn how to use the basic functionalities of the app and make your study sessions more effective. Click the button 'Flip' to flip this card!"
+      ncard1_back:        "Well done! The main navigation bar to the left has the following options: the review schedule link, the subjects lit, and the topics, list. We'll be covering the details of each one in the next cards. Click either correct or incorrect."
+      ncard2_front:       "The review schedule lists the topics that have to be reviewed, the number of cards, and the approximated time it will take to review them. The approximated time is calculated based on the sum of the duration in seconds of how much it takes you to answer each card of a topic. Also, there's a 'Week review' projection where you can see, a week in advance, which flascards you'll have to study."
+      ncard2_back:        "Only flascards from topics that are set for reviewing will appear in the calendar. You can set a topic for reviewing with the 'Review' button in the topics list page or inside a topic. To unset the reviewing, click the 'Reviewing' button again."
+      ncard3_front:       "Topics serve to contain flashcards related to a single idea. If you have several topics which are also related you can group them within a subject. The Subjects option in the main menu lists all your subjects. The Topics option in the main menu lists all your topics."
+      ncard3_back:        "In the Subjects and Topics page you can delete subjects or topics respectively. Subjects can also be deteled with its topics with the 'Delete all' option."
+      ncard4_front:       "Inside the topic's and subject's page new options will appear in the main menu. The topic's first option is a page listing all its cards. The first subject's option is a page listing all its topics. Both have a second option linking to their edit page."
+      ncard4_back:        "Finally, you can send copies of your topics and subjects or add collaborators to help you create content in them. When you send a copy of an element, whatever changes the receptor does to the element wont affect yours. However, if you add them as collaborators, both of you share the same content and will see the changes. Collaborators can't delete topics or subjects, but can delete cards."

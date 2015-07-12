@@ -34,7 +34,7 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
 
   config.log_level = :debug
-  Mongo::Logger.logger.level = Logger::DEBUG
+  Mongo::Logger.logger.level = Logger::INFO
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

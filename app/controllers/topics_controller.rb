@@ -145,7 +145,7 @@ class TopicsController < ApplicationController
   # PATCH /topics/:id/reset_cards
   # Resets all the cards to box 1.
   def reset_cards
-    @topic.reset_cards
+    @topic.reset_cards(session[:user_id])
 
     respond_to do |format|
       format.html { redirect_to @topic }
