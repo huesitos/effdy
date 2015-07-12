@@ -23,9 +23,13 @@ class Topic
   end
 
   # Moves all the cards back to box 1.
-  def reset_cards
-    self.cards.each do |card|
-      card.reset
+  def reset_cards(user_id)
+    card_ids = Card.where(topic_id: self.id)
+    
+    card_statistics = CardStatistic.where(card_id: {"$in" => card_ids}, user_id: user_id)
+
+    card_statistics.each do |cs|
+      cs.reset
     end
   end
 

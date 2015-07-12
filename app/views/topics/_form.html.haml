@@ -55,8 +55,9 @@
           %p.bold= t('.reset_cards')
           = link_to t('.reset_cards'), topic_reset_cards_path(@topic), method: :patch, class: 'btn btn-warning reset'
           .description
-            %p= ""
-      .form-group
-        .col-sm-offset-3.col-sm-5
-          %p.bold= t('.delete_topic')
-          = link_to t('.delete_topic'), topic_path(@topic), method: :delete, class: 'btn btn-danger'
+            %p= t(".reset_descrip")
+      - if @topic.user_id == current_user.id
+        .form-group
+          .col-sm-offset-3.col-sm-5
+            %p.bold= t('.delete_topic')
+            = link_to t('.delete_topic'), topic_path(@topic), method: :delete, class: 'btn btn-danger'
