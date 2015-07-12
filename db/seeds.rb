@@ -7,10 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Removing all documents from the DB
-User.all.each do |user|
-	user.update(first_time: false)
-end
-
 # Topic.all.destroy
 # TopicConfig.all.destroy
 # Subject.all.destroy
