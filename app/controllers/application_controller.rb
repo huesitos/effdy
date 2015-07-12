@@ -37,11 +37,11 @@ class ApplicationController < ActionController::Base
     end
 
     def set_locale
-      if session[:user_id]
+      if not session[:user_id].nil?
         user = User.find(session[:user_id])
         I18n.locale = user.locale 
       else
-        I18n.locale = I18n.default_locale
+        I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
       end
     end
  end

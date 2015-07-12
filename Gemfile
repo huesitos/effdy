@@ -45,6 +45,9 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'json'
 
+# Use browser language setting for the app
+gem 'http_accept_language'
+
 # Use awesome front-end notification manager.
 gem 'toastr-rails'
 

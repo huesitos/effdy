@@ -27,7 +27,7 @@ es:
       feature3:             "Marca para revisión solo los temas más esenciales."
       feature4:             "Archiva las asignaturas/temas que ya no estarás estudiando durante un largo tiempo para hacer espacio a más contenido."
       feature5:             "Comparte o colabora con tus amigos para crear nuevo contenido de estudio."
-      opensource:           "¡A+ es un projecto de código libre! Pasa por el repositorio en Github y brinda una mano donde puedas. La comunidad lo apreciará.!"
+      opensource:           "¡A+ es un projecto de código libre! Pasa por el repositorio en Github."
       guide:                'Guía de uso'
       go-guide:             '¿Quieres saber más? Revisa nuestra guía de uso.'
       repo:                 'Repositorio'

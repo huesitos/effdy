@@ -27,7 +27,7 @@ en:
       feature3:							"Schedule for review the essential topics at the moment."
       feature4:							"Archive the subjects/topics that you won't be seeing for a long time to make space for other content."
       feature5:							"Share or collaborate with your friends to create new study content."
-      opensource:						"A+ is an free software project! Check out the Github repository, and give a hand wherever you can. It will be much appreciated by the community."
+      opensource:						"A+ is an free software project! Check out the Github repository."
       guide:								'Getting started guide'
       go-guide:							'Want to know more? Check our getting started guide.'
       repo:									'App repository'
