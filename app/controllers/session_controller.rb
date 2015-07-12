@@ -9,40 +9,44 @@ class SessionController < ApplicationController
 
 		I18n.locale = @user.locale
 
-		basics = @user.subjects.create(name: 'Basics', code: 'BASICS')
-		basics.subject_configs.create(color: '#000', user_id: @user.id)
+		if @user.first_time
+			basics = @user.subjects.create(name: 'Basics', code: 'BASICS')
+			basics.subject_configs.create(color: '#000', user_id: @user.id)
 
-		review_topic = basics.topics.create(title: t('.review_title'), user_id: @user.id)
-		review_topic.topic_configs.create(user_id: @user.id, reviewing: true)
+			review_topic = basics.topics.create(title: t('.review_title'), user_id: @user.id)
+			review_topic.topic_configs.create(user_id: @user.id, reviewing: true)
 
-		rcards = [
-			{front: t('.rcard1_front'), back: t('.rcard1_back')},
-			{front: t('.rcard2_front'), back: t('.rcard2_back')},
-			{front: t('.rcard3_front'), back: t('.rcard3_back')},
-			{front: t('.rcard4_front'), back: t('.rcard4_back')},
-			{front: t('.rcard5_front'), back: t('.rcard5_back')}
-		]
+			rcards = [
+				{front: t('.rcard1_front'), back: t('.rcard1_back')},
+				{front: t('.rcard2_front'), back: t('.rcard2_back')},
+				{front: t('.rcard3_front'), back: t('.rcard3_back')},
+				{front: t('.rcard4_front'), back: t('.rcard4_back')},
+				{front: t('.rcard5_front'), back: t('.rcard5_back')}
+			]
 
-		review_topic.cards.create(rcards)
+			review_topic.cards.create(rcards)
 
-		review_topic.cards.each do |card|
-			card.card_statistics.create(user_id: @user.id)
-		end
+			review_topic.cards.each do |card|
+				card.card_statistics.create(user_id: @user.id)
+			end
 
-		navigation_topic = basics.topics.create(title: t('.navigation_title'), user_id: @user.id)
-		navigation_topic.topic_configs.create(user_id: @user.id, reviewing: true)
+			navigation_topic = basics.topics.create(title: t('.navigation_title'), user_id: @user.id)
+			navigation_topic.topic_configs.create(user_id: @user.id, reviewing: true)
 
-		ncards = [
-			{front: t('.ncard1_front'), back: t('.ncard1_back')},
-			{front: t('.ncard2_front'), back: t('.ncard2_back')},
-			{front: t('.ncard3_front'), back: t('.ncard3_back')},
-			{front: t('.ncard4_front'), back: t('.ncard4_back')}
-		]
+			ncards = [
+				{front: t('.ncard1_front'), back: t('.ncard1_back')},
+				{front: t('.ncard2_front'), back: t('.ncard2_back')},
+				{front: t('.ncard3_front'), back: t('.ncard3_back')},
+				{front: t('.ncard4_front'), back: t('.ncard4_back')}
+			]
 
-		navigation_topic.cards.create(ncards)
+			navigation_topic.cards.create(ncards)
 
-		navigation_topic.cards.each do |card|
-			card.card_statistics.create(user_id: @user.id)
+			navigation_topic.cards.each do |card|
+				card.card_statistics.create(user_id: @user.id)
+			end
+
+			@user.update(first_time: false)
 		end
 
 		redirect_to study_calendar_path

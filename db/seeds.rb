@@ -13,6 +13,7 @@ Subject.all.destroy
 SubjectConfig.all.destroy
 Card.all.destroy
 CardStatistic.all.destroy
+User.all.destroy
 
 dmlara = User.create("username" => "dmlaramartin", "name" => "Denisse Lara", "image" => "http://pbs.twimg.com/profile_images/3673739764/87b714e822179d84bfce07c72119b0ef_normal.jpeg", "provider" => "twitter", "uid" => "1060238214")
 black = User.create("username" => "blackangel3455", "name" => "Denisse Margarita Lara Martín", "image" => "https://lh3.googleusercontent.com/-NKL_KxeCkpg/AAAAAAAAAAI/AAAAAAAAChE/Y-daSdzchkw/photo.jpg?sz=50", "provider" => "google_oauth2", "uid" => "113747951519490530865")
