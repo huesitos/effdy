@@ -496,16 +496,20 @@ table {
 				.review_date {
 					font-size: 0.5em;
 				}
+
+				span {
+					display: inline-block;
+					width: 70%;
+					text-align: left;
+				}
+
+				.options {
+					vertical-align: top;
+					width: 25%;
+					display: inline-block;
+				}
 			}
 
-			.options {
-				vertical-align: top;
-				width: 25%;
-				display: inline-block;
-				position: relative;
-				top: -45px;
-				right: -115px;
-			}
 		}
 	}
 
@@ -605,4 +609,21 @@ table {
 .label {
 	display: inline-block;
 	min-width: 100px;
+}
+
+@media screen and (max-width: 1024px) {
+	#main-content {
+		max-width: 1024px;
+	}
+	.topics, .subjects, .reviews {
+		.st_row {
+			width: 100%;
+		}
+
+		.cards {
+			.card-container {
+				width: 30%;
+			}
+		}
+	}
 }
