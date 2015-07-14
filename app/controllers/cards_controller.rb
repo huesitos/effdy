@@ -16,12 +16,14 @@ class CardsController < ApplicationController
   def new
     @view_title = @topic.title
     @card = Card.new
+    @new = true
   end
 
   # GET /cards/1/edit
   def edit
     @view_title = t('.edit_card')
     @topics = TopicConfig.topics_from_user(session[:user_id]).where(:_id.ne => @card.topic_id)
+    @edit = true
   end
 
   # POST /cards

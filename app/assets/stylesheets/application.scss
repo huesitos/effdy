@@ -312,26 +312,16 @@ table {
 	top: 20px;
 	right: 40px;
 
-	button {
+	li {
+		list-style: none;
+	}
+
+	a {
 		border: none;
 		background: url(asset-path('icons.png')) no-repeat -48px -80px;
 		width: 40px;
+		display: inline-block;
 		height: 40px;
-	}
-
-	a#review {
-		width: 2em;
-		height: 2em;
-		display: block;
-	}
-
-	a.on {
-		background: url(asset-path("review-on.png")) no-repeat center;
-		background-size: 100%;
-	}
-	a.off {
-		background: url(asset-path("review-off.png")) no-repeat center;
-		background-size: 100%;
 	}
 }
 
