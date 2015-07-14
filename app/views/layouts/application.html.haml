@@ -62,15 +62,17 @@
         = flash_message
         #yield
           = yield
-        #add-menu
-          - if @subject
-            %li= link_to "", new_topic_path(subject: @subject.id)
-          - elsif "#{controller.controller_name}##{controller.action_name}" == "topics#index"
-            %li= link_to "", new_topic_path
-          - elsif "#{controller.controller_name}##{controller.action_name}" == "subjects#index"
-            %li= link_to "", new_subject_path
-          - elsif "#{controller.controller_name}##{controller.action_name}" == "topics#show"
-            %li= link_to "", new_topic_card_path(@topic)
+
+        - if ['topics#index', 'subjects#index'].include? "#{controller.controller_name}##{controller.action_name}" or @topic or @subject
+          #add-menu
+            - if @subject
+              = link_to "+", new_topic_path(subject: @subject.id)
+            - elsif "#{controller.controller_name}##{controller.action_name}" == "topics#index"
+              = link_to "+", new_topic_path
+            - elsif "#{controller.controller_name}##{controller.action_name}" == "subjects#index"
+              = link_to "+", new_subject_path
+            - elsif @topic
+              = link_to "+", new_topic_card_path(@topic)
 
         - if @total_notifications > 0
           #notification-bell

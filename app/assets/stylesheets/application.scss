@@ -311,17 +311,22 @@ table {
 	position: fixed;
 	top: 20px;
 	right: 40px;
-
-	li {
-		list-style: none;
-	}
+	width: 40px;
+	height: 40px;
+	background-color: #D42D2D;
+	border-radius: 100%;
+  box-shadow: #888 0px 2px 3px;
 
 	a {
-		border: none;
-		background: url(asset-path('icons.png')) no-repeat -48px -80px;
-		width: 40px;
+		width: inherit;
+		height: inherit;
 		display: inline-block;
-		height: 40px;
+		padding: 7px 13px;
+	}
+
+	a, a:visited, a:hover, a:focus, a:active {
+	  color: white;
+	  text-decoration: none;
 	}
 }
 
