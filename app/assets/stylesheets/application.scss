@@ -615,7 +615,7 @@ table {
 	#main-content {
 		max-width: 1024px;
 	}
-	.topics, .subjects, .reviews {
+	.topics, .subjects, .review {
 		.st_row {
 			width: 100%;
 		}
@@ -623,6 +623,18 @@ table {
 		.cards {
 			.card-container {
 				width: 30%;
+			}
+		}
+	}
+
+	.review {
+		.cards {
+			.card-container {
+				width: 95% !important;
+			}
+
+			.answer {
+				width: 95%;
 			}
 		}
 	}

@@ -1,15 +1,13 @@
 .cards
-	.col-sm-6
-		.card-container
-			.side
-				= text_area_tag(:front, @card.front, disabled: true)
+	.card-container
+		.side
+			= text_area_tag(:front, @card.front, disabled: true)
 
-	.col-sm-4
-		.answer
-			%p.bold= t('.your_answer')
-			= form_tag(topic_card_back_path, method: 'get') do
-				= text_area_tag(:u_answer, '', {placeholder: t('.your_answer'), class: 'form-control'})
-				= text_field_tag(:start_time, @start_time, style: 'display:none')
-				
-				.result
-					= submit_tag(t('.flip'), class: 'btn btn-default')
+	.answer
+		%p.bold= t('.your_answer')
+		= form_tag(topic_card_back_path, method: 'get') do
+			= text_area_tag(:u_answer, '', {placeholder: t('.your_answer'), class: 'form-control'})
+			= text_field_tag(:start_time, @start_time, style: 'display:none')
+			
+			.result
+				= submit_tag(t('.flip'), class: 'btn btn-default')

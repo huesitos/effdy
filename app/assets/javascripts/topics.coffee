@@ -20,11 +20,10 @@ $(document).on 'load page:ready page:change', ->
           delete_from_left_menu.remove()
       })
 
-  $('.side').click ->
-    $side = $('.active')
-    if $side.hasClass('front')
-      $(this).children('.front').toggleClass('active')
-      $(this).children('.back').toggleClass('active')
-    else
-      $(this).children('.back').toggleClass('active')
-      $(this).children('.front').toggleClass('active')
+  $('.front').click ->
+    $(this).toggleClass('active')
+    $(this).parent().children('.back').toggleClass('active')
+
+  $('.back').click ->
+    $(this).toggleClass('active')
+    $(this).parent().children('.front').toggleClass('active')
