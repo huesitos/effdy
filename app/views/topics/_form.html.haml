@@ -18,10 +18,10 @@
         = f.label :subject_id, t('.subject'), class: 'control-label col-sm-3'
         .col-sm-5
           %select{name: :subject_id, id: :subject_id, class: 'form-control'}
-            - if @subject
-              %option{value: "#{@subject._id}"}
-                =@subject.code
-                =@subject.name
+            - if @topic_subject
+              %option{value: "#{@topic_subject._id}"}
+                =@topic_subject.code
+                =@topic_subject.name
             - @subjects.each do |subject|
               %option{value: "#{subject._id}"}
                 =subject.code
