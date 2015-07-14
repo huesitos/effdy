@@ -16,14 +16,12 @@ class CardsController < ApplicationController
   def new
     @view_title = @topic.title
     @card = Card.new
-    @url = topic_cards_path(@topic._id) # url the form will use to send the values of the form
   end
 
   # GET /cards/1/edit
   def edit
     @view_title = t('.edit_card')
     @topics = TopicConfig.topics_from_user(session[:user_id]).where(:_id.ne => @card.topic_id)
-    @url = topic_card_path(@topic._id, @card._id) # url the form will use to send the values of the form
   end
 
   # POST /cards
@@ -62,7 +60,7 @@ class CardsController < ApplicationController
   # PATCH/PUT /cards/1.json
   def update
     respond_to do |format|
-      @card.topic = Topic.find(params[:topic])
+      @card.topic = Topic.find(params[:topic_id])
       if @card.update(card_params)
         @card.save
         format.html {

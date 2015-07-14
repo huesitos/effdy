@@ -1,4 +1,4 @@
-= form_for @card, url: @url do |f|
+= form_for [@topic, @card] do |f|
   - if @errors
     .col-sm-offset-3
       #error_explanation
