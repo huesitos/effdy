@@ -119,7 +119,7 @@ table {
 }
 
 #main-menu {
-	height: 100vh;
+	height: 100%;
 	position: fixed;
 	background-color: #1f356f;
 	width: 60px;
@@ -135,9 +135,11 @@ table {
 
 	#profile {
 		border-top: 1px solid #fff;
+		position: absolute;
+		top: 92%;
 
 		button {
-			padding-top: 10px;
+			padding: 10px 6px;
 			background: transparent;
 			border: none;
 		}
@@ -154,7 +156,6 @@ table {
 
 	#main-options {
 		margin-top: 1em;
-		height: 84%;
 
 		// Buttons icons with their states
 
@@ -588,7 +589,7 @@ table {
 
 // Bootstrap rewrite
 
-.btn-default {
+.btn-default, .btn-default:visited {
 	color: #d42d2d;
 	border-color: #d42d2d;
 }
