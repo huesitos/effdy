@@ -63,15 +63,15 @@
         #yield
           = yield
 
-        - if ['topics#index', 'subjects#index'].include? "#{controller.controller_name}##{controller.action_name}" or @topic or @subject
+        - if ['topics#index', 'subjects#index', 'subjects#show', 'topics#show'].include? "#{controller.controller_name}##{controller.action_name}"
           #add-menu
-            - if @subject
+            - if "#{controller.controller_name}##{controller.action_name}" == "subjects#show"
               = link_to "+", new_topic_path(subject: @subject.id)
             - elsif "#{controller.controller_name}##{controller.action_name}" == "topics#index"
               = link_to "+", new_topic_path
             - elsif "#{controller.controller_name}##{controller.action_name}" == "subjects#index"
               = link_to "+", new_subject_path
-            - elsif @topic
+            - elsif "#{controller.controller_name}##{controller.action_name}" == "topics#show"
               = link_to "+", new_topic_card_path(@topic)
 
         - if @total_notifications > 0
