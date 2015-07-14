@@ -27,7 +27,7 @@ body {
 	overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, span, label, input, textarea, td, th, a, ul, li, ol  {
+h1, h2, h3, h4, h5, h6, span, p, label, input, textarea, td, th, a, ul, li, ol  {
 	margin: 0 0;
 	padding: 0 0;
 	font-size: 1em;
@@ -39,11 +39,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p, span, label, input, textarea, td, th, a, ul, li, ol {
-	margin: 0 0;
-	padding: 0 0;
-	font-size: 1em;
-	line-height: 1em;
 	font-family: 'Bitter', serif;
+}
+
+label {
+	font-size: 0.8em;
 }
 
 textarea {
@@ -447,8 +447,12 @@ table {
 .form-group {
 	.description {
 		color: #aaa;
-		font-size: 0.8em;
+		font-size: 0.7em;
 		text-align: justify;
+
+		p{
+			line-height: 18px;
+		}
 	}
 }
 
@@ -623,6 +627,10 @@ table {
 		font-size: 16px;
 	}
 
+	label {
+		font-size: 0.7em;
+	}
+
 	#main-content {
 		max-width: 1024px;
 	}
@@ -631,6 +639,14 @@ table {
 		a {
 			padding: 8px 15px;
 			font-size: 1em;
+		}
+	}
+
+	.form-group {
+		.description {
+			p {
+				font-size: 0.6em;
+			}
 		}
 	}
 
