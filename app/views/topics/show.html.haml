@@ -10,7 +10,7 @@
 
 	.buttons
 		- @topic_config.reviewing ? text = t('.reviewing') : text = t('.review')
-		= link_to text, topic_set_reviewing_path(@topic), method: :patch, class: "btn btn-default #{@topic_config.reviewing ? 'reviewing' : 'review'}", id: 'review'
+		= link_to text, topic_set_reviewing_path(@topic, back: topic_path(@topic)), method: :patch, class: "btn btn-default #{@topic_config.reviewing ? 'reviewing' : 'review'}", id: 'review'
 		- if @exist_cards_to_study
 			= link_to t('.study'), topic_review_path(@topic), class: 'btn btn-default', id: 'study'
 

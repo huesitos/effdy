@@ -138,7 +138,7 @@ class TopicsController < ApplicationController
         @topic_config.update(reviewing: true)
       end
 
-      format.html { redirect_to @topic }
+      format.html { redirect_to params[:back] }
     end
   end
 
