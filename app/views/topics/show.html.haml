@@ -2,10 +2,10 @@
 	.info
 		%h4
 			= t('.info')
-		- if @topic.subject && @topic.subject.subject_configs.find_by(user_id: current_user.id)
+		- if @topic.subject && sc = @topic.subject.subject_configs.find_by(user_id: current_user.id)
 			%p
 				Subject:
-				= link_to @topic.subject.name, @topic.subject
+				= link_to @topic.subject.name, @topic.subject, style: "color: #{sc.color}"
 		%p= "#{t('.n_cards')} #{Integer(@topic.cards.count)}"
 
 	.buttons

@@ -119,7 +119,7 @@ table {
 }
 
 #main-menu {
-	height: 100vh;
+	height: 100%;
 	position: fixed;
 	background-color: #1f356f;
 	width: 60px;
@@ -135,9 +135,11 @@ table {
 
 	#profile {
 		border-top: 1px solid #fff;
+		position: absolute;
+		top: 92%;
 
 		button {
-			padding-top: 10px;
+			padding: 10px 6px;
 			background: transparent;
 			border: none;
 		}
@@ -154,7 +156,6 @@ table {
 
 	#main-options {
 		margin-top: 1em;
-		height: 84%;
 
 		// Buttons icons with their states
 
@@ -310,27 +311,22 @@ table {
 	position: fixed;
 	top: 20px;
 	right: 40px;
+	width: 40px;
+	height: 40px;
+	background-color: #D42D2D;
+	border-radius: 100%;
+  box-shadow: #888 0px 2px 3px;
 
-	button {
-		border: none;
-		background: url(asset-path('icons.png')) no-repeat -48px -80px;
-		width: 40px;
-		height: 40px;
+	a {
+		width: inherit;
+		height: inherit;
+		display: inline-block;
+		padding: 7px 13px;
 	}
 
-	a#review {
-		width: 2em;
-		height: 2em;
-		display: block;
-	}
-
-	a.on {
-		background: url(asset-path("review-on.png")) no-repeat center;
-		background-size: 100%;
-	}
-	a.off {
-		background: url(asset-path("review-off.png")) no-repeat center;
-		background-size: 100%;
+	a, a:visited, a:hover, a:focus, a:active {
+	  color: white;
+	  text-decoration: none;
 	}
 }
 
@@ -588,7 +584,7 @@ table {
 
 // Bootstrap rewrite
 
-.btn-default {
+.btn-default, .btn-default:visited {
 	color: #d42d2d;
 	border-color: #d42d2d;
 }

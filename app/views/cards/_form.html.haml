@@ -1,4 +1,4 @@
-= form_for @card, url: @url do |f|
+= form_for [@topic, @card] do |f|
   - if @errors
     .col-sm-offset-3
       #error_explanation
@@ -8,7 +8,7 @@
             %li= msg
           
   .col-sm-12
-    - if @url[/cards\/[0-9]/]
+    - if @edit
       .field
         = f.label :topic, t('.topic'), class: 'control-label'
         %select{name: :new_topic, id: :new_topic, class: 'form-control'}
@@ -24,7 +24,7 @@
       = f.text_area :back, placeholder: t('.back_placeholder'), class: 'form-control'
     .actions
       %a{href: "#{topic_path(@topic)}", class: 'btn'}= t('.cancel')
-      - if @url[/cards\/[0-9]/]
+      - if @edit
         = f.submit t('.save'), class: 'btn btn-default'
       - else
         = f.submit t('.done'), class: 'btn btn-default'

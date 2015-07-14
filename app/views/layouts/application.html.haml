@@ -62,20 +62,17 @@
         = flash_message
         #yield
           = yield
-        #add-menu.dropdown
-          %button#dropdownMenu2.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-          %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu2"}
-            - if @subject
-              %li= link_to t('.add_topic'), new_topic_path(subject: @subject.id)
-            - else
-              %li= link_to t('.add_topic'), new_topic_path
-            %li= link_to t('.add_subject'), new_subject_path
-            - if "#{controller.controller_name}##{controller.action_name}" == "topics#show"
-              %li= link_to t('.add_card'), new_topic_card_path(@topic)
-        - if "#{controller.controller_name}##{controller.action_name}" == "topics#show"
-          - topic_config = @topic.topic_configs.find_by(user_id: current_user.id)
-          - topic_config.reviewing ? rclass = "on" : rclass = "off"
-          = link_to "", {:controller => "topics", :action => "set_reviewing", :topic_id => @topic.id}, {:method => :patch, :id => 'review', :class => rclass}
+
+        - if ['topics#index', 'subjects#index', 'subjects#show', 'topics#show'].include? "#{controller.controller_name}##{controller.action_name}"
+          #add-menu
+            - if "#{controller.controller_name}##{controller.action_name}" == "subjects#show"
+              = link_to "+", new_topic_path(subject: @subject.id)
+            - elsif "#{controller.controller_name}##{controller.action_name}" == "topics#index"
+              = link_to "+", new_topic_path
+            - elsif "#{controller.controller_name}##{controller.action_name}" == "subjects#index"
+              = link_to "+", new_subject_path
+            - elsif "#{controller.controller_name}##{controller.action_name}" == "topics#show"
+              = link_to "+", new_topic_card_path(@topic)
 
         - if @total_notifications > 0
           #notification-bell
