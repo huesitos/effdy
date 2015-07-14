@@ -54,6 +54,12 @@ textarea {
 	line-height: 1.5em;
 }
 
+textarea:disabled {
+	-webkit-text-fill-color: rgba(84, 84, 84, 1); 
+  -webkit-opacity: 1; 
+  color: rgba(84, 84, 84, 1); 
+}
+
 h1 {
 	font-size: 2em;
 }
@@ -309,10 +315,10 @@ table {
 #add-menu {
 	text-align: left;
 	position: fixed;
-	top: 20px;
+	bottom: 40px;
 	right: 40px;
-	width: 40px;
-	height: 40px;
+	width: 50px;
+	height: 50px;
 	background-color: #D42D2D;
 	border-radius: 100%;
   box-shadow: #888 0px 2px 3px;
@@ -321,7 +327,8 @@ table {
 		width: inherit;
 		height: inherit;
 		display: inline-block;
-		padding: 7px 13px;
+	  padding: 6px 14px;
+	  font-size: 1.5em;
 	}
 
 	a, a:visited, a:hover, a:focus, a:active {
@@ -473,18 +480,18 @@ table {
 				cursor: pointer;
 
 				.front {
-					font-weight: bold;
 					display: none;
+					font-size: 0.8em;
 				}
 				.back {
 					color: #666;
 					font-size: 0.6em;
 					display: none;
+					font-size: 0.7em;
 				}
 
 				.front, .back{
 					padding: 0.5em 0.2em;
-					font-size: 0.7em;
 					height: 75%;
 					overflow: hidden;
 				}
@@ -612,9 +619,21 @@ table {
 }
 
 @media screen and (max-width: 1024px) {
+	body {
+		font-size: 16px;
+	}
+
 	#main-content {
 		max-width: 1024px;
 	}
+
+	#add-menu {
+		a {
+			padding: 8px 15px;
+			font-size: 1em;
+		}
+	}
+
 	.topics, .subjects, .review {
 		.st_row {
 			width: 100%;
@@ -622,7 +641,7 @@ table {
 
 		.cards {
 			.card-container {
-				width: 30%;
+				width: 46%;
 			}
 		}
 	}

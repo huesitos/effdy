@@ -174,8 +174,8 @@ en:
       save:								"Save"
       done:								"Done"
       continue:						"Continue"
-      back_placeholder:		"Front side"
-      front_placeholder:	"Back side"
+      back_placeholder:		"Back side"
+      front_placeholder:	"Front side"
 
   settings:
     settings:

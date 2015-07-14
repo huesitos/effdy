@@ -17,12 +17,11 @@
 					margin: 0px;
 					border: medium none;
 					padding: 10px;
+					color: #333 !important;
 				}
 
 				textarea#front, textarea#back {
-					color: black;
 					text-align: center;
-					padding: 10px;
 				}
 			}
 		}
@@ -44,6 +43,7 @@
 			form {
 				textarea:disabled {
 					background-color: white;
+					color: black;
 				}
 			}
 
@@ -58,8 +58,7 @@
 				#wrong {
 					background-color: #c9302c;
 					color: #fff;
-					position:relative;
-					right: -60%;
+					float: right;
 				}
 			}
 		}
