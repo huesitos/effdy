@@ -4,9 +4,9 @@
 			= t('.info')
 		- if @topic.subject && sc = @topic.subject.subject_configs.find_by(user_id: current_user.id)
 			%p
-				Subject:
+				= "#{t('.subject')}:"
 				= link_to @topic.subject.name, @topic.subject, style: "color: #{sc.color}"
-		%p= "#{t('.n_cards')} #{Integer(@topic.cards.count)}"
+		%p= "#{t('.n_cards')}: #{Integer(@topic.cards.count)}"
 
 	.buttons
 		- @topic_config.reviewing ? text = t('.reviewing') : text = t('.review')

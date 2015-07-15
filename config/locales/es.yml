@@ -38,7 +38,7 @@ es:
       topics_review:      'Temas a repasar'
       week_review: 				'Semana de repaso'
       placeholder: 				"No ningún tema a estudiar este día."
-      n_cards: 						"no. de cartas."
+      n_cards: 						"no. de cartas"
       review_time: 				"tiempo aprox. de revisión"
 
     front:
@@ -121,24 +121,24 @@ es:
   topics:
     index:
       topics:							"Temas"
-      reviewing:					"Repasando"
-      review:							"Repasar"
-      delete:							"Eliminar"
-      confirm:						"¿Está seguro?"
-      placeholder:				"No hay temas."
+      delete:             "Eliminar"
+      confirm:            "¿Está seguro?"
+      placeholder:        "No hay temas."
 
     topic:
-      delete:							"Eliminar"
-      confirm:						"¿Está seguro?"
-      review:							"Repasar"
+      delete:             "Eliminar"
+      confirm:            "¿Está seguro?"
+      review:             "Repasar"
+      reviewing:					"Repasando"
 
     show:
-      n_cards: 						"no. de cartas."
+      n_cards: 						"no. de cartas"
       info:								"Información"
       reviewing:					"Repasando"
       review:							"Repasar"
       study:							"Estudiar"
       placeholder:				"No hay cartas en este tema."
+      subject:            "Asignatura"
 
     new:
       new_topic:					"Nuevo tema"
@@ -175,10 +175,13 @@ es:
       topic:							"Tema"
       cancel:							"Cancelar"
       save:								"Guardar"
+      done:               "Terminar"
+      continue:           "Continuar"
+      back_placeholder:   "Lado trasero"
+      front_placeholder:  "Lado frontal"
+
+    create:
       done:								"Terminar"
-      continue:						"Continuar"
-      back_placeholder:		"Lado trasero"
-      front_placeholder:	"Lado frontal"
 
   settings:
     settings:

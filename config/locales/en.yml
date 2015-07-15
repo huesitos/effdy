@@ -129,12 +129,13 @@ en:
       placeholder:				"There are no topics."
 
     show:
-      n_cards: 						"no. de cartas."
+      n_cards: 						"# of cards"
       info:								"Information"
       reviewing:					"Reviewing"
       review:							"Review"
       study:							'Study'
       placeholder:				"There are no cards in this topic."
+      subject:            "Subject"
 
     new:
       new_topic:					"New topic"
@@ -172,11 +173,14 @@ en:
       topic:							"Topic"
       cancel:							"Cancel"
       save:								"Save"
-      done:								"Done"
-      continue:						"Continue"
-      back_placeholder:		"Back side"
-      front_placeholder:	"Front side"
+      done:               "Done"
+      continue:           "Continue"
+      back_placeholder:   "Back side"
+      front_placeholder:  "Front side"
 
+    create:
+      done:								"Done"
+      
   settings:
     settings:
       settings:						"Configurations"
