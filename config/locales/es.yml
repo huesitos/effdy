@@ -38,7 +38,7 @@ es:
       topics_review:      'Temas a repasar'
       week_review: 				'Semana de repaso'
       placeholder: 				"No ningún tema a estudiar este día."
-      n_cards: 						"no. de cartas"
+      n_cards: 						"no. de tarjetas"
       review_time: 				"tiempo aprox. de revisión"
 
     front:
@@ -50,6 +50,9 @@ es:
       no_answer:          "Ninguna respuesta proporcionada."
       correct:            "Correcto"
       incorrect:          'Incorrecto'
+
+    review:
+      reviewed:           "El repaso ha finalizado correctamente."
 
   share_request:
     new:
@@ -82,6 +85,9 @@ es:
       accept:							"Aceptar"
       decline:						"Declinar"
 
+    create:
+      not_found:          "Usuario no encontrado."
+
   subjects:
     index:
       subjects: 					'Asignaturas'
@@ -104,6 +110,15 @@ es:
 
     edit:
       edit_subject:				"Editando asignatura"
+
+    create:
+      created:            'La asignatura fue creada correctamente.'
+
+    update:
+      updated:            'La asignatura fue modificada correctamente.'
+
+    destroy:
+      destroyed:          'La asignatura fue destruida correctamente.'
 
     form:
       code:								"Código"
@@ -132,12 +147,12 @@ es:
       reviewing:					"Repasando"
 
     show:
-      n_cards: 						"no. de cartas"
+      n_cards: 						"no. de tarjetas"
       info:								"Información"
       reviewing:					"Repasando"
       review:							"Repasar"
       study:							"Estudiar"
-      placeholder:				"No hay cartas en este tema."
+      placeholder:				"No hay tarjetas en este tema."
       subject:            "Asignatura"
 
     new:
@@ -145,6 +160,15 @@ es:
 
     edit:
       edit_topic:					"Editando tema"
+
+    create:
+      created:            'El tema fue creado correctamente.'
+
+    update:
+      updated:            'El tema fue modificado correctamente.'
+
+    destroy:
+      destroyed:          'El tema fue destruido correctamente.'
 
     form:
       title:							"Título"
@@ -182,6 +206,13 @@ es:
 
     create:
       done:								"Terminar"
+      created:            'La tarjeta fue creada correctamente.'
+
+    update:
+      updated:            'La tarjeta fue modificada correctamente.'
+
+    destroy:
+      destroyed:          'La tarjeta fue destruida correctamente.'
 
   settings:
     settings:
@@ -192,22 +223,30 @@ es:
   session:
     create:
       review_title:       "Proceso de repaso"
-      rcard1_front:       "Welcome to A+! This is a sample topic we added to help you learn how review your cards. Click the button 'Flip' to flip this card!"
-      rcard1_back:        "Well done! When reviewing your cards you will see the front side of the card first, which is the side where you should write the question. The back side is for the answer. Now click either the 'Correct' or 'Incorrect' button to continue."
-      rcard2_front:       "When reviewing, you should read the question, and think of the answer. See the 'Your answer' box in the side? It's there in case the answer to the question is too long to remember correctly, like a list of things. For instance, say you have the question: Name all states/provinces of your country. Use the box in the side to help you answer the question. When you are done, flip the card."
-      rcard2_back:        "In this side there should be the answer of the question in the front side. You can compare the answer you wrote with the real answer. However, you are the one that must decide whether your answer is 'Correct' or 'Incorrect'. We'll explain the meaning of the buttons in the next card."
-      rcard3_front:       "Whenever you answer a card correctly, the 'level' of understanding of that card raises. A card with a high level of understanding is a card you shouldn't be reviewing frequently. In contrast, when you answer a card incorrectly, the level is decreased, so that you get to see it more often."
-      rcard3_back:        "The app will use the level of the card to calculate an approximated review date. This date is generated using what the topic current 'recall percentage'."
-      rcard4_front:       "The topic 'recall percentage' means 'how much percentage of the information is recalled'. For example, say you want to review a card before you forget more than 10% of it, then you'd set the topic's recall percentage to 90%. Don't worry if it's complicated to understand right now. Click flip to continue."
-      rcard4_back:        "You can edit each topic's 'recall percentage' in the topic's edit page. The default value is 80%. If you set it higher than, review dates will be closer to each other, if you set it lower, review dates will be more sparced."
-      rcard5_front:       "This is most of what you have to know about the reviewing process. There is another topic that covers the basic app navigation and page description."
-      rcard5_back:          "For now, here's a quick summary of the main menu: the first option is the review schedule, which shows what topics you have to review today and also projects the topic to review a week from now; the second option is the subjects list, and the third is the topic's list. After you answer this question you'll be sent to this topic's show page where you can edit, delete, and add cards."
-      navigation_title:   "Basic navigation and features"
-      ncard1_front:       "Welcome to A+! This is a sample topic we added to help you learn how to use the basic functionalities of the app and make your study sessions more effective. Click the button 'Flip' to flip this card!"
-      ncard1_back:        "Well done! The main navigation bar to the left has the following options: the review schedule link, the subjects lit, and the topics, list. We'll be covering the details of each one in the next cards. Click either correct or incorrect."
-      ncard2_front:       "The review schedule lists the topics that have to be reviewed, the number of cards, and the approximated time it will take to review them. The approximated time is calculated based on the sum of the duration in seconds of how much it takes you to answer each card of a topic. Also, there's a 'Week review' projection where you can see, a week in advance, which flascards you'll have to study."
-      ncard2_back:        "Only flascards from topics that are set for reviewing will appear in the calendar. You can set a topic for reviewing with the 'Review' button in the topics list page or inside a topic. To unset the reviewing, click the 'Reviewing' button again."
-      ncard3_front:       "Topics serve to contain flashcards related to a single idea. If you have several topics which are also related you can group them within a subject. The Subjects option in the main menu lists all your subjects. The Topics option in the main menu lists all your topics."
-      ncard3_back:        "In the Subjects and Topics page you can delete subjects or topics respectively. Subjects can also be deteled with its topics with the 'Delete all' option."
-      ncard4_front:       "Inside the topic's and subject's page new options will appear in the main menu. The topic's first option is a page listing all its cards. The first subject's option is a page listing all its topics. Both have a second option linking to their edit page."
-      ncard4_back:        "Finally, you can send copies of your topics and subjects or add collaborators to help you create content in them. When you send a copy of an element, whatever changes the receptor does to the element wont affect yours. However, if you add them as collaborators, both of you share the same content and will see the changes. Collaborators can't delete topics or subjects, but can delete cards."
+      rcard1_front:       "¡Bienveido a A+! Este es un tema de ejemplo que hemos agregado para ayudarte a aprender cómo repasar tus tarjetas de estudio. Dale al botón 'Voltear' para voltear la tarjeta."
+      rcard1_back:        "Al repasar tus tarjetas, verás el lado frontal primero, que es el lado donde debe estar la pregunta o concepto. El lado trasero es donde está la respuesta o definición. Cuando estás viendo el lado trasero aparecerán dos botones: uno para marcar si respondiste correctamente y otro para cuando respondas incorrectamente. Por ahora, presiona cualquiera de los dos."
+
+      rcard2_front:       "Para repasar, lee la pregunta y piensa la respuesta. ¿Ves el campo de texto 'Tu respuesta' a la derecha? Está allí en caso de que la respuesta sea tan complicada que sea tedioso recordarla perfectamente mentalmente. Por ejemplo, si la pregunta es nombrar todos los estados/provincias de tu país, es más sencillo escribirla que solo nombrarles. Usa el campo para responder la pregunta anterior; lista tantos como puedas. Cuando termines, voltea la tarjeta."
+      rcard2_back:        "En un caso real, este lado debería tener la respuesta a la pregunta. Puedes comparar lo que hayas escrito en 'Tu respuesta' con el texto que aparezca en la tarjeta para comprobar si haz respondido bien. Como puedes notar, eres tú quien decide si la respuesta es correcta o incorrecta. Haz click en cualquiera de los dos. En la siguiente tarjeta explicaremos qué significa cada uno."
+
+      rcard3_front:       "Cada vez que una tarjeta sea respondida correctamente su nivel de comprensíón aumenta. Una tarjeta con un nivel de comprensión elevado no tiene que ser repasada tanto como una de menor nivel. Si la tarjeta se marca como respondida incorrectamente su nivel de comprensión disminuye y es marcada para revisión con más frecuencia."
+      rcard3_back:        "La aplicación utiliza el nivel de comprensión de la tarjeta para asignarle una fecha de revisión adecuada. Los temas que tengan que ser repasados en el día serán listados en el calendario de repasos. El calendario también proyecta los próximos repasos en un rango de una semana. La fecha de revisión de las tarjetas es calculada utilizando el porcentaje de retención de su tema. En la siguiente tarjeta definiremos lo que es."
+
+      rcard4_front:       "El 'porcentaje de retención' de un tema significa 'aproximadamente cuánta información es recordada'. Por ejemplo, digamos que quieres repasar una tarjeta antes de que olvides más del 10% de su contenido, entonces, el porcentaje de retención del tema debe ser 90%. No te preocupes si no lo entiendes de inmediato, solo piénsalo como que estarás repasando la tarjeta en el momento justo antes de que se te olvide demasiado."
+      rcard4_back:        "Puedes editar el porcentaje de retención en la página de edición del tema. El valor por defecto es 80%, y es el que recomendamos. Si lo aumentas más, las fechas de revisión estarán más próximas entre ellas, mientras que si lo disminuyes pasará lo contrario."
+
+      rcard5_front:       "Con esto cubrimos la mayor parte de lo que debes saber sobre el proceso de revisión. El tema 'Navegación básica y funcionalidades' cubre los principios básicos de navegación y describe más funcionalidades de la aplicación."
+      rcard5_back:        "Mientras tanto, aquí está un resumen rápido del menú principal: la primera opción es el calendario de revisión, que muestra los temas que debes repasar hoy y también proyecta el estudio de una semana; la segunda opción lista las asignaturas creadas, y la tercera es para la lista de temas. Después de responder esta pregunta serás dirigido a la página del tema de esta tarjeta. ¡Feliz estudio!"
+
+      navigation_title:   "Navegación básica y funcionalidades"
+      ncard1_front:       "¡Bienvenidos a A+! Este es un tema de ejemplo que hemos añadido para ayudarte a aprender las funcionalidades básicas de la aplicación y hacer tus sesiones de estudio más eficientes. Dale click al botón 'Voltear' para voltear esta tarjeta."
+      ncard1_back:        "El menú de navegación es la barra a la izquierda y tiene las siguientes opciones: el horario de estudio, la lista de asignaturas, lista de temas y por último un menú de configuración de tu perfil. Cubriremos todos estos puntos en detalle en las próximas tarjetas. Haz click en cualquiera de los botones Correcto o Incorrecto."
+
+      ncard2_front:       "El calendario de estudio lista los temas con tarjetas que deben ser repasadas, el número de tarjetas que se repasarán y un tiempo de duración aproximado en minutos. La duración aproximada de repaso es calculada en base a la suma de la duración en segundos de lo que te toma pasar de la parte frontal de la tarjeta hasta que selecciones si tu respuesta es correcta o no. El tiempo promedio por defecto es 1 minuto por tarjeta. El menú 'Semana de repaso' permite navegar una semana desde hoy para ver qué temas tendrás que estudiar esos días y así organizar tu tiempo de estudio."
+      ncard2_back:        "Solo las tarjetas de estudio de temas que hayan sido marcados para revisión aparecerán en el calendario. Puedes activar/desactivar un tema para repaso desde la pantalla de lista de temas o en la página de dicho tema."
+
+      ncard3_front:       "Los temas contienen tarjetas relacionadas con una idea. Si varios temas están relacionados, puedes agruparlos en asignaturas. La opción de asignaturas en el menú principal te muestra todas tus asignaturas y puedes crear más desde esa pantalla. La opción de temas en el menú principal te muestra todos tus temas y también puedes agregar más desde esa pantalla. En ambas pantallas también puedes eliminar dichos elementos."
+      ncard3_back:        "Para agregar, eliminar o editar una tarjeta, debes estar en la pantalla de su tema."
+
+      ncard4_front:       "Cuando estás en la pantalla de un tema o asignatura notarás que aparecen más opciones en la barra de menú izquierdo. Este menú secundario incluye los formularios de edición del tema o asignatura, la opción de compartir el elemento y la primera opción varía según sea un tema o asignatura. La primera opción de un tema es ver su listado de tarjetas. La primera opción de una asignatura es ver su listado de temas."
+      ncard4_back:        "La opción de compartir te lleva a una pantalla donde puedes enviar una copia de tu tema/asignatura a otro usuario o agregarlo como colaborador de este. Cuando envias una copia, si el usuario destinatario se le creará un nuevo elemento que podrá modificar sin que se altere el tuyo. Por el contrario, si agregas a un usuario como colaborador, este podrá agregar o editar nuevas tarjetas o temas y ambos podrán ver esas modificaciones. Los colaboradores no pueden eliminar temas o asignaturas, pero si tarjetas."

@@ -81,7 +81,7 @@ class TopicsController < ApplicationController
         end
 
         format.html {
-          flash[:success] = 'Topic created successfully.'
+          flash[:success] = t('.created')
 
           redirect_to @topic
         }
@@ -101,7 +101,7 @@ class TopicsController < ApplicationController
         end
 
         format.html {
-          flash[:success] = 'Topic updated successfully.'
+          flash[:success] = t('.updated')
 
           redirect_to @topic
         }
@@ -118,7 +118,7 @@ class TopicsController < ApplicationController
     @topic.destroy
     respond_to do |format|
       format.html {
-        flash[:success] = 'Topic deleted successfully.'
+        flash[:success] = t('.destroyed')
 
         redirect_to topics_path
       }

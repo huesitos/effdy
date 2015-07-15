@@ -2,7 +2,7 @@ class SessionController < ApplicationController
   def create
   	# find_or_create_from_hash method is defined in app/models/users.rb
 		# the method finds an existing user, or creates a new one
-		@user = User.find_or_create_from_auth_hash(auth_hash)
+		@user = User.find_or_create_from_auth_hash(auth_hash, I18n.locale)
 		# current_user= method defined in app/controllers/application_controller.rb
 		# the method sets the session variables
 		self.current_user = @user
@@ -54,8 +54,7 @@ class SessionController < ApplicationController
 
   def destroy
   	reset_session
-  	cache = Rails.cache
-    cache.write('subject', '')
+  	
   	# Go back to welcome page
 		redirect_to login_url
   end

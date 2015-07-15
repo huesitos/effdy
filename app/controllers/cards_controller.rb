@@ -43,7 +43,7 @@ class CardsController < ApplicationController
           @card.card_statistics << CardStatistic.create(user_id: c)
         end
 
-        flash[:success] = 'Card created successfully.'
+        flash[:success] = t('.created')
 
         if params[:commit] == t('.done')
           format.html { redirect_to topic_path(@card.topic) }
@@ -66,7 +66,7 @@ class CardsController < ApplicationController
       if @card.update(card_params)
         @card.save
         format.html {
-          flash[:success] = 'Card updated successfully.'
+          flash[:success] = t('.updated')
 
           redirect_to topic_path(@topic.id)
         }
@@ -84,7 +84,7 @@ class CardsController < ApplicationController
     @card.destroy
     respond_to do |format|
       format.html {
-        flash[:success] = 'Card deleted successfully.'
+        flash[:success] = t('.destroyed')
 
         redirect_to topic_path(topic)
       }

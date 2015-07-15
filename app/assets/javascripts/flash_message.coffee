@@ -22,7 +22,7 @@ $(() ->
       }
   )
 
-  toastr.options.positionClass = 'toast-bottom-right'
+  toastr.options.positionClass = 'toast-bottom-left'
 
   $.each(texts, (idx, t) -> toastr[t.type](t.text))
 )

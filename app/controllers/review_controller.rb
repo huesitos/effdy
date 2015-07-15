@@ -33,7 +33,7 @@ class ReviewController < ApplicationController
         @card = Card.find(card_id)
         format.html { redirect_to topic_card_front_path(card_id: @card._id) }
       else
-        flash[:success] = "Review finished successfully."
+        flash[:success] = t('.reviewed')
         format.html { redirect_to topic_path(@topic) }
       end
   	end

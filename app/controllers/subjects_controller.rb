@@ -64,7 +64,7 @@ class SubjectsController < ApplicationController
         @subject.subject_configs << subject_config
 
         format.html {
-          flash[:success] = 'Subject created sucessfully.'
+          flash[:success] = t('.created')
 
           redirect_to subjects_url
         }
@@ -84,7 +84,7 @@ class SubjectsController < ApplicationController
         subject_config.update(color: params[:subject_color])
 
         format.html {
-          flash[:success] = 'Subject updated sucessfully.'
+          flash[:success] = t('.updated')
 
           redirect_to subject_path(@subject)
         }
@@ -129,7 +129,7 @@ class SubjectsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        flash[:success] = 'Subject deleted sucessfully.'
+        flash[:success] = t('.destroyed')
 
         redirect_to subjects_url
       }

@@ -16,12 +16,12 @@ class User
 
   validates :username, :provider, :uid, presence: true
 
-  def self.find_or_create_from_auth_hash(hash)
+  def self.find_or_create_from_auth_hash(hash, locale)
     if @user = find_by(provider: hash['provider'], uid: hash['uid'])
       @user
     else
       if hash['provider'] == "twitter"
-        @user = User.create(username: hash['info']['nickname'], name: hash['info']['name'],image: hash['info']['image'], provider: hash['provider'], uid: hash['uid'], locale: hash['lang'])
+        @user = User.create(username: hash['info']['nickname'], name: hash['info']['name'],image: hash['info']['image'], provider: hash['provider'], uid: hash['uid'], locale: locale)
       else
         username = hash['info']['email'].split('@')[0]
         @user = User.create(username: username, name: hash['info']['name'],image: hash['info']['image'], provider: hash['provider'], uid: hash['uid'], locale: hash['extra']['raw_info']['locale'])

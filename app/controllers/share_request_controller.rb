@@ -59,7 +59,7 @@ class ShareRequestController < ApplicationController
           format.json { render json: @share_request.errors, status: :unprocessable_entity }
         end
       else
-        flash[:error] = "Username not found."
+        flash[:error] = t('.not_found')
         format.html { redirect_to share_request_new_path }
       end
     end
