@@ -1,14 +1,14 @@
-== A+
+= A+
 
-A+ is a flashcards app that uses Leitner system to make studying faster and more effective. In the app, the student
-can create topics, and inside the topics as many cards as she wants. The cards in each topic are classified in three
-boxes: the first box has the troublesome cards, those that the student doesn't know; the second box has the cards the
-student more or less knows, and the third box has the cards the student knows well. Each time a card is reviewed and
-answered correctly it's moved to the next box. If its answered incorrectly, it moves back to the first box. This
-way, the student can program her reviews so that the first box is visited more frequently than the second and third.
+A+ is a study app that uses the Ebbinghaus forgetting curve to schedule the reviews of the study material. As of now the user can create flashcards inside topics. Also, users can create subjects that contain topics. In addition, users can send a copy of a topic/subject or collaborate any of them with another user.
+
+== Technical information
+
+Ruby version: 2.0.0
+
+A+ runs with MongoDB. To install it, follow the corresponding guide in the manual[http://docs.mongodb.org/manual/installation/] based on your OS. A mongod process should be running before starting the rails server.
 
 == TODO
-* Share topic/subject as collaboration
-* Study all cards, even those not due today, taking in consideration the actual 'recall percentage', but without moving to a next level.
-* Improve layout.
 
+* Implement test suite
+* Quiz feature: in addition to studying cards in their review date, let the user take quizzes of any number of random or selected cards, giving priority to flashcards that have the most wrong answers and lower levels. However, flashcard's level nor review date should be updated.
