@@ -1,10 +1,10 @@
 %p#notice= notice
 
-- if @total > 0
+- if @topics.count > 0
 	#topics-list
 		%ul
-			- @topic_configs.each do |tc|
-				= render tc.topic
+			= render @topics
+
 - else
 	.placeholder
 		%p= t('.placeholder')

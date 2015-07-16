@@ -129,7 +129,8 @@ table {
 	position: fixed;
 	background-color: #1f356f;
 	width: 60px;
-	z-index: 1;
+	z-index: 1000;
+  box-shadow: #999 3px 0px 5px;
 
 	a#home {
 		margin-left: 5px;
@@ -389,18 +390,18 @@ table {
 		}
 
 		.destroy{
-			background: url(asset-path("icons.png")) no-repeat -499px -80px;
-			width: 26px;
-			height: 35px;
+			background: url(asset-path("icons.png")) no-repeat -511px -64px;
+			width: 19px;
+			height: 25px;
 		}
 		
 		.edit{
-			background: url(asset-path("icons.png")) no-repeat -504px -18px;
-			width: 31px;
-			height: 30px;
+			background: url(asset-path("icons.png")) no-repeat -509px -39px;
+			width: 21px;
+			height: 21px;
 		}
 
-		#topics-list, #subjects-list {
+		#topics-list, #subjects-list, #collab-subjects-list {
 			ul {
 		  	list-style: none;
 		  	padding: 0;
@@ -518,6 +519,10 @@ table {
 					vertical-align: top;
 					width: 25%;
 					display: inline-block;
+
+					a {
+						margin-right: 10px;
+					}
 				}
 			}
 
@@ -626,6 +631,16 @@ table {
 .label {
 	display: inline-block;
 	min-width: 100px;
+}
+
+.modal-header {
+	font-size: 16px;
+	line-height: 16px;
+}
+
+.modal-body, .modal-footer {
+	font-size: 14px;
+	line-height: 14px;
 }
 
 @media screen and (max-width: 1024px) {

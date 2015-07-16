@@ -29,7 +29,7 @@ $(document).on 'ready page:load', ->
     $link = $(this).closest('li').children('.options').children('.delete-all').attr 'href'
     confirmation = confirm('This will delete the subject with all its topics. Are you sure?')
     if confirmation
-      subject_delete = $(this).closest('li')
+      subject_delete = $(this).closest('.st_row')
       $.ajax({
         url: $link
         type: 'DELETE'
