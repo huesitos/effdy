@@ -1,6 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+
 $(document).on 'ready page:load', ->
   $('.colorpicker').minicolors theme: 'bootstrap', control: 'wheel'
   $('.preview-label').text($('#subject_code').val())
@@ -12,24 +13,14 @@ $(document).on 'ready page:load', ->
     $('.preview-label').text(subject_code.val())
     $('.preview-label').css {'background-color': subject_color.val(), color: '#fff', 'margin': '15px 0'}
 
-  $('.subject-destroy').click ->
-    console.log $(this).prev('.delete-link').attr 'href'
-    confirmation = confirm('This will delete the subject. Are you sure?')
-    if confirmation
-      subject_delete = $(this).closest('.st_row')
-      $.ajax({
-        url: $(this).prev('.delete-link').attr 'href'
-        type: 'DELETE'
-        dataType: 'json'
-        success: ->
-          subject_delete.remove()
-      })
+  $('.subject-confirm').confirm({
+    confirm: -> 
+      subject_delete = $('#subjects-list').find('.delete-subject')
+      if subject_delete.hasClass('all')
+        $link = $(subject_delete).find('.delete-subject-all').attr 'href'
+      else
+        $link = $(subject_delete).find('.delete-subject').attr 'href'
 
-  $('.subject-destroy-all').click ->
-    $link = $(this).closest('li').children('.options').children('.delete-all').attr 'href'
-    confirmation = confirm('This will delete the subject with all its topics. Are you sure?')
-    if confirmation
-      subject_delete = $(this).closest('li')
       $.ajax({
         url: $link
         type: 'DELETE'
@@ -37,3 +28,18 @@ $(document).on 'ready page:load', ->
         success: ->
           subject_delete.remove()
       })
+
+    cancel: ->
+      subject_delete = $('#subjects-list').find('.delete-subject')
+      subject_delete.toggleClass('delete-subject')
+      subject_delete.removeClass('all')
+  })
+
+  $('.subject-destroy').click ->
+    subject_delete = $(this).closest('.st_row')
+    subject_delete.toggleClass('delete-subject')
+
+  $('.subject-destroy-all').click ->
+    subject_delete = $(this).closest('.st_row')
+    subject_delete.toggleClass('delete-subject')
+    subject_delete.addClass('all')

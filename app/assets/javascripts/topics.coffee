@@ -3,15 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'load page:ready page:change', ->
-  $('.front').addClass('active')
-
-  $('.destroy-action').click ->
-    confirmation = confirm('Are you sure?')
-    if confirmation
-      topic_delte = $(this).closest('.st_row')
-      delete_from_left_menu = $("##{ $(this).prev('.delete-link').attr('href').substring(8) }")
+  $('.confirm').confirm({
+    confirm: -> 
+      topic_delte = $('#topics-list').find('.delete')
       $.ajax({
-        url: $(this).prev('.delete-link').attr 'href'
+        url: $(topic_delte).find('.delete-link').attr 'href'
         type: 'DELETE'
         dataType: 'json'
         success: ->
@@ -19,6 +15,16 @@ $(document).on 'load page:ready page:change', ->
           #removes the topic from the topic menu
           delete_from_left_menu.remove()
       })
+    cancel: ->
+      topic_delte = $('#topics-list').find('.delete')
+      topic_delte.toggleClass('delete')
+  })
+
+  $('.destroy-action').click ->
+    topic_delte = $(this).closest('.st_row')
+    topic_delte.toggleClass('delete')
+
+  $('.front').addClass('active')
 
   $('.front').click ->
     $(this).toggleClass('active')
