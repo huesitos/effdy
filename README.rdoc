@@ -6,9 +6,10 @@ A+ is a study app that uses the Ebbinghaus forgetting curve to schedule the revi
 
 Ruby version: 2.0.0
 
-A+ runs with MongoDB. To install it, follow the corresponding guide in the manual[http://docs.mongodb.org/manual/installation/] based on your OS. A mongod process should be running before starting the rails server.
+A+ runs with MongoDB and Mongoid. To install it, follow the corresponding guide in the manual[http://docs.mongodb.org/manual/installation/] based on your OS. A mongod process should be running before starting the rails server.
 
 == TODO
 
 * Implement test suite
 * Quiz feature: in addition to studying cards in their review date, let the user take quizzes of any number of random or selected cards, giving priority to flashcards that have the most wrong answers and lower levels. However, flashcard's level nor review date should be updated.
+* Any other wild issue[https://github.com/huesitos/aplus/issues] that appears.

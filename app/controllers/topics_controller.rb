@@ -15,7 +15,8 @@ class TopicsController < ApplicationController
       user_id: session[:user_id], archived: false).sort(
       reviewing: -1).pluck(:topic_id)
 
-    @topics = Topic.where(_id: {"$in" => topic_ids})
+    @topics = Topic.where(_id: {"$in" => topic_ids}, user_id: session[:user_id])
+    @col_topics = Topic.where(:_id => {"$in" => topic_ids}, :user_id.ne => session[:user_id])
 
     @view_title = t('.topics')
   end
