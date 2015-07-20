@@ -37,6 +37,10 @@ group :development, :test do
   gem 'spring', '1.3.6'
 end
 
+group :test do
+  gem 'database_cleaner'
+end
+
 group :production do
   gem 'rails_12factor'
 end
