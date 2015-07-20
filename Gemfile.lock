@@ -276,6 +276,3 @@ DEPENDENCIES
   toastr-rails
   turbolinks
   uglifier (>= 1.3.0)
-
-BUNDLED WITH
-   1.10.5
