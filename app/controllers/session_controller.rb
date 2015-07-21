@@ -1,8 +1,8 @@
 class SessionController < ApplicationController
   def create
-    # find_or_create_from_hash method is defined in app/models/users.rb
-    # the method finds an existing user, or creates a new one
-    @user = User.find_or_create_from_auth_hash(auth_hash, I18n.locale)
+
+    @user = User.from_omniauth(provider, auth_hash, locale)
+
     # current_user= method defined in app/controllers/application_controller.rb
     # the method sets the session variables
     self.current_user = @user
@@ -60,6 +60,14 @@ class SessionController < ApplicationController
   end
 
   protected
+
+  def locale
+    I18n.locale
+  end
+
+  def provider
+    auth_hash.provider
+  end
 
   def auth_hash
     request.env['omniauth.auth']
