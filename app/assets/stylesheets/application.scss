@@ -633,19 +633,31 @@ table {
 	min-width: 100px;
 }
 
+.modal-dialog {
+	margin: 30vh auto;
+}
+
 .modal-header {
-	font-size: 16px;
-	line-height: 16px;
+	border: none;
+}
+
+.modal-title {
+	font-size: 1.5em;
 }
 
 .modal-body, .modal-footer {
-	font-size: 14px;
-	line-height: 14px;
+	font-size: 16px;
+	line-height: 16px;
+	border: none;
+}
+
+.modal-body {
+	padding: 0 15px;
 }
 
 @media screen and (max-width: 1024px) {
 	body {
-		font-size: 16px;
+		font-size: 14px;
 	}
 
 	label {
@@ -658,7 +670,7 @@ table {
 
 	#add-menu {
 		a {
-			padding: 8px 15px;
+			padding: 11px 16px;
 			font-size: 1em;
 		}
 	}
@@ -680,6 +692,12 @@ table {
 			.card-container {
 				width: 46%;
 			}
+		}
+	}
+
+	.cards {
+		form .side textarea {
+			height: 12em !important;
 		}
 	}
 

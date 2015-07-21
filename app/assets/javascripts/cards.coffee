@@ -15,3 +15,21 @@ $(document).on 'page:ready page:change', ->
         card_front.val ''
         card_back.val ''
     })
+
+  if $('body').hasClass 'topics'
+    $card_delete = null
+    
+    $('.destroy').click ->
+      $card_delete = $(this).closest('.card-container')
+
+    $('.confirm').confirm({
+        confirm: -> 
+          console.log($card_delete)
+          $.ajax({
+            url: $($card_delete).find('.destroy-card').attr 'href'
+            type: 'DELETE'
+            dataType: 'json'
+            success: ->
+              $card_delete.remove()
+          })
+      })

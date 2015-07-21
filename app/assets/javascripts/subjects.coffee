@@ -13,33 +13,32 @@ $(document).on 'ready page:load', ->
     $('.preview-label').text(subject_code.val())
     $('.preview-label').css {'background-color': subject_color.val(), color: '#fff', 'margin': '15px 0'}
 
-  $('.subject-confirm').confirm({
-    confirm: -> 
-      subject_delete = $('#subjects-list').find('.delete-subject')
-      if subject_delete.hasClass('all')
-        $link = $(subject_delete).find('.delete-subject-all').attr 'href'
-      else
-        $link = $(subject_delete).find('.delete-subject').attr 'href'
+  if $('body').hasClass 'subjects'
+    $subject_delete = null
+    clicked = 'none'
 
-      $.ajax({
-        url: $link
-        type: 'DELETE'
-        dataType: 'json'
-        success: ->
-          subject_delete.remove()
-      })
+    $('.subject-destroy').click ->
+      $subject_delete = $(this).closest('.st_row')
+      clicked = 'one'
 
-    cancel: ->
-      subject_delete = $('#subjects-list').find('.delete-subject')
-      subject_delete.toggleClass('delete-subject')
-      subject_delete.removeClass('all')
-  })
+    $('.subject-destroy-all').click ->
+      $subject_delete = $(this).closest('.st_row')
+      clicked = 'all'
 
-  $('.subject-destroy').click ->
-    subject_delete = $(this).closest('.st_row')
-    subject_delete.toggleClass('delete-subject')
 
-  $('.subject-destroy-all').click ->
-    subject_delete = $(this).closest('.st_row')
-    subject_delete.toggleClass('delete-subject')
-    subject_delete.addClass('all')
+    $('.subject-confirm').confirm({
+      confirm: -> 
+        if clicked == 'all'
+          $link = $($subject_delete).find('.delete-subject-all').attr 'href'
+        else
+          $link = $($subject_delete).find('.delete-subject').attr 'href'
+
+        $.ajax({
+          url: $link
+          type: 'DELETE'
+          dataType: 'json'
+          success: ->
+            $subject_delete.remove()
+            $subject_delete = null
+        })
+    })

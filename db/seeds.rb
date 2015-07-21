@@ -83,9 +83,37 @@ c10.card_statistics.create(user_id: dmlara.id)
 s1= dmlara.subjects.create(
 	code: "COM381", 
 	name: "Computer Graphics")
+
 s1.subject_configs.create(
 	archived: false, 
 	color: "#6b0698",
+	user_id: dmlara.id)
+
+s2= dmlara.subjects.create(
+	code: "COM381", 
+	name: "Computer Graphics")
+
+s2.subject_configs.create(
+	archived: false, 
+	color: "#ff9938",
+	user_id: dmlara.id)
+
+s3= dmlara.subjects.create(
+	code: "COM381", 
+	name: "Computer Graphics")
+
+s3.subject_configs.create(
+	archived: false, 
+	color: "#dd0988",
+	user_id: dmlara.id)
+
+s4= dmlara.subjects.create(
+	code: "COM381", 
+	name: "Computer Graphics")
+
+s4.subject_configs.create(
+	archived: false, 
+	color: "#456879",
 	user_id: dmlara.id)
 
 ts = s1.topics.create(
@@ -93,3 +121,17 @@ ts = s1.topics.create(
 	user_id: dmlara.id)
 ts.topic_configs.create(user_id: dmlara.id)
 
+ts = s2.topics.create(
+	title: "Topic in subject",
+	user_id: dmlara.id)
+ts.topic_configs.create(user_id: dmlara.id)
+
+ts = s3.topics.create(
+	title: "Topic in subject",
+	user_id: dmlara.id)
+ts.topic_configs.create(user_id: dmlara.id)
+
+ts = s4.topics.create(
+	title: "Topic in subject",
+	user_id: dmlara.id)
+ts.topic_configs.create(user_id: dmlara.id)

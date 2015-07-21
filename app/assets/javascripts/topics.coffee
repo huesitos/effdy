@@ -3,26 +3,23 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'load page:ready page:change', ->
-  $('.confirm').confirm({
-    confirm: -> 
-      topic_delte = $('#topics-list').find('.delete')
-      $.ajax({
-        url: $(topic_delte).find('.delete-link').attr 'href'
-        type: 'DELETE'
-        dataType: 'json'
-        success: ->
-          topic_delte.remove()
-          #removes the topic from the topic menu
-          delete_from_left_menu.remove()
-      })
-    cancel: ->
-      topic_delte = $('#topics-list').find('.delete')
-      topic_delte.toggleClass('delete')
-  })
+  if $('body').hasClass 'topics'
+    $topic_delete = null
 
-  $('.destroy-action').click ->
-    topic_delte = $(this).closest('.st_row')
-    topic_delte.toggleClass('delete')
+    $('.destroy-action').click ->
+      $topic_delete = $(this).closest('.st_row')
+
+    $('.confirm').confirm({
+      confirm: -> 
+        $.ajax({
+          url: $($topic_delete).find('.delete-link').attr 'href'
+          type: 'DELETE'
+          dataType: 'json'
+          success: ->
+            $topic_delete.remove()
+            $topic_delete = null
+        })
+    })
 
   $('.front').addClass('active')
 
