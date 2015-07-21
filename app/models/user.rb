@@ -16,16 +16,56 @@ class User
 
   validates :username, :provider, :uid, presence: true
 
-  def self.find_or_create_from_auth_hash(hash, locale)
-    if @user = find_by(provider: hash['provider'], uid: hash['uid'])
-      @user
-    else
-      if hash['provider'] == "twitter"
-        @user = User.create(username: hash['info']['nickname'], name: hash['info']['name'],image: hash['info']['image'], provider: hash['provider'], uid: hash['uid'], locale: locale)
-      else
-        username = hash['info']['email'].split('@')[0]
-        @user = User.create(username: username, name: hash['info']['name'],image: hash['info']['image'], provider: hash['provider'], uid: hash['uid'], locale: hash['extra']['raw_info']['locale'])
-      end
+
+  def self.from_omniauth(provider, hash, locale)
+    user_information = hash.info
+    uid = hash.uid
+    nickname = NicknameFromOmniauth.call(hash)
+
+    find_or_initialize_by(provider: provider, uid: uid).tap do |user|
+      user.username = nickname
+      user.name     = user_information.name
+      user.image    = user_information.image
+      user.provider = provider
+      user.uid      = uid
+      user.locale   = locale
+      user.save!
     end
+  end
+
+end
+
+class NicknameFromOmniauth
+  def initialize(hash)
+    @hash = hash
+    @user_info = hash.info
+  end
+
+  def call
+    nickname || email
+  end
+
+  def self.call(hash)
+    new(hash).call
+  end
+
+  private
+
+  attr_reader :hash, :user_info
+
+  def nickname
+    user_info.nickname
+  end
+
+  def email
+    user_or_generic_email.split('@').first
+  end
+
+  def user_or_generic_email
+    user_info.email || generic_email
+  end
+
+  def generic_email
+    "aplus#{SecureRandom.hex(2)}@"
   end
 end
