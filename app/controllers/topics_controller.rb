@@ -11,7 +11,12 @@ class TopicsController < ApplicationController
   # Shows the complete list of topics
   def index
     @total = Topic.count.to_i
-    @topic_configs = TopicConfig.where(user_id: session[:user_id]).sort(reviewing: -1, archived: 1)
+    topic_ids = TopicConfig.where(
+      user_id: session[:user_id], archived: false).sort(
+      reviewing: -1).pluck(:topic_id)
+
+    @topics = Topic.where(_id: {"$in" => topic_ids}, user_id: session[:user_id])
+    @col_topics = Topic.where(:_id => {"$in" => topic_ids}, :user_id.ne => session[:user_id])
 
     @view_title = t('.topics')
   end

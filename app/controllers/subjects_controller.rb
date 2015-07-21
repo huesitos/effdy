@@ -125,6 +125,7 @@ class SubjectsController < ApplicationController
     if params[:delete_all]
       @subject.destroy_topics
     end
+    
     @subject.destroy
 
     respond_to do |format|

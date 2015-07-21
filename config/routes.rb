@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'review#study_calendar'
 
+  get 'getting_started' => 'welcome#getting_started', as: :getting_started
+
   get 'settings' => 'settings#settings', as: :settings
   post 'update_settings' => 'settings#update_settings', as: :update_settings
 

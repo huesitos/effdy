@@ -21,9 +21,9 @@
 			%li= t('.feature3')
 			%li= t('.feature4')
 			%li= t('.feature5')
-	/ #guide
-	/ 	%p= t('.go-guide')
-	/ 	%a{class: 'btn btn-default'}= t('.guide')
+	#guide
+		%p= t('.go-guide')
+		%a{href: getting_started_path, class: 'btn btn-default'}= t('.guide')
 
 %section.background-lightgray#opensource
 	= image_tag('octocat.png')

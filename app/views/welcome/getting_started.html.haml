@@ -1,0 +1,131 @@
+%section.background-lightgray#head
+	- if @user
+		= link_to t(".to-app"), study_calendar_path(), class: 'back btn btn-default'
+	- else
+		= link_to t('.login'), login_path(), class: 'back btn btn-default'
+
+	#logo
+		%h1
+			.font-effect-shadow-multiple A+
+
+	%h2 Guía de uso
+	#introduction
+		%p En esta guía aprenderás a utilizar A+ para hacer tus repasos más eficaces y efectivos.
+
+%section.background-blue#guide-menu
+	.guide-section
+		%a{href: '#flashcards', class: 'flashcards'}
+		%p= t('.flashcards')
+	.guide-section
+		%a{href: '#topics', class: 'topics'}
+		%p= t('.topics')
+	.guide-section
+		%a{href: '#subjects', class: 'subjects'}
+		%p= t('.subjects')
+	.guide-section
+		%a{href: '#review', class: 'review'}
+		%p= t('.review')
+	.guide-section
+		%a{href: '#share', class: 'share'}
+		%p= t('.share')
+
+%section.background-lightgray#flashcards
+	%h2 Tarjetas
+	.content
+		= image_tag('guide-flashcards.png')
+		= image_tag('guide-flashcards2.png')
+		%ol
+			%li
+				%p Para ver la opción de agregar una tarjeta debes estar en la pantalla de vista del tema que la contendrá. Dale click al botón rojo de agregar en la parte inferior derecha. Puedes agregar una sola carta al completar el formulario y seleccionar el botón "Terminar" o puedes seguir agregando más cartas presionando el botón "Continuar".
+			%li
+				%p Para poder editar una tarjeta debes estar en la pantalla de vista del tema que la contiene. Busca la tarjeta entre las que tiene el tema y presiona el botón de editar que está en la parte inferior.
+			%li
+				%p En la patantalla de edición de tarjeta, además de modificar el contenido de una tarjeta, también puedes cambiar su tema.
+			%li
+				%p Para eliminar una tarjeta debes estar en la pantalla de vista del tema o en el formulario de edición de la tarjeta. Haz click en el botón de eliminar.
+	%a{href: '#guide-menu', class: 'btn btn-default'} Menú
+
+%secion.background-blue.divider
+
+%section.background-lightgray#topics
+	%h2 Temas
+	.content
+		= image_tag('guide-topics.png')
+		= image_tag('guide-topics2.png')
+		%ol
+			%li
+				%p Para crear un tema debe estar en la pantalla de lista de temas. Presione el botón de agregar y complete el formulario.
+			%li
+				%p También puede eliminar el tema en la pantalla de lista de temas.
+			%li
+				%p Si desea que el tema aparezca en el calendario de repaso cuando tenga tarjetas para estudiar, marque el tema para repasar.
+			= image_tag('guide-topics4.png')
+			= image_tag('guide-topics3.png')
+			%li
+				%p Para editar un tema, vaya a la pantalla de vista de ese tema y seleccione la opción de editar en el menú secundario a la izquierda. En esta pantalla también podrá editar el procentaje de retención deseado, eliminar el tema y reestablecer las tarjetas.
+			%li
+				%p Reestablecer las tarjetas mueve cada una al nivel 1 de comprensión, que es el mínimo nivel. Esto hará que las próximas fechas de repaso sean más cercanas. Solo reestablezca las cartas si tiene mucho tiempo que no estudia el tema y siente que ya se ha olvidado de su contenido.
+	%a{href: '#guide-menu', class: 'btn btn-default'} Menú
+
+%secion.background-blue.divider
+
+%section.background-lightgray#subjects
+	%h2 Asignaturas
+	.content
+		= image_tag('guide-subjects.png')
+		= image_tag('guide-subjects4.png')
+		%ol
+			%li
+				%p Para agregar una asignatura tienes que estar en la pantalla de lista de asignaturas y dar click al botón de agregar. En esta pantalla también puedes eliminar una asignatura sola ('Eliminar') o también eliminar todos sus temas ('Eliminar todo').
+			%li
+				%p Puedes agregarle un color a la asignatura para diferenciar mejor los temas que le pertenecen.
+			%li
+				%p Las asignaturas pueden ser archivadas. Cuando una asignatura es archivada sus temas no aparecen en el calendario de revisión ni en la lista de temas. Archiva las asignaturas que ya no tengas que estudiar para hacer más espacio para otras.
+			= image_tag('guide-subjects2.png')
+			= image_tag('guide-subjects3.png')
+			%li
+				%p Dentro de la pantalla de vista de una asignatura puedes acceder a los temas que contiene, activarlos para revisión o eliminarlos.
+			%li
+				%p También puedes agregar nuevos temas dentro de la asignatura dando click al botón de agregar en la pantalla de vista de esa asignatura.
+			%li
+				%p Para editar una asignatura, dale click al botón de edición del menú izquierdo secundario.
+	%a{href: '#guide-menu', class: 'btn btn-default'} Menú
+
+%secion.background-blue.divider
+
+%section.background-lightgray#review
+	%h2 Repaso
+	.content
+		%ol
+			= image_tag('guide-review3.png')
+			%li
+				%p Cuando una tarjeta que pertenezca a un tema marcado para repaso tenga una fecha de revisión en un rango de una semana desde el día de hoy, aparecerá en el calendario de repaso. 
+			%li
+				%p Solo las tarjetas que tengan que ser repasadas hoy tendrán un enlace de acceso hacia la pantalla de repaso.
+			= image_tag('guide-review.png')
+			%li
+				%p Cuando estés repasando, primero aparecerá la parte frontal de la tarjeta. Piensa en la respuesta o escríbela en el campo 'Tu respuesta' y luego voltéala. 
+			= image_tag('guide-review2.png')
+			%li
+				%p Al voltearla verás la parte trasera de la tarjeta, donde estará la respuesta correcta de la tarjeta. Comprueba si tu respuesta fue correcta o no. Si lo fue, continúa presionando el botón 'Correcto', si no, 'Incorrecto'.
+			%li
+				%p Mientras repasas la aplicación irá registrando qué tan rápido estudias las cartas independientemente. Esto sirve para dar un aproximado de cuánto durará el siguiente repaso. Ten cuidado de dejar un repaso sin terminar. Si tienes que parar asegúrate de salir de la pantalla de revisión. No te preocupes, puedes volver a empezarlo donde te quedaste luego.
+	%a{href: '#guide-menu', class: 'btn btn-default'} Menú
+
+%secion.background-blue.divider
+
+%section.background-lightgray#share
+	%h2 Compartir
+	.content
+		%ol
+			= image_tag('guide-share2.png')
+			%li
+				%p Puedes compartir tanto una asignatura como un tema. Hay dos formas de compartir: enviar una copia o colaboración. 
+				%p Cuando envías una copia, el usuario destinatario podrá tener el contenido de tu tema o asignatura, pero al modificarlo no se verá nada reflejado en el tuyo.
+				%p Cuando agregas un colaborador a un tema o asignatura este también tendrá acceso al contenido, pero si modifica lo que ya está o agrega más, tú también podrás ver esas modificaciones.
+			%li
+				%p Compartir en colaboración es perfecto para crear contenido junto con compañeros de clase. Así no todos tienen que hacer lo mismo y se ahorran tiempo y esfuerzo.
+			= image_tag('guide-share.png')
+			%li
+				%p Si alguien quiere compartir un tema contigo te aparecerá una notificación para que aceptes o declines la oferta.
+	%a{href: '#guide-menu', class: 'btn btn-default'} Menú

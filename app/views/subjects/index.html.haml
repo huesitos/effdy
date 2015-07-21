@@ -14,7 +14,7 @@
 .row
   - if @collaborating_subjects.count() > 0
     %h3= t('.collaborating')
-    #subjects-list
+    #collab-subjects-list
       %ul
         - @collaborating_subjects.each do |subject|
           = render subject
