@@ -10,4 +10,4 @@
       .options
         =link_to '', edit_topic_card_path(card.topic_id, card._id), :class => 'icon-btn edit'
         =link_to '', topic_card_path(card.topic_id, card._id), :method => :delete, :class => 'icon-btn destroy-card', style: 'display:none'
-        %a.btn.btn-default.destroy.destroy-action.confirm{href:'javascript:void(0)', "data-title": "Delete card", "data-text": "Are you sure you want to delete this flashcard?", "data-confirm-button": "Yes", "data-cancel-button": "Cancel", style: 'border:none;vertical-align:top'}
+        %a.btn.btn-default.destroy.destroy-action.confirm{href:'javascript:void(0)', "data-title" => "Delete card", "data-text" => "Are you sure you want to delete this flashcard?", "data-confirm-button" => "Yes", "data-cancel-button" => "Cancel", style: 'border:none;vertical-align:top'}
