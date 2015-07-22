@@ -12,5 +12,5 @@
       = link_to text, subject_archive_path(subject), method: :patch, class: "btn btn-default #{subject_config.archived ? 'archived' : 'archive'}", id: 'archive'
       = link_to t('.delete'), subject_path(subject.id), :class => "btn.btn-default delete-subject", style: 'display:none'
       = link_to t('.delete_all'), subject_path(subject.id, delete_all: true), :class => "btn.btn-default delete-subject-all", style: 'display:none'
-      %a.btn.btn-default.subject-confirm.subject-destroy{href:'javascript:void(0)', "data-title": "Delete subject", "data-text": "Are you sure you want to delete this subject?", "data-confirm-button": "Yes", "data-cancel-button": "Cancel"}= t('.delete')
+      %a.btn.btn-default.subject-confirm.subject-destroy{href:'javascript:void(0)', "data-title" => "Delete subject", "data-text" => "Are you sure you want to delete this subject?", "data-confirm-button" => "Yes", "data-cancel-button" => "Cancel"}= t('.delete')
       %a.btn.btn-default.subject-confirm.subject-destroy-all{href:'javascript:void(0)', "data-title" => "Delete subject", "data-text" => "Are you sure you want to delete this subject and its topics?", "data-confirm-button" => "Yes", "data-cancel-button" => "Cancel"}= t('.delete_all')
