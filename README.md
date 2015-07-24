@@ -4,7 +4,7 @@ A+ is a study app that uses the Ebbinghaus forgetting curve to schedule the revi
 
 ## Technical information
 
-Ruby version: 2.0.0
+Ruby version: 2.2.0
 
 A+ runs with MongoDB and Mongoid. To install it, follow the corresponding guide in the [manual](http://docs.mongodb.org/manual/installation/) based on your OS. A mongod process should be running before starting the rails server. In the terminal, run:
 
