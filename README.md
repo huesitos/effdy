@@ -1,12 +1,12 @@
-# A+
+# Effdy
 
-A+ is a study app that uses the Ebbinghaus forgetting curve to schedule the reviews of the study material. As of now the user can create flashcards inside topics. Also, users can create subjects that contain topics. In addition, users can send a copy of a topic/subject or collaborate any of them with another user.
+Effdy is a study app that uses the Ebbinghaus forgetting curve to schedule the reviews of the study material. As of now the user can create flashcards inside topics. Also, users can create subjects that contain topics. In addition, users can send a copy of a topic/subject or collaborate any of them with another user.
 
 ## Technical information
 
 Ruby version: 2.2.0
 
-A+ runs with MongoDB and Mongoid. To install it, follow the corresponding guide in the [manual](http://docs.mongodb.org/manual/installation/) based on your OS. A mongod process should be running before starting the rails server. In the terminal, run:
+Effdy runs with MongoDB and Mongoid. To install it, follow the corresponding guide in the [manual](http://docs.mongodb.org/manual/installation/) based on your OS. A mongod process should be running before starting the rails server. In the terminal, run:
 
 	mongod
 

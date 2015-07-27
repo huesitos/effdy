@@ -15,19 +15,19 @@ es:
 
   welcome:
     index:
-      header: 						'A+'
+      header: 						'Effdy'
       subtitle: 					'La aplicación de tarjetas de estudio que hará tu repaso mucho más eficiente.'
-      introduction:       "Los estudiantes no tienen tiempo para desperciciar. Es por esto que las horas de estudio deben ser utilizadas con eficiencia. ¿Por qué perder tiempo repasando contenido que ya se sabe, cuando todavía queda más por aprender? A+ te ayuda a mantener un horario de estudio donde repasas las tarjetas en el momento justo antes de que olvides su contenido, ¡pero nunca antes!"
+      introduction:       "Los estudiantes no tienen tiempo para desperciciar. Es por esto que las horas de estudio deben ser utilizadas con eficiencia. ¿Por qué perder tiempo repasando contenido que ya se sabe, cuando todavía queda más por aprender? Effdy te ayuda a mantener un horario de estudio donde repasas las tarjetas en el momento justo antes de que olvides su contenido, ¡pero nunca antes!"
       signup:               "Regístrate, ¡es gratis!"
       twitter:              "Inicia sesión con Twitter"
       google:               "Inicia sesión con Google"
       topic-example:        "Así es como se vería un tema con tarjetas creadas"
-      feature1:             '¡Olvida los inconvemientes de crear, editar, organizar y cargar con tarjetas de papel! Con A+ puedes crear temas que contengan todas las tarjetas que quieras y acceder a ellas donde sea que estés.'
+      feature1:             '¡Olvida los inconvemientes de crear, editar, organizar y cargar con tarjetas de papel! Con Effdy puedes crear temas que contengan todas las tarjetas que quieras y acceder a ellas donde sea que estés.'
       feature2:             "Organiza tus tarjetas dentro de temas y los temas dentro de asignaturas."
       feature3:             "Marca para revisión solo los temas más esenciales."
       feature4:             "Archiva las asignaturas/temas que ya no estarás estudiando durante un largo tiempo para hacer espacio a más contenido."
       feature5:             "Comparte o colabora con tus amigos para crear nuevo contenido de estudio."
-      opensource:           "¡A+ es un projecto de código libre! Pasa por nuestro repositorio en Github."
+      opensource:           "¡Effdy es un projecto de código libre! Pasa por nuestro repositorio en Github."
       guide:                'Guía de uso'
       go-guide:             '¿Quieres saber más? Revisa nuestra guía de uso.'
       repo:                 'Repositorio'
@@ -232,7 +232,7 @@ es:
   session:
     create:
       review_title:       "Proceso de repaso"
-      rcard1_front:       "¡Bienveido a A+! Este es un tema de ejemplo que hemos agregado para ayudarte a aprender cómo repasar tus tarjetas de estudio. Dale al botón 'Voltear' para voltear la tarjeta."
+      rcard1_front:       "¡Bienveido a Effdy! Este es un tema de ejemplo que hemos agregado para ayudarte a aprender cómo repasar tus tarjetas de estudio. Dale al botón 'Voltear' para voltear la tarjeta."
       rcard1_back:        "Al repasar tus tarjetas, verás el lado frontal primero, que es el lado donde debe estar la pregunta o concepto. El lado trasero es donde está la respuesta o definición. Cuando estás viendo el lado trasero aparecerán dos botones: uno para marcar si respondiste correctamente y otro para cuando respondas incorrectamente. Por ahora, presiona cualquiera de los dos."
 
       rcard2_front:       "Para repasar, lee la pregunta y piensa la respuesta. ¿Ves el campo de texto 'Tu respuesta' a la derecha? Está allí en caso de que la respuesta sea tan complicada que sea tedioso recordarla perfectamente mentalmente. Por ejemplo, si la pregunta es nombrar todos los estados/provincias de tu país, es más sencillo escribirla que solo nombrarles. Usa el campo para responder la pregunta anterior; lista tantos como puedas. Cuando termines, voltea la tarjeta."
@@ -248,7 +248,7 @@ es:
       rcard5_back:        "Mientras tanto, aquí está un resumen rápido del menú principal: la primera opción es el calendario de revisión, que muestra los temas que debes repasar hoy y también proyecta el estudio de una semana; la segunda opción lista las asignaturas creadas, y la tercera es para la lista de temas. Después de responder esta pregunta serás dirigido a la página del tema de esta tarjeta. ¡Feliz estudio!"
 
       navigation_title:   "Navegación básica y funcionalidades"
-      ncard1_front:       "¡Bienvenidos a A+! Este es un tema de ejemplo que hemos añadido para ayudarte a aprender las funcionalidades básicas de la aplicación y hacer tus sesiones de estudio más eficientes. Dale click al botón 'Voltear' para voltear esta tarjeta."
+      ncard1_front:       "¡Bienvenidos a Effdy! Este es un tema de ejemplo que hemos añadido para ayudarte a aprender las funcionalidades básicas de la aplicación y hacer tus sesiones de estudio más eficientes. Dale click al botón 'Voltear' para voltear esta tarjeta."
       ncard1_back:        "El menú de navegación es la barra a la izquierda y tiene las siguientes opciones: el horario de estudio, la lista de asignaturas, lista de temas y por último un menú de configuración de tu perfil. Cubriremos todos estos puntos en detalle en las próximas tarjetas. Haz click en cualquiera de los botones Correcto o Incorrecto."
 
       ncard2_front:       "El calendario de estudio lista los temas con tarjetas que deben ser repasadas, el número de tarjetas que se repasarán y un tiempo de duración aproximado en minutos. La duración aproximada de repaso es calculada en base a la suma de la duración en segundos de lo que te toma pasar de la parte frontal de la tarjeta hasta que selecciones si tu respuesta es correcta o no. El tiempo promedio por defecto es 1 minuto por tarjeta. El menú 'Semana de repaso' permite navegar una semana desde hoy para ver qué temas tendrás que estudiar esos días y así organizar tu tiempo de estudio."

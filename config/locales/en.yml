@@ -15,19 +15,19 @@ en:
 
   welcome:
     index:
-      header: 						'A+'
+      header: 						'Effdy'
       subtitle: 					'The flashcards app that makes reviewing more effective.'
-      introduction:				"Students have no time to spare. That's why studying hours have to be spent efficiently. Why spend time reviewing content that you already know, when there is a bunch more left to learn? A+ helps you study by scheduling your flashcards reviews in the right time just before you forget the content, but never earlier!"
+      introduction:				"Students have no time to spare. That's why studying hours have to be spent efficiently. Why spend time reviewing content that you already know, when there is a bunch more left to learn? Effdy helps you study by scheduling your flashcards reviews in the right time just before you forget the content, but never earlier!"
       topic-example:				"This is how a topic with its cards would look like"
       signup:								"Sign up, it's free!"
       twitter:							'Sign up with Twitter'
       google:								'Sign up with Google'
-      feature1:							'Forget about the hazzards of creating, editing, organizing, and carrying paper flashcards! With A+ you can create topics with all the flashcards you want and have them ready to review anywhere you are!'
+      feature1:							'Forget about the hazzards of creating, editing, organizing, and carrying paper flashcards! With Effdy you can create topics with all the flashcards you want and have them ready to review anywhere you are!'
       feature2:							"Organize your flashcards by topics, and your topics by subjects."
       feature3:							"Schedule for review the essential topics at the moment."
       feature4:							"Archive the subjects/topics that you won't be seeing for a long time to make space for other content."
       feature5:							"Share or collaborate with your friends to create new study content."
-      opensource:						"A+ is an free software project! Check out the Github repository."
+      opensource:						"Effdy is an free software project! Check out the Github repository."
       guide:								'Getting started guide'
       go-guide:							'Want to know more? Check our getting started guide.'
       repo:									'App repository'
@@ -221,7 +221,7 @@ en:
   session:
     create:
       review_title:				"Review process"
-      rcard1_front:				"Welcome to A+! This is a sample topic we added to help you learn how review your cards. Click the button 'Flip' to flip this card!"
+      rcard1_front:				"Welcome to Effdy! This is a sample topic we added to help you learn how review your cards. Click the button 'Flip' to flip this card!"
       rcard1_back:				"When reviewing your cards you will see the front side of the card first, which is the side where you should write the question. The back side is for the answer. Whenever you are looking at the back side, two buttons will appear: one for signilizing you answered the question correctly, and the other for when you answer it incorrectly. Now click either the 'Correct' or 'Incorrect' button to continue."
 
       rcard2_front:				"When reviewing, you should read the question, and think of the answer. See the 'Your answer' box in the side? It's there in case the answer to the question is too long to remember correctly, like a list of things. For instance, say you have the question: Name all states/provinces of your country. Use the box in the side to help you answer the question. When you are done, flip the card."
@@ -237,7 +237,7 @@ en:
       rcard5_back:					"For now, here's a quick summary of the main menu: the first option is the review schedule, which shows what topics you have to review today and also projects the topic to review a week from now; the second option is the subjects list, and the third is the topic's list. After you answer this question you'll be sent to this topic's show page where you can edit, delete, and add cards."
 
       navigation_title:		"Basic navigation and features"
-      ncard1_front:				"Welcome to A+! This is a sample topic we added to help you learn how to use the basic functionalities of the app and make your study sessions more effective. Click the button 'Flip' to flip this card!"
+      ncard1_front:				"Welcome to Effdy! This is a sample topic we added to help you learn how to use the basic functionalities of the app and make your study sessions more effective. Click the button 'Flip' to flip this card!"
       ncard1_back:				"Well done! The main navigation bar to the left has the following options: the review schedule link, the subjects lit, and the topics, list. We'll be covering the details of each one in the next cards. Click either correct or incorrect."
 
       ncard2_front:				"The review schedule lists the topics that have to be reviewed, the number of cards, and the approximated time it will take to review them. The approximated time is calculated based on the sum of the duration in seconds of how much it takes you to answer each card of a topic. The default time is 1 minute per card. Also, there's a 'Week review' projection where you can see, a week in advance, which flascards you'll have to study."
