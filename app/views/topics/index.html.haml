@@ -1,11 +1,18 @@
 %p#notice= notice
 
-- if @topics.count > 0
-	#topics-list
-		%ul
-			= render @topics
-			
-- else
-	.placeholder
-		%p= t('.placeholder')
+.row
+	- if @topics.count > 0
+		#topics-list
+			%ul
+				= render @topics
+	- else
+		.placeholder
+			%p= t('.placeholder')
 
+.row
+	- if @col_topics.count() > 0
+		%h3= t('.collaborating')
+		#collab-topics-list
+			%ul
+				- @col_topics.each do |topic|
+					= render topic 
