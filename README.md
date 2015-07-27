@@ -33,6 +33,10 @@ Google app keys:
 	GOOGLE_CLIENT_ID="492002763865-6ijkv88vkemnq4br0bm9b38ks3v6mmt5.apps.googleusercontent.com"
 	GOOGLE_CLIENT_SECRET="dxoERDk24mTCpMOBolcERf_H"
 
+## Demo app
+
+There master branch is currently running on a Heroku server. If you want to have a feel of what it is about, check it out [here](http://afternoon-journey-8075.herokuapp.com/login).
+
 ## TODO
 
 * Implement test suite
