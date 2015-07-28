@@ -37,8 +37,11 @@ Google app keys:
 
 There master branch is currently running on a Heroku server. If you want to have a feel of what it is about, check it out [here](http://afternoon-journey-8075.herokuapp.com/login).
 
+## Wiki
+
+We have some [wiki](https://github.com/huesitos/effdy/wiki) pages that give a brief description of the project and what has been accomplished so far, and what we want to accomplish in the future.
+
 ## TODO
 
 * Implement test suite
-* Quiz feature: in addition to studying cards in their review date, let the user take quizzes of any number of random or selected cards, giving priority to flashcards that have the most wrong answers and lower levels. However, flashcard's level nor review date should be updated.
-* Any other wild issue[https://github.com/huesitos/aplus/issues] that appears.
+* Any other wild [issue](https://github.com/huesitos/aplus/issues) that appears.
