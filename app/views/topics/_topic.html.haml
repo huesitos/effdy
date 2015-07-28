@@ -16,5 +16,6 @@
     .col-sm-4.options
       - topic_config.reviewing ? text = t('.reviewing') : text = t('.review')
       = link_to text, topic_set_reviewing_path(topic, back: @subject ? subject_path(@subject) : topics_path), method: :patch, class: "btn btn-default #{topic_config.reviewing ? 'reviewing' : 'review'}", id: 'review'
-      = link_to t('.delete'), topic_path(topic), :class => 'btn btn-default delete-link', method: :delete, data: {confirm: "#{t('.confirm')}"}, style: 'display:none'
-      %a.btn.btn-default.destroy-action.confirm{href:'javascript:void(0)', "data-title" => "Delete topic", "data-text" => "Are you sure you want to delete this topic and its flashcards?", "data-confirm-button" => "Yes", "data-cancel-button" => "Cancel"}= t('.delete')
+      - if current_user.id == topic.user_id
+        = link_to t('.delete'), topic_path(topic), :class => 'btn btn-default delete-link', method: :delete, data: {confirm: "#{t('.confirm')}"}, style: 'display:none'
+        %a.btn.btn-default.destroy-action.confirm{href:'javascript:void(0)', "data-title" => "Delete topic", "data-text" => "Are you sure you want to delete this topic and its flashcards?", "data-confirm-button" => "Yes", "data-cancel-button" => "Cancel"}= t('.delete')
