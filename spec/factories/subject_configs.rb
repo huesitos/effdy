@@ -1,7 +1,7 @@
 FactoryGirl.define do
+	
   factory :subject_config do
     archived ""
-color "MyString"
+    color "MyString"
   end
-
 end

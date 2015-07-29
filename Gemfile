@@ -21,7 +21,6 @@ gem 'omniauth-google-oauth2'
 gem 'json'
 
 gem 'http_accept_language'
-
 gem 'toastr-rails'
 
 group :development do
