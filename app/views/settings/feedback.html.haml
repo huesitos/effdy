@@ -1,0 +1,15 @@
+.col-sm-offset-3.col-sm-5
+	.description
+		%h3= t('.we-care')
+		%p= t('.we-care-because')
+
+= form_for @feedback, url: add_feedback_path do |f|
+	.form-vertical
+		.form-group
+			.col-sm-offset-3.col-sm-5.field
+				= f.label :content, t('.content'), class: 'control-label'
+				= f.text_area :content, class: 'form-control'
+		.form-group
+			.col-sm-offset-3.col-sm-5
+				.actions
+					= f.submit t('.send'), class: 'btn btn-default'

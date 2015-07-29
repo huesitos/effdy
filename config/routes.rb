@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'settings' => 'settings#settings', as: :settings
   post 'update_settings' => 'settings#update_settings', as: :update_settings
+  get 'feedback' => 'settings#feedback', as: :feedback
+  post 'add_feedback' => 'settings#add_feedback', as: :add_feedback
 
   get 'share_request/new/:object_type/:oid/:name' => 'share_request#new', as: :share_request_new
   post 'share_requests/:object_type/:oid/:name' => 'share_request#create', as: :share_requests

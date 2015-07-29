@@ -39,10 +39,13 @@ div {
   color: green;
 }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: #6D929B;
-  display: table;
+.field_with_errors label {
+  color: red;
+  border: none !important;
+}
+
+.field_with_errors textarea, .field_with_errors input {
+  border-color: red;
 }
 
 #error_explanation {

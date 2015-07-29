@@ -8,6 +8,7 @@ en:
       topics_icon:				'Topics'
       guide:							'Getting started guide'
       logout:							'Logout'
+      feedback:           'Feedback'
       add_topic:					'New topic'
       add_subject:				'New subject'
       add_card:						'New flashcard'
@@ -217,6 +218,17 @@ en:
       settings:						"Configurations"
       language:						"Language"
       save:								"Save"
+
+    add_feedback:
+      thanks:             "Thanks for your feedback!"
+      feedback:           'Feedback'
+
+    feedback:
+      send:               "Send"
+      feedback:           'Feedback'
+      content:            'Tell us what you think'
+      we-care:            'We care about your opinion'
+      we-care-because:    "Effdy is a product in continous development and we want you to take the most advantage from it. If you have any idea or suggestions, please let us know by filling the following form. We deeply appreaciate it."
 
   session:
     create:

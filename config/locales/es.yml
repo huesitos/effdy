@@ -8,6 +8,7 @@ es:
       topics_icon:				'Temas'
       guide:							'Guía de uso'
       logout:							'Cerrar sesión'
+      feedback:           'Sugerencias'
       add_topic:					'Agregar tema'
       add_subject:				'Agregar asignatura'
       add_card:						'Agregar tarjeta'
@@ -228,6 +229,17 @@ es:
       settings:						"Configuraciones"
       language:						"Lenguaje"
       save:								"Guardar"
+
+    add_feedback:
+      thanks:             "¡Gracias por su aporte!"
+      feedback:           'Sugerencias'
+
+    feedback:
+      send:               "Enviar"
+      feedback:           'Sugerencias'
+      content:            'Dinos qué opinas'
+      we-care:            'Nos interesa saber qué piensas'
+      we-care-because:    "Effdy es un producto en continuo desarrollo y queremos que puedas sacar el máximo provecho de este. Si tienes alguna idea sobre cómo mejorarlo, déjanos saber llenando este formulario."
 
   session:
     create:

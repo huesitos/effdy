@@ -1,3 +1,24 @@
 // Place all the styles related to the settings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.settings {
+	textarea {
+		margin-top: 1em;
+		min-height: 10em;
+	}
+
+	.description {
+		margin-bottom: 1em;
+
+		h3 {
+			font-weight: 700;
+		}
+
+		p {
+			font-size: 0.8em;
+			text-align: justify;
+			line-height: 1.25em;
+		}
+	}
+}
