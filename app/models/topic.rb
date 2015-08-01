@@ -22,15 +22,13 @@ class Topic
     Topic.where(user_id: user_id)
   end
 
-  # Moves all the cards back to box 1.
+  # Moves all the cards back to level 1.
   def reset_cards(user_id)
-    card_ids = Card.where(topic_id: self.id)
+    card_ids = self.cards.pluck(:_id)
     
     card_statistics = CardStatistic.where(card_id: {"$in" => card_ids}, user_id: user_id)
 
-    card_statistics.each do |cs|
-      cs.reset
-    end
+    card_statistics.each { |cs| cs.reset }
   end
 
   # Returns all the topics that have to be reviewed today, with the number of cards

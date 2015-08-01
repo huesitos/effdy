@@ -13,7 +13,7 @@ class CardStatistic
   belongs_to :user
 
   validates :level, :review_date, presence: true
-  validates :user, presence: { is: true, message: "must belong to a user." }
+  validates :user, presence: { is: true, message: "must be specified" }
   validates :level, numericality: { only_integer: true, greater_than: 0 }
 
   def self.from_user(user_id)
@@ -49,7 +49,7 @@ class CardStatistic
     self.inc(times_incorrect: 1)
   end
 
-  # Moves a card back to box 1.
+  # Moves a card back to level 1.
   def reset
     self.update(level: 1)
   end

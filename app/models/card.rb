@@ -11,5 +11,5 @@ class Card
   belongs_to :topic
 
   validates :front, :back, presence: true
-  validates :topic, presence: { is: true, message: "must belong to a topic." }
+  validates :topic, presence: { is: true, message: "must be specified" }
 end
