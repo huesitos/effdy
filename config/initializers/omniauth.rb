@@ -6,7 +6,13 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   # export WANTADS_TWITTER_SECRET=asdfabaj8834AFJDKFasdfasjjksdfsdlkljsdfsd
   # in your .zshrc file. In order to obatin your Twitter Key and Twitter Secret,
   # you need to first log into https://dev.twitter.com/ and create a new application
-  provider :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
-  provider :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
-  provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_SECRET']
+  provider :twitter,
+    Rails.application.secrets.twitter_key,
+    Rails.application.secrets.twitter_secret
+  provider :google_oauth2,
+    Rails.application.secrets.google_client_id,
+    Rails.application.secrets.google_client_secret
+  provider :facebook,
+    Rails.application.secrets.facebook_app_id,
+    Rails.application.secrets.facebook_secret
 end
