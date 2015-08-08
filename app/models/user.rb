@@ -36,13 +36,14 @@ class User
 end
 
 class NicknameFromOmniauth
+
   def initialize(hash)
     @hash = hash
     @user_info = hash.info
   end
 
   def call
-    nickname || email
+    UserNickname.from(nickname)
   end
 
   def self.call(hash)
@@ -54,7 +55,7 @@ class NicknameFromOmniauth
   attr_reader :hash, :user_info
 
   def nickname
-    user_info.nickname
+    user_info.nickname || email
   end
 
   def email
@@ -68,4 +69,43 @@ class NicknameFromOmniauth
   def generic_email
     "aplus#{SecureRandom.hex(2)}@"
   end
+
+  class UserNickname
+
+    NICKNAME_TEMPLATE = '-%{random_seed}'.freeze
+
+    def initialize(nickname)
+      @nickname = nickname
+    end
+
+    def self.from(nickname)
+      new(nickname).call
+    end
+
+    def call
+      user_already_exists? ? generated_nicknamed : nickname
+    end
+
+    private
+
+    def generated_nicknamed
+      nickname + user_random
+    end
+
+    def user_already_exists?
+      !!User.find_by(username: nickname)
+    end
+
+    def user_random
+      NICKNAME_TEMPLATE % { random_seed: generate_seed }
+    end
+
+    def generate_seed
+      SecureRandom.random_number(5)
+    end
+
+    attr_reader :nickname
+
+  end
+
 end
