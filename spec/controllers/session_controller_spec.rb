@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe SessionController, type: :controller do
 
 	context "when an a new user registers" do
+
 		describe "with Twitter" do
 
 			before { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter] }
@@ -19,6 +20,25 @@ RSpec.describe SessionController, type: :controller do
 				expect(authenticated_user.provider).to eql('twitter')
 				expect(authenticated_user.username).to eql('paulie')
 				expect(authenticated_user.uid).to eql('123545')
+			end
+
+		end
+
+		context "and that username already exists" do
+
+			before do
+				request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:google]
+
+				FactoryGirl.create(:user, username: 'google-user')
+			end
+
+			it "generates a random username for the registering user" do
+
+				get :create, provider: 'google'
+
+				authenticated_user = assigns(:user)
+				# Match only digits at the end
+				expect(authenticated_user.username).to match(/\d+$/)
 			end
 
 		end
